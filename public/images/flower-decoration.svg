@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Leaf -->
+  <path d="M70 50C90 30 110 50 100 80C90 110 50 110 50 80C50 50 70 30 70 50Z" fill="#8DAA91" fill-opacity="0.8"/>
+  
+  <!-- Stem -->
+  <path d="M75 70C80 85 80 100 75 110" stroke="#8DAA91" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Flower -->
+  <circle cx="90" cy="90" r="25" fill="#F8E1E1"/>
+  <circle cx="90" cy="90" r="15" fill="#F8CDCD"/>
+  <circle cx="90" cy="90" r="8" fill="#D98A8A"/>
+</svg>

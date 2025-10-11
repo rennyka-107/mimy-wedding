@@ -6,22 +6,47 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "npx tsx src/db/migrate.ts",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@auth/core": "^0.40.0",
+    "@auth/prisma-adapter": "^2.10.0",
+    "@payos/node": "^2.0.3",
+    "@prisma/client": "^6.16.2",
+    "@types/bcrypt": "^6.0.0",
+    "@types/formidable": "^3.4.5",
+    "@types/qrcode": "^1.5.5",
+    "bcrypt": "^6.0.0",
+    "drizzle-kit": "^0.31.4",
+    "drizzle-orm": "^0.44.5",
+    "formidable": "^3.5.4",
+    "framer-motion": "^12.23.12",
+    "jsonwebtoken": "^9.0.2",
+    "next": "15.5.2",
+    "next-auth": "^4.24.11",
+    "nodemailer": "^7.0.6",
+    "pg": "^8.16.3",
+    "postgres": "^3.4.7",
+    "qrcode": "^1.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.2"
+    "react-hot-toast": "^2.6.0",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
-    "@eslint/eslintrc": "^3"
-  }
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }

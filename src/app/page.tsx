@@ -1,103 +1,238 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from "react";
+import Banner from "@/components/wedding/Banner";
+import TemplateList, { TypeTemplate } from "@/components/wedding/TemplateList";
+import FrequentlyAskedQuestions from "@/components/wedding/FrequentlyAskedQuestions";
+import Contact from "@/components/wedding/Contact";
+import ArrowRight from "@/components/icons/arrow_right";
+
+const templates: TypeTemplate[] = [
+  {
+    id: "olive_harmony",
+    name: 'Olive Harmony',
+    url: "/images/olive_harmony.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 30000,
+    
+  },
+  {
+    id: "cocoa_embrace",
+    name: 'Cocoa Embrace',
+    url: "/images/cocoa_embrace.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 30000,
+    
+  },
+  {
+    id: "golden_bond",
+    name: 'Golden Bond',
+    url: "/images/golden_bond.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 30000,
+    
+  },
+  {
+    id: "forest_charm",
+    name: 'Forest Charm',
+    url: "/images/forest_charm.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 60000,
+    
+  },
+  {
+    id: "jade_whisper",
+    name: 'Jade Whisper',
+    url: "/images/jade_whisper.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 60000,
+    
+  },
+  {
+    id: "ruby_heart",
+    name: 'Ruby Heart',
+    url: "/images/ruby_heart.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "blush_love",
+    name: 'Blush Love',
+    url: "/images/blush_love.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "sunshine_vow",
+    name: 'Sunshine Vow',
+    url: "/images/sunshine_vow.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "peach_promise",
+    name: 'Peach Promise',
+    url: "/images/peach_promise.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "lavender_dream",
+    name: 'Lavender Dream',
+    url: "/images/lavender_dream.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "honey_grace",
+    name: 'Honey Grace',
+    url: "/images/honey_grace.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "sunset_glow",
+    name: 'Sunset Glow',
+    url: "/images/sunset_glow.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "ruby_flame",
+    name: 'Ruby Flame',
+    url: "/images/ruby_flame.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "ocean_embrace",
+    name: 'Ocean Embrace',
+    url: "/images/ocean_embrace.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "meadow_bliss",
+    name: 'Meadow Bliss',
+    url: "/images/meadow_bliss.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "moss_journey",
+    name: 'Moss Journey',
+    url: "/images/moss_journey.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "emerald_harmony",
+    name: 'Emerald Harmony',
+    url: "/images/emerald_harmony.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "amethyst_glow",
+    name: 'Amethyst Glow',
+    url: "/images/amethyst_glow.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "azure_sky",
+    name: 'Azure Sky',
+    url: "/images/azure_sky.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "golden_bloom",
+    name: 'Golden Bloom',
+    url: "/images/golden_bloom.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+  {
+    id: "shining_love",
+    name: 'Shining Love',
+    url: "/images/shining_love.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 0,
+    
+  },
+]
+
+export default function WeddingPage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="bg-[#FFFFFF]">
+      {/* <Header /> */}
+      <Banner />
+      <div className="w-full px-4 sm:px-6 lg:px-[15%]">
+        <TemplateList templates={templates} description={<div className="flex items-center gap-[16px] text-sm sm:text-base">Xem tất cả mẫu tại đây <span onClick={() => {
+          window.open("/list-template", "_blank");
+        }} className="cursor-pointer"> <ArrowRight /></span></div>} />
+        <FrequentlyAskedQuestions />
+        <Contact />
+      </div>
+      {/* <Footer /> */}
     </div>
   );
 }
