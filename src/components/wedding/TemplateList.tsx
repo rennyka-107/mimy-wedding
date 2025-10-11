@@ -91,7 +91,7 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-[#383637] flex w-full justify-center pt-24 font-montserrat-alter font-[700] text-[40px] sm:text-[44px] lg:text-[46px] leading-[100%]"
+                className="text-[#383637] flex w-full justify-center pt-24 font-montserrat-alter font-[700] text-[40px] sm:mt-10 md:mt-25 lg:mt-10 sm:text-[44px] lg:text-[46px] leading-[100%]"
             >
                 {title}
             </motion.label>
@@ -170,7 +170,7 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
-                className="w-full mt-[16px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8"
+                className="w-full mt-[16px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-12 px-12"
             >
                 {filteredTemplates.map((template, index) => (
                     <div
@@ -263,7 +263,7 @@ function TemplateItem({ template }: { template: TypeTemplate }) {
                     <Button className="w-full"
                         variant="primary"
                     >
-                        <span className=" font-[600] text-[16px] mr-2">Tạo thiệp</span>
+                        <span className=" font-[500] text-[14px] mr-2">Tạo thiệp</span>
                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.75 12.75L15.5 9L11.75 5.25" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M3.5 13.5V12C3.5 11.2044 3.81607 10.4413 4.37868 9.87868C4.94129 9.31607 5.70435 9 6.5 9H15.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

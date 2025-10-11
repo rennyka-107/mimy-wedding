@@ -36,14 +36,15 @@ export default function Contact() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
         >
-            <motion.div variants={itemVariants}>
+            {/* <motion.div variants={itemVariants}>
                 <Image src="/images/de-lai-loi-nhan.png" alt="FAQ Icon" width={100} height={100} />
-            </motion.div>
+            </motion.div> */}
             <motion.label 
                 variants={itemVariants}
-                className="font-viaoda text-[64px] text-[#CE6F70] font-normal leading-[100%] block"
+                className=""
             >
-                Để lại lời nhắn của bạn
+                <span className="text-[#383637] flex w-full justify-center font-montserrat-alter font-[700] text-[40px] sm:text-[44px] lg:text-[46px] leading-[100%]">lời nhắn của bạn </span>
+                <span className="font-montserrat flex justify-center items-center gap-2 text-[18px] text-[#898A85] mt-5">Nếu bạn cần hỗ trợ thêm, hãy điền biểu mẫu liên hệ phía dưới để được giải đáp nhanh nhất.</span>
             </motion.label>
             <motion.div 
                 variants={itemVariants} 
@@ -76,8 +77,8 @@ export default function Contact() {
                     whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
                 >
                     <BaseInput
-                        label="Email"
-                        placeholder="Nhập email ..."
+                        label="Email/Zalo"
+                        placeholder="Email hoặc Zalo liên hệ..."
                         type="email"
                         value=""
                         onChange={() => { }}
