@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ColorDisplay from "./ColorDisplay";
 import NumberInput from "./NumberInput";
 import ImageUpload from "./ImageUpload";
@@ -20,6 +20,7 @@ import CocoaEmbraceTemplate from "@/wedding-templates/CocoaEmbrace.template";
 import GoldenBondTemplate from "@/wedding-templates/GoldenBond.template";
 import ForestCharmTemplate from "@/wedding-templates/ForestCharm.template";
 import JadeWhisperTemplate from "@/wedding-templates/JadeWhisper.template";
+import { originalSunshineVowState } from "@/states/origin_state/sunshine_vow";
 
 export default function CreateInvitation() {
   const searchParams = useSearchParams();
@@ -84,6 +85,23 @@ export default function CreateInvitation() {
       toast.error("Có lỗi xảy ra khi lưu nháp!");
     }
   };
+
+  useEffect(() => {
+    return () => {
+      updateTemplate({
+        template_id: "sunshine_vow",
+        template_name: "Sunshine Vow",
+        template_price: 0,
+        configs: {
+          texts: originalSunshineVowState.texts,
+          images: originalSunshineVowState.images,
+          background_colors: originalSunshineVowState.background_colors,
+          url_maps: originalSunshineVowState.url_maps,
+          send_gifts: originalSunshineVowState.send_gifts
+        }
+      });
+    }
+  }, [templateId])
 
   const renderTemplate = useMemo(() => {
     switch (templateId) {
