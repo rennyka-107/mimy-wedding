@@ -8,12 +8,13 @@ import NavItem from "../navigation/NavItem";
 import { useAuth } from "@/context/AuthContext";
 import ProfileMenu from "../popup/ProfileMenu";
 import MobileMenu from "../popup/MobileMenu";
+import Button from "../ui/Button";
 
 export default function Header() {
   const { user, openLoginModal } = useAuth();
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   // Toggle mobile menu
   const handleToggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -26,13 +27,15 @@ export default function Header() {
 
   return (
     <>
-      <header className="bg-[#FAE4E4] sticky top-0 z-50">
-        <div className="pl-6 md:pl-[96px] pr-6 md:pr-[40px] flex items-center justify-between py-[10px]">
+      <header className="bg-[#F9F9F9] sticky top-0 z-50 flex px-[80px]">
+      
+        <div className="pl-6 md:pl-[96px] pr-6 md:pr-[40px] flex justify-between items-center py-[10px] w-full">
           {/* Logo */}
           <div className="py-3">
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/logo.png"
+                unoptimized
+                src="/images/Logo.png"
                 alt="Mimy Wedding Logo"
                 width={100}
                 height={40}
@@ -40,7 +43,7 @@ export default function Header() {
               />
             </Link>
           </div>
-          
+
           {/* Mobile Menu Button (Hamburger) */}
           <button
             className="md:hidden text-gray-700 focus:outline-none"
@@ -65,15 +68,14 @@ export default function Header() {
           </button>
 
           {/* Right Navigation - Hidden on mobile */}
-          <div className="hidden md:flex items-center">
-            <nav className="flex items-center gap-[40px] px-[54px] py-[21px]">
-              <NavItem href="/" icon={<HomeIcon />}>Trang chủ</NavItem>
-              <NavItem href="/list-template">Mẫu thiệp</NavItem>
-              <NavItem href="/custom-template">Thiết kế riêng</NavItem>
-              <NavItem href="/contact">Liên hệ</NavItem>
+          <div className="hidden md:flex items-center w-full justify-between ">
+            <nav className="flex items-center gap-[40px] px-[54px] py-[21px] text-[16px]">
+              <NavItem href="/"> <div className="text-[16px] font-[800] text-[#FFBB53]">Trang chủ</div> </NavItem>
+              <NavItem href="/list-template"><div className="text-[16px] font-[600] text-[#383637]">Mẫu thiệp</div></NavItem>
+              <NavItem href="/custom-template"><div className="text-[16px] font-[600] text-[#383637]">Thiết kế riêng</div></NavItem>
+              <NavItem href="/contact"><div className="text-[16px] font-[600] text-[#383637]">Liên hệ</div></NavItem>
             </nav>
 
-            {/* User Profile or Language selector */}
             <div className="flex items-center ml-4 gap-[8px] relative">
               {user ? (
                 <>
@@ -92,22 +94,25 @@ export default function Header() {
                 </>
               ) : (
                 <>
-                  <button
-                    className="flex items-center gap-1 rounded-sm px-2 py-[2px] hover:bg-[#f7d4d4] transition-colors"
+                  <Button
+                    variant="primary"
                     onClick={openLoginModal}
                   >
-                    <ViIcon />
-                    <span className="lang-text">VIE</span>
-                  </button>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13.3335 2.66699H2.66683C1.93045 2.66699 1.3335 3.26395 1.3335 4.00033V12.0003C1.3335 12.7367 1.93045 13.3337 2.66683 13.3337H13.3335C14.0699 13.3337 14.6668 12.7367 14.6668 12.0003V4.00033C14.6668 3.26395 14.0699 2.66699 13.3335 2.66699Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M14.6668 4.66699L8.68683 8.46699C8.48101 8.59594 8.24304 8.66433 8.00016 8.66433C7.75729 8.66433 7.51932 8.59594 7.3135 8.46699L1.3335 4.66699" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span className="ml-2">Đăng nhập bằng Email</span> 
+                  </Button>
                 </>
               )}
             </div>
           </div>
         </div>
-      </header>
+      </header >
 
       {/* Mobile Menu Popup */}
-      <MobileMenu isOpen={isMobileMenuOpen} onClose={handleCloseMobileMenu} />
+      < MobileMenu isOpen={isMobileMenuOpen} onClose={handleCloseMobileMenu} />
     </>
   );
 }

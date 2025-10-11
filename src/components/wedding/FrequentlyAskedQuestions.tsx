@@ -5,20 +5,20 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const questions = [
     {
-        question: "Thiệp cưới online là gì?",
-        answer: "Thiệp cưới online là phiên bản thiệp cưới điện tử, có thể chia sẻ nhanh qua link, QR code, mạng xã hội hoặc tin nhắn.",
+        question: "Thiệp online là gì?",
+        answer: "Thiệp online là phiên bản thiệp điện tử, giúp bạn gửi lời mời đến bạn bè, người thân thông qua mạng xã hội hoặc tin nhắn, trong trường hợp không thể gặp trực tiếp.",
     },
     {
         question: "Tôi có thể tự thiết kế thiệp được không?",
-        answer: "Có, bạn có thể tự thiết kế thiệp bằng cách chọn các mẫu thiệp và tùy chỉnh nội dung, màu sắc, hình ảnh, video, âm nhạc, ảnh để tạo ra một trải nghiệm thú vị cho khách mời.",
+        answer: "Có, bạn có thể tự thiết kế thiệp bằng cách chọn các mẫu thiệp có sẵn của chúng tôi và tùy chỉnh nội dung, màu sắc, hình ảnh, để tạo ra một tấm thiệp của riêng bạn.",
     },
     {
-        question: "Thiệp cưới online có miễn phí không?",
-        answer: "Có. Bạn có thể sử dụng các mẫu miễn phí để tạo thiệp cơ bản, hoặc chọn gói nâng cấp để có thêm nhiều mẫu đẹp và tính năng đặc biệt hơn.",
+        question: "Thiệp cưới có thời hạn bao lâu?",
+        answer: "Mỗi thiệp cưới sẽ được lưu giữ trong vòng 03 tháng kể từ khi xuất bản. Bạn vẫn có thể xuất bản lại khi thiệp đã hết hạn, và thời hạn của thiệp sẽ được tính theo lần xuất bản tiếp theo.",
     },
     {
         question: "Tôi có thể chia sẻ thiệp như thế nào?",
-        answer: "Rất đơn giản, bạn chỉ cần gửi đường link thiệp qua Zalo, Messenger, email hoặc đăng trên mạng xã hội để mọi người dễ dàng xem.",
+        answer: "Rất đơn giản, bạn chỉ cần gửi đường link thiệp qua Zalo, Messenger, Email hoặc đăng trên mạng xã hội để mọi người dễ dàng xem.",
     },
     {
         question: "Nếu khách không quen công nghệ thì có xem được thiệp không?",
@@ -43,17 +43,17 @@ export default function FrequentlyAskedQuestions() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="w-full py-[64px]"
+            className="w-full py-[96px] px-48"
         >
-            <Image src="/images/cau-hoi-thuong-gap.png" alt="FAQ Icon" width={100} height={100} />
+            {/* <Image src="/images/cau-hoi-thuong-gap.png" alt="FAQ Icon" width={100} height={100} /> */}
             <motion.label 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="font-viaoda text-[64px] text-[#CE6F70] font-normal leading-[100%]"
+                className="text-[#383637] flex w-full justify-center pt-24 font-montserrat-alter font-[700] text-[40px] sm:text-[44px] lg:text-[46px] leading-[100%]"
             >
-                Câu hỏi thường gặp
+                câu hỏi thường gặp.
             </motion.label>
             
             <motion.p 
@@ -61,9 +61,9 @@ export default function FrequentlyAskedQuestions() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="mt-[16px] text-[#77716F] font-primary font-[500] text-[20px]"
+                className="font-montserrat flex justify-center items-center gap-2 text-[18px] text-[#898A85] mt-5"
             >
-                Nếu bạn cần hỗ trợ thêm, <span className="cursor-pointer font-bold text-[#CE6F70] hover:underline transition-all duration-300">nhấn vào đây</span> để liên hệ với chúng tôi
+                Bạn cũng có thể liên hệ với chúng tôi thông qua biểu mẫu bên dưới.
             </motion.p>
             
             <motion.div 
@@ -107,22 +107,22 @@ function QuestionItem({
 }) {
     return (
         <div 
-            className={`w-full rounded-[16px] overflow-hidden transition-colors duration-300 ${isOpen ? "shadow-sm border border-[#F0F2F3] bg-[#F9F9F9]" : "bg-white hover:bg-[#FAFAFA]"}`}
+            className={` font-montserrat w-full rounded-[16px] overflow-hidden transition-colors duration-300 ${isOpen ? "shadow-sm border border-[#FD8C06] bg-[#FFF8E6]" : "bg-[#F9F9F9] hover:bg-[#F9F9F9]"}`}
         >
             <motion.div
-                className="flex justify-between items-center p-[24px] cursor-pointer"
+                className="flex justify-between items-center px-6 pt-6 pb-3 cursor-pointer"
                 onClick={onClick}
                 whileHover={{ x: isOpen ? 0 : 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
             >
                 <div className="flex items-center gap-[16px]">
-                    <motion.div 
+                    <motion.div  className="bg-white p-2 rounded-[50px]"
                         animate={{ rotate: isOpen ? 180 : 0 }} 
                         transition={{ duration: 0.3, type: "spring", stiffness: 200 }}
                     >
                         <ChevronDown />
                     </motion.div>
-                    <h3 className="text-[22px] font-bold text-[#4A3B36]">{question}</h3>
+                    <h3 className="text-[16px] font-bold text-[#383637]">{question}</h3>
                 </div>
 
             </motion.div>
@@ -141,7 +141,7 @@ function QuestionItem({
                                 initial={{ y: -10, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ duration: 0.3, delay: 0.1 }}
-                                className="text-[#77716F] font-600 text-[20px]"
+                                className="text-[#383637] font-600 text-[16px]"
                             >
                                 {answer}
                             </motion.p>
@@ -156,7 +156,7 @@ function QuestionItem({
 function ChevronDown() {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 9L12 15L18 9" stroke="#4A3B36" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M6 9L12 15L18 9" stroke="#FD8C06" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
@@ -164,7 +164,7 @@ function ChevronDown() {
 function ChevronUp() {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 15L12 9L6 15" stroke="#4A3B36" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M18 15L12 9L6 15" stroke="#383637" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }

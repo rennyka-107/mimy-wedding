@@ -11,6 +11,7 @@ import ThemeColorFilter from "../popup/ThemeColorFilter";
 import Fire from "../icons/fire";
 import ArrowRight from "../icons/arrow_right";
 import { useRouter } from "next/navigation";
+import Button from "../ui/Button";
 
 export type TypeTemplate = {
     id: string;
@@ -38,7 +39,7 @@ const staggerContainer = {
     }
 };
 
-export default function TemplateList({ title = "Mẫu thiệp", description = "Các mẫu thiệp hiện có", displayPagination = false, templates = [] }: { title?: string; description?: string | React.ReactNode; displayPagination?: boolean; templates?: TypeTemplate[] }) {
+export default function TemplateList({ title = "mẫu thiệp.", description = "Các mẫu thiệp hiện có", displayPagination = false, templates = [] }: { title?: string; description?: string | React.ReactNode; displayPagination?: boolean; templates?: TypeTemplate[] }) {
     const [isImageFilterOpen, setIsImageFilterOpen] = useState(false);
     const [isColorFilterOpen, setIsColorFilterOpen] = useState(false);
 
@@ -84,13 +85,13 @@ export default function TemplateList({ title = "Mẫu thiệp", description = "C
             viewport={{ once: true, margin: "-100px" }}
             className="w-full"
         >
-            <Image src="/images/mau-thiep.png" alt="Template List" width={100} height={100} />
+            {/* <Image src="/images/mau-thiep.png" alt="Template List" width={100} height={100} /> */}
             <motion.label
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="font-viaoda text-[32px] sm:text-[48px] lg:text-[64px] text-[#CE6F70] font-normal leading-[100%]"
+                className="text-[#383637] flex w-full justify-center pt-24 font-montserrat-alter font-[700] text-[40px] sm:text-[44px] lg:text-[46px] leading-[100%]"
             >
                 {title}
             </motion.label>
@@ -112,7 +113,7 @@ export default function TemplateList({ title = "Mẫu thiệp", description = "C
                 viewport={{ once: true }}
                 className="mt-[16px] flex flex-wrap items-center justify-start w-full gap-[8px] sm:gap-[12px] lg:gap-[16px]"
             >
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <GrayButton isActive={isFree === true} onClick={() => {
                         if (isFree !== true) {
                             setIsFree(true);
@@ -120,8 +121,8 @@ export default function TemplateList({ title = "Mẫu thiệp", description = "C
                             setIsFree(null);
                         }
                     }} title="Miễn phí" />
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                </motion.div> */}
+                {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <GrayButton isActive={isFree === false} onClick={() => {
                         if (isFree !== false) {
                             setIsFree(false);
@@ -130,11 +131,11 @@ export default function TemplateList({ title = "Mẫu thiệp", description = "C
                         }
                         setIsColorFilterOpen(false);
                     }} title="Trả phí" />
-                </motion.div>
+                </motion.div> */}
                 {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <GrayButton isActive={selectedImageRange !== null} title="Số lượng ảnh" suffixIcon={<ArrowDown fill={selectedImageRange !== null ? "#CE6F70" : "#585858"} />} onClick={() => setIsImageFilterOpen(true)} />
                 </motion.div> */}
-                <ImageQuantityFilter
+                {/* <ImageQuantityFilter
                     isOpen={isImageFilterOpen}
                     onClose={() => setIsImageFilterOpen(false)}
                     onApply={(range, customValue) => {
@@ -142,11 +143,11 @@ export default function TemplateList({ title = "Mẫu thiệp", description = "C
                         console.log("Selected image range:", range, customValue);
                         // Apply your filtering logic here
                     }}
-                />
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                /> */}
+                {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <GrayButton isActive={selectedColor !== null} title="Màu chủ đạo" suffixIcon={<ArrowDown fill={selectedColor !== null ? "#CE6F70" : "#585858"} />} onClick={() => setIsColorFilterOpen(true)} />
-                </motion.div>
-                <ThemeColorFilter
+                </motion.div> */}
+                {/* <ThemeColorFilter
                     isOpen={isColorFilterOpen}
                     onClose={() => setIsColorFilterOpen(false)}
                     onApply={(color) => {
@@ -161,7 +162,7 @@ export default function TemplateList({ title = "Mẫu thiệp", description = "C
                         setSelectedColor(null);
                         setIsFree(null);
                     }} title={`(${filteredTemplates.length})`} />
-                </motion.div>}
+                </motion.div>} */}
             </motion.div>
 
             <motion.div
@@ -169,7 +170,7 @@ export default function TemplateList({ title = "Mẫu thiệp", description = "C
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
-                className="w-full mt-[16px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+                className="w-full mt-[16px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8"
             >
                 {filteredTemplates.map((template, index) => (
                     <div
@@ -248,18 +249,25 @@ function TemplateItem({ template }: { template: TypeTemplate }) {
                     />
                 </motion.div>
             </motion.div>
-            <div className="w-full mt-[16px] mb-[12px] text-[#4A3B36] text-[14px] sm:text-[16px] lg:text-[18px] font-[600]">
+            <div className="font-montserrat w-full text-center mt-[16px] mb-[8px] text-[#383637] text-[14px] sm:text-[16px] lg:text-[18px] font-[600]">
                 {template.name}
             </div>
-            <div className="w-full flex items-center justify-between gap-[16px] text-[#CE6F70] text-[14px] sm:text-[16px] lg:text-[18px] font-[600]">
-                <div className="flex items-center gap-[6px]">
-                    <Fire />
+            <div className="w-full flex-col justify-center items-center gap-[32px] text-[#FD8C06] text-[14px] sm:text-[16px] lg:text-[18px] font-[600]">
+                <div className="flex justify-center items-center gap-[6px]">
                     {formatCurrency(template.price)} (đ)
                 </div>
-                <div className="cursor-pointer" onClick={() => {
+                <div className="cursor-pointer mt-4" onClick={() => {
                     router.push(`/invitations/create?template_id=${template.id}`);
                 }}>
-                    <ArrowRight stroke="#CE6F70" />
+                    <Button className="w-full"
+                        variant="primary"
+                    >
+                        <span className=" font-[600] text-[16px] mr-2">Tạo thiệp</span>
+                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.75 12.75L15.5 9L11.75 5.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M3.5 13.5V12C3.5 11.2044 3.81607 10.4413 4.37868 9.87868C4.94129 9.31607 5.70435 9 6.5 9H15.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </Button>
                 </div>
             </div>
         </motion.div>

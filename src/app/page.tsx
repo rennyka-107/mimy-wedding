@@ -9,9 +9,9 @@ import ArrowRight from "@/components/icons/arrow_right";
 
 const templates: TypeTemplate[] = [
   {
-    id: "olive_harmony",
-    name: 'Olive Harmony',
-    url: "/images/olive_harmony.png",
+    id: "sunset_glow",
+    name: 'Sunset Glow',
+    url: "/images/sunset_glow.png",
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
@@ -19,9 +19,9 @@ const templates: TypeTemplate[] = [
     
   },
   {
-    id: "cocoa_embrace",
-    name: 'Cocoa Embrace',
-    url: "/images/cocoa_embrace.png",
+    id: "sunshine_vow",
+    name: 'Sunshine Vow',
+    url: "/images/sunshine_vow.png",
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
@@ -29,13 +29,33 @@ const templates: TypeTemplate[] = [
     
   },
   {
-    id: "golden_bond",
-    name: 'Golden Bond',
-    url: "/images/golden_bond.png",
+    id: "meadow_bliss",
+    name: 'Meadow Bliss',
+    url: "/images/meadow_bliss.png",
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
     price: 30000,
+    
+  },
+  {
+    id: "emerald_harmony",
+    name: 'Emerald Harmony',
+    url: "/images/emerald_harmony.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 60000,
+    
+  },
+  {
+    id: "shining_love",
+    name: 'Shining Love',
+    url: "/images/shining_love.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 60000,
     
   },
   {
@@ -45,7 +65,7 @@ const templates: TypeTemplate[] = [
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 60000,
+    price: 0,
     
   },
   {
@@ -55,33 +75,13 @@ const templates: TypeTemplate[] = [
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 60000,
-    
-  },
-  {
-    id: "ruby_heart",
-    name: 'Ruby Heart',
-    url: "/images/ruby_heart.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
     price: 0,
     
   },
   {
-    id: "blush_love",
-    name: 'Blush Love',
-    url: "/images/blush_love.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
-    
-  },
-  {
-    id: "sunshine_vow",
-    name: 'Sunshine Vow',
-    url: "/images/sunshine_vow.png",
+    id: "olive_serenity",
+    name: 'Olive Serenity',
+    url: "/images/olive_serenity.png",
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
@@ -99,46 +99,6 @@ const templates: TypeTemplate[] = [
     
   },
   {
-    id: "lavender_dream",
-    name: 'Lavender Dream',
-    url: "/images/lavender_dream.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
-    
-  },
-  {
-    id: "honey_grace",
-    name: 'Honey Grace',
-    url: "/images/honey_grace.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
-    
-  },
-  {
-    id: "sunset_glow",
-    name: 'Sunset Glow',
-    url: "/images/sunset_glow.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
-    
-  },
-  {
-    id: "ruby_flame",
-    name: 'Ruby Flame',
-    url: "/images/ruby_flame.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
-    
-  },
-  {
     id: "ocean_embrace",
     name: 'Ocean Embrace',
     url: "/images/ocean_embrace.png",
@@ -148,76 +108,116 @@ const templates: TypeTemplate[] = [
     price: 0,
     
   },
-  {
-    id: "meadow_bliss",
-    name: 'Meadow Bliss',
-    url: "/images/meadow_bliss.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
+  // {
+  //   id: "honey_grace",
+  //   name: 'Honey Grace',
+  //   url: "/images/honey_grace.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
     
-  },
-  {
-    id: "moss_journey",
-    name: 'Moss Journey',
-    url: "/images/moss_journey.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
+  // },
+  // {
+  //   id: "sunset_glow",
+  //   name: 'Sunset Glow',
+  //   url: "/images/sunset_glow.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
     
-  },
-  {
-    id: "emerald_harmony",
-    name: 'Emerald Harmony',
-    url: "/images/emerald_harmony.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
+  // },
+  // {
+  //   id: "ruby_flame",
+  //   name: 'Ruby Flame',
+  //   url: "/images/ruby_flame.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
     
-  },
-  {
-    id: "amethyst_glow",
-    name: 'Amethyst Glow',
-    url: "/images/amethyst_glow.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
+  // },
+  // {
+  //   id: "ocean_embrace",
+  //   name: 'Ocean Embrace',
+  //   url: "/images/ocean_embrace.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
     
-  },
-  {
-    id: "azure_sky",
-    name: 'Azure Sky',
-    url: "/images/azure_sky.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
+  // },
+  // {
+  //   id: "meadow_bliss",
+  //   name: 'Meadow Bliss',
+  //   url: "/images/meadow_bliss.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
     
-  },
-  {
-    id: "golden_bloom",
-    name: 'Golden Bloom',
-    url: "/images/golden_bloom.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
+  // },
+  // {
+  //   id: "moss_journey",
+  //   name: 'Moss Journey',
+  //   url: "/images/moss_journey.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
     
-  },
-  {
-    id: "shining_love",
-    name: 'Shining Love',
-    url: "/images/shining_love.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 0,
+  // },
+  // {
+  //   id: "emerald_harmony",
+  //   name: 'Emerald Harmony',
+  //   url: "/images/emerald_harmony.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
     
-  },
+  // },
+  // {
+  //   id: "amethyst_glow",
+  //   name: 'Amethyst Glow',
+  //   url: "/images/amethyst_glow.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
+    
+  // },
+  // {
+  //   id: "azure_sky",
+  //   name: 'Azure Sky',
+  //   url: "/images/azure_sky.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
+    
+  // },
+  // {
+  //   id: "golden_bloom",
+  //   name: 'Golden Bloom',
+  //   url: "/images/golden_bloom.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
+    
+  // },
+  // {
+  //   id: "shining_love",
+  //   name: 'Shining Love',
+  //   url: "/images/shining_love.png",
+  //   is_free: true,
+  //   image_quantity: 5,
+  //   theme_color: "yellow",
+  //   price: 0,
+    
+  // },
 ]
 
 export default function WeddingPage() {
@@ -225,10 +225,13 @@ export default function WeddingPage() {
     <div className="bg-[#FFFFFF]">
       {/* <Header /> */}
       <Banner />
-      <div className="w-full px-4 sm:px-6 lg:px-[15%]">
-        <TemplateList templates={templates} description={<div className="flex items-center gap-[16px] text-sm sm:text-base">Xem tất cả mẫu tại đây <span onClick={() => {
+      <div className="w-full px-4 sm:px-6 lg:px-[10%]">
+        <TemplateList templates={templates} description={<div className="font-montserrat flex justify-center items-center gap-2 text-[18px]">Hãy chọn mẫu thiệp để bắt đầu hành trình thiết kế lời mời  hoàn hảo.
+          
+          <span onClick={() => {
           window.open("/list-template", "_blank");
-        }} className="cursor-pointer"> <ArrowRight /></span></div>} />
+        }} className="font-montserrat cursor-pointer font-[600] text-[#FD8C06] text-[18px]"> Xem tất cả
+        </span></div>} />
         <FrequentlyAskedQuestions />
         <Contact />
       </div>
