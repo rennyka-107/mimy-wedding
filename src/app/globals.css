@@ -8,18 +8,26 @@
 @import url('https://fonts.googleapis.com/css2?family=WindSong&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Send+Flowers&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Afacad&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-primary: 'Quicksand', sans-serif;
+  --font-primary: 'Montserrat', sans-serif;
   /* --font-primary: 'Plus Jakarta Sans', sans-serif; */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
 
 @layer base {
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+  .font-montserrat-alter {
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
   .font-poisoned {
     font-family: var(--font-poisoned), sans-serif;
   }

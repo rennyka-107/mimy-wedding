@@ -6,11 +6,11 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const base =
-  "inline-flex items-center justify-center rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+  "inline-flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
 
 const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
-    "bg-foreground text-background hover:opacity-90 focus:ring-foreground/50",
+    "text-[14px] text-white font-[500] !rounded-[6px] bg-gradient-to-r from-[#FFBB53] to-[#FD8C06] hover:bg-[#E07000]",
   secondary:
     "bg-black/5 dark:bg-white/10 text-foreground hover:bg-black/10 dark:hover:bg-white/15 focus:ring-foreground/30",
   ghost: "bg-transparent text-foreground hover:bg-black/5 dark:hover:bg-white/10",

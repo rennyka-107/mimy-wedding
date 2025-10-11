@@ -45,10 +45,10 @@ export default function Footer() {
             variants={footerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="w-full flex gap-[24px] items-center justify-center bg-[#CE6F70] py-[8px]"
+            className="font-montserrat  w-full flex gap-[24px] items-center justify-center bg-[#383637] py-[8px]"
         >
             <motion.div 
-                className="text-white font-[500] text-[14px] cursor-pointer"
+                className="text-white font-[500] text-4 cursor-pointer"
                 variants={linkVariants}
                 custom={1}
                 whileHover="hover"
@@ -59,7 +59,7 @@ export default function Footer() {
                 Điều khoản dịch vụ
             </motion.div>
             <motion.div 
-                className="text-white font-[500] text-[14px] cursor-pointer"
+                className="text-white font-[500] text-4 cursor-pointer"
                 variants={linkVariants}
                 custom={2}
                 whileHover="hover"
