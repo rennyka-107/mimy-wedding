@@ -46,7 +46,7 @@ export default function Banner() {
                         variant="primary"
                         onClick={openLoginModal}
                     >
-                        <span className="font-[600] text-[16px]">Tạo tấm thiệp của riêng bạn</span>
+                        <span className="font-[600] text-[16px] pr-2">Tạo tấm thiệp của riêng bạn</span>
                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.75 12.75L15.5 9L11.75 5.25" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M3.5 13.5V12C3.5 11.2044 3.81607 10.4413 4.37868 9.87868C4.94129 9.31607 5.70435 9 6.5 9H15.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

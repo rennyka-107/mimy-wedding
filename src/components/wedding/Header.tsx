@@ -9,11 +9,15 @@ import { useAuth } from "@/context/AuthContext";
 import ProfileMenu from "../popup/ProfileMenu";
 import MobileMenu from "../popup/MobileMenu";
 import Button from "../ui/Button";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const { user, openLoginModal } = useAuth();
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const pathname = usePathname();
+  console.log(pathname, "pathnameasfasfasf")
 
   // Toggle mobile menu
   const handleToggleMobileMenu = () => {
@@ -25,10 +29,11 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  // if(pathname === '/') return <></>
+
   return (
     <>
-      <header className="bg-[#F9F9F9] sticky top-0 z-50 flex px-[80px]">
-      
+      <header className={` ${pathname === "/" ? "bg-transparent" : "bg-[#F9F9F9] sticky"} top-0 z-50 flex px-[80px]`}>
         <div className="pl-6 md:pl-[96px] pr-6 md:pr-[40px] flex justify-between items-center py-[10px] w-full">
           {/* Logo */}
           <div className="py-3">
@@ -72,8 +77,8 @@ export default function Header() {
             <nav className="flex items-center gap-[40px] px-[54px] py-[21px] text-[16px]">
               <NavItem href="/"> <div className="text-[16px] font-[800] text-[#FFBB53]">Trang chủ</div> </NavItem>
               <NavItem href="/list-template"><div className="text-[16px] font-[600] text-[#383637]">Mẫu thiệp</div></NavItem>
-              <NavItem href="/custom-template"><div className="text-[16px] font-[600] text-[#383637]">Thiết kế riêng</div></NavItem>
-              <NavItem href="/contact"><div className="text-[16px] font-[600] text-[#383637]">Liên hệ</div></NavItem>
+              {/* <NavItem href="/custom-template"><div className="text-[16px] font-[600] text-[#383637]">Thiết kế riêng</div></NavItem>
+              <NavItem href="/contact"><div className="text-[16px] font-[600] text-[#383637]">Liên hệ</div></NavItem> */}
             </nav>
 
             <div className="flex items-center ml-4 gap-[8px] relative">
