@@ -5,6 +5,13 @@ import RegisterModal from "@/components/popup/RegisterModal";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { toast } from "react-hot-toast";
 
+export type GoogleUserData = {
+  id: string;
+  name: string | null;
+  email: string;
+  image: string | null;
+};
+
 type AuthContextType = {
   isLoginModalOpen: boolean;
   isRegisterModalOpen: boolean;
@@ -15,7 +22,7 @@ type AuthContextType = {
   user: {id: string, name: string, email: string, phone: string} | null;
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<void>;
-  loginWithGoogle: () => Promise<void>;
+  loginWithGoogle: (onSuccess?: (userData: GoogleUserData) => void) => Promise<void>;
   logout: () => Promise<void>;
   isLoading: boolean;
   error: string | null;
@@ -115,16 +122,83 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const loginWithGoogle = async () => {
+  const loginWithGoogle = async (onSuccess?: (userData: GoogleUserData) => void) => {
     try {
       setIsLoading(true);
-      await signIn('google', { callbackUrl: '/' });
-      closeLoginModal();
+      setError(null);
+      
+      // Open popup window for Google OAuth
+      const width = 500;
+      const height = 600;
+      const left = window.screenX + (window.outerWidth - width) / 2;
+      const top = window.screenY + (window.outerHeight - height) / 2;
+      
+      const baseUrl = window.location.origin;
+      const callbackUrl = `${baseUrl}/auth/callback`;
+      const authUrl = `${baseUrl}/api/auth/signin/google?callbackUrl=${encodeURIComponent(callbackUrl)}`;
+      
+      const popup = window.open(
+        authUrl,
+        'Google Login',
+        `width=${width},height=${height},left=${left},top=${top},toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes`
+      );
+
+      if (!popup) {
+        toast.error('Vui lòng cho phép popup để đăng nhập với Google');
+        setIsLoading(false);
+        return;
+      }
+
+      // Listen for messages from popup
+      const messageHandler = async (event: MessageEvent) => {
+        if (event.origin !== window.location.origin) return;
+        
+        if (event.data.type === 'GOOGLE_AUTH_SUCCESS') {
+          window.removeEventListener('message', messageHandler);
+          
+          // Wait a bit for the session to update
+          await new Promise(resolve => setTimeout(resolve, 500));
+          
+          // Get the updated session to retrieve user data
+          const response = await fetch('/api/auth/session');
+          const sessionData = await response.json();
+          
+          if (sessionData?.user) {
+            const userData: GoogleUserData = {
+              id: sessionData.user.id || '',
+              name: sessionData.user.name || null,
+              email: sessionData.user.email || '',
+              image: sessionData.user.image || null,
+            };
+            
+            // Call the callback with user data for further processing
+            if (onSuccess) {
+              onSuccess(userData);
+            }
+            
+            toast.success('Đăng nhập Google thành công!');
+            closeLoginModal();
+          }
+          
+          setIsLoading(false);
+        }
+      };
+
+      window.addEventListener('message', messageHandler);
+
+      // Also check if popup is closed without successful login
+      const checkPopupClosed = setInterval(() => {
+        if (popup.closed) {
+          clearInterval(checkPopupClosed);
+          window.removeEventListener('message', messageHandler);
+          setIsLoading(false);
+        }
+      }, 500);
+      
     } catch (error) {
       console.error('Đăng nhập Google thất bại:', error);
       setError('Có lỗi xảy ra khi đăng nhập với Google');
       toast.error('Có lỗi xảy ra khi đăng nhập với Google');
-    } finally {
       setIsLoading(false);
     }
   };

@@ -2,8 +2,9 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth, GoogleUserData } from "@/context/AuthContext";
 import { toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -96,7 +97,20 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
   const handleGoogleLogin = async () => {
     try {
-      await loginWithGoogle();
+      console.log("wtf")
+      signIn("google");
+      // Pass callback to process verified Google user data
+      // await loginWithGoogle((userData: GoogleUserData) => {
+      //   // TODO: Xử lý data từ Google account ở đây
+      //   console.log('Google user data verified:', userData);
+      //   console.log('User ID:', userData.id);
+      //   console.log('User Name:', userData.name);
+      //   console.log('User Email:', userData.email);
+      //   console.log('User Image:', userData.image);
+        
+      //   // Bạn có thể thêm logic xử lý khác tại đây
+      //   // Ví dụ: gọi API để lưu thêm thông tin, cập nhật profile, etc.
+      // });
     } catch (err) {
       setError(JSON.stringify(err) || "Đăng nhập với Google thất bại");
     }
@@ -138,32 +152,30 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             {/* Header */}
             <div className="px-6 py-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Đăng nhập</h2>
-              <p className="text-gray-500">Nhập thông tin theo mẫu bên dưới</p>
+              {/* <p className="text-gray-500">Nhập thông tin theo mẫu bên dưới</p> */}
             </div>
             
             {/* Form */}
             <form onSubmit={handleLogin} className="px-6 pb-6">
-              {/* Username input */}
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Tên tài khoản"
-                  className="w-full px-4 py-3 text-[#A4A7AE] rounded-md bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 text-black rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
                   required
                 />
-              </div>
+              </div> */}
               
-              {/* Password input */}
-              <div className="mb-3 relative">
+              {/* <div className="mb-3 relative">
                 <div className="relative">
                   <input
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Mật khẩu"
-                    className="w-full px-4 py-3 text-[#A4A7AE] rounded-md bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 text-black rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
                     required
                   />
                   <button
@@ -177,14 +189,14 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 {error && (
                   <div className="mt-2 text-red-500 text-sm">{error}</div>
                 )}
-              </div>
+              </div> */}
               
               {/* Divider */}
-              <div className="flex items-center my-6">
+              {/* <div className="flex items-center my-6">
                 <div className="flex-grow border-t border-gray-200"></div>
                 <span className="flex-shrink px-4 text-gray-400">or continue with</span>
                 <div className="flex-grow border-t border-gray-200"></div>
-              </div>
+              </div> */}
               
               {/* Google login */}
               <div className="mb-6">
@@ -192,7 +204,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                   type="button"
                   onClick={handleGoogleLogin}
                   disabled={isLoading}
-                  className="w-full border text-[#A4A7AE] border-gray-200 rounded-md px-4 py-3 flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="cursor-pointer w-full border text-[#A4A7AE] border-gray-200 rounded-md px-4 py-3 flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <>
@@ -217,7 +229,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               </div>
               
               {/* Login button */}
-              <button
+              {/* <button
                 type="submit"
                 disabled={isLoading}
                 className="w-full bg-[#CE6F70] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70] disabled:opacity-70 disabled:cursor-not-allowed"
@@ -233,7 +245,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 ) : (
                   'Đăng nhập'
                 )}
-              </button>
+              </button> */}
             </form>
           </motion.div>
         </div>

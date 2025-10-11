@@ -3,6 +3,10 @@ import { use, useEffect } from 'react'
 import useTemplateStore from '@/states/templates/state';
 import SunshineVowTemplate from '@/wedding-templates/SunshineVow.template';
 import OliveHarmonyTemplate from '@/wedding-templates/OliveHarmony.template';
+import CocoaEmbraceTemplate from '@/wedding-templates/CocoaEmbrace.template';
+import GoldenBondTemplate from '@/wedding-templates/GoldenBond.template';
+import ForestCharmTemplate from '@/wedding-templates/ForestCharm.template';
+import JadeWhisperTemplate from '@/wedding-templates/JadeWhisper.template';
 
 export default function PublicPage({
     params,
@@ -18,6 +22,14 @@ export default function PublicPage({
                 return <SunshineVowTemplate />;
             case "olive_harmony":
                 return <OliveHarmonyTemplate />;
+            case "cocoa_embrace":
+                return <CocoaEmbraceTemplate />;
+            case "golden_bond":
+                return <GoldenBondTemplate />;
+            case "forest_charm":
+                return <ForestCharmTemplate />;
+            case "jade_whisper":
+                return <JadeWhisperTemplate />;
             default:
                 return <SunshineVowTemplate />;
         }

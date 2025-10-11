@@ -67,10 +67,10 @@ export default function Banner() {
                         <BaseButton title="Đăng nhập" suffixIcon={<ArrowBendUpRight />} onClick={openLoginModal} />
                     </motion.div>
                 )}
-                hoặc
+                {/* hoặc
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                     <BaseButton title="Đăng ký" onClick={openRegisterModal} />
-                </motion.div>
+                </motion.div> */}
             </motion.div>
             {/* Decorative elements for parallax effect */}
             <motion.div 

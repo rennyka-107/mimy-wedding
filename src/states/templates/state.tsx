@@ -47,7 +47,7 @@ export interface SendGiftItem {
 // Define the state structure
 export interface TemplateState {
   template: {
-    template_id: 'sunshine_vow' | 'olive_harmony';
+    template_id: 'sunshine_vow' | 'olive_harmony' | 'cocoa_embrace' | 'golden_bond' | 'forest_charm' | 'jade_whisper';
     template_name: string;
     template_price: number;
     configs: {
@@ -121,18 +121,23 @@ const useTemplateStore = create<TemplateState>((set) => ({
       url_maps: { [key: string]: UrlMapItem };
       send_gifts: { [key: string]: SendGiftItem };
     };
-  }) => set((state) => ({
-    template: {
-      ...state.template,
-      configs: {
-        texts: template.configs.texts,
-        images: template.configs.images,
-        background_colors: template.configs.background_colors,
-        url_maps: template.configs.url_maps,
-        send_gifts: template.configs.send_gifts,
+  }) => {
+    set((state) => ({
+      template: {
+        ...state.template,
+        template_id: template.template_id,
+        template_name: template.template_name,
+        template_price: template.template_price,
+        configs: {
+          texts: template.configs.texts,
+          images: template.configs.images,
+          background_colors: template.configs.background_colors,
+          url_maps: template.configs.url_maps,
+          send_gifts: template.configs.send_gifts,
+        },
       },
-    },
-  })),
+    }))
+  },
 
   selectedComponent: {
     id: null,

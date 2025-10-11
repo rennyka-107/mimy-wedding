@@ -109,7 +109,6 @@ export async function POST(req: Request) {
     );
   } catch (error) {
     console.error('Error sending verification code:', error);
-    
     return NextResponse.json(
       { error: 'Có lỗi xảy ra, vui lòng thử lại sau' },
       { status: 500 }
