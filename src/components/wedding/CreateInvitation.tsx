@@ -41,8 +41,10 @@ export default function CreateInvitation() {
     publicStart: "",
     publicEnd: ""
   });
+
   // State cho modal lưu nháp
   const [isSaveDraftModalOpen, setIsSaveDraftModalOpen] = useState(false);
+  const [openEditComponent, setOpenEditComponent] = useState<boolean>(false);
 
   const { selectedComponent, setSelectedComponent, updateText, updateImage, updateBackgroundColor, updateUrlMap, updateSendGift, resetAllComponent, resetComponent, template, updateTemplate } = useSunshineVowStore();
 
@@ -154,10 +156,10 @@ export default function CreateInvitation() {
   // console.log(selectedComponent, "wtf")
 
   return (
-    <div className="w-full h-full flex">
+    <div className="w-full h-full flex flex-col lg:flex-row">
       {/* Left side - Template Preview (2/3 width) */}
-      <div className="w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
-        <div className="w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
+      <div className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
+        <div className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
           {/* This is where the template preview would go */}
           {/* <div className="h-full flex items-center justify-center"
             style={{ color: textColor, fontSize: `${fontSize}px` }}
@@ -169,7 +171,7 @@ export default function CreateInvitation() {
       </div>
 
       {/* Right side - Settings Panel (1/3 width) */}
-      <div className="w-1/4 bg-white h-[calc(100vh-86px)] overflow-y-auto">
+      <div className="w-full absolute z-[1] lg:static lg:w-1/4 bg-white h-[calc(100vh-86px)] overflow-y-auto">
         {/* Phần hiển thị giới hạn bản nháp */}
         {/* <div className="border-b border-[#E9EAEB] px-[18px] py-[8px]">
           <RefreshableLimitIndicator type="draft" className="w-full" refreshTrigger={refreshLimitTrigger} />
