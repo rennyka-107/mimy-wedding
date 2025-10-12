@@ -15,7 +15,7 @@ export default function Contact() {
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
-            opacity: 0.8,
+            opacity: 1,
             transition: {
                 staggerChildren: 0.2,
                 delayChildren: 0.3
@@ -43,8 +43,8 @@ export default function Contact() {
                 variants={itemVariants}
                 className=""
             >
-                <span className="text-[#383637] flex w-full justify-center font-montserrat-alter font-[700] text-[40px] sm:text-[44px] lg:text-[46px] leading-[100%]">lời nhắn của bạn </span>
-                <span className="font-montserrat flex justify-center items-center gap-2 text-[18px] text-[#898A85] mt-5">Nếu bạn cần hỗ trợ thêm, hãy điền biểu mẫu liên hệ phía dưới để được giải đáp nhanh nhất.</span>
+                <span className="text-[#383637] flex w-full justify-center font-montserrat-alter font-[700] text-[36px] sm:text-[44px] lg:text-[46px] leading-[100%]">lời nhắn của bạn </span>
+                <span className="font-montserrat flex justify-center items-center gap-2 lg:text-[18px] md:text-[16px] sm:text-[14px] text-[14px] text-[#898A85] mt-5 px-8">Nếu bạn cần hỗ trợ thêm, hãy điền biểu mẫu liên hệ phía dưới để được giải đáp nhanh nhất.</span>
             </motion.label>
             <motion.div 
                 variants={itemVariants} 

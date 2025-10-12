@@ -91,7 +91,7 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-[#383637] flex w-full justify-center pt-24 font-montserrat-alter font-[700] text-[40px] sm:mt-10 md:mt-25 lg:mt-10 sm:text-[44px] lg:text-[46px] leading-[100%]"
+                className="text-[#383637] flex w-full justify-center pt-0 sm:pt-24 font-montserrat-alter font-[700] text-[36px] mt-0 sm:mt-10 md:mt-25 lg:mt-35 xl:mt-10 sm:text-[44px] lg:text-[46px] leading-[100%]"
             >
                 {title}
             </motion.label>
@@ -101,7 +101,7 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="mt-[16px] text-[#77716F] font-primary font-[500] text-[16px] sm:text-[18px] lg:text-[20px]"
+                className="mt-[16px] text-[#77716F] font-primary font-[500] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
             >
                 {description}
             </motion.div>
