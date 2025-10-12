@@ -57,7 +57,10 @@ export default function JadeWhisperTemplate() {
                     <path d="M204.072 0C316.738 0 408.072 91.1101 408.072 203.5C408.072 210.089 407.758 216.604 407.145 223.032V513C407.145 517.418 403.563 521 399.145 521H8C3.58172 521 2.8805e-08 517.418 0 513V207.64H0.114258C0.0867221 206.263 0.0722656 204.883 0.0722656 203.5C0.0722656 91.1101 91.4062 0 204.072 0Z" fill="white" />
                 </svg>
             </div>
-            <div className="absolute top-[50px] left-1/2 -translate-x-1/2 z-1"
+            <div onClick={(e) => {
+                e.stopPropagation();
+                setSelectedComponent('image_1', 'image', images['image_1'])
+            }} className="absolute top-[50px] left-1/2 -translate-x-1/2 z-1"
                 style={{
                     width: "90%",
                     margin: "auto",
@@ -82,7 +85,10 @@ export default function JadeWhisperTemplate() {
 
             {/* Header Section */}
             <div className="pt-[40px] pb-[20px] text-center">
-                <div style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '40px', letterSpacing: '0%', textAlign: 'center', color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }}>
+                <div onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedComponent('text_1', 'text', texts['text_1'])
+                }} style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '40px', letterSpacing: '0%', textAlign: 'center', color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }}>
                     {texts['text_1'].content}
                 </div>
                 <div onClick={(e) => {
@@ -113,18 +119,30 @@ export default function JadeWhisperTemplate() {
                 </div>
             </div>
             
-            <div style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '40px', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_6'].text_color, fontSize: texts['text_6'].text_size }}>
+            <div onClick={(e) => {
+                e.stopPropagation();
+                setSelectedComponent('text_6', 'text', texts['text_6'])
+            }} style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '40px', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_6'].text_color, fontSize: texts['text_6'].text_size }}>
                 {texts['text_6'].content}
             </div>
-            <div style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_7'].text_color, fontSize: texts['text_7'].text_size }}>
+            <div onClick={(e) => {
+                e.stopPropagation();
+                setSelectedComponent('text_7', 'text', texts['text_7'])
+            }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_7'].text_color, fontSize: texts['text_7'].text_size }}>
                 {texts['text_7'].content}
             </div>
-            <div style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>
+            <div onClick={(e) => {
+                e.stopPropagation();
+                setSelectedComponent('text_8', 'text', texts['text_8'])
+            }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>
                 {texts['text_8'].content}
             </div>
             {/* Countdown Timer */}
             <div className="mt-[1rem] px-[32px] pb-[30px]">
-                <div style={{ borderRadius: "50px", backgroundColor: background_colors['bg_color_2'].color, border: `1px solid ${background_colors['bg_color_2'].border_color}` }} className="flex justify-center gap-[12px]">
+                <div onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedComponent('bg_color_2', 'background_color', background_colors['bg_color_2'])
+                }} style={{ borderRadius: "50px", backgroundColor: background_colors['bg_color_2'].color, border: `1px solid ${background_colors['bg_color_2'].border_color}` }} className="flex justify-center gap-[12px]">
                     <div style={{ width: '70px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 8px', borderRadius: '8px' }}>
                         <div style={{ fontSize: '20px', fontWeight: 700, color: '#2B2B2B' }}>{countdown.days}</div>
                         <div onClick={(e) => {

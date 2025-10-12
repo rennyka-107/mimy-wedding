@@ -14,6 +14,8 @@ import { originalOliveHarmonyState } from '@/states/origin_state/olive_harmony';
 import { originalGoldenBondState } from '@/states/origin_state/golden_bond';
 import { originalForestCharmState } from '@/states/origin_state/forest_charm';
 import { originalJadeWhisperState } from '@/states/origin_state/jade_whisper';
+import Button from '@/components/ui/Button';
+import { useRouter } from 'next/navigation';
 
 export default function ViewInvitationPage({
     params,
@@ -22,22 +24,23 @@ export default function ViewInvitationPage({
 }) {
     const { id } = use(params);
     const { template, updateTemplate } = useTemplateStore();
+    const router = useRouter();
+    // const [isJoin, setIsJoin] = useState<boolean>(true);
+    // const [content, setContent] = useState<string>("");
+    // const [sender, setSender] = useState<string>("");
+    // const [openModal, setOpenModal] = useState<boolean>(false);
+    // const ref = useRef<HTMLDivElement>(null);
+    // useEffect(() => {
+    //     const handleClick = (event: MouseEvent) => {
+    //         if (ref.current && !ref.current.contains(event.target as Node)) {
+    //             setOpenModal(false);
+    //         }
+    //     };
 
-    const [isJoin, setIsJoin] = useState<boolean>(true);
-    const [content, setContent] = useState<string>("");
-    const [sender, setSender] = useState<string>("");
-    const [openModal, setOpenModal] = useState<boolean>(false);
-    const ref = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setOpenModal(false);
-      }
-    };
+    //     document.addEventListener("mousedown", handleClick);
+    //     return () => document.removeEventListener("mousedown", handleClick);
+    // }, []);
 
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
     useEffect(() => {
         switch (id) {
             case "sunshine_vow":
@@ -159,7 +162,21 @@ export default function ViewInvitationPage({
             <div className="w-full h-full bg-[#E9EAEB] flex items-center justify-center">
                 <div className="w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
                     {renderTemplate}
-                    <div ref={ref} style={{ boxShadow: openModal ? "0px -4px 9.6px 0px #0000000D" : "" }} className={`fixed bottom-0 px-[24px] py-[20px] w-[inherit] rounded-t-[24px] ${openModal ? "bg-white" : "bg-transparent"}`}>
+                    <Button
+                    className='fixed bottom-[2%] left-1/2 -translate-x-1/2'
+                        variant="primary"
+                        onClick={() => {
+                            console.log(123);
+                            router.push('/invitations/create?template_id=' + id);
+                        }}
+                    >
+                        <span className="font-[600] text-[16px] pr-2 ">Tạo tấm thiệp của riêng bạn</span>
+                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.75 12.75L15.5 9L11.75 5.25" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M3.5 13.5V12C3.5 11.2044 3.81607 10.4413 4.37868 9.87868C4.94129 9.31607 5.70435 9 6.5 9H15.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </Button>
+                    {/* <div ref={ref} style={{ boxShadow: openModal ? "0px -4px 9.6px 0px #0000000D" : "" }} className={`fixed bottom-0 px-[24px] py-[20px] w-[inherit] rounded-t-[24px] ${openModal ? "bg-white" : "bg-transparent"}`}>
                         {openModal && <div onClick={() => setIsJoin(!isJoin)} className='cursor-pointer flex gap-[10px] items-center'>
                             {isJoin ? <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 0C0.895431 0 0 0.895431 0 2V14C0 15.1046 0.895431 16 2 16H14C15.1046 16 16 15.1046 16 14V2C16 0.895431 15.1046 0 14 0H2ZM12.0303 4.96967C12.3196 5.25897 12.3232 5.72582 12.041 6.01947L8.04876 11.0097C8.043 11.0169 8.03685 11.0238 8.03032 11.0303C7.73743 11.3232 7.26256 11.3232 6.96966 11.0303L4.32322 8.38388C4.03032 8.09099 4.03032 7.61612 4.32322 7.32322C4.61611 7.03033 5.09098 7.03033 5.38388 7.32322L7.4774 9.41674L10.9498 4.9921C10.9559 4.98424 10.9626 4.97674 10.9697 4.96967C11.2626 4.67678 11.7374 4.67678 12.0303 4.96967Z" fill="#5F9654" />
@@ -188,7 +205,7 @@ export default function ViewInvitationPage({
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </Suspense>
