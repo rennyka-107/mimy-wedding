@@ -175,19 +175,20 @@ export default function CreateInvitation() {
             <Button
               variant="ghost"
               onClick={handleSaveDraft}
-              className="w-full cursor-pointer hover:opacity-70 bg-[#F5F5F5] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-[#4A3B36]">
+              className="w-full cursor-pointer"
+              >
               Lưu nháp
             </Button>
             <Button
               onClick={() => setIsPublishModalOpen(true)}
-              className="w-full cursor-pointer hover:opacity-70 bg-[#CE6F70] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-white">
+              className="w-full cursor-pointer">
               Xuất bản
             </Button>
           </div>
           {selectedComponent.id !== null && <div className={`lg:block flex flex-col justify-start items-start gap-2 border-b border-[#E9EAEB] px-[18px] py-[1rem]`}>
             <label className="text-[#4A3B36] text-[14px] font-[600]">Thao tác</label>
             <div className="flex gap-5 w-full">
-              <Button variant="ghost" disabled className="disabled:opacity-70 w-full bg-[#F5F5F5] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-[#4A3B36]">Xóa bỏ</Button>
+              <Button variant="ghost" disabled className="disabled:opacity-70 w-full">Xóa bỏ</Button>
               <Button onClick={() => {
                 if (selectedComponent.id !== null) {
                   console.log(selectedComponent.id, selectedComponent.type)
@@ -195,7 +196,7 @@ export default function CreateInvitation() {
                 } else {
                   resetAllComponent();
                 }
-              }} className="cursor-pointer hover:opacity-70 w-full bg-[#CE6F70] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-white">Mặc định</Button>
+              }} className="cursor-pointer w-full">Mặc định</Button>
             </div>
           </div>}
 
