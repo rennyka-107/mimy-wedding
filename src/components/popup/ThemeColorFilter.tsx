@@ -48,7 +48,7 @@ export default function ThemeColorFilter({
           <button
             key={color.id}
             className={`py-3 px-4 border rounded-md text-center flex items-center justify-center ${
-              selectedColor === color.id ? "border-[#CE6F70] bg-[#FADCDC] text-[#CE6F70]" : "border-gray-200 text-gray-700"
+              selectedColor === color.id ? "border-[#fd8c06] bg-[#FADCDC] text-[#fd8c06]" : "border-gray-200 text-gray-700"
             }`}
             onClick={() => handleSelectColor(color.id)}
           >

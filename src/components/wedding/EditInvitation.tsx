@@ -154,7 +154,7 @@ export default function EditInvitation() {
                 setIsPublishModalOpen(true);
               }
             }}
-            className="cursor-pointer hover:opacity-70 w-[48%] bg-[#CE6F70] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-white">
+            className="cursor-pointer hover:opacity-70 w-[48%] bg-[#fd8c06] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-white">
             Xuất bản
           </button>
         </div>
@@ -169,7 +169,7 @@ export default function EditInvitation() {
               } else {
                 resetAllComponent();
               }
-            }} className="cursor-pointer hover:opacity-70 w-[48%] bg-[#CE6F70] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-white">Quay về mặc định</button>
+            }} className="cursor-pointer hover:opacity-70 w-[48%] bg-[#fd8c06] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-white">Quay về mặc định</button>
           </div>
         </div>
 

@@ -99,7 +99,7 @@ export default function ServiceManagement() {
       animate={isInView ? "visible" : "hidden"}
     >
       <motion.div variants={itemVariants}>
-        <h1 className="font-viaoda text-[64px] text-[#CE6F70] font-normal leading-[100%]">
+        <h1 className="font-viaoda text-[64px] text-[#fd8c06] font-normal leading-[100%]">
           Dịch vụ của bạn
         </h1>
       </motion.div>
@@ -132,7 +132,7 @@ export default function ServiceManagement() {
       </motion.div>
 
       <motion.div variants={itemVariants} className="mt-8 flex justify-between items-center">
-        <h2 className="text-xl font-medium text-[#CE6F70]">Dịch vụ đã đăng ký</h2>
+        <h2 className="text-xl font-medium text-[#fd8c06]">Dịch vụ đã đăng ký</h2>
 
 
       </motion.div>
@@ -152,10 +152,10 @@ export default function ServiceManagement() {
             <tbody>
               {services.map((service) => (
                 <tr key={service.id} className="border-b border-[#E9EAEB] hover:bg-gray-50">
-                  <td className="px-[20px] py-[10px] text-left cursor-pointer text-[#CE6F70] font-[600]">{service.name}</td>
+                  <td className="px-[20px] py-[10px] text-left cursor-pointer text-[#fd8c06] font-[600]">{service.name}</td>
                   <td className="px-[20px] py-[10px] text-right text-[#4A3B36] font-[600]">{service.price}</td>
                   <td className="px-[20px] py-[10px] text-center">
-                    <span className="px-2 py-1 bg-[#FADCDC] text-[#CE6F70] font-[600] rounded-md text-sm">
+                    <span className="px-2 py-1 bg-[#FADCDC] text-[#fd8c06] font-[600] rounded-md text-sm">
                       {service.status}
                     </span>
                   </td>

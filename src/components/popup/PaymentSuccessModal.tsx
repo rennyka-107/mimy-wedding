@@ -109,7 +109,7 @@ export default function PaymentSuccessModal({
             <div className="px-6 pb-6">
               <button
                 onClick={onClose}
-                className="w-full bg-[#CE6F70] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70]"
+                className="w-full bg-[#fd8c06] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fd8c06]"
               >
                 Đã hiểu
               </button>

@@ -131,7 +131,7 @@ const WishesModal: React.FC<WishesModalProps> = ({
                     >
                         {/* Header */}
                         <div className="px-6 py-4 flex items-center justify-between">
-                            <h2 className="text-2xl font-semibold text-[#CE6F70]">Lời chúc của bạn</h2>
+                            <h2 className="text-2xl font-semibold text-[#fd8c06]">Lời chúc của bạn</h2>
                             <button
                                 onClick={onClose}
                                 className="text-gray-400 hover:text-gray-600 transition-colors"

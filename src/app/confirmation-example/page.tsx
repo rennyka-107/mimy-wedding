@@ -18,7 +18,7 @@ export default function ConfirmationExample() {
         <h2 className="text-xl">Default Confirmation Modal</h2>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="px-4 py-2 bg-[#CE6F70] text-white rounded-md"
+          className="px-4 py-2 bg-[#fd8c06] text-white rounded-md"
         >
           Mở popup xác nhận
         </button>

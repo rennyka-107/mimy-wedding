@@ -153,7 +153,7 @@ export default function PasswordChangeModal({
                     value={oldPassword}
                     onChange={(e) => setOldPassword(e.target.value)}
                     placeholder="Mật khẩu cũ"
-                    className="w-full px-4 py-3 rounded-md bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 rounded-md bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent transition-all"
                     required
                   />
                   <button
@@ -174,7 +174,7 @@ export default function PasswordChangeModal({
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="Mật khẩu mới"
-                    className="w-full px-4 py-3 rounded-md bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 rounded-md bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent transition-all"
                     required
                   />
                   <button
@@ -195,7 +195,7 @@ export default function PasswordChangeModal({
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Nhập lại mật khẩu mới"
-                    className="w-full px-4 py-3 rounded-md bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 rounded-md bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent transition-all"
                     required
                   />
                   <button
@@ -218,7 +218,7 @@ export default function PasswordChangeModal({
               {/* Submit button */}
               <button
                 type="submit"
-                className="w-full bg-[#CE6F70] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70]"
+                className="w-full bg-[#fd8c06] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fd8c06]"
               >
                 Đổi mật khẩu
               </button>

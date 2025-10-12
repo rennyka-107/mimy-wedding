@@ -109,7 +109,7 @@ export default function ConfirmationModal({
             {!icon && (
               <div className="flex justify-center mt-6">
                 <div className="w-12 h-12 rounded-full bg-[#FFEFEF] flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#CE6F70]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#fd8c06]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
                 </div>
@@ -126,7 +126,7 @@ export default function ConfirmationModal({
             <div className="px-6 pb-6 flex gap-4">
               <button
                 onClick={onClose}
-                className="flex-1 py-3 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70]"
+                className="flex-1 py-3 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fd8c06]"
               >
                 {cancelText}
               </button>
@@ -135,7 +135,7 @@ export default function ConfirmationModal({
                   onConfirm();
                   onClose();
                 }}
-                className="flex-1 bg-[#CE6F70] text-white py-3 px-4 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70]"
+                className="flex-1 bg-[#fd8c06] text-white py-3 px-4 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fd8c06]"
               >
                 {confirmText}
               </button>

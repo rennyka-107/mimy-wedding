@@ -119,13 +119,13 @@ export default function FilterModal({
             <div className="px-6 py-4 flex space-x-3">
               <button
                 onClick={onReset}
-                className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70]"
+                className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fd8c06]"
               >
                 Đặt lại
               </button>
               <button
                 onClick={onApplyFilter}
-                className="flex-1 bg-[#CE6F70] text-white py-2 px-4 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70]"
+                className="flex-1 bg-[#fd8c06] text-white py-2 px-4 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fd8c06]"
               >
                 Lọc
               </button>

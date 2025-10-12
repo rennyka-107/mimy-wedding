@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, use, useEffect, useMemo } from 'react'
+import { Suspense, use, useEffect, useMemo, useRef, useState } from 'react'
 import { motion } from 'framer-motion';
 import useTemplateStore from '@/states/templates/state';
 import SunshineVowTemplate from '@/wedding-templates/SunshineVow.template';
@@ -14,6 +14,8 @@ import { originalOliveHarmonyState } from '@/states/origin_state/olive_harmony';
 import { originalGoldenBondState } from '@/states/origin_state/golden_bond';
 import { originalForestCharmState } from '@/states/origin_state/forest_charm';
 import { originalJadeWhisperState } from '@/states/origin_state/jade_whisper';
+import Button from '@/components/ui/Button';
+import { useRouter } from 'next/navigation';
 
 export default function ViewInvitationPage({
     params,
@@ -22,6 +24,22 @@ export default function ViewInvitationPage({
 }) {
     const { id } = use(params);
     const { template, updateTemplate } = useTemplateStore();
+    const router = useRouter();
+    // const [isJoin, setIsJoin] = useState<boolean>(true);
+    // const [content, setContent] = useState<string>("");
+    // const [sender, setSender] = useState<string>("");
+    // const [openModal, setOpenModal] = useState<boolean>(false);
+    // const ref = useRef<HTMLDivElement>(null);
+    // useEffect(() => {
+    //     const handleClick = (event: MouseEvent) => {
+    //         if (ref.current && !ref.current.contains(event.target as Node)) {
+    //             setOpenModal(false);
+    //         }
+    //     };
+
+    //     document.addEventListener("mousedown", handleClick);
+    //     return () => document.removeEventListener("mousedown", handleClick);
+    // }, []);
 
     useEffect(() => {
         switch (id) {
@@ -121,17 +139,17 @@ export default function ViewInvitationPage({
     const renderTemplate = useMemo(() => {
         switch (template.template_id) {
             case "sunshine_vow":
-                if(id === "sunshine_vow") {return <SunshineVowTemplate />} else return <ComingSoon />;
+                if (id === "sunshine_vow") { return <SunshineVowTemplate /> } else return <ComingSoon />;
             case "olive_harmony":
-                if(id === "olive_harmony") {return <OliveHarmonyTemplate />} else return <ComingSoon />;
+                if (id === "olive_harmony") { return <OliveHarmonyTemplate /> } else return <ComingSoon />;
             case "cocoa_embrace":
-                if(id === "cocoa_embrace") {return <CocoaEmbraceTemplate />} else return <ComingSoon />;
+                if (id === "cocoa_embrace") { return <CocoaEmbraceTemplate /> } else return <ComingSoon />;
             case "golden_bond":
-                if(id === "golden_bond") {return <GoldenBondTemplate />} else return <ComingSoon />;
+                if (id === "golden_bond") { return <GoldenBondTemplate /> } else return <ComingSoon />;
             case "forest_charm":
-                if(id === "forest_charm") {return <ForestCharmTemplate />} else return <ComingSoon />;
+                if (id === "forest_charm") { return <ForestCharmTemplate /> } else return <ComingSoon />;
             case "jade_whisper":
-                if(id === "jade_whisper") {return <JadeWhisperTemplate />} else return <ComingSoon />;
+                if (id === "jade_whisper") { return <JadeWhisperTemplate /> } else return <ComingSoon />;
             default:
                 // Else return coming soon page
                 return <ComingSoon />;
@@ -142,9 +160,53 @@ export default function ViewInvitationPage({
     return (
         <Suspense fallback={<div className="w-full h-screen flex items-center justify-center">Loading...</div>}>
             <div className="w-full h-full bg-[#E9EAEB] flex items-center justify-center">
-                    <div className="w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
-                        {renderTemplate}
-                    </div>
+                <div className="w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
+                    {renderTemplate}
+                    <Button
+                    className='fixed bottom-[2%] left-1/2 -translate-x-1/2'
+                        variant="primary"
+                        onClick={() => {
+                            console.log(123);
+                            router.push('/invitations/create?template_id=' + id);
+                        }}
+                    >
+                        <span className="font-[600] text-[16px] pr-2 ">Tạo tấm thiệp của riêng bạn</span>
+                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.75 12.75L15.5 9L11.75 5.25" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M3.5 13.5V12C3.5 11.2044 3.81607 10.4413 4.37868 9.87868C4.94129 9.31607 5.70435 9 6.5 9H15.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </Button>
+                    {/* <div ref={ref} style={{ boxShadow: openModal ? "0px -4px 9.6px 0px #0000000D" : "" }} className={`fixed bottom-0 px-[24px] py-[20px] w-[inherit] rounded-t-[24px] ${openModal ? "bg-white" : "bg-transparent"}`}>
+                        {openModal && <div onClick={() => setIsJoin(!isJoin)} className='cursor-pointer flex gap-[10px] items-center'>
+                            {isJoin ? <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 0C0.895431 0 0 0.895431 0 2V14C0 15.1046 0.895431 16 2 16H14C15.1046 16 16 15.1046 16 14V2C16 0.895431 15.1046 0 14 0H2ZM12.0303 4.96967C12.3196 5.25897 12.3232 5.72582 12.041 6.01947L8.04876 11.0097C8.043 11.0169 8.03685 11.0238 8.03032 11.0303C7.73743 11.3232 7.26256 11.3232 6.96966 11.0303L4.32322 8.38388C4.03032 8.09099 4.03032 7.61612 4.32322 7.32322C4.61611 7.03033 5.09098 7.03033 5.38388 7.32322L7.4774 9.41674L10.9498 4.9921C10.9559 4.98424 10.9626 4.97674 10.9697 4.96967C11.2626 4.67678 11.7374 4.67678 12.0303 4.96967Z" fill="#5F9654" />
+                            </svg> : <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clipPath="url(#clip0_639_2430)">
+                                    <path d="M13.3333 1.14282H2.66663C1.82506 1.14282 1.14282 1.82506 1.14282 2.66663V13.3333C1.14282 14.1749 1.82506 14.8571 2.66663 14.8571H13.3333C14.1749 14.8571 14.8571 14.1749 14.8571 13.3333V2.66663C14.8571 1.82506 14.1749 1.14282 13.3333 1.14282Z" fill="#B20000" stroke="#B20000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M5.71423 5.71436L10.2857 10.2858" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M10.2857 5.71436L5.71423 10.2858" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_639_2430">
+                                        <rect width="16" height="16" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            }
+                            <div className='text-[14px] font-[500] text-[#000000]'>{isJoin ? "Tham dự lễ cưới" : "Không tham dự lễ cưới"}</div>
+                        </div>}
+                        {openModal && <input onChange={(e) => setSender(e.target.value)} type="text" className='bg-[#FAFAFA] mt-2 rounded-[50px] lead-[82%] outline-none text-[14px] font-[500] px-[24px] py-[16px] w-full text-[#000000]' placeholder="Gửi lời chúc..." />}
+                        <div className='relative'>
+                            <input style={{ boxShadow: !openModal ? "0px 1px 4px 0px #00000026" : "" }} onClick={() => setOpenModal(true)} onChange={(e) => setContent(e.target.value)} type="text" className='bg-[#FAFAFA] mt-2 rounded-[50px] lead-[82%] outline-none text-[14px] font-[500] px-[24px] py-[16px] w-full text-[#000000]' placeholder="Gửi lời chúc..." />
+                            <div className='hover:bg-[#d6d4d4] p-[6px] cursor-pointer absolute top-[55%] -translate-y-[50%] right-[5%] w-[fit-content] bg-[#FAFAFA] rounded-[50px]'>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 17L20 12L15 7" stroke="#484848" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M4 18V16C4 14.9391 4.42143 13.9217 5.17157 13.1716C5.92172 12.4214 6.93913 12 8 12H20" stroke="#484848" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div> */}
+                </div>
             </div>
         </Suspense>
 
@@ -168,7 +230,7 @@ function ComingSoon() {
                 }}
             />
             <motion.div
-                className="absolute bottom-20 right-10 w-72 h-72 rounded-full bg-gradient-to-br from-[#CE6F70]/20 to-[#FF9999]/10 blur-3xl"
+                className="absolute bottom-20 right-10 w-72 h-72 rounded-full bg-gradient-to-br from-[#fd8c06]/20 to-[#FF9999]/10 blur-3xl"
                 animate={{
                     scale: [1.2, 1, 1.2],
                     opacity: [0.4, 0.6, 0.4],
@@ -180,7 +242,7 @@ function ComingSoon() {
                 }}
             />
             <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-[#FFBB53]/10 to-[#CE6F70]/10 blur-3xl"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-[#FFBB53]/10 to-[#fd8c06]/10 blur-3xl"
                 animate={{
                     scale: [1, 1.3, 1],
                     rotate: [0, 180, 360],
@@ -232,7 +294,7 @@ function ComingSoon() {
                                 <linearGradient id="gradient" x1="5" y1="5" x2="75" y2="75">
                                     <stop offset="0%" stopColor="#FFBB53" />
                                     <stop offset="50%" stopColor="#FD8C06" />
-                                    <stop offset="100%" stopColor="#CE6F70" />
+                                    <stop offset="100%" stopColor="#fd8c06" />
                                 </linearGradient>
                             </defs>
                         </svg>
@@ -241,7 +303,7 @@ function ComingSoon() {
 
                 {/* Title */}
                 <motion.h1
-                    className="font-montserrat-alter font-bold text-5xl md:text-6xl mb-4 bg-gradient-to-r from-[#FFBB53] via-[#FD8C06] to-[#CE6F70] bg-clip-text text-transparent"
+                    className="font-montserrat-alter font-bold text-5xl md:text-6xl mb-4 bg-gradient-to-r from-[#FFBB53] via-[#FD8C06] to-[#fd8c06] bg-clip-text text-transparent"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
@@ -298,7 +360,7 @@ function ComingSoon() {
                         }}
                     >
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CE6F70" fillOpacity="0.3"/>
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#fd8c06" fillOpacity="0.3" />
                         </svg>
                     </motion.div>
                 </div>
@@ -317,7 +379,7 @@ function ComingSoon() {
                         }}
                     >
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#FFBB53" fillOpacity="0.3"/>
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#FFBB53" fillOpacity="0.3" />
                         </svg>
                     </motion.div>
                 </div>

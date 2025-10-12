@@ -7,7 +7,7 @@ export default function NavBar() {
 
   return (
     <div className="w-full bg-white shadow-sm py-4 px-6 flex justify-between items-center">
-      <div className="font-viaoda text-2xl text-[#CE6F70]">Mimy Wedding</div>
+      <div className="font-viaoda text-2xl text-[#fd8c06]">Mimy Wedding</div>
       
       <div className="flex items-center gap-4">
         {isAuthenticated ? (

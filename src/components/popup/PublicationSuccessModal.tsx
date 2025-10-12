@@ -122,7 +122,7 @@ export default function PublicationSuccessModal({
                   }}
                 />
                 {/* Fallback text if image fails to load */}
-                <div className="text-[#CE6F70] font-bold text-xl">
+                <div className="text-[#fd8c06] font-bold text-xl">
                   Mimy wedding
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function PublicationSuccessModal({
               </p>
               
               <p className="text-gray-600 mb-3">
-                Hãy truy cập <a href={invitationUrl} className="text-[#CE6F70] hover:underline">{invitationUrl}</a> để xem ngay thiệp cưới của bạn nhé!
+                Hãy truy cập <a href={invitationUrl} className="text-[#fd8c06] hover:underline">{invitationUrl}</a> để xem ngay thiệp cưới của bạn nhé!
               </p>
               
               <p className="text-gray-600 mb-4">
@@ -151,7 +151,7 @@ export default function PublicationSuccessModal({
             <div className="px-6 pb-6">
               <Link href={invitationUrl} target="_blank">
                 <button
-                  className="w-full bg-[#CE6F70] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70]"
+                  className="w-full bg-[#fd8c06] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fd8c06]"
                 >
                   Xem thiệp ngay
                 </button>

@@ -41,7 +41,7 @@ export default function Header() {
             <Link href="/" className="flex items-center">
               <Image
                 unoptimized
-                src="/images/Logo.png"
+                src="/images/logo.png"
                 alt="Mimy Logo"
                 width={100}
                 height={40}

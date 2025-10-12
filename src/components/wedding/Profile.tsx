@@ -152,7 +152,7 @@ export default function Profile() {
             </motion.div>
             <motion.label
                 variants={itemVariants}
-                className="font-viaoda text-[32px] sm:text-[48px] lg:text-[64px] text-[#CE6F70] font-normal leading-[100%] block"
+                className="font-viaoda text-[32px] sm:text-[48px] lg:text-[64px] text-[#fd8c06] font-normal leading-[100%] block"
             >
                 Thông tin cá nhân
             </motion.label>

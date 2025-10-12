@@ -35,10 +35,10 @@ export const originalJadeWhisperState: {
   },
 
   images: {
-    image_1: { id: 'image_1', url: '/templates/ForestCharm/1.png', style: { objectFit: 'cover', borderRadius: 'none' } },
-    image_2: { id: 'image_2', url: '/templates/ForestCharm/2.png', style: { objectFit: 'cover', borderRadius: '16px' } },
-    image_3: { id: 'image_3', url: '/templates/ForestCharm/3.png', style: { objectFit: 'cover', borderRadius: '16px' } },
-    image_4: { id: 'image_4', url: '/templates/ForestCharm/4.png', style: { objectFit: 'cover', borderRadius: '16px' } },
+    image_1: { id: 'image_1', url: '/templates/JadeWhisper/1.png', style: { objectFit: 'cover', borderRadius: 'none' } },
+    image_2: { id: 'image_2', url: '/templates/JadeWhisper/2.png', style: { objectFit: 'cover', borderRadius: '16px' } },
+    image_3: { id: 'image_3', url: '/templates/JadeWhisper/3.png', style: { objectFit: 'cover', borderRadius: '16px' } },
+    image_4: { id: 'image_4', url: '/templates/JadeWhisper/4.png', style: { objectFit: 'cover', borderRadius: '16px' } },
     image_qr: { id: 'image_qr', url: '/images/qr-mimy.png', style: { objectFit: 'cover', borderRadius: 'none' } },
   },
 

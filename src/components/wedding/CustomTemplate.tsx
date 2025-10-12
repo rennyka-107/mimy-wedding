@@ -38,7 +38,7 @@ export default function CustomTemplate() {
             </motion.div>
             <motion.label
                 variants={itemVariants}
-                className="font-viaoda text-[64px] text-[#CE6F70] font-normal leading-[100%] block"
+                className="font-viaoda text-[64px] text-[#fd8c06] font-normal leading-[100%] block"
             >
                 Tấm thiệp chỉ thuộc về bạn
             </motion.label>
@@ -50,7 +50,7 @@ export default function CustomTemplate() {
             </motion.label>
             <motion.label
                 variants={itemVariants}
-                className="font-primary text-[20px] text-[#CE6F70] font-[800] block mt-[16px]"
+                className="font-primary text-[20px] text-[#fd8c06] font-[800] block mt-[16px]"
             >
                 Với Gói Thiết Kế Riêng, bạn sẽ nhận được:
             </motion.label>
@@ -83,7 +83,7 @@ export default function CustomTemplate() {
                     whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
                     className="mt-[16px]"
                 >
-                    Đường dẫn tuỳ chỉnh theo mong muốn của bạn (không sử dụng tiền tố &quot;<span className="text-[#CE6F70]">mimywedding</span>&quot;).
+                    Đường dẫn tuỳ chỉnh theo mong muốn của bạn (không sử dụng tiền tố &quot;<span className="text-[#fd8c06]">mimywedding</span>&quot;).
                 </motion.li>
                 <motion.li
                     variants={itemVariants}

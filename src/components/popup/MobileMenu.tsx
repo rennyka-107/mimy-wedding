@@ -213,7 +213,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           <Link
             href="/register"
-            className="flex-1 bg-[#CE6F70] text-white text-center py-3.5 rounded-md font-medium text-sm"
+            className="flex-1 bg-[#fd8c06] text-white text-center py-3.5 rounded-md font-medium text-sm"
             onClick={onClose}
           >
             Đăng ký

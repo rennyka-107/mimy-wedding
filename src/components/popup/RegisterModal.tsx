@@ -256,7 +256,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email của bạn"
                   disabled={codeSent}
-                  className="w-full text-black px-4 py-3 rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all disabled:bg-gray-50 disabled:text-gray-500"
+                  className="w-full text-black px-4 py-3 rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent transition-all disabled:bg-gray-50 disabled:text-gray-500"
                   required
                 />
               </div>
@@ -267,7 +267,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                   type="button"
                   onClick={handleSendCode}
                   disabled={codeSent && isLoading}
-                  className="px-4 py-2 bg-[#CE6F70] text-white rounded-md hover:bg-[#B85F60] transition-colors text-sm whitespace-nowrap disabled:bg-gray-300"
+                  className="px-4 py-2 bg-[#fd8c06] text-white rounded-md hover:bg-[#B85F60] transition-colors text-sm whitespace-nowrap disabled:bg-gray-300"
                 >
                   {codeSent ? "Gửi lại mã" : "Gửi mã xác thực"}
                 </button>
@@ -276,7 +276,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                   value={verificationCode}
                   onChange={(e) => setVerificationCode(e.target.value)}
                   placeholder="Mã xác thực"
-                  className="w-full text-black px-4 py-3 rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
+                  className="w-full text-black px-4 py-3 rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent transition-all"
                   required
                 />
               </div>
@@ -289,7 +289,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Họ và tên"
-                    className="w-full text-black px-4 py-3 rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
+                    className="w-full text-black px-4 py-3 rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent transition-all"
                     required
                   />
                 </div>
@@ -306,7 +306,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Mật khẩu"
-                        className="w-full px-4 py-3 text-black rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 text-black rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent transition-all"
                         required
                       />
                       <button
@@ -327,7 +327,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Nhập lại mật khẩu"
-                        className="w-full px-4 py-3 text-black rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 text-black rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent transition-all"
                         required
                       />
                       <button
@@ -347,11 +347,11 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                       id="agree"
                       checked={agreeToTerms}
                       onChange={() => setAgreeToTerms(!agreeToTerms)}
-                      className="mr-2 h-4 w-4 accent-[#CE6F70]"
+                      className="mr-2 h-4 w-4 accent-[#fd8c06]"
                       required
                     />
                     <label htmlFor="agree" className="text-gray-700 text-sm">
-                      Tôi đồng ý với <Link href="/terms" className="text-[#CE6F70] underline">điều khoản sử dụng</Link>
+                      Tôi đồng ý với <Link href="/terms" className="text-[#fd8c06] underline">điều khoản sử dụng</Link>
                     </label>
                   </div>
                 </>
@@ -368,7 +368,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-[#CE6F70] text-white py-3 px-4 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:ring-opacity-50 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    className="w-full bg-[#fd8c06] text-white py-3 px-4 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:ring-opacity-50 disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
                     {isLoading ? (
                       <>
