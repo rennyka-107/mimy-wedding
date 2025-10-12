@@ -44,7 +44,7 @@ export default function Contact() {
                 variants={itemVariants}
                 className=""
             >
-                <span className="text-[#383637] flex w-full justify-center font-montserrat-alter font-[700] text-[36px] sm:text-[44px] lg:text-[46px] leading-[100%]">lời nhắn của bạn. </span>
+                <span className="text-[#383637] flex w-full justify-center font-montserrat-alter font-[700] text-[28px] sm:text-[44px] lg:text-[46px] leading-[100%]">lời nhắn của bạn. </span>
                 <span className="font-montserrat text-center flex justify-center items-center gap-2 lg:text-[18px] md:text-[16px] sm:text-[14px] text-[14px] text-[#898A85] mt-5 px-8">Nếu bạn cần hỗ trợ thêm, hãy điền biểu mẫu liên hệ phía dưới để được giải đáp nhanh nhất.</span>
             </motion.label>
             <div

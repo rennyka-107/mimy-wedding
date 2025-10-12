@@ -51,7 +51,7 @@ export default function FrequentlyAskedQuestions() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-[#383637] flex w-full justify-center pt-10 font-montserrat-alter font-[700] text-[36px] sm:text-[44px] lg:text-[46px] leading-[100%]"
+                className="text-[#383637] flex w-full justify-center pt-10 font-montserrat-alter font-[700] text-[28px] sm:text-[44px] lg:text-[46px] leading-[100%]"
             >
                 câu hỏi thường gặp.
             </motion.label>
