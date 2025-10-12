@@ -19,7 +19,7 @@ export default function JadeWhisperTemplate() {
         updateTemplate({
             template_id: 'jade_whisper',
             template_name: 'Jade Whisper',
-            template_price: 4000,
+            template_price: 50000,
             configs: {
                 texts: originalJadeWhisperState.texts,
                 images: originalJadeWhisperState.images,

@@ -22,7 +22,7 @@ export default function CocoaEmbraceTemplate() {
     updateTemplate({
       template_id: 'cocoa_embrace',
       template_name: 'Cocoa Embrace',
-      template_price: 4000,
+      template_price: 30000,
       configs: {
         texts: originalCocoaEmbraceState.texts,
         images: originalCocoaEmbraceState.images,

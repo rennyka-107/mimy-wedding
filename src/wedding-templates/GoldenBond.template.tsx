@@ -17,7 +17,7 @@ export default function GoldenBondTemplate() {
     updateTemplate({
       template_id: 'golden_bond',
       template_name: 'Golden Bond',
-      template_price: 4000,
+      template_price: 30000,
       configs: {
         texts: originalGoldenBondState.texts,
         images: originalGoldenBondState.images,

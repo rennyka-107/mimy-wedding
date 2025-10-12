@@ -96,7 +96,7 @@ const useTemplateStore = create<TemplateState>((set) => ({
   template: {
     template_id: 'sunshine_vow',
     template_name: 'Sunshine Vow',
-    template_price: 4000,
+    template_price: 60000,
     configs: {
       texts: originalSunshineVowState.texts,
 

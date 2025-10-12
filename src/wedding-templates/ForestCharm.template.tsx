@@ -19,7 +19,7 @@ export default function JadeWhisperTemplate() {
         updateTemplate({
             template_id: 'forest_charm',
             template_name: 'Forest Charm',
-            template_price: 4000,
+            template_price: 50000,
             configs: {
                 texts: originalForestCharmState.texts,
                 images: originalForestCharmState.images,

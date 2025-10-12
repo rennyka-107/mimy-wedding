@@ -47,7 +47,7 @@ export default function ViewInvitationPage({
                 updateTemplate({
                     template_id: 'sunshine_vow',
                     template_name: 'Sunshine Vow',
-                    template_price: 4000,
+                    template_price: 60000,
                     configs: {
                         texts: originalSunshineVowState.texts,
                         images: originalSunshineVowState.images,
@@ -61,7 +61,7 @@ export default function ViewInvitationPage({
                 updateTemplate({
                     template_id: 'olive_harmony',
                     template_name: 'Olive Harmony',
-                    template_price: 4000,
+                    template_price: 30000,
                     configs: {
                         texts: originalOliveHarmonyState.texts,
                         images: originalOliveHarmonyState.images,
@@ -75,7 +75,7 @@ export default function ViewInvitationPage({
                 updateTemplate({
                     template_id: 'cocoa_embrace',
                     template_name: 'Cocoa Embrace',
-                    template_price: 4000,
+                    template_price: 30000,
                     configs: {
                         texts: originalCocoaEmbraceState.texts,
                         images: originalCocoaEmbraceState.images,
@@ -89,7 +89,7 @@ export default function ViewInvitationPage({
                 updateTemplate({
                     template_id: 'golden_bond',
                     template_name: 'Golden Bond',
-                    template_price: 4000,
+                    template_price: 30000,
                     configs: {
                         texts: originalGoldenBondState.texts,
                         images: originalGoldenBondState.images,
@@ -104,7 +104,7 @@ export default function ViewInvitationPage({
                 updateTemplate({
                     template_id: 'forest_charm',
                     template_name: 'Forest Charm',
-                    template_price: 4000,
+                    template_price: 50000,
                     configs: {
                         texts: originalForestCharmState.texts,
                         images: originalForestCharmState.images,
@@ -118,7 +118,7 @@ export default function ViewInvitationPage({
                 updateTemplate({
                     template_id: 'jade_whisper',
                     template_name: 'Jade Whisper',
-                    template_price: 4000,
+                    template_price: 50000,
                     configs: {
                         texts: originalJadeWhisperState.texts,
                         images: originalJadeWhisperState.images,

@@ -21,7 +21,7 @@ export default function OliveHarmonyTemplate() {
     updateTemplate({
       template_id: 'olive_harmony',
       template_name: 'Olive Harmony',
-      template_price: 4000,
+      template_price: 30000,
       configs: {
         texts: originalOliveHarmonyState.texts,
         images: originalOliveHarmonyState.images,
