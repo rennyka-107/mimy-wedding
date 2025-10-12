@@ -52,8 +52,8 @@ export default function PrivacyPolicy() {
     return (
         <div className="w-full bg-[#FFFFFF] px-[15%] py-[50px]">
             <Content
-                title="Chính sách bảo mật"
-                description="Lần cập nhật gần nhất: 27/08/2025"
+                title="CHÍNH SÁCH BẢO MẬT"
+                description="Lần cập nhật gần nhất: 12/10/2025"
                 contents={contents}
             />
         </div>

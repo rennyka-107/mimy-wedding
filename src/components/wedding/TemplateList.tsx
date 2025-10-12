@@ -39,7 +39,7 @@ const staggerContainer = {
     }
 };
 
-export default function TemplateList({ title = "mẫu thiệp.", description = "Các mẫu thiệp hiện có", displayPagination = false, templates = [] }: { title?: string; description?: string | React.ReactNode; displayPagination?: boolean; templates?: TypeTemplate[] }) {
+export default function TemplateList({ title = "mẫu thiệp.", description = "Hãy chọn mẫu thiệp và viết nên câu chuyện của bạn.", displayPagination = false, templates = [] }: { title?: string; description?: string | React.ReactNode; displayPagination?: boolean; templates?: TypeTemplate[] }) {
     const [isImageFilterOpen, setIsImageFilterOpen] = useState(false);
     const [isColorFilterOpen, setIsColorFilterOpen] = useState(false);
 
@@ -86,7 +86,7 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
             className="w-full"
         >
             {/* <Image src="/images/mau-thiep.png" alt="Template List" width={100} height={100} /> */}
-            <motion.label
+            {/* <motion.label
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
@@ -104,7 +104,7 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
                 className="mt-[16px] text-[#77716F] font-primary font-[500] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
             >
                 {description}
-            </motion.div>
+            </motion.div> */}
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
