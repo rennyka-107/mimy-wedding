@@ -276,7 +276,7 @@ export default function WeddingPage() {
           // whileInView={{ opacity: 1 }}
           // transition={{ duration: 0.5, delay: 0.3 }}
           // viewport={{ once: true }}
-          className="text-[#383637] flex w-full justify-center pt-0 sm:pt-24 font-montserrat-alter font-[700] text-[36px] mt-0  md:mt-40 lg:mt-35 xl:mt-10 sm:text-[44px] lg:text-[46px] leading-[100%]"
+          className="text-[#383637] flex w-full justify-center pt-0 sm:pt-24 font-montserrat-alter font-[700] text-[28px] mt-0  md:mt-40 lg:mt-35 xl:mt-10 sm:text-[44px] lg:text-[46px] leading-[100%]"
         >
           mẫu thiệp.
         </label>
@@ -288,7 +288,7 @@ export default function WeddingPage() {
           // viewport={{ once: true }}
           className="mt-[16px] text-[#77716F] font-primary font-[500] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
         >
-          <div className="text-[#898A85] font-montserrat flex justify-center items-center gap-2 text-center flex-wrap lg:flex-nowrap px-4">Hãy chọn mẫu thiệp để bắt đầu hành trình thiết kế lời mời  hoàn hảo.
+          <div className="text-[#898A85] font-montserrat flex justify-center items-center gap-2 text-center flex-wrap lg:flex-nowrap px-4">Hãy chọn mẫu thiệp để bắt đầu hành trình thiết kế lời mời hoàn hảo.
             <span onClick={() => {
               window.open("/list-template", "_blank");
             }} className="font-montserrat cursor-pointer font-[600] text-[#FD8C06] lg:text-[20px] md:text-[18px] sm:text-[14px]"> Xem tất cả

@@ -156,7 +156,6 @@ function TemplateItem({ template, user, setIsLoginModalOpen }: { template: TypeT
                 }}>
                     <Button className="w-full"
                         variant="primary"
-                        
                     >
                         <span className=" font-[500] text-[14px] mr-2">Tạo thiệp</span>
                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
