@@ -64,12 +64,12 @@ export const originalSunshineVowState: {
   },
 
   images: {
-    image_1: { id: 'image_1', url: '/templates/SunshineVow/image-1.png', style: { width: '100%', height: 'auto' } },
-    image_2: { id: 'image_2', url: '/templates/SunshineVow/image-2.png', style: { objectFit: 'cover', borderRadius: '8px' } },
-    image_3: { id: 'image_3', url: '/templates/SunshineVow/image-3.png', style: { objectFit: 'cover', borderRadius: '8px' } },
-    image_4: { id: 'image_4', url: '/templates/SunshineVow/image-4.png', style: { objectFit: 'cover', borderRadius: '8px' } },
-    image_5: { id: 'image_5', url: '/templates/SunshineVow/image-5.png', style: { objectFit: 'cover', borderRadius: '8px' } },
-    image_6: { id: 'image_6', url: '/templates/SunshineVow/image-6.png', style: { objectFit: 'cover', borderRadius: '8px' } },
+    image_1: { id: 'image_1', url: '/templates/SunShineVow/image-1.png', style: { width: '100%', height: 'auto' } },
+    image_2: { id: 'image_2', url: '/templates/SunShineVow/image-2.png', style: { objectFit: 'cover', borderRadius: '8px' } },
+    image_3: { id: 'image_3', url: '/templates/SunShineVow/image-3.png', style: { objectFit: 'cover', borderRadius: '8px' } },
+    image_4: { id: 'image_4', url: '/templates/SunShineVow/image-4.png', style: { objectFit: 'cover', borderRadius: '8px' } },
+    image_5: { id: 'image_5', url: '/templates/SunShineVow/image-5.png', style: { objectFit: 'cover', borderRadius: '8px' } },
+    image_6: { id: 'image_6', url: '/templates/SunShineVow/image-6.png', style: { objectFit: 'cover', borderRadius: '8px' } },
     image_7: { id: 'image_7', url: '/images/qr-mimy.png', style: { objectFit: 'cover', borderRadius: '8px' } },
   },
 

@@ -73,7 +73,7 @@ export default function OliveHarmonyTemplate() {
           }} src={images['right'] ? images['right'].url : '/images/logo.png'} alt="Hero" className="absolute top-[30px] right-0 object-cover" />
       <div className="w-full pt-[75px]">
         <div className="w-[263px] h-[263px] mx-auto rounded-[50%] overflow-hidden">
-          <Image onClick={(e) => {
+          <Image unoptimized onClick={(e) => {
             e.stopPropagation();
             setSelectedComponent('image_1', 'image', images['image_1'])
           }} src={images['image_1'] ? images['image_1'].url : '/images/logo.png'} alt="Hero" width={120} height={120} className="object-cover w-full h-full" />
@@ -91,7 +91,7 @@ export default function OliveHarmonyTemplate() {
           setSelectedComponent('text_3', 'text', texts['text_3'])
         }} className="px-[48px] font-[700] text-center mt-8" style={{ color: texts['text_3'].text_color, fontSize: texts['text_3'].text_size }}>{texts['text_3'] && texts['text_3'].content}</div>
         <div className="px-[48px] mt-[2rem]">
-          <Image onClick={(e) => {
+          <Image unoptimized onClick={(e) => {
             e.stopPropagation();
             setSelectedComponent('image_2', 'image', images['image_2'])
           }} src={images['image_2'] ? images['image_2'].url : '/images/logo.png'} alt="Hero" width={120} height={120} className="object-cover rounded-[16px] w-full h-full" />

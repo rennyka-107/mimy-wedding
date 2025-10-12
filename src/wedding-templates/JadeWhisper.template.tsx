@@ -65,11 +65,11 @@ export default function JadeWhisperTemplate() {
                     backgroundImage: `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.3) 100%),url("${images['image_1'].url}")`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    WebkitMaskImage: 'url("/templates/SunshineVow/union.svg")',
+                    WebkitMaskImage: 'url("/templates/SunShineVow/union.svg")',
                     WebkitMaskRepeat: "no-repeat",
                     WebkitMaskSize: "contain",
                     WebkitMaskPosition: "center",
-                    maskImage: 'url("/templates/SunshineVow/union.svg")',
+                    maskImage: 'url("/templates/SunShineVow/union.svg")',
                     maskRepeat: "no-repeat",
                     maskSize: "contain",
                     maskPosition: "center",
@@ -253,7 +253,7 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_17', 'text', texts['text_17'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', color: texts['text_17'].text_color, fontSize: texts['text_17'].text_size }}>
+                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', color: texts['text_17'].text_color, fontSize: texts['text_17'].text_size }}>
                     {texts['text_17'].content}
                 </div>
             </div>
@@ -271,13 +271,13 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_18', 'text', texts['text_18'])
-                }} style={{ fontWeight: 700, lineHeight: '100%', textAlign: 'left', marginBottom: '12px', color: texts['text_18'].text_color, fontSize: texts['text_18'].text_size }}>
+                }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', textAlign: 'left', marginBottom: '12px', color: texts['text_18'].text_color, fontSize: texts['text_18'].text_size }}>
                     {texts['text_18'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_19', 'text', texts['text_19'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_19'].text_color, fontSize: texts['text_19'].text_size }}>
+                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_19'].text_color, fontSize: texts['text_19'].text_size }}>
                     {texts['text_19'].content}
                 </div>
                 <img onClick={(e) => {
@@ -291,13 +291,13 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_20', 'text', texts['text_20'])
-                }} style={{ fontWeight: 700, lineHeight: '100%', textAlign: 'right', marginBottom: '12px', color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
+                }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', textAlign: 'left', marginBottom: '12px', color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
                     {texts['text_20'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_21', 'text', texts['text_21'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>
+                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>
                     {texts['text_21'].content}
                 </div>
                 <img onClick={(e) => {
@@ -313,12 +313,12 @@ export default function JadeWhisperTemplate() {
                 <svg className="absolute top-[50%] left-0" width="70" height="69" viewBox="0 0 70 69" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M30.9213 14.1548C34.8804 2.61595 49.9744 -0.988373 59.4741 6.39552C64.0831 9.97808 67.5454 16.3512 67.2636 26.2589C66.9875 35.9609 63.1031 49.0046 53.1483 65.7499C33.9073 62.7055 21.3926 57.357 13.754 51.3692C5.95321 45.2544 3.26394 38.5186 3.4538 32.684C3.84539 20.6585 16.2636 11.352 27.6688 15.6811L30.0829 16.5978L30.9213 14.1548Z" fill="#B2CDAC" stroke="white" strokeWidth="5" />
                 </svg>
-                <div onClick={(e) => {
+                {/* <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_22', 'text', texts['text_22'])
-                }} style={{ textAlign: 'center', fontWeight: 600, lineHeight: '100%', letterSpacing: '0%', color: texts['text_22'].text_color, fontSize: texts['text_22'].text_size }}>
+                }} style={{ fontFamily: 'Afacad', textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_22'].text_color, fontSize: texts['text_22'].text_size }}>
                     {texts['text_22'].content}
-                </div>
+                </div> */}
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_23', 'text', texts['text_23'])

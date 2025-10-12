@@ -81,11 +81,11 @@ const SunshineVowTemplate: React.FC = () => {
             backgroundImage: `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.3) 100%),url("${images['image_1'].url}")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            WebkitMaskImage: 'url("/templates/SunshineVow/union.svg")',
+            WebkitMaskImage: 'url("/templates/SunShineVow/union.svg")',
             WebkitMaskRepeat: "no-repeat",
             WebkitMaskSize: "contain",
             WebkitMaskPosition: "center",
-            maskImage: 'url("/templates/SunshineVow/union.svg")',
+            maskImage: 'url("/templates/SunShineVow/union.svg")',
             maskRepeat: "no-repeat",
             maskSize: "contain",
             maskPosition: "center",
@@ -316,59 +316,6 @@ const SunshineVowTemplate: React.FC = () => {
             <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_41', 'text', texts['text_41']) }} content={texts['text_41'].content} className="font-[600] font-plus-jakarta-sans" style={{ color: texts['text_41'].text_color, fontSize: texts['text_41'].text_size }} />
           </div>
         </WeddingBackground>
-      </div>
-
-      {/* Send Wishes Section */}
-      <div className="px-10 py-8">
-        <WeddingText
-          onClick={() => setSelectedComponent('text_42', 'text', texts['text_42'])}
-          content={texts['text_42'].content}
-          className="font-plus-jakarta-sans font-[400] text-center mb-[1rem]" style={{ color: texts['text_42'].text_color, fontSize: texts['text_42'].text_size }}
-        />
-        <WeddingText
-          onClick={() => setSelectedComponent('text_43', 'text', texts['text_43'])}
-          content={texts['text_43'].content}
-          className="w-[70%] mx-auto font-[600] text-center mb-[1rem] font-plus-jakarta-sans" style={{ color: texts['text_43'].text_color, fontSize: texts['text_43'].text_size }}
-        />
-
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div>
-            <input
-              type="text"
-              onClick={() => setSelectedComponent('text_44', 'text', texts['text_44'])}
-              placeholder={texts['text_44'].content}
-              className="w-full bg-[#F3F5F6] font-plus-jakarta-sans font-[600] p-3 rounded-[12px] outline-none" style={{ color: texts['text_44'].text_color, fontSize: texts['text_44'].text_size }}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div>
-            <textarea
-              onClick={() => setSelectedComponent('text_45', 'text', texts['text_45'])}
-              placeholder={texts['text_45'].content}
-              rows={4}
-              className="w-full font-[600] font-plus-jakarta-sans outline-none bg-[#F3F5F6] p-3 rounded-[12px] resize-none" style={{ color: texts['text_45'].text_color, fontSize: texts['text_45'].text_size }}
-              value={wishes}
-              onChange={(e) => setWishes(e.target.value)}
-            />
-          </div>
-          <div>
-            <p onClick={() => setSelectedComponent('text_46', 'text', texts['text_46'])} className="font-[600] mb-3" style={{ color: texts['text_46'].text_color, fontSize: texts['text_46'].text_size }}>{texts['text_46'].content}</p>
-            <div className="flex justify-between gap-[1rem]">
-              <div onClick={() => setAttendance("yes")} className={`cursor-pointer ${attendance === "yes" ? "border-[#D46617] text-[#D46617]" : "text-[#787878]"} hover:text-[#D46617] hover:border-[#D46617] flex flex-1 items-center justify-between px-[1rem] py-[10px] border border-[#D5D7DA] rounded-[12px]`} style={{ fontSize: texts['text_47'].text_size }}>
-                <span onClick={() => setSelectedComponent('text_47', 'text', texts['text_47'])} className="font-plus-jakarta-sans font-[500]">{texts['text_47'].content}</span>
-                {attendance === "yes" && <CheckCircle />}
-              </div>
-              <div onClick={() => setAttendance("no")} className={`cursor-pointer ${attendance === "no" ? "border-[#D46617] text-[#D46617]" : "text-[#787878]"} hover:text-[#D46617] hover:border-[#D46617] flex flex-1 items-center justify-between px-[1rem] py-[10px] border border-[#D5D7DA] rounded-[12px]`} style={{ fontSize: texts['text_48'].text_size }}>
-                <span onClick={() => setSelectedComponent('text_48', 'text', texts['text_48'])} className="font-plus-jakarta-sans font-[500]">{texts['text_48'].content}</span>
-                {attendance === "no" && <CheckCircle />}
-              </div>
-            </div>
-          </div>
-          <button type="submit" onClick={() => setSelectedComponent('text_49', 'text', texts['text_49'])} className={`cursor-pointer w-full font-plus-jakarta-sans ${background_colors['bg_color_6'].border_color === 'none' ? 'border-none' : 'border'} py-3 rounded-lg font-[600]`} style={{ color: texts['text_49'].text_color, fontSize: texts['text_49'].text_size, borderColor: background_colors['bg_color_6'].border_color, backgroundColor: background_colors['bg_color_6'].color }}>
-            {texts['text_49'].content}
-          </button>
-        </form>
       </div>
 
       {/* Gift Giving Section */}
