@@ -16,54 +16,15 @@ import { useAuth } from "@/context/AuthContext";
 import Header from "@/components/wedding/Header";
 
 const templates: TypeTemplate[] = [
-  {
-    id: "sunset_glow",
-    name: 'Sunset Glow',
-    url: "/images/sunset_glow.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 30000,
 
-  },
   {
-    id: "sunshine_vow",
-    name: 'Sunshine Vow',
-    url: "/images/sunshine_vow.png",
+    id: "jade_whisper",
+    name: 'Jade Whisper',
+    url: "/images/jade_whisper.png",
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 30000,
-
-  },
-  {
-    id: "meadow_bliss",
-    name: 'Meadow Bliss',
-    url: "/images/meadow_bliss.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 30000,
-
-  },
-  {
-    id: "emerald_harmony",
-    name: 'Emerald Harmony',
-    url: "/images/emerald_harmony.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 60000,
-
-  },
-  {
-    id: "shining_love",
-    name: 'Shining Love',
-    url: "/images/shining_love.png",
-    is_free: true,
-    image_quantity: 5,
-    theme_color: "yellow",
-    price: 60000,
+    price: 50000,
 
   },
   {
@@ -73,17 +34,57 @@ const templates: TypeTemplate[] = [
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 0,
+    price: 50000,
 
   },
   {
-    id: "jade_whisper",
-    name: 'Jade Whisper',
-    url: "/images/jade_whisper.png",
+    id: "sunset_glow",
+    name: 'Sunset Glow',
+    url: "/images/sunset_glow.png",
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 0,
+    price: 60000,
+
+  },
+  {
+    id: "sunshine_vow",
+    name: 'Sunshine Vow',
+    url: "/images/sunshine_vow.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 60000,
+
+  },
+  {
+    id: "meadow_bliss",
+    name: 'Meadow Bliss',
+    url: "/images/meadow_bliss.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 90000,
+
+  },
+  {
+    id: "emerald_harmony",
+    name: 'Emerald Harmony',
+    url: "/images/emerald_harmony.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 90000,
+
+  },
+  {
+    id: "shining_love",
+    name: 'Shining Love',
+    url: "/images/shining_love.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 80000,
 
   },
   {
@@ -93,7 +94,7 @@ const templates: TypeTemplate[] = [
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 0,
+    price: 90000,
 
   },
   {
@@ -103,7 +104,7 @@ const templates: TypeTemplate[] = [
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 0,
+    price: 50000,
 
   },
   {
@@ -113,7 +114,7 @@ const templates: TypeTemplate[] = [
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 0,
+    price: 90000,
 
   },
   // {
