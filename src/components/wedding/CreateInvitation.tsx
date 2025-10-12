@@ -187,15 +187,15 @@ export default function CreateInvitation() {
           {selectedComponent.id !== null && <div className={`lg:block flex flex-col justify-start items-start gap-2 border-b border-[#E9EAEB] px-[18px] py-[1rem]`}>
             <label className="text-[#4A3B36] text-[14px] font-[600]">Thao tác</label>
             <div className="flex gap-5 w-full">
-              <button disabled className="disabled:opacity-70 w-full bg-[#F5F5F5] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-[#4A3B36]">Xóa bỏ</button>
-              <button onClick={() => {
+              <Button variant="ghost" disabled className="disabled:opacity-70 w-full bg-[#F5F5F5] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-[#4A3B36]">Xóa bỏ</Button>
+              <Button onClick={() => {
                 if (selectedComponent.id !== null) {
                   console.log(selectedComponent.id, selectedComponent.type)
                   resetComponent(selectedComponent.id, selectedComponent.type);
                 } else {
                   resetAllComponent();
                 }
-              }} className="cursor-pointer hover:opacity-70 w-full bg-[#CE6F70] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-white">Mặc định</button>
+              }} className="cursor-pointer hover:opacity-70 w-full bg-[#CE6F70] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-white">Mặc định</Button>
             </div>
           </div>}
 
