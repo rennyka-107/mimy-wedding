@@ -197,33 +197,41 @@ export default function ListTemplatePage() {
               Hãy chọn mẫu thiệp và viết lên lời mời của bạn.
             </span>
           </div>
-          <div className="bg-[#f9f9f9] justify-center rounded-[8px] border border-[#f9f9f9] px-1 md:px-2 py-2 md:py-3 w-fit md:w-auto flex flex-wrap">
-            <span className="px-2 md:px-4 py-2 bg-white rounded-[4px] font-[600] text-[#383637] text-[14px]">Tất cả (3)</span>
-            <span className="px-2 md:px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] text-[#383637]">Thiệp cưới (2)</span>
-            <span className="px-2 md:px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] text-[#383637]">Khác (1)</span>
-          </div>
         </div>
         <div className="flex flex-col md:flex-row md:justify-between pt-6 mx-[50px] gap-4">
           <div className="flex gap-2 w-full ">
             <div className="flex justify-center items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-fit h-fit">
-              <span className="pr-2 font-[600] text-[#383637]">Mức giá</span>
+              <span className="sm:block hidden pr-2 font-[600] text-[#383637]">Loại thiệp</span>
+              <span className="sm:hidden block pr-2 font-[600] text-[#383637]">Loại</span>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 4.5L6 7.5L3 4.5" stroke="#383637" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
             <div className="flex justify-center items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-fit h-fit">
-              <span className="pr-2 font-[600] text-[#383637]">Màu sắc</span>
+              <span className="sm:block hidden pr-2 font-[600] text-[#383637]">Mức giá</span>
+              <span className="sm:hidden block pr-2 font-[600] text-[#383637]">Giá</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 4.5L6 7.5L3 4.5" stroke="#383637" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <div className="flex justify-center items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-fit h-fit">
+              <span className="sm:block hidden pr-2 font-[600] text-[#383637]">Màu sắc</span>
+              <span className="sm:hidden block pr-2 font-[600] text-[#383637]">Màu</span>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 4.5L6 7.5L3 4.5" stroke="#383637" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
           </div>
-          <div className="flex justify-start items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-[400px] h-fit">
+          <div className="flex justify-start items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-[500px] h-fit overflow-hidden">
             <svg className="mr-2" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z" stroke="#383637" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M15.75 15.7498L12.4875 12.4873" stroke="#383637" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="font-[600] text-[#898A85]">Tìm kiếm theo tên thiệp</span>
+            <input
+              type="text"
+              placeholder="Tìm kiếm theo tên thiệp"
+              className="font-montserrat font-[500] text-[#383637] placeholder-[#898A85] rounded-[8px] px-3  outline-none transition-colors duration-200"
+            />
           </div>
         </div>
       </div>

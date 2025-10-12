@@ -2,12 +2,24 @@ import { NextResponse } from "next/server";
 import { orders } from "@/db/schema";
 import { db } from "@/db";
 import { eq, desc } from "drizzle-orm";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/route";
 
 // GET - Lấy danh sách orders hoặc order theo publicUrl
 export async function GET(req: Request) {
   try {
+    // check user
+    const session = await getServerSession(authOptions);
+    const user = session?.user;
+    console.log(session,"session")
+    if (!user) {
+      return NextResponse.json({ 
+        status: "error", 
+        message: "User not found" 
+      }, { status: 404 });
+    }
     const { searchParams } = new URL(req.url);
-    const userId = searchParams.get('userId');
+    const userId = user.id;
     const publicUrl = searchParams.get('publicUrl');
     const id = searchParams.get('id');
     

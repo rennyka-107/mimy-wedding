@@ -23,6 +23,7 @@ import JadeWhisperTemplate from "@/wedding-templates/JadeWhisper.template";
 import { originalSunshineVowState } from "@/states/origin_state/sunshine_vow";
 import Button from "../ui/Button";
 import CloseIcon from "../icons/close";
+import { TemplateId } from "@/types/wedding.type";
 
 export default function CreateInvitation() {
   const searchParams = useSearchParams();
@@ -158,7 +159,7 @@ export default function CreateInvitation() {
   // console.log(selectedComponent, "wtf")
 
   return (
-    <div className="w-full h-full flex flex-col lg:flex-row">
+    <div className="w-full h-full flex flex-col lg:flex-row font-montserrat">
       <div className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
         <div className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
           {renderTemplate}
@@ -192,7 +193,7 @@ export default function CreateInvitation() {
               <Button onClick={() => {
                 if (selectedComponent.id !== null) {
                   console.log(selectedComponent.id, selectedComponent.type)
-                  resetComponent(selectedComponent.id, selectedComponent.type);
+                  resetComponent(selectedComponent.id, selectedComponent.type, templateId as TemplateId);
                 } else {
                   resetAllComponent();
                 }
@@ -228,7 +229,7 @@ export default function CreateInvitation() {
             </div>
           </div>}
           {selectedComponent && selectedComponent.type === 'text' && <div className="flex flex-col gap-2 items-start px-[18px] py-[1rem]">
-            <label className="text-[#4A3B36] text-[14px] font-[600]">Nội dung thay thế</label>
+            <label className="text-[#4A3B36] text-[14px] font-[600] font-montserrat">Nội dung thay thế</label>
             <textarea rows={5} value={(selectedComponent.data as TextItem).content} onChange={(e) => {
               const newContent = e.target.value;
               updateText(selectedComponent.id ?? '', { content: newContent });
@@ -259,7 +260,7 @@ export default function CreateInvitation() {
               className="w-full"
             />
 
-            <div className="mt-4 w-full">
+            {/* <div className="mt-4 w-full">
               <ImageGallery
                 onImageSelect={(url) => {
                   updateImage(selectedComponent.id ?? '', { url: url });
@@ -281,7 +282,7 @@ export default function CreateInvitation() {
                 className="w-full"
                 refreshTrigger={refreshGalleryTrigger}
               />
-            </div>
+            </div> */}
           </div>}
           {selectedComponent && selectedComponent.type === 'background_color' && <div className="flex gap-2 justify-between px-[18px] py-[1rem]">
             <div className="flex flex-col items-start w-[48%] gap-2">
@@ -371,7 +372,7 @@ export default function CreateInvitation() {
             </div>
           </div>}
           {selectedComponent && selectedComponent.type === 'send_gift' && <div className="flex flex-col gap-2 items-start px-[18px] py-[1rem]">
-            <label className="text-[#4A3B36] text-[14px] font-[600]">Nội dung thay thế</label>
+            <label className="text-[#4A3B36] text-[14px] font-[600] font-montserrat">Nội dung thay thế</label>
             <textarea rows={5} value={(selectedComponent.data as SendGiftItem).content} onChange={(e) => {
               const newContent = e.target.value;
               updateSendGift(selectedComponent.id ?? '', { content: newContent });

@@ -1,5 +1,11 @@
 import { create } from 'zustand';
 import { originalSunshineVowState } from '../origin_state/sunshine_vow';
+import { originalOliveHarmonyState } from '../origin_state/olive_harmony';
+import { originalCocoaEmbraceState } from '../origin_state/cocoa_embrace';
+import { originalGoldenBondState } from '../origin_state/golden_bond';
+import { originalForestCharmState } from '../origin_state/forest_charm';
+import { originalJadeWhisperState } from '../origin_state/jade_whisper';
+import { TemplateId } from '@/types/wedding.type';
 
 // Define interfaces for different template elements
 export interface TextItem {
@@ -47,7 +53,7 @@ export interface SendGiftItem {
 // Define the state structure
 export interface TemplateState {
   template: {
-    template_id: 'sunshine_vow' | 'olive_harmony' | 'cocoa_embrace' | 'golden_bond' | 'forest_charm' | 'jade_whisper';
+    template_id: TemplateId;
     template_name: string;
     template_price: number;
     configs: {
@@ -67,7 +73,7 @@ export interface TemplateState {
   };
 
   updateTemplate: (template: {
-    template_id: 'sunshine_vow' | 'olive_harmony' | 'cocoa_embrace' | 'golden_bond' | 'forest_charm' | 'jade_whisper';
+    template_id: TemplateId;
     template_name: string;
     template_price: number;
     configs: {
@@ -82,13 +88,32 @@ export interface TemplateState {
   setSelectedComponent: (id: string | null, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | null) => void;
 
   resetAllComponent: () => void;
-  resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null) => void;
+  resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, template_id: TemplateId) => void;
   // Actions for template elements
   updateText: (id: string, updates: Partial<TextItem>) => void;
   updateImage: (id: string, updates: Partial<ImageItem>) => void;
   updateBackgroundColor: (id: string, updates: Partial<BackgroundColorItem>) => void;
   updateUrlMap: (id: string, updates: Partial<UrlMapItem>) => void;
   updateSendGift: (id: string, updates: Partial<SendGiftItem>) => void;
+}
+
+function getOriginalState(template_id: TemplateId) {
+  switch (template_id) {
+    case 'sunshine_vow':
+      return originalSunshineVowState;
+    case 'olive_harmony':
+      return originalOliveHarmonyState;
+    case 'cocoa_embrace':
+      return originalCocoaEmbraceState;
+    case 'golden_bond':
+      return originalGoldenBondState;
+    case 'forest_charm':
+      return originalForestCharmState;
+    case 'jade_whisper':
+      return originalJadeWhisperState;
+    default:
+      return originalSunshineVowState;
+  }
 }
 
 // Create the store
@@ -111,7 +136,7 @@ const useTemplateStore = create<TemplateState>((set) => ({
   },
   // Initial state - template elements
   updateTemplate: (template: {
-    template_id: 'sunshine_vow' | 'olive_harmony' | 'cocoa_embrace' | 'golden_bond' | 'forest_charm' | 'jade_whisper';
+    template_id: TemplateId;
     template_name: string;
     template_price: number;
     configs: {
@@ -167,7 +192,7 @@ const useTemplateStore = create<TemplateState>((set) => ({
 
   })),
 
-  resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null) => {
+  resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, template_id: TemplateId) => {
     switch (type) {
       case 'text':
         set((state) => ({
@@ -179,14 +204,14 @@ const useTemplateStore = create<TemplateState>((set) => ({
                 ...state.template.configs.texts,
                 [id]: {
                   ...state.template.configs.texts[id],
-                  ...originalSunshineVowState.texts[id]
+                  ...getOriginalState(template_id).texts[id]
                 },
               },
             }
           },
           selectedComponent: {
             ...state.selectedComponent,
-            data: originalSunshineVowState.texts[id]
+            data: getOriginalState(template_id).texts[id]
           }
         }))
         return
@@ -200,14 +225,14 @@ const useTemplateStore = create<TemplateState>((set) => ({
                 ...state.template.configs.images,
                 [id]: {
                   ...state.template.configs.images[id],
-                  ...originalSunshineVowState.images[id]
+                  ...getOriginalState(template_id).images[id]
                 },
               },
             }
           },
           selectedComponent: {
             ...state.selectedComponent,
-            data: originalSunshineVowState.images[id]
+            data: getOriginalState(template_id).images[id]
           }
         }))
         return
@@ -221,14 +246,14 @@ const useTemplateStore = create<TemplateState>((set) => ({
                 ...state.template.configs.background_colors,
                 [id]: {
                   ...state.template.configs.background_colors[id],
-                  ...originalSunshineVowState.background_colors[id]
+                  ...getOriginalState(template_id).background_colors[id]
                 },
               },
             }
           },
           selectedComponent: {
             ...state.selectedComponent,
-            data: originalSunshineVowState.background_colors[id]
+            data: getOriginalState(template_id).background_colors[id]
           }
         }))
         return
@@ -242,14 +267,14 @@ const useTemplateStore = create<TemplateState>((set) => ({
                 ...state.template.configs.url_maps,
                 [id]: {
                   ...state.template.configs.url_maps[id],
-                  ...originalSunshineVowState.url_maps[id]
+                  ...getOriginalState(template_id).url_maps[id]
                 },
               },
             }
           },
           selectedComponent: {
             ...state.selectedComponent,
-            data: originalSunshineVowState.url_maps[id]
+            data: getOriginalState(template_id).url_maps[id]
           }
         }))
         return
@@ -263,14 +288,14 @@ const useTemplateStore = create<TemplateState>((set) => ({
                 ...state.template.configs.send_gifts,
                 [id]: {
                   ...state.template.configs.send_gifts[id],
-                  ...originalSunshineVowState.send_gifts[id]
+                  ...getOriginalState(template_id).send_gifts[id]
                 },
               },
             }
           },
           selectedComponent: {
             ...state.selectedComponent,
-            data: originalSunshineVowState.send_gifts[id]
+            data: getOriginalState(template_id).send_gifts[id]
           }
         }))
         return

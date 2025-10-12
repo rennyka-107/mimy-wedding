@@ -1,0 +1,1 @@
+export type TemplateId = 'sunshine_vow' | 'olive_harmony' | 'cocoa_embrace' | 'golden_bond' | 'forest_charm' | 'jade_whisper';

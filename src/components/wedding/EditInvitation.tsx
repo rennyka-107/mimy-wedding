@@ -116,7 +116,7 @@ export default function EditInvitation() {
 
 
   return (
-    <div className="w-full h-full flex">
+    <div className="w-full h-full flex font-montserrat">
       <div className="w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
         <div className="w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto">
          
@@ -201,7 +201,7 @@ export default function EditInvitation() {
           </div>
         </div>}
         {selectedComponent && selectedComponent.type === 'text' && <div className="flex flex-col gap-2 items-start px-[18px] py-[1rem]">
-          <label className="text-[#4A3B36] text-[14px] font-[600]">Nội dung thay thế</label>
+          <label className="text-[#4A3B36] text-[14px] font-[600] font-montserrat">Nội dung thay thế</label>
           <textarea rows={5} value={(selectedComponent.data as TextItem).content} onChange={(e) => {
             const newContent = e.target.value;
             updateText(selectedComponent.id ?? '', { content: newContent });
@@ -350,7 +350,7 @@ export default function EditInvitation() {
           </div>
         </div>}
         {selectedComponent && selectedComponent.type === 'send_gift' && <div className="flex flex-col gap-2 items-start px-[18px] py-[1rem]">
-          <label className="text-[#4A3B36] text-[14px] font-[600]">Nội dung thay thế</label>
+          <label className="text-[#4A3B36] text-[14px] font-[600] font-montserrat">Nội dung thay thế</label>
           <textarea rows={5} value={(selectedComponent.data as SendGiftItem).content} onChange={(e) => {
             const newContent = e.target.value;
             updateSendGift(selectedComponent.id ?? '', { content: newContent });
@@ -359,12 +359,12 @@ export default function EditInvitation() {
         </div>}
         {selectedComponent && selectedComponent.type === 'send_gift' && <div className="flex flex-col gap-5 items-start px-[18px] py-[1rem]">
           <div className="flex flex-col items-start w-full gap-2">
-            <label className="text-[#4A3B36] text-[14px] font-[600]">Ngân hàng</label>
+            <label className="text-[#4A3B36] text-[14px] font-[600] font-montserrat">Ngân hàng</label>
             <input type="text" value={(selectedComponent.data as SendGiftItem)?.bank_name} onChange={(e) => {
               const newContent = e.target.value;
               updateSendGift(selectedComponent.id ?? '', { bank_name: newContent });
               setSelectedComponent(selectedComponent.id ?? '', 'send_gift', { ...selectedComponent.data as SendGiftItem, bank_name: newContent });
-            }} placeholder="Nhập nội dung" className="bg-[#F5F5F5] w-full rounded-[4px] px-[12px] py-[8px] outline-none text-[#222222]" />
+            }} placeholder="Nhập nội dung" className="bg-[#F5F5F5] w-full rounded-[4px] px-[12px] py-[8px] outline-none text-[#222222 ]" />
           </div>
           <div className="flex flex-col items-start w-full gap-2">
             <label className="text-[#4A3B36] text-[14px] font-[600]">Tên tài khoản</label>

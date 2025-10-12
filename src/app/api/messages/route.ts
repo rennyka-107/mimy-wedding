@@ -6,10 +6,10 @@ import { eq } from 'drizzle-orm';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, phone, content } = body;
+    const { name, email, content } = body;
 
     // Validation
-    if (!name || !email || !phone || !content) {
+    if (!name || !email || !content) {
       return NextResponse.json(
         { error: 'Vui lòng điền đầy đủ thông tin' },
         { status: 400 }
@@ -26,13 +26,13 @@ export async function POST(req: Request) {
     }
 
     // Validate phone number (basic validation)
-    const phoneRegex = /^\d{9,15}$/;
-    if (!phoneRegex.test(phone.replace(/[^0-9]/g, ''))) {
-      return NextResponse.json(
-        { error: 'Số điện thoại không hợp lệ' },
-        { status: 400 }
-      );
-    }
+    // const phoneRegex = /^\d{9,15}$/;
+    // if (!phoneRegex.test(phone.replace(/[^0-9]/g, ''))) {
+    //   return NextResponse.json(
+    //     { error: 'Số điện thoại không hợp lệ' },
+    //     { status: 400 }
+    //   );
+    // }
 
     // Create message in database
     const newMessage = await db
@@ -40,7 +40,6 @@ export async function POST(req: Request) {
       .values({
         name,
         email,
-        phone,
         content,
         status: 'new',
       })

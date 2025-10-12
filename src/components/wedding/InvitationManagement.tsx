@@ -117,6 +117,7 @@ export default function InvitationManagement() {
       }
     })
     .catch(error => {
+      toast.error("Lỗi khi tải danh sách thiệp mời!");
       console.error("Error fetching orders:", error);
     });
   }
