@@ -43,7 +43,7 @@ export default function FrequentlyAskedQuestions() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="w-full py-[96px] px-48"
+            className="w-full py-[96px] lg:px-40 md:px-20 sm:px-10"
         >
             {/* <Image src="/images/cau-hoi-thuong-gap.png" alt="FAQ Icon" width={100} height={100} /> */}
             <motion.label 
@@ -61,7 +61,7 @@ export default function FrequentlyAskedQuestions() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="font-montserrat flex justify-center items-center gap-2 text-[18px] text-[#898A85] mt-5"
+                className="font-montserrat flex justify-center items-center gap-2 lg:text-[18px] md:text-[16px] sm:text-[14px] text-[#898A85] mt-5"
             >
                 Bạn cũng có thể liên hệ với chúng tôi thông qua biểu mẫu bên dưới.
             </motion.p>
@@ -71,7 +71,7 @@ export default function FrequentlyAskedQuestions() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.7 }}
                 viewport={{ once: true }}
-                className="mt-[40px] flex flex-col w-full gap-[16px]"
+                className="mt-[40px] flex flex-col w-full gap-[16px] "
             >
                 {questions.map((q, index) => (
                     <motion.div
@@ -116,13 +116,13 @@ function QuestionItem({
                 transition={{ type: "spring", stiffness: 300 }}
             >
                 <div className="flex items-center gap-[16px]">
-                    <motion.div  className="bg-white p-2 rounded-[50px]"
+                    <motion.div  className="bg-white lg:p-2 p-1 rounded-[50px]"
                         animate={{ rotate: isOpen ? 180 : 0 }} 
                         transition={{ duration: 0.3, type: "spring", stiffness: 200 }}
                     >
                         <ChevronDown />
                     </motion.div>
-                    <h3 className="text-[16px] font-bold text-[#383637]">{question}</h3>
+                    <h3 className="font-bold text-[#383637] lg:text-[16px] sm:text-[14px] text-[14px]">{question}</h3>
                 </div>
 
             </motion.div>
@@ -141,7 +141,7 @@ function QuestionItem({
                                 initial={{ y: -10, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ duration: 0.3, delay: 0.1 }}
-                                className="text-[#383637] font-600 text-[16px]"
+                                className="text-[#383637] font-600 lg:text-[16px] sm:text-[14px] text-[14px]"
                             >
                                 {answer}
                             </motion.p>
@@ -155,7 +155,7 @@ function QuestionItem({
 
 function ChevronDown() {
     return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="lg:w-6 lg:h-6 w-5 h-5" width="0" height="0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 9L12 15L18 9" stroke="#FD8C06" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )

@@ -271,11 +271,10 @@ export default function WeddingPage() {
       </svg>
       <Banner />
       <div className="w-full px-4 sm:px-6 lg:px-[10%]">
-        <TemplateList templates={templates} description={<div className="text-[#898A85] font-montserrat flex justify-center items-center gap-2 text-[18px]">Hãy chọn mẫu thiệp để bắt đầu hành trình thiết kế lời mời  hoàn hảo.
-
+        <TemplateList templates={templates} description={<div className="text-[#898A85] font-montserrat flex justify-center items-center gap-2 text-center flex-wrap lg:flex-nowrap px-4">Hãy chọn mẫu thiệp để bắt đầu hành trình thiết kế lời mời  hoàn hảo.
           <span onClick={() => {
             window.open("/list-template", "_blank");
-          }} className="font-montserrat cursor-pointer font-[600] text-[#FD8C06] text-[18px]"> Xem tất cả
+          }} className="font-montserrat cursor-pointer font-[600] text-[#FD8C06] lg:text-[20px] md:text-[18px] sm:text-[14px]"> Xem tất cả
           </span></div>} />
         <FrequentlyAskedQuestions />
         <Contact />

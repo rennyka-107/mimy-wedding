@@ -101,7 +101,7 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="mt-[16px] text-[#77716F] font-primary font-[500] text-[16px] sm:text-[18px] lg:text-[20px]"
+                className="mt-[16px] text-[#77716F] font-primary font-[500] text-[14px] sm:text-[18px] lg:text-[20px]"
             >
                 {description}
             </motion.div>
