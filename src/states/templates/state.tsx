@@ -79,7 +79,7 @@ export interface TemplateState {
     };
   }) => void;
 
-  setSelectedComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | null) => void;
+  setSelectedComponent: (id: string | null, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | null) => void;
 
   resetAllComponent: () => void;
   resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null) => void;
@@ -145,7 +145,7 @@ const useTemplateStore = create<TemplateState>((set) => ({
     data: null,
   },
 
-  setSelectedComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | null) => set((state) => ({
+  setSelectedComponent: (id: string | null, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | null) => set((state) => ({
     selectedComponent: {
       id,
       type,
