@@ -9,9 +9,10 @@ import { signIn } from "next-auth/react";
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
+  callback?: () => void;
 }
 
-export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
+export default function LoginModal({ isOpen, onClose, callback }: LoginModalProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -97,20 +98,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
   const handleGoogleLogin = async () => {
     try {
-      console.log("wtf")
       signIn("google");
-      // Pass callback to process verified Google user data
-      // await loginWithGoogle((userData: GoogleUserData) => {
-      //   // TODO: Xử lý data từ Google account ở đây
-      //   console.log('Google user data verified:', userData);
-      //   console.log('User ID:', userData.id);
-      //   console.log('User Name:', userData.name);
-      //   console.log('User Email:', userData.email);
-      //   console.log('User Image:', userData.image);
-        
-      //   // Bạn có thể thêm logic xử lý khác tại đây
-      //   // Ví dụ: gọi API để lưu thêm thông tin, cập nhật profile, etc.
-      // });
+      callback && callback();
     } catch (err) {
       setError(JSON.stringify(err) || "Đăng nhập với Google thất bại");
     }
@@ -120,7 +109,6 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          {/* Background overlay */}
           <motion.div 
             className="absolute inset-0 backdrop-blur-[2px] bg-black bg-opacity-5"
             variants={overlayVariants}
@@ -129,7 +117,6 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             exit="exit"
           />
           
-          {/* Modal */}
           <motion.div
             ref={modalRef}
             className="bg-white rounded-lg shadow-xl w-full max-w-md m-4 relative z-10"
@@ -138,7 +125,6 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             animate="visible"
             exit="exit"
           >
-            {/* Close button */}
             <button 
               onClick={onClose}
               className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors"
@@ -149,56 +135,13 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               </svg>
             </button>
             
-            {/* Header */}
-            <div className="px-6 py-6">
+            <div className="px-6 pt-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Đăng nhập</h2>
-              {/* <p className="text-gray-500">Nhập thông tin theo mẫu bên dưới</p> */}
             </div>
-            
-            {/* Form */}
+            <div className="px-6 pb-2 text-[16px] font-[500] text-gray-800 mb-2">
+              Bạn chưa đăng nhập, vui lòng đăng nhập để tạo thiệp
+            </div>
             <form onSubmit={handleLogin} className="px-6 pb-6">
-              {/* <div className="mb-4">
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Tên tài khoản"
-                  className="w-full px-4 py-3 text-black rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
-                  required
-                />
-              </div> */}
-              
-              {/* <div className="mb-3 relative">
-                <div className="relative">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Mật khẩu"
-                    className="w-full px-4 py-3 text-black rounded-md bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent transition-all"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                  >
-                    {showPassword ? "Ẩn" : "Hiện"}
-                  </button>
-                </div>
-                {error && (
-                  <div className="mt-2 text-red-500 text-sm">{error}</div>
-                )}
-              </div> */}
-              
-              {/* Divider */}
-              {/* <div className="flex items-center my-6">
-                <div className="flex-grow border-t border-gray-200"></div>
-                <span className="flex-shrink px-4 text-gray-400">or continue with</span>
-                <div className="flex-grow border-t border-gray-200"></div>
-              </div> */}
-              
-              {/* Google login */}
               <div className="mb-6">
                 <button
                   type="button"
@@ -227,25 +170,6 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                   )}
                 </button>
               </div>
-              
-              {/* Login button */}
-              {/* <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full bg-[#CE6F70] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70] disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {isLoading ? (
-                  <div className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Đang đăng nhập...
-                  </div>
-                ) : (
-                  'Đăng nhập'
-                )}
-              </button> */}
             </form>
           </motion.div>
         </div>
