@@ -43,20 +43,20 @@ export default function Content({
     return (
         <motion.div
             ref={sectionRef}
-            className="w-full py-[64px]"
+            className="w-full py-[64px] font-montserrat"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
         >
-            <motion.div variants={itemVariants}>
+            {/* <motion.div variants={itemVariants}>
                 <Image src="/images/de-lai-loi-nhan.png" alt="FAQ Icon" width={100} height={100} />
-            </motion.div>
+            </motion.div> */}
             <motion.label
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="font-viaoda text-[64px] text-[#CE6F70] font-normal leading-[100%]"
+                className="font-montserrat font-[700] text-[28px] md:text-[36px] lg:text-[40px] text-[#FD8C06] leading-[100%]"
             >
                 {title}
             </motion.label>
@@ -66,19 +66,19 @@ export default function Content({
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="mt-[16px] text-[#77716F] font-primary font-[500] text-[20px]"
+                className="mt-[16px] text-[#898A85] font-primary text-[14px] md:text-[16px] lg:text-[18px]"
             >
                 {description}
             </motion.p>
             {contents.map((content, index) => (
                 <motion.div
-                    className="text-[20px] font-semibold lead-[200%] mt-[36px]"
+                    className="text-[14px] md:text-[16px] lg:text-[18px] font-[500] lead-[200%] mt-[36px]"
                     key={index}
                     variants={itemVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                 >
-                    <label className="text-[#CE6F70]">{content.label}</label>
+                    <label className="text-[#FD8C06]">{content.label}</label>
                     {content.value.map((value, index) => (
                         <p key={index} className="text-[#4A3B36] mt-[16px]">{value}</p>
                     ))}

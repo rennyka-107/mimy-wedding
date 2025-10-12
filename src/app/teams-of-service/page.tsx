@@ -77,8 +77,8 @@ export default function TeamsOfService() {
     return (
         <div className="w-full bg-[#FFFFFF] px-[15%] py-[50px]">
             <Content
-                title="Điều khoản dịch vụ"
-                description="Lần cập nhật gần nhất: 27/08/2025"
+                title="ĐIỀU KHOẢN DỊCH VỤ"
+                description="Lần cập nhật gần nhất: 12/10/2025"
                 contents={contents}
             />
         </div>

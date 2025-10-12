@@ -43,7 +43,7 @@ export default function FrequentlyAskedQuestions() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="w-full py-[96px] xl:px-48 lg:px-24 md:px-20 sm:px-10"
+            className="w-full py-[96px] px-5 xl:px-48 lg:px-24 md:px-20 sm:px-10"
         >
             {/* <Image src="/images/cau-hoi-thuong-gap.png" alt="FAQ Icon" width={100} height={100} /> */}
             <motion.label 
@@ -61,7 +61,7 @@ export default function FrequentlyAskedQuestions() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="font-montserrat flex justify-center items-center gap-2 lg:text-[18px] md:text-[16px] sm:text-[14px] text-[14px] text-[#898A85] mt-5 px-8"
+                className="font-montserrat flex justify-center text-center items-center gap-2 lg:text-[18px] md:text-[16px] sm:text-[14px] text-[14px] text-[#898A85] mt-5 px-8"
             >
                 Bạn cũng có thể liên hệ với chúng tôi thông qua biểu mẫu bên dưới.
             </motion.p>
@@ -71,7 +71,7 @@ export default function FrequentlyAskedQuestions() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.7 }}
                 viewport={{ once: true }}
-                className="mt-[40px] flex flex-col w-full gap-[16px] px-4 "
+                className="mt-[40px] flex flex-col w-full gap-[16px] "
             >
                 {questions.map((q, index) => (
                     <motion.div
