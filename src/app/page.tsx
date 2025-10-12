@@ -263,7 +263,7 @@ export default function WeddingPage() {
         </g>
         <defs>
           <filter id="filter0_f_642_1849" x="-599.5" y="-600.5" width="2640" height="1425.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
             <feGaussianBlur stdDeviation="300" result="effect1_foregroundBlur_642_1849" />
           </filter>
