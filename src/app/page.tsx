@@ -255,7 +255,7 @@ export default function WeddingPage() {
         <Header />
         <div className="absolute inset-0 bg-[#F9F9F9] z-51"></div>
       </div>
-      <svg className="absolute top-0 z-49 w-full h-full" width="1440" height="825" viewBox="0 0 1440 825" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="absolute top-0 z-49 w-full xs:h-[800px] sm:h-full" width="1440" height="825" viewBox="0 0 1440 825" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g opacity="1" filter="url(#filter0_f_642_1849)">
           <path d="M945 -0.49998C945 59.3063 921.242 116.663 878.953 158.953C836.663 201.242 779.306 225 719.5 225C659.694 225 602.337 201.242 560.047 158.953C517.758 116.663 494 59.3064 494 -0.499946L945 -0.49998Z" fill="#FFE6AD" />
           <path d="M1440.5 225C1410.89 225 1381.56 219.167 1354.2 207.835C1326.85 196.502 1301.99 179.892 1281.05 158.953C1260.11 138.013 1243.5 113.154 1232.17 85.7951C1220.83 58.4362 1215 29.1131 1215 -0.5L1440.5 -0.49998V225Z" fill="#FFE6AD" />
@@ -270,7 +270,7 @@ export default function WeddingPage() {
         </defs>
       </svg>
       <Banner />
-      <div className="w-full px-4 sm:px-6 lg:px-[10%]">
+      <div className="w-full px-4 sm:px-6 lg:px-[10%] mt-0">
         <TemplateList templates={templates} description={<div className="text-[#898A85] font-montserrat flex justify-center items-center gap-2 text-center flex-wrap lg:flex-nowrap px-4">Hãy chọn mẫu thiệp để bắt đầu hành trình thiết kế lời mời  hoàn hảo.
           <span onClick={() => {
             window.open("/list-template", "_blank");
