@@ -140,8 +140,24 @@ function TemplateItem({ template, user, setIsLoginModalOpen }: { template: TypeT
                     />
                 </motion.div>
             </motion.div>
-            <div className="font-montserrat w-full text-center mt-[16px] mb-[8px] text-[#383637] text-[14px] sm:text-[16px] lg:text-[18px] font-[600]">
-                {template.name}
+            <div className="relative group w-full">
+                <div
+                    className="font-montserrat text-center mt-[16px] mb-[8px] text-[#383637] 
+               text-[14px] sm:text-[16px] lg:text-[18px] font-[600] truncate 
+               w-full cursor-default"
+                >
+                    {template.name}
+                </div>
+
+                {/* Tooltip */}
+                <div
+                    className="absolute left-1/2 -translate-x-1/2 bottom-full
+                    hidden group-hover:block
+                    bg-[#383637] text-white text-[12px] font-[500]
+                    rounded-md px-3 py-2 whitespace-nowrap z-50"
+                >
+                    {template.name}
+                </div>
             </div>
             <div className="w-full flex-col justify-center items-center gap-[32px] text-[#FD8C06] text-[14px] sm:text-[16px] lg:text-[18px] font-[600]">
                 <div className="flex justify-center items-center gap-[6px]">

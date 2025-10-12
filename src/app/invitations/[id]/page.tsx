@@ -160,7 +160,7 @@ export default function ViewInvitationPage({
     return (
         <Suspense fallback={<div className="w-full h-screen flex items-center justify-center">Loading...</div>}>
             <div className="w-full h-full bg-[#E9EAEB] flex items-center justify-center">
-                <div className="w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
+                <div className="w-[448px] h-[calc(100vh-86px)] bg-white border border-none shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
                     {renderTemplate}
                     <Button
                     className='fixed bottom-[2%] left-1/2 -translate-x-1/2'

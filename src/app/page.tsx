@@ -19,7 +19,7 @@ const templates: TypeTemplate[] = [
 
   {
     id: "jade_whisper",
-    name: 'Jade Whisper',
+    name: 'Thiệp cưới Jade Whisper',
     url: "/images/jade_whisper.png",
     is_free: true,
     image_quantity: 5,
@@ -29,7 +29,7 @@ const templates: TypeTemplate[] = [
   },
   {
     id: "forest_charm",
-    name: 'Forest Charm',
+    name: 'Thiệp cưới Forest Charm',
     url: "/images/forest_charm.png",
     is_free: true,
     image_quantity: 5,
@@ -39,7 +39,7 @@ const templates: TypeTemplate[] = [
   },
   {
     id: "sunset_glow",
-    name: 'Sunset Glow',
+    name: 'Thiệp cưới Sunset Glow',
     url: "/images/sunset_glow.png",
     is_free: true,
     image_quantity: 5,
@@ -49,7 +49,7 @@ const templates: TypeTemplate[] = [
   },
   {
     id: "sunshine_vow",
-    name: 'Sunshine Vow',
+    name: 'Thiệp cưới Sunshine Vow',
     url: "/images/sunshine_vow.png",
     is_free: true,
     image_quantity: 5,
@@ -59,7 +59,7 @@ const templates: TypeTemplate[] = [
   },
   {
     id: "meadow_bliss",
-    name: 'Meadow Bliss',
+    name: 'Thiệp cưới Meadow Bliss',
     url: "/images/meadow_bliss.png",
     is_free: true,
     image_quantity: 5,
@@ -69,7 +69,7 @@ const templates: TypeTemplate[] = [
   },
   {
     id: "emerald_harmony",
-    name: 'Emerald Harmony',
+    name: 'Thiệp cưới Emerald Harmony',
     url: "/images/emerald_harmony.png",
     is_free: true,
     image_quantity: 5,
@@ -79,7 +79,7 @@ const templates: TypeTemplate[] = [
   },
   {
     id: "shining_love",
-    name: 'Shining Love',
+    name: 'Thiệp cưới Shining Love',
     url: "/images/shining_love.png",
     is_free: true,
     image_quantity: 5,
@@ -89,7 +89,7 @@ const templates: TypeTemplate[] = [
   },
   {
     id: "olive_serenity",
-    name: 'Olive Serenity',
+    name: 'Thiệp cưới Olive Serenity',
     url: "/images/olive_serenity.png",
     is_free: true,
     image_quantity: 5,
@@ -99,7 +99,7 @@ const templates: TypeTemplate[] = [
   },
   {
     id: "peach_promise",
-    name: 'Peach Promise',
+    name: 'Thiệp cưới Peach Promise',
     url: "/images/peach_promise.png",
     is_free: true,
     image_quantity: 5,
@@ -109,7 +109,7 @@ const templates: TypeTemplate[] = [
   },
   {
     id: "ocean_embrace",
-    name: 'Ocean Embrace',
+    name: 'Thiệp cưới Ocean Embrace',
     url: "/images/ocean_embrace.png",
     is_free: true,
     image_quantity: 5,

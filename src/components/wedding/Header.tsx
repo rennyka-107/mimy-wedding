@@ -85,7 +85,7 @@ export default function Header() {
           {/* Right Navigation - Hidden on mobile */}
           <div className="hidden md:flex items-center w-full justify-between ">
             <nav className="flex items-center gap-[40px] px-[54px] py-[21px] text-[16px]">
-              <NavItem href="/"> <div className="md:text-[14px] lg:text-[16px] whitespace-nowrap font-[800] text-[#FFBB53]">Trang chủ</div> </NavItem>
+              <NavItem href="/"> <div className="md:text-[14px] lg:text-[16px] whitespace-nowrap font-[700] text-[#FFBB53]">Trang chủ</div> </NavItem>
               <NavItem href="/list-template"><div className="md:text-[14px] lg:text-[16px] whitespace-nowrap font-[600] text-[#383637]">Mẫu thiệp</div></NavItem>
               {/* <NavItem href="/custom-template"><div className="text-[16px] font-[600] text-[#383637]">Thiết kế riêng</div></NavItem>
               <NavItem href="/contact"><div className="text-[16px] font-[600] text-[#383637]">Liên hệ</div></NavItem> */}
