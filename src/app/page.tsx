@@ -262,7 +262,7 @@ export default function WeddingPage() {
           <path d="M226 -0.49998C226 29.1131 220.167 58.4362 208.835 85.7951C197.502 113.154 180.892 138.013 159.953 158.953C139.013 179.892 114.154 196.502 86.7951 207.835C59.4362 219.167 30.1131 225 0.5 225L0.50001 -0.49998H226Z" fill="#FFE6AD" />
         </g>
         <defs>
-          <filter id="filter0_f_642_1849" x="-599.5" y="-600.5" width="2640" height="1425.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <filter id="filter0_f_642_1849" x="-599.5" y="-600.5" width="2640" height="1425.5" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
             <feGaussianBlur stdDeviation="300" result="effect1_foregroundBlur_642_1849" />

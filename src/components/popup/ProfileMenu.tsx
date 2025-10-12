@@ -104,7 +104,7 @@ export default function ProfileMenu({
       {isOpen && (
         <motion.div
           ref={menuRef}
-          className="absolute top-16 right-4 w-64 bg-white rounded-lg shadow-lg border border-gray-100 z-[9999]"
+          className="absolute top-[110%] right-0 w-64 bg-white rounded-lg shadow-lg border border-gray-100 z-[9999]"
           variants={menuVariants}
           initial="hidden"
           animate="visible"

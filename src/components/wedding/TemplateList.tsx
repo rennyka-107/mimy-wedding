@@ -1,17 +1,10 @@
 "use client";
-import Image from "next/image";
-import GrayButton from "../buttons/gray";
-import ArrowDown from "../icons/arrow_down";
-import Trash from "../icons/trash";
-import BaseButton from "../buttons/base";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import ImageQuantityFilter from "../popup/ImageQuantityFilter";
-import ThemeColorFilter from "../popup/ThemeColorFilter";
-import Fire from "../icons/fire";
-import ArrowRight from "../icons/arrow_right";
 import { useRouter } from "next/navigation";
 import Button from "../ui/Button";
+import { useAuth } from "@/context/AuthContext";
+import LoginModal from "../popup/LoginModal";
 
 export type TypeTemplate = {
     id: string;
@@ -40,9 +33,9 @@ const staggerContainer = {
 };
 
 export default function TemplateList({ title = "mẫu thiệp.", description = "Hãy chọn mẫu thiệp và viết nên câu chuyện của bạn.", displayPagination = false, templates = [] }: { title?: string; description?: string | React.ReactNode; displayPagination?: boolean; templates?: TypeTemplate[] }) {
-    const [isImageFilterOpen, setIsImageFilterOpen] = useState(false);
-    const [isColorFilterOpen, setIsColorFilterOpen] = useState(false);
 
+    const { user } = useAuth();
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     // State for storing filter values
     const [selectedImageRange, setSelectedImageRange] = useState<string | null>(null);
     const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -85,27 +78,6 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
             viewport={{ once: true, margin: "-100px" }}
             className="w-full"
         >
-            {/* <Image src="/images/mau-thiep.png" alt="Template List" width={100} height={100} /> */}
-            {/* <motion.label
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="text-[#383637] flex w-full justify-center pt-0 sm:pt-24 font-montserrat-alter font-[700] text-[36px] mt-0 sm:mt-10 md:mt-25 lg:mt-35 xl:mt-10 sm:text-[44px] lg:text-[46px] leading-[100%]"
-            >
-                {title}
-            </motion.label>
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                viewport={{ once: true }}
-                className="mt-[16px] text-[#77716F] font-primary font-[500] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]"
-            >
-                {description}
-            </motion.div> */}
-
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -113,56 +85,6 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
                 viewport={{ once: true }}
                 className="mt-[16px] flex flex-wrap items-center justify-start w-full gap-[8px] sm:gap-[12px] lg:gap-[16px]"
             >
-                {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <GrayButton isActive={isFree === true} onClick={() => {
-                        if (isFree !== true) {
-                            setIsFree(true);
-                        } else {
-                            setIsFree(null);
-                        }
-                    }} title="Miễn phí" />
-                </motion.div> */}
-                {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <GrayButton isActive={isFree === false} onClick={() => {
-                        if (isFree !== false) {
-                            setIsFree(false);
-                        } else {
-                            setIsFree(null);
-                        }
-                        setIsColorFilterOpen(false);
-                    }} title="Trả phí" />
-                </motion.div> */}
-                {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <GrayButton isActive={selectedImageRange !== null} title="Số lượng ảnh" suffixIcon={<ArrowDown fill={selectedImageRange !== null ? "#CE6F70" : "#585858"} />} onClick={() => setIsImageFilterOpen(true)} />
-                </motion.div> */}
-                {/* <ImageQuantityFilter
-                    isOpen={isImageFilterOpen}
-                    onClose={() => setIsImageFilterOpen(false)}
-                    onApply={(range, customValue) => {
-                        setSelectedImageRange(range);
-                        console.log("Selected image range:", range, customValue);
-                        // Apply your filtering logic here
-                    }}
-                /> */}
-                {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <GrayButton isActive={selectedColor !== null} title="Màu chủ đạo" suffixIcon={<ArrowDown fill={selectedColor !== null ? "#CE6F70" : "#585858"} />} onClick={() => setIsColorFilterOpen(true)} />
-                </motion.div> */}
-                {/* <ThemeColorFilter
-                    isOpen={isColorFilterOpen}
-                    onClose={() => setIsColorFilterOpen(false)}
-                    onApply={(color) => {
-                        setSelectedColor(color);
-                        console.log("Selected color:", color);
-                        // Apply your filtering logic here
-                    }}
-                />
-                {(selectedImageRange !== null || selectedColor !== null || isFree !== null) && <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <GrayButton prefixIcon={<Trash />} onClick={() => {
-                        setSelectedImageRange(null);
-                        setSelectedColor(null);
-                        setIsFree(null);
-                    }} title={`(${filteredTemplates.length})`} />
-                </motion.div>} */}
             </motion.div>
 
             <motion.div
@@ -173,50 +95,18 @@ export default function TemplateList({ title = "mẫu thiệp.", description = "
                 className="w-full mt-[16px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-12 px-12"
             >
                 {filteredTemplates.map((template, index) => (
-                    <div
-                        key={index}
-                    // variants={fadeInUp}
-                    // custom={index}
-                    // transition={{ duration: 0.5, delay: 0.1 * (index % 5) }}
-                    >
-                        <TemplateItem template={template} />
+                    <div key={index}                    >
+                        <TemplateItem user={user} setIsLoginModalOpen={setIsLoginModalOpen} template={template} />
                     </div>
                 ))}
             </motion.div>
 
-            {/* {displayPagination && (
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    viewport={{ once: true }}
-                    className="mt-[36px] gap-[16px] flex items-center justify-center"
-                >
-                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                        <BaseButton title="1" />
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                        <GrayButton title="2" />
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                        <GrayButton title="3" />
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                        <GrayButton title="4" />
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                        <GrayButton title="5" />
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                        <GrayButton title=">" />
-                    </motion.div>
-                </motion.div>
-            )} */}
+            <CheckLoginModal isLoginModalOpen={isLoginModalOpen} handleCloseLoginModal={() => setIsLoginModalOpen(false)} />
         </motion.div>
     )
 }
 
-function TemplateItem({ template }: { template: TypeTemplate }) {
+function TemplateItem({ template, user, setIsLoginModalOpen }: { template: TypeTemplate, user: { id: string, name: string, email: string, phone: string } | null, setIsLoginModalOpen: (open: boolean) => void }) {
     const router = useRouter();
     function formatCurrency(value: number) {
         return new Intl.NumberFormat("vi-VN").format(value);
@@ -258,10 +148,15 @@ function TemplateItem({ template }: { template: TypeTemplate }) {
                     {formatCurrency(template.price)} (đ)
                 </div>
                 <div className="cursor-pointer mt-4" onClick={() => {
-                    router.push(`/invitations/create?template_id=${template.id}`);
+                    if (user) {
+                        router.push(`/invitations/create?template_id=${template.id}`);
+                    } else {
+                        setIsLoginModalOpen(true);
+                    }
                 }}>
                     <Button className="w-full"
                         variant="primary"
+                        
                     >
                         <span className=" font-[500] text-[14px] mr-2">Tạo thiệp</span>
                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -273,4 +168,12 @@ function TemplateItem({ template }: { template: TypeTemplate }) {
             </div>
         </motion.div>
     )
+}
+
+function CheckLoginModal({ isLoginModalOpen, handleCloseLoginModal }: { isLoginModalOpen: boolean, handleCloseLoginModal: () => void }) {
+    return <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={handleCloseLoginModal}
+        callback={handleCloseLoginModal}
+    />
 }
