@@ -32,20 +32,18 @@ export default function Banner() {
             <div className="w-full h-[311px] absolute top-0 left-1/2 -translate-x-1/2 bg-[#f9f9f9] inset-0">
                 <img className="absolute top-0 left-1/2 -translate-x-1/2" src="./images/star-home.png" alt="star-home" />
             </div>
-
-
             <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 style={{ y: y1 }}
                 transition={{ duration: 0.7 }}
-                className="absolute top-[320px] sm:top-[320px] lg:top-[320px] left-1/2 -translate-x-1/2 w-full"
+                className="absolute top-[320px] sm:top-[320px] lg:top-[320px] left-1/2 -translate-x-1/2 w-full z-49"
             >
-                <p className="text-[#383637] px-8 font-montserrat-alter font-[700] text-[40px] sm:text-[44px] lg:text-[48px]  leading-[100%] z-10 text-center w-full pb-2"
+                <p className="text-[#383637] px-8 font-montserrat-alter font-[700] text-[40px] sm:text-[44px] lg:text-[48px] leading-[100%] z-10 text-center w-full pb-2"
                 > bởi vì mỗi tấm thiệp nói lên </p>
                 <p className="text-[#FFBB53] px-8 font-montserrat-alter font-[700] text-[40px] sm:text-[44px] lg:text-[48px] leading-[100%] z-10 text-center w-full pb-4"
                 > một câu chuyện riêng </p>
-                <p className="text-[#898A85] px-10 font-montserrat-alter font-[400] text-[14px] sm:text-[16px] lg:text-[18px]  leading-[100%] z-10 text-center w-full pb-8 "
+                <p className="text-[#898A85] px-10 font-montserrat-alter font-[400] text-[14px] sm:text-[16px] lg:text-[18px] leading-[100%] z-10 text-center w-full pb-8 "
                 > Cùng chúng mình tạo và gửi những tấm thiệp cá nhân cho mọi dịp — ngay lập tức, đẹp mắt và đầy tình yêu. </p>
                 <div className="w-full flex justify-center ">
                     <Button
