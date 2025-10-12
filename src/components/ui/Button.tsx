@@ -12,7 +12,7 @@ const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
     "text-[14px] text-white font-[500] !rounded-[6px] bg-gradient-to-r from-[#FFBB53] to-[#FD8C06] hover:bg-[#E07000]",
   secondary:
-    "bg-black/5 dark:bg-white/10 text-foreground !rounded-[6px] hover:bg-black/10 dark:hover:bg-white/15 focus:ring-foreground/30",
+    "bg-black/5 dark:bg-white/10 text-foreground !rounded-[6px] hover:bg-black/10 dark:hover:bg-white/15 ",
   ghost: "bg-[#EAEAEA] text-[#383637] !rounded-[6px] hover:bg-[#D2D2D2] dark:hover:bg-white/10",
 };
 
