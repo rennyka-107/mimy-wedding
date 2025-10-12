@@ -213,7 +213,7 @@ function ComingSoon() {
                 }}
             />
             <motion.div
-                className="absolute bottom-20 right-10 w-72 h-72 rounded-full bg-gradient-to-br from-[#CE6F70]/20 to-[#FF9999]/10 blur-3xl"
+                className="absolute bottom-20 right-10 w-72 h-72 rounded-full bg-gradient-to-br from-[#fd8c06]/20 to-[#FF9999]/10 blur-3xl"
                 animate={{
                     scale: [1.2, 1, 1.2],
                     opacity: [0.4, 0.6, 0.4],
@@ -225,7 +225,7 @@ function ComingSoon() {
                 }}
             />
             <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-[#FFBB53]/10 to-[#CE6F70]/10 blur-3xl"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-[#FFBB53]/10 to-[#fd8c06]/10 blur-3xl"
                 animate={{
                     scale: [1, 1.3, 1],
                     rotate: [0, 180, 360],
@@ -277,7 +277,7 @@ function ComingSoon() {
                                 <linearGradient id="gradient" x1="5" y1="5" x2="75" y2="75">
                                     <stop offset="0%" stopColor="#FFBB53" />
                                     <stop offset="50%" stopColor="#FD8C06" />
-                                    <stop offset="100%" stopColor="#CE6F70" />
+                                    <stop offset="100%" stopColor="#fd8c06" />
                                 </linearGradient>
                             </defs>
                         </svg>
@@ -286,7 +286,7 @@ function ComingSoon() {
 
                 {/* Title */}
                 <motion.h1
-                    className="font-montserrat-alter font-bold text-5xl md:text-6xl mb-4 bg-gradient-to-r from-[#FFBB53] via-[#FD8C06] to-[#CE6F70] bg-clip-text text-transparent"
+                    className="font-montserrat-alter font-bold text-5xl md:text-6xl mb-4 bg-gradient-to-r from-[#FFBB53] via-[#FD8C06] to-[#fd8c06] bg-clip-text text-transparent"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
@@ -343,7 +343,7 @@ function ComingSoon() {
                         }}
                     >
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CE6F70" fillOpacity="0.3" />
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#fd8c06" fillOpacity="0.3" />
                         </svg>
                     </motion.div>
                 </div>

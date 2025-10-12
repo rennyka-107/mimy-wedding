@@ -27,7 +27,7 @@ export default function AuthCallbackPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50">
       <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#CE6F70] mx-auto mb-4"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fd8c06] mx-auto mb-4"></div>
         <p className="text-gray-600">Đang xử lý đăng nhập...</p>
         {status === "authenticated" && (
           <p className="text-green-600 mt-2">Đăng nhập thành công!</p>

@@ -97,7 +97,7 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
                 </button>
                 <button
                   onClick={handleConfirm}
-                  className="flex-1 px-6 py-3 bg-[#CE6F70] hover:bg-[#B85F60] text-white rounded-lg font-medium transition-colors"
+                  className="flex-1 px-6 py-3 bg-[#fd8c06] hover:bg-[#B85F60] text-white rounded-lg font-medium transition-colors"
                 >
                   Xóa thiệp
                 </button>

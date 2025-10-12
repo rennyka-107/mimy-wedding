@@ -119,7 +119,7 @@ export default function ProfileMenu({
               {menuItems.map((item,idx) => (
                 <li key={item.id} className="px-1">
                   <Link href={item.href} 
-                    className="flex items-center px-3 py-2 text-[#4A3B36] hover:bg-[#FAE4E4] hover:text-[#CE6F70] rounded-md transition-colors"
+                    className="flex items-center px-3 py-2 text-[#4A3B36] hover:bg-[#FAE4E4] hover:text-[#fd8c06] rounded-md transition-colors"
                     onClick={(e) => {
                       if (item.id === 'logout') {
                         e.preventDefault();

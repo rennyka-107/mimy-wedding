@@ -323,7 +323,7 @@ export default function PublishInvitationModal({
               <div className="px-6 pb-6">
                 <button
                   onClick={handleSubmit}
-                  className="cursor-pointer w-full py-3 rounded-lg focus:outline-none bg-[#CE6F70] text-white hover:bg-[#B85F60] transition-colors"
+                  className="cursor-pointer w-full py-3 rounded-lg focus:outline-none bg-[#fd8c06] text-white hover:bg-[#E07000] transition-colors"
                 >
                   Xác nhận và tiến hành thanh toán
                 </button>

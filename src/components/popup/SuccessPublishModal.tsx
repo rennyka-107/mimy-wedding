@@ -96,11 +96,11 @@ const SuccessPublishModal: React.FC<SuccessPublishModalProps> = ({
                   Bạn đã tạo thiệp thành công.
                 </p>
                 <p className="text-[#A4A7AE]">
-                  Thiệp của bạn có hiệu lực từ ngày <span className="font-[600] text-[#CE6F70]">{publicStart}</span> đến ngày <span className="font-[600] text-[#CE6F70]">{publicEnd}</span>.
+                  Thiệp của bạn có hiệu lực từ ngày <span className="font-[600] text-[#fd8c06]">{publicStart}</span> đến ngày <span className="font-[600] text-[#fd8c06]">{publicEnd}</span>.
                 </p>
                 <p className="text-[#A4A7AE]">
                   Hãy truy cập
-                  <span className="font-[600] text-[#CE6F70]"> {publicUrl} </span>
+                  <span className="font-[600] text-[#fd8c06]"> {publicUrl} </span>
                   để xem ngay thiệp cưới của bạn nhé!
                 </p>
                 <p className="text-[#A4A7AE] font-medium">
@@ -111,7 +111,7 @@ const SuccessPublishModal: React.FC<SuccessPublishModalProps> = ({
               {/* Action button */}
               <button
                 onClick={handleViewInvitation}
-                className="w-full bg-[#CE6F70] hover:bg-[#CE6F70] text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full bg-[#fd8c06] hover:bg-[#fd8c06] text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 Xem thiệp ngay
               </button>

@@ -193,7 +193,7 @@ export default function ServiceRegistrationModal({
                         id={service.id}
                         checked={isSelected}
                         onChange={() => toggleService(service.id)}
-                        className={`w-5 h-5 ${isSelected ? "text-[#CE6F70]" : "text-gray-400"} border-gray-300 rounded focus:ring-[#CE6F70]`}
+                        className={`w-5 h-5 ${isSelected ? "text-[#fd8c06]" : "text-gray-400"} border-gray-300 rounded focus:ring-[#fd8c06]`}
                       />
                       <div className="ml-3 flex-1">
                         <label htmlFor={service.id} className="text-[#4A3B36] font-[500] cursor-pointer">
@@ -227,7 +227,7 @@ export default function ServiceRegistrationModal({
                                 onChange={(e) => updateServiceValue(service.id, parseInt(e.target.value) || 1)}
                                 min="1"
                                 placeholder={service.inputPlaceholder || "Nhập số lượng"}
-                                className="px-4 py-2 text-[#4A3B36] bg-white border border-gray-300 rounded-md w-40 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent"
+                                className="px-4 py-2 text-[#4A3B36] bg-white border border-gray-300 rounded-md w-40 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent"
                               />
                               <span className="ml-2 text-[#4A3B36]">(tháng)</span>
                             </div>
@@ -247,7 +247,7 @@ export default function ServiceRegistrationModal({
                                 onChange={(e) => updateServiceValue(service.id, parseInt(e.target.value) || 1)}
                                 min="1"
                                 placeholder={service.inputPlaceholder || "Nhập số lượng"}
-                                className="px-4 py-2 text-[#4A3B36] bg-white border border-gray-300 rounded-md w-40 focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent"
+                                className="px-4 py-2 text-[#4A3B36] bg-white border border-gray-300 rounded-md w-40 focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent"
                               />
                               <span className="ml-2 text-[#4A3B36]">(ảnh)</span>
                             </div>
@@ -274,7 +274,7 @@ export default function ServiceRegistrationModal({
             <div className="px-6 pb-6">
               <button
                 onClick={handleSubmit}
-                className="w-full bg-[#CE6F70] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70]"
+                className="w-full bg-[#fd8c06] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fd8c06]"
                 disabled={selectedServices.length === 0}
               >
                 Thanh toán ngay

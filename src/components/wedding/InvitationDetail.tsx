@@ -90,11 +90,11 @@ export default function InvitationDetail() {
             className="mr-4"
           />
           <div className="w-full flex items-center justify-between">
-            <h1 className="font-viaoda mt-[12px] text-[64px] text-[#CE6F70] font-normal leading-[100%]">
+            <h1 className="font-viaoda mt-[12px] text-[64px] text-[#fd8c06] font-normal leading-[100%]">
               Chi tiết thiệp cưới
             </h1>
             <Link href="/invitations">
-              <button className="flex items-center px-4 py-2 border border-[#CE6F70] rounded-md text-[#CE6F70] hover:bg-[#FAE7E7] transition-colors">
+              <button className="flex items-center px-4 py-2 border border-[#fd8c06] rounded-md text-[#fd8c06] hover:bg-[#FAE7E7] transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
                   <path d="M19 12H5M12 19l-7-7 7-7" />
                 </svg>
@@ -108,7 +108,7 @@ export default function InvitationDetail() {
 
       {/* Invoice Information */}
       <motion.div className="mb-8" variants={itemVariants}>
-        <h2 className="text-[#CE6F70] text-[24px] font-[600] mb-4">Thông tin hóa đơn</h2>
+        <h2 className="text-[#fd8c06] text-[24px] font-[600] mb-4">Thông tin hóa đơn</h2>
         <div className="grid grid-cols-2 gap-6">
           <div>
             <p className="text-[#4A3B36] font-[600] text-[18px] mb-2">Mã hóa đơn</p>
@@ -131,7 +131,7 @@ export default function InvitationDetail() {
 
       {/* Customer Information */}
       <motion.div className="mb-8" variants={itemVariants}>
-        <h2 className="text-[#CE6F70] text-[24px] font-[600] mb-4">Thông tin khách hàng</h2>
+        <h2 className="text-[#fd8c06] text-[24px] font-[600] mb-4">Thông tin khách hàng</h2>
         <div className="grid grid-cols-3 gap-6">
           <div>
             <p className="text-[#4A3B36] font-[600] text-[18px] mb-2">Tên khách hàng</p>
@@ -150,7 +150,7 @@ export default function InvitationDetail() {
 
       {/* Services */}
       <motion.div className="mt-6" variants={itemVariants}>
-        <h2 className="text-xl font-medium text-[#CE6F70]">Dịch vụ đăng ký</h2>
+        <h2 className="text-xl font-medium text-[#fd8c06]">Dịch vụ đăng ký</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full border border-[#E9EAEB]">
             <thead>
@@ -163,7 +163,7 @@ export default function InvitationDetail() {
             </thead>
             <tbody>
               {invitationData.services.map((service, index) => (
-                <tr key={index} className="px-[20px] py-[10px] text-left cursor-pointer text-[#CE6F70] font-[600]">
+                <tr key={index} className="px-[20px] py-[10px] text-left cursor-pointer text-[#fd8c06] font-[600]">
                   <td className="px-[20px] py-[10px] text-left text-[#4A3B36] font-[600]">{service.name}</td>
                   <td className="px-[20px] py-[10px] text-right text-[#4A3B36] font-[600]">{service.price.toLocaleString()}</td>
                   <td className="px-[20px] py-[10px] text-center text-[#4A3B36] font-[600]">{service.startDate}</td>
@@ -179,7 +179,7 @@ export default function InvitationDetail() {
       <motion.div className="mt-[2rem]" variants={itemVariants}>
         <div className="flex justify-between items-center border-b border-[#E9EAEB]">
           <div>
-            <h2 className="text-[#CE6F70] text-[24px] font-[600] mb-4">Thành tiền</h2>
+            <h2 className="text-[#fd8c06] text-[24px] font-[600] mb-4">Thành tiền</h2>
             <p className="text-sm text-gray-500 mb-4">
               Đơn vị: VNĐ. Nếu có phương thức thanh toán sử dụng đơn vị khác, sẽ được ghi rõ bên cạnh.
             </p>

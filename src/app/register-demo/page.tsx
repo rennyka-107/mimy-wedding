@@ -21,7 +21,7 @@ export default function RegisterDemo() {
         <div className="flex justify-center">
           <button
             onClick={openModal}
-            className="px-6 py-3 bg-[#CE6F70] text-white rounded-md hover:bg-[#B85F60] transition-colors"
+            className="px-6 py-3 bg-[#fd8c06] text-white rounded-md hover:bg-[#B85F60] transition-colors"
           >
             Mở popup đăng ký
           </button>

@@ -195,7 +195,7 @@ export default function QRPaymentModal({
               <div className="px-6 pb-6">
                 <button
                   onClick={handlePaymentConfirmed}
-                  className="cursor-pointer w-full bg-[#B85F60] text-white py-3 rounded-md hover:bg-[#B85F60] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CE6F70] border border-[#D5D7DA]"
+                  className="cursor-pointer w-full bg-[#fd8c06] text-white py-3 rounded-md hover:bg-[#E07000] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#fd8c06] border border-[#D5D7DA]"
                 >
                   Xác nhận đã thanh toán
                 </button>

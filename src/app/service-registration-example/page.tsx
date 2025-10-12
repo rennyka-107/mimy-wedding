@@ -59,7 +59,7 @@ export default function ServiceRegistrationExample() {
       
       <button
         onClick={() => setIsModalOpen(true)}
-        className="px-4 py-2 bg-[#CE6F70] text-white rounded-md w-fit"
+        className="px-4 py-2 bg-[#fd8c06] text-white rounded-md w-fit"
       >
         Đăng ký dịch vụ
       </button>

@@ -45,7 +45,7 @@ export default function PaymentFlowExample() {
       
       <button
         onClick={() => setIsModalOpen(true)}
-        className="px-4 py-2 bg-[#CE6F70] text-white rounded-md w-fit mt-4"
+        className="px-4 py-2 bg-[#fd8c06] text-white rounded-md w-fit mt-4"
       >
         Đăng ký dịch vụ
       </button>

@@ -144,7 +144,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload, onImageUploadU
       {/* Vùng kéo thả ảnh - luôn hiển thị */}
       <div 
         className={`flex flex-col items-center justify-center border border-dashed rounded-md p-6 cursor-pointer mb-4
-          ${isDragging ? 'border-[#CE6F70] bg-[#FFF9F9]' : isUploading ? 'border-[#F0F0F0] bg-[#FAFAFA]' : 'border-[#D9D9D9] bg-white'}`}
+          ${isDragging ? 'border-[#fd8c06] bg-[#FFF9F9]' : isUploading ? 'border-[#F0F0F0] bg-[#FAFAFA]' : 'border-[#D9D9D9] bg-white'}`}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
         onDragOver={handleDragOver}
@@ -154,7 +154,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload, onImageUploadU
         <div className="flex flex-col items-center justify-center">
           {isUploading ? (
             <>
-              <div className="w-6 h-6 border-2 border-[#CE6F70] border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-6 h-6 border-2 border-[#fd8c06] border-t-transparent rounded-full animate-spin"></div>
               <p className="text-center text-[#757575] text-[15px] mt-4 font-normal">
                 Đang tải ảnh lên...
               </p>
@@ -166,10 +166,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload, onImageUploadU
                 <path d="M7.75 10.25L12 6L16.25 10.25" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               <p className="text-center text-[#757575] text-[15px] mt-4 font-normal">
-                Kéo thả hoặc nhấn vào <span className="text-[#CE6F70] font-medium">đây</span> để tải ảnh lên
+                Kéo thả hoặc nhấn vào <span className="text-[#fd8c06] font-medium">đây</span> để tải ảnh lên
               </p>
               {uploadError && (
-                <p className="text-center text-[#CE6F70] text-[13px] mt-2">
+                <p className="text-center text-[#fd8c06] text-[13px] mt-2">
                   Lỗi: {uploadError}
                 </p>
               )}
@@ -193,8 +193,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload, onImageUploadU
             className="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md hover:bg-gray-100"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 6L6 18" stroke="#CE6F70" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M6 6L18 18" stroke="#CE6F70" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M18 6L6 18" stroke="#fd8c06" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M6 6L18 18" stroke="#fd8c06" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button> */}
         </div>

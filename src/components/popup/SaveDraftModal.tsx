@@ -76,7 +76,7 @@ const SaveDraftModal: React.FC<SaveDraftModalProps> = ({
               {/* Action button */}
               <button
                 onClick={onClose}
-                className="w-full bg-[#CE6F70] hover:bg-[#B85F60] text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full bg-[#fd8c06] hover:bg-[#B85F60] text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 Đã hiểu
               </button>

@@ -339,11 +339,11 @@ export default function InvitationManagement() {
         <div className="bg-white rounded-lg p-6 shadow-sm border">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-2xl font-bold text-[#CE6F70] mb-1">{stats.totalInvitations}</div>
+              <div className="text-2xl font-bold text-[#fd8c06] mb-1">{stats.totalInvitations}</div>
               <div className="text-sm text-gray-600">Thiệp đã tạo</div>
             </div>
-            <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
-              <svg className="w-5 h-5 text-[#CE6F70]" fill="currentColor" viewBox="0 0 20 20">
+            <div className="w-10 h-10 bg-[#FFF8E6] rounded-full flex items-center justify-center">
+              <svg className="w-5 h-5 text-[#fd8c06]" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
               </svg>
             </div>
@@ -353,11 +353,11 @@ export default function InvitationManagement() {
         <div className="bg-white rounded-lg p-6 shadow-sm border">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-2xl font-bold text-[#CE6F70] mb-1">{stats.totalWishes}</div>
+              <div className="text-2xl font-bold text-[#fd8c06] mb-1">{stats.totalWishes}</div>
               <div className="text-sm text-gray-600">Lời chúc</div>
             </div>
-            <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
-              <svg className="w-5 h-5 text-[#CE6F70]" fill="currentColor" viewBox="0 0 20 20">
+            <div className="w-10 h-10 bg-[#FFF8E6] rounded-full flex items-center justify-center">
+              <svg className="w-5 h-5 text-[#fd8c06]" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd"/>
               </svg>
             </div>
@@ -367,11 +367,11 @@ export default function InvitationManagement() {
         <div className="bg-white rounded-lg p-6 shadow-sm border">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-2xl font-bold text-[#CE6F70] mb-1">{stats.totalViews}</div>
+              <div className="text-2xl font-bold text-[#fd8c06] mb-1">{stats.totalViews}</div>
               <div className="text-sm text-gray-600">Lượt xem thiệp</div>
             </div>
-            <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
-              <svg className="w-5 h-5 text-[#CE6F70]" fill="currentColor" viewBox="0 0 20 20">
+            <div className="w-10 h-10 bg-[#FFF8E6] rounded-full flex items-center justify-center">
+              <svg className="w-5 h-5 text-[#fd8c06]" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
                 <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
               </svg>
@@ -388,8 +388,8 @@ export default function InvitationManagement() {
               onClick={() => setActiveFilter("all")}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeFilter === "all"
-                  ? "bg-[#CE6F70] text-white"
-                  : "text-gray-600 hover:text-[#CE6F70] hover:bg-pink-50"
+                  ? "bg-[#fd8c06] text-white"
+                  : "text-gray-600 hover:text-[#fd8c06] hover:bg-[#FFF8E6]"
               }`}
             >
               Tất cả ({invitations.length})
@@ -398,8 +398,8 @@ export default function InvitationManagement() {
               onClick={() => setActiveFilter("draft")}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeFilter === "draft"
-                  ? "bg-[#CE6F70] text-white"
-                  : "text-gray-600 hover:text-[#CE6F70] hover:bg-pink-50"
+                  ? "bg-[#fd8c06] text-white"
+                  : "text-gray-600 hover:text-[#fd8c06] hover:bg-[#FFF8E6]"
               }`}
             >
               Bản nháp ({invitations.filter(i => i.status === "Bản nháp").length})
@@ -408,8 +408,8 @@ export default function InvitationManagement() {
               onClick={() => setActiveFilter("upcoming")}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeFilter === "upcoming"
-                  ? "bg-[#CE6F70] text-white"
-                  : "text-gray-600 hover:text-[#CE6F70] hover:bg-pink-50"
+                  ? "bg-[#fd8c06] text-white"
+                  : "text-gray-600 hover:text-[#fd8c06] hover:bg-[#FFF8E6]"
               }`}
             >
               Sắp xuất bản ({invitations.filter(i => i.status === "Sắp xuất bản").length})
@@ -418,8 +418,8 @@ export default function InvitationManagement() {
               onClick={() => setActiveFilter("published")}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeFilter === "published"
-                  ? "bg-[#CE6F70] text-white"
-                  : "text-gray-600 hover:text-[#CE6F70] hover:bg-pink-50"
+                  ? "bg-[#fd8c06] text-white"
+                  : "text-gray-600 hover:text-[#fd8c06] hover:bg-[#FFF8E6]"
               }`}
             >
               Đã xuất bản ({invitations.filter(i => i.status === "Đã xuất bản").length})
@@ -428,8 +428,8 @@ export default function InvitationManagement() {
               onClick={() => setActiveFilter("expired")}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeFilter === "expired"
-                  ? "bg-[#CE6F70] text-white"
-                  : "text-gray-600 hover:text-[#CE6F70] hover:bg-pink-50"
+                  ? "bg-[#fd8c06] text-white"
+                  : "text-gray-600 hover:text-[#fd8c06] hover:bg-[#FFF8E6]"
               }`}
             >
               Hết hạn ({invitations.filter(i => i.status === "Hết hạn").length})
@@ -441,14 +441,14 @@ export default function InvitationManagement() {
               <span className="text-sm text-gray-600 whitespace-nowrap">Ngày hết hạn</span>
               <input
                 type="date"
-                className="px-3 py-2 text-gray-600 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent"
+                className="px-3 py-2 text-gray-600 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent"
               />
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-600 whitespace-nowrap">Ngày bắt đầu</span>
               <input
                 type="date"
-                className="px-3 py-2 text-gray-600 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#CE6F70] focus:border-transparent"
+                className="px-3 py-2 text-gray-600 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#fd8c06] focus:border-transparent"
               />
             </div>
           </div>

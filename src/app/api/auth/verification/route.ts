@@ -82,7 +82,7 @@ export async function POST(req: Request) {
       subject: 'Mã xác thực đăng ký tài khoản',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #CE6F70; text-align: center;">Mimy Wedding</h2>
+          <h2 style="color: #fd8c06; text-align: center;">Mimy Wedding</h2>
           <div style="padding: 20px; border: 1px solid #f7d4d4; border-radius: 5px;">
             <h3>Xác thực email</h3>
             <p>Chào bạn,</p>
