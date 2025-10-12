@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import "@/app/mobile-menu.css";
+import Button from "../ui/Button";
+import { signIn } from "next-auth/react";
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -12,7 +14,7 @@ type MobileMenuProps = {
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
-  
+
   // Handle body overflow when menu is open
   useEffect(() => {
     if (isOpen) {
@@ -20,7 +22,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     } else {
       document.body.classList.remove('menu-open');
     }
-    
+
     // Cleanup on unmount
     return () => {
       document.body.classList.remove('menu-open');
@@ -38,7 +40,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       />
 
       {/* Popup Menu */}
-      <div className="fixed inset-x-0 bottom-0 bg-white rounded-t-[20px] z-50 shadow-lg mobile-menu-content">
+      <div
+        style={{ boxShadow: "0px -1px 10.7px 0px #00000040" }}
+        className="fixed inset-x-0 bottom-0 bg-white rounded-t-[20px] z-50 shadow-lg mobile-menu-content"
+      >
         {/* Drag Handle */}
         <div className="w-full flex justify-center pt-4">
           <div className="w-12 h-1 bg-gray-200 rounded-full"></div>
@@ -55,22 +60,21 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             />
           </div>
 
-          <button className="flex items-center gap-1.5">
+          {/* <button className="flex items-center gap-1.5">
             <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="24" height="16" fill="#E31C1E"/>
               <path d="M12 3L13.1227 6.45492H16.7553L13.8163 8.59017L14.9389 12.0451L12 9.90983L9.06107 12.0451L10.1837 8.59017L7.24472 6.45492H10.8773L12 3Z" fill="#FFFF00"/>
             </svg>
             <span className="text-[#333333] font-medium text-sm">VIE</span>
-          </button>
+          </button> */}
         </div>
 
         {/* Menu Links */}
         <div className="px-6 space-y-6">
           <Link
             href="/"
-            className={`flex items-center gap-3 ${
-              pathname === "/" ? "text-[#CE6F70]" : "text-[#7B7B7B]"
-            }`}
+            className={`flex items-center gap-3 ${pathname === "/" ? "text-[#FD8C06]" : "text-[#7B7B7B]"
+              }`}
             onClick={onClose}
           >
             <svg
@@ -93,9 +97,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           <Link
             href="/list-template"
-            className={`flex items-center gap-3 ${
-              pathname.includes("/list-template") ? "text-[#CE6F70]" : "text-[#7B7B7B]"
-            }`}
+            className={`flex items-center gap-3 ${pathname.includes("/list-template") ? "text-[#FD8C06]" : "text-[#7B7B7B]"
+              }`}
             onClick={onClose}
           >
             <svg
@@ -130,10 +133,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <span>Mẫu thiệp</span>
           </Link>
 
-          <Link
+          {/* <Link
             href="/contact"
             className={`flex items-center gap-3 ${
-              pathname.includes("/contact") ? "text-[#CE6F70]" : "text-[#7B7B7B]"
+              pathname.includes("/contact") ? "text-[#FD8C06]" : "text-[#7B7B7B]"
             }`}
             onClick={onClose}
           >
@@ -153,12 +156,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               />
             </svg>
             <span>Liên hệ</span>
-          </Link>
+          </Link> */}
 
-          <Link
+          {/* <Link
             href="/custom-template"
             className={`flex items-center gap-3 ${
-              pathname.includes("/custom-template") ? "text-[#CE6F70]" : "text-[#7B7B7B]"
+              pathname.includes("/custom-template") ? "text-[#FD8C06]" : "text-[#7B7B7B]"
             }`}
             onClick={onClose}
           >
@@ -192,14 +195,17 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               />
             </svg>
             <span>Thiết kế riêng</span>
-          </Link>
+          </Link> */}
         </div>
 
         {/* Auth Buttons */}
         <div className="px-6 pt-8 pb-6 flex gap-4">
-          <Link
+          <Button className="w-full" onClick={() => signIn('google')}>
+            Đăng nhập
+          </Button>
+          {/* <Link
             href="/login"
-            className="flex-1 bg-[#FAE4E4] text-[#CE6F70] text-center py-3.5 rounded-md border border-[#FAE4E4] font-medium text-sm"
+            className="flex-1 bg-[#FAE4E4] text-[#FD8C06] text-center py-3.5 rounded-md border border-[#FAE4E4] font-medium text-sm"
             onClick={onClose}
           >
             Đăng nhập
@@ -211,7 +217,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             onClick={onClose}
           >
             Đăng ký
-          </Link>
+          </Link> */}
         </div>
       </div>
     </>

@@ -78,8 +78,6 @@ export default function Header() {
             <nav className="flex items-center gap-[40px] px-[54px] py-[21px] text-[16px]">
               <NavItem href="/"> <div className="text-[16px] font-[800] text-[#FFBB53]">Trang chủ</div> </NavItem>
               <NavItem href="/list-template"><div className="text-[16px] font-[600] text-[#383637]">Mẫu thiệp</div></NavItem>
-              {/* <NavItem href="/custom-template"><div className="text-[16px] font-[600] text-[#383637]">Thiết kế riêng</div></NavItem>
-              <NavItem href="/contact"><div className="text-[16px] font-[600] text-[#383637]">Liên hệ</div></NavItem> */}
             </nav>
 
             <div className="flex items-center ml-4 gap-[8px] relative">
