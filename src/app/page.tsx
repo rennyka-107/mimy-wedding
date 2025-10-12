@@ -251,9 +251,9 @@ export default function WeddingPage() {
   return (
     <div className="bg-[#FFFFFF]">
       {/* <Header /> */}
-      <div className="absolute top-0 z-48 w-full">
+      <div className="absolute top-0 z-46 w-full">
         <Header />
-        <div className="absolute inset-0 bg-[#F9F9F9] z-51"></div>
+        <div className="absolute inset-0 bg-[#F9F9F9] z-48"></div>
       </div>
       <svg className="absolute top-0 z-49 w-full xs:h-[800px] sm:h-full" width="1440" height="825" viewBox="0 0 1440 825" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g opacity="1" filter="url(#filter0_f_642_1849)">
@@ -276,7 +276,7 @@ export default function WeddingPage() {
           // whileInView={{ opacity: 1 }}
           // transition={{ duration: 0.5, delay: 0.3 }}
           // viewport={{ once: true }}
-          className="text-[#383637] flex w-full justify-center pt-0 sm:pt-24 font-montserrat-alter font-[700] text-[36px] mt-0 sm:mt-10 md:mt-25 lg:mt-35 xl:mt-10 sm:text-[44px] lg:text-[46px] leading-[100%]"
+          className="text-[#383637] flex w-full justify-center pt-0 sm:pt-24 font-montserrat-alter font-[700] text-[36px] mt-0  md:mt-40 lg:mt-35 xl:mt-10 sm:text-[44px] lg:text-[46px] leading-[100%]"
         >
           mẫu thiệp.
         </label>
