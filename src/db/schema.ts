@@ -170,9 +170,19 @@ export const wishes = pgTable("wishes", {
   content: text("content").notNull(),
   sender: varchar("sender", { length: 255 }).notNull(),
   arrive: boolean("arrive").default(false).notNull(),
-  order_id: uuid("order_id").notNull().references(() => orders.id, { onDelete: "cascade" }),
+  order_id: uuid("order_id").references(() => orders.id, { onDelete: "cascade" }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+// Bảng lượt truy cập trang
+export const pageVisits = pgTable("page_visits", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  ip: varchar("ip", { length: 45 }).notNull(), // Hỗ trợ cả IPv4 và IPv6
+  visit_time: timestamp("visit_time").defaultNow().notNull(),
+  region: varchar("region", { length: 255 }),
+  sub_id: varchar("sub_id", { length: 255 }), // Nguồn traffic: facebook, tiktok, etc.
+  createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
 // Define relations
@@ -222,6 +232,7 @@ export const ordersRelations = relations(orders, ({ one, many }) => ({
     references: [payments.id],
   }),
   wishes: many(wishes),
+  pageVisits: many(pageVisits),
 }));
 
 export const paymentsRelations = relations(payments, ({ many }) => ({
@@ -234,3 +245,4 @@ export const wishesRelations = relations(wishes, ({ one }) => ({
     references: [orders.id],
   }),
 }));
+
