@@ -2,12 +2,31 @@ import { NextResponse } from "next/server";
 import { wishes, orders } from "@/db/schema";
 import { db } from "@/db";
 import { eq, count } from "drizzle-orm";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../auth/[...nextauth]/route";
+import { users } from "@/db/schema";
 
 // GET - Lấy thống kê lời chúc theo user_id
 export async function GET(req: Request) {
   try {
+    const session = await getServerSession(authOptions);
+    const user = session?.user;
+    if (!user) {
+      return NextResponse.json({ 
+        status: "error", 
+        message: "User not found" 
+      }, { status: 404 });
+    }
+    const find_user = await db.select().from(users).where(eq(users.email, user.email as string)).limit(1);
+    if (find_user.length === 0) {
+      return NextResponse.json({ 
+        status: "error", 
+        message: "User not found" 
+      }, { status: 404 });
+    }
+    const userId = find_user[0].id;
     const { searchParams } = new URL(req.url);
-    const userId = searchParams.get('userId');
+    // const userId = searchParams.get('userId');
     
     if (!userId) {
       return NextResponse.json({ 
