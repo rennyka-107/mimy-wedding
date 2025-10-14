@@ -75,8 +75,8 @@ export const originalSunshineVowState: {
 
   background_colors: {
     bg_color_1: { id: 'bg_color_1', color: '#FFFAD3', border_color: 'transparent' },
-    bg_color_2: { id: 'bg_color_2', color: '#E9BD0B', border_color: 'none' },
-    bg_color_3: { id: 'bg_color_3', color: '#000000', border_color: 'none' },
+    bg_color_2: { id: 'bg_color_2', color: '#E9BD0B', border_color: '#E9BD0B' },
+    bg_color_3: { id: 'bg_color_3', color: '#000000', border_color: '#000000' },
     bg_color_4: { id: 'bg_color_4', color: '#FFFFFF', border_color: '#D9D9D9' },
     bg_color_5: { id: 'bg_color_5', color: '#FFF8E1', border_color: 'none' },
     bg_color_6: { id: 'bg_color_6', color: '#FFF8E1', border_color: 'none' },

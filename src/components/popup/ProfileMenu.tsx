@@ -131,7 +131,7 @@ export default function ProfileMenu({
                     <span className="text-gray-500 mr-3">{item.icon}</span>
                     {item.text}
                   </Link>
-                  {idx === menuItems.length - 2 && <hr className="my-2" />}
+                  {idx === menuItems.length - 2}
                 </li>
               ))}
             </ul>

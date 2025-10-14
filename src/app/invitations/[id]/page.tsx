@@ -8,16 +8,11 @@ import CocoaEmbraceTemplate from '@/wedding-templates/CocoaEmbrace.template';
 import GoldenBondTemplate from '@/wedding-templates/GoldenBond.template';
 import ForestCharmTemplate from '@/wedding-templates/ForestCharm.template';
 import JadeWhisperTemplate from '@/wedding-templates/JadeWhisper.template';
-import { originalSunshineVowState } from '@/states/origin_state/sunshine_vow';
-import { originalCocoaEmbraceState } from '@/states/origin_state/cocoa_embrace';
-import { originalOliveHarmonyState } from '@/states/origin_state/olive_harmony';
-import { originalGoldenBondState } from '@/states/origin_state/golden_bond';
-import { originalForestCharmState } from '@/states/origin_state/forest_charm';
-import { originalJadeWhisperState } from '@/states/origin_state/jade_whisper';
 import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import LoginModal from '@/components/popup/LoginModal';
 import { useAuth } from '@/context/AuthContext';
+import { templateCocoaEmbrace, templateForestCharm, templateGoldenBond, templateJadeWhisper, templateOliveHarmony, templateSunshineVow } from '@/types/wedding.type';
 
 export default function ViewInvitationPage({
     params,
@@ -36,94 +31,26 @@ export default function ViewInvitationPage({
     useEffect(() => {
         switch (id) {
             case "sunshine_vow":
-                updateTemplate({
-                    template_id: 'sunshine_vow',
-                    template_name: 'Sunshine Vow',
-                    template_price: 60000,
-                    configs: {
-                        texts: originalSunshineVowState.texts,
-                        images: originalSunshineVowState.images,
-                        background_colors: originalSunshineVowState.background_colors,
-                        url_maps: originalSunshineVowState.url_maps,
-                        send_gifts: originalSunshineVowState.send_gifts,
-                    }
-                })
+                updateTemplate(templateSunshineVow)
                 return;
             case "olive_harmony":
-                updateTemplate({
-                    template_id: 'olive_harmony',
-                    template_name: 'Olive Harmony',
-                    template_price: 30000,
-                    configs: {
-                        texts: originalOliveHarmonyState.texts,
-                        images: originalOliveHarmonyState.images,
-                        background_colors: originalOliveHarmonyState.background_colors,
-                        url_maps: originalOliveHarmonyState.url_maps,
-                        send_gifts: originalOliveHarmonyState.send_gifts,
-                    }
-                })
+                updateTemplate(templateOliveHarmony)
                 return;
             case "cocoa_embrace":
-                updateTemplate({
-                    template_id: 'cocoa_embrace',
-                    template_name: 'Cocoa Embrace',
-                    template_price: 30000,
-                    configs: {
-                        texts: originalCocoaEmbraceState.texts,
-                        images: originalCocoaEmbraceState.images,
-                        background_colors: originalCocoaEmbraceState.background_colors,
-                        url_maps: originalCocoaEmbraceState.url_maps,
-                        send_gifts: originalCocoaEmbraceState.send_gifts,
-                    }
-                })
+                updateTemplate(templateCocoaEmbrace)
                 return;
             case "golden_bond":
-                updateTemplate({
-                    template_id: 'golden_bond',
-                    template_name: 'Golden Bond',
-                    template_price: 30000,
-                    configs: {
-                        texts: originalGoldenBondState.texts,
-                        images: originalGoldenBondState.images,
-                        background_colors: originalGoldenBondState.background_colors,
-                        url_maps: originalGoldenBondState.url_maps,
-                        send_gifts: originalGoldenBondState.send_gifts,
-                    }
-                })
+                updateTemplate(templateGoldenBond)
                 return;
             case "forest_charm":
-                console.log("forest_charm ne con cho nay",)
-                updateTemplate({
-                    template_id: 'forest_charm',
-                    template_name: 'Forest Charm',
-                    template_price: 50000,
-                    configs: {
-                        texts: originalForestCharmState.texts,
-                        images: originalForestCharmState.images,
-                        background_colors: originalForestCharmState.background_colors,
-                        url_maps: originalForestCharmState.url_maps,
-                        send_gifts: originalForestCharmState.send_gifts,
-                    }
-                })
+                updateTemplate(templateForestCharm)
                 return;
             case "jade_whisper":
-                updateTemplate({
-                    template_id: 'jade_whisper',
-                    template_name: 'Jade Whisper',
-                    template_price: 50000,
-                    configs: {
-                        texts: originalJadeWhisperState.texts,
-                        images: originalJadeWhisperState.images,
-                        background_colors: originalJadeWhisperState.background_colors,
-                        url_maps: originalJadeWhisperState.url_maps,
-                        send_gifts: originalJadeWhisperState.send_gifts,
-                    }
-                })
+                updateTemplate(templateJadeWhisper)
                 return;
             default:
                 return;
         }
-
     }, [id])
 
     console.log(template)

@@ -44,9 +44,9 @@ export const originalJadeWhisperState: {
 
   background_colors: {
     bg_color_1: { id: 'bg_color_1', color: '#F5F5F5', border_color: 'none' },
-    bg_color_2: { id: 'bg_color_2', color: '#EBF6E7', border_color: 'none' },
-    bg_color_3: { id: 'bg_color_3', color: '#386230', border_color: 'none' },
-    bg_color_4: { id: 'bg_color_4', color: '#38283B', border_color: 'none' },
+    bg_color_2: { id: 'bg_color_2', color: '#EBF6E7', border_color: '#EBF6E7' },
+    bg_color_3: { id: 'bg_color_3', color: '#386230', border_color: '#386230' },
+    bg_color_4: { id: 'bg_color_4', color: '#38283B', border_color: '#38283B' },
     bg_color_5: { id: 'bg_color_5', color: '#FFFFFF', border_color: '#D9D9D9' },
   },
 

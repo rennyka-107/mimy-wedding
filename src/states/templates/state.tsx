@@ -87,7 +87,18 @@ export interface TemplateState {
 
   setSelectedComponent: (id: string | null, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | null) => void;
 
-  resetAllComponent: () => void;
+  resetAllComponent: (template?: {
+    template_id: TemplateId;
+    template_name: string;
+    template_price: number;
+    configs: {
+      texts: { [key: string]: TextItem };
+      images: { [key: string]: ImageItem };
+      background_colors: { [key: string]: BackgroundColorItem };
+      url_maps: { [key: string]: UrlMapItem };
+      send_gifts: { [key: string]: SendGiftItem };
+    };
+  }) => void;
   resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, template_id: TemplateId) => void;
   // Actions for template elements
   updateText: (id: string, updates: Partial<TextItem>) => void;
@@ -178,15 +189,24 @@ const useTemplateStore = create<TemplateState>((set) => ({
     },
   })),
 
-  resetAllComponent: () => set((state) => ({
+  resetAllComponent: (template?: {
+    template_id: TemplateId;
+    configs: {
+      texts: { [key: string]: TextItem };
+      images: { [key: string]: ImageItem };
+      background_colors: { [key: string]: BackgroundColorItem };
+      url_maps: { [key: string]: UrlMapItem };
+      send_gifts: { [key: string]: SendGiftItem };
+    };
+  }) => set((state) => ({
     template: {
       ...state.template,
       configs: {
-        texts: originalSunshineVowState.texts,
-        images: originalSunshineVowState.images,
-        background_colors: originalSunshineVowState.background_colors,
-        url_maps: originalSunshineVowState.url_maps,
-        send_gifts: originalSunshineVowState.send_gifts,
+        texts: template?.configs.texts ?? state.template.configs.texts,
+        images: template?.configs.images ?? state.template.configs.images,
+        background_colors: template?.configs.background_colors ?? state.template.configs.background_colors,
+        url_maps: template?.configs.url_maps ?? state.template.configs.url_maps,
+        send_gifts: template?.configs.send_gifts ?? state.template.configs.send_gifts,
       }
     }
 

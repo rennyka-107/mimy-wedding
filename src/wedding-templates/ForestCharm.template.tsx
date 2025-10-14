@@ -7,6 +7,7 @@ import { originalForestCharmState } from "@/states/origin_state/forest_charm";
 import WeddingGoogleMap from "@/components/wedding/WeddingGoogleMap";
 import CheckCircle from "@/components/icons/check_circle";
 import { useEffect, useState } from "react";
+import { templateForestCharm } from "@/types/wedding.type";
 
 export default function JadeWhisperTemplate() {
     const params = useParams();
@@ -16,18 +17,7 @@ export default function JadeWhisperTemplate() {
     const [countdown, setCountdown] = useState({ days: 18, hours: 1, minutes: 31, seconds: 3 });
 
     useEffect(() => {
-        updateTemplate({
-            template_id: 'forest_charm',
-            template_name: 'Forest Charm',
-            template_price: 50000,
-            configs: {
-                texts: originalForestCharmState.texts,
-                images: originalForestCharmState.images,
-                background_colors: originalForestCharmState.background_colors,
-                url_maps: originalForestCharmState.url_maps,
-                send_gifts: originalForestCharmState.send_gifts,
-            }
-        })
+        updateTemplate(templateForestCharm)
     }, [])
 
     useEffect(() => {
@@ -98,6 +88,7 @@ export default function JadeWhisperTemplate() {
                     display: "flex",
                     alignItems: "end",
                     justifyContent: "center",
+                    cursor: 'pointer'
                 }}
             />
 
@@ -107,19 +98,19 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_1', 'text', texts['text_1'])
-                }} style={{ fontFamily: 'Send Flowers', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }}>
+                }} style={{ cursor: 'pointer', fontFamily: 'Send Flowers', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }}>
                     {texts['text_1'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_2', 'text', texts['text_2'])
-                }} style={{ fontFamily: 'Send Flowers', fontWeight: 400, lineHeight: '1.2', textAlign: 'center', marginTop: '8px', color: texts['text_2'].text_color, fontSize: texts['text_2'].text_size }}>
+                }} style={{ cursor: 'pointer', fontFamily: 'Send Flowers', fontWeight: 400, lineHeight: '1.2', textAlign: 'center', marginTop: '8px', color: texts['text_2'].text_color, fontSize: texts['text_2'].text_size }}>
                     {texts['text_2'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_3', 'text', texts['text_3'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_3'].text_color, fontSize: texts['text_3'].text_size }}>
+                }} style={{ cursor: 'pointer', fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_3'].text_color, fontSize: texts['text_3'].text_size }}>
                     {texts['text_3'].content}
                 </div>
             </div>
@@ -132,7 +123,7 @@ export default function JadeWhisperTemplate() {
                         <div onClick={(e) => {
                             e.stopPropagation();
                             setSelectedComponent('text_4', 'text', texts['text_4'])
-                        }} style={{ fontSize: texts['text_4'].text_size, fontWeight: 400, color: texts['text_4'].text_color }}>
+                        }} style={{ cursor: 'pointer', fontSize: texts['text_4'].text_size, fontWeight: 400, color: texts['text_4'].text_color }}>
                             {texts['text_4'].content}
                         </div>
                     </div>
@@ -141,7 +132,7 @@ export default function JadeWhisperTemplate() {
                         <div onClick={(e) => {
                             e.stopPropagation();
                             setSelectedComponent('text_5', 'text', texts['text_5'])
-                        }} style={{ fontSize: texts['text_5'].text_size, fontWeight: 400, color: texts['text_5'].text_color }}>
+                        }} style={{ cursor: 'pointer', fontSize: texts['text_5'].text_size, fontWeight: 400, color: texts['text_5'].text_color }}>
                             {texts['text_5'].content}
                         </div>
                     </div>
@@ -150,7 +141,7 @@ export default function JadeWhisperTemplate() {
                         <div onClick={(e) => {
                             e.stopPropagation();
                             setSelectedComponent('text_6', 'text', texts['text_6'])
-                        }} style={{ fontSize: texts['text_6'].text_size, fontWeight: 400, color: texts['text_6'].text_color }}>
+                        }} style={{ cursor: 'pointer', fontSize: texts['text_6'].text_size, fontWeight: 400, color: texts['text_6'].text_color }}>
                             {texts['text_6'].content}
                         </div>
                     </div>
@@ -159,7 +150,7 @@ export default function JadeWhisperTemplate() {
                         <div onClick={(e) => {
                             e.stopPropagation();
                             setSelectedComponent('text_7', 'text', texts['text_7'])
-                        }} style={{ fontSize: texts['text_7'].text_size, fontWeight: 400, color: texts['text_7'].text_color }}>
+                        }} style={{ cursor: 'pointer', fontSize: texts['text_7'].text_size, fontWeight: 400, color: texts['text_7'].text_color }}>
                             {texts['text_7'].content}
                         </div>
                     </div>
@@ -171,13 +162,13 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_8', 'text', texts['text_8'])
-                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>
+                }} style={{ cursor: 'pointer', fontFamily: 'Plus Jakarta Sans', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>
                     {texts['text_8'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_9', 'text', texts['text_9'])
-                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', marginTop: '8px', color: texts['text_9'].text_color, fontSize: texts['text_9'].text_size }}>
+                }} style={{ cursor: 'pointer', fontFamily: 'Plus Jakarta Sans', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', marginTop: '8px', color: texts['text_9'].text_color, fontSize: texts['text_9'].text_size }}>
                     {texts['text_9'].content}
                 </div>
             </div>
@@ -187,13 +178,13 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_10', 'text', texts['text_10'])
-                }} style={{ fontWeight: 400, lineHeight: '1.4', color: texts['text_10'].text_color, fontSize: texts['text_10'].text_size }}>
+                }} style={{ cursor: 'pointer', fontWeight: 400, lineHeight: '1.4', color: texts['text_10'].text_color, fontSize: texts['text_10'].text_size }}>
                     {texts['text_10'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_11', 'text', texts['text_11'])
-                }} style={{ width: "364px", margin: "auto", fontWeight: 400, lineHeight: '1.3', marginTop: '8px', color: texts['text_11'].text_color, fontSize: texts['text_11'].text_size }}>
+                }} style={{ cursor: 'pointer', width: "364px", margin: "auto", fontWeight: 400, lineHeight: '1.3', marginTop: '8px', color: texts['text_11'].text_color, fontSize: texts['text_11'].text_size }}>
                     {texts['text_11'].content}
                 </div>
                 {/* <div onClick={(e) => {
@@ -205,7 +196,7 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_13', 'text', texts['text_13'])
-                }} style={{ fontWeight: 400, lineHeight: '1.6', marginTop: '12px', padding: '0 10px', color: texts['text_13'].text_color, fontSize: texts['text_13'].text_size }}>
+                }} style={{ cursor: 'pointer', fontWeight: 400, lineHeight: '1.6', marginTop: '12px', padding: '0 10px', color: texts['text_13'].text_color, fontSize: texts['text_13'].text_size }}>
                     {texts['text_13'].content}
                 </div>
             </div>
@@ -225,22 +216,22 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_15', 'text', texts['text_15'])
-                }} style={{ fontWeight: 500, lineHeight: '1.4', marginBottom: '12px', color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}>
+                }} style={{ cursor: 'pointer', fontWeight: 500, lineHeight: '1.4', marginBottom: '12px', color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}>
                     {texts['text_15'].content}
                 </div>
                 <div className="mt-[8px] flex justify-center items-center gap-[10px]">
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('bg_color_2', 'background_color', background_colors['bg_color_2'])
-                    }} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_2'].color, border: background_colors['bg_color_2'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_2'].border_color}` }} />
+                    }} style={{ cursor: 'pointer', width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_2'].color, border: background_colors['bg_color_2'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_2'].border_color}` }} />
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('bg_color_3', 'background_color', background_colors['bg_color_3'])
-                    }} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_3'].color, border: background_colors['bg_color_3'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_3'].border_color}` }} />
+                    }} style={{ cursor: 'pointer', width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_3'].color, border: background_colors['bg_color_3'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_3'].border_color}` }} />
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('bg_color_4', 'background_color', background_colors['bg_color_4'])
-                    }} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_4'].color, border: background_colors['bg_color_4'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_4'].border_color}` }} />
+                    }} style={{ cursor: 'pointer', width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_4'].color, border: background_colors['bg_color_4'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_4'].border_color}` }} />
                 </div>
             </div>
 
@@ -249,13 +240,13 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_16', 'text', texts['text_16'])
-                }} style={{ fontWeight: 700, lineHeight: '100%', letterSpacing: '0%', textAlign: 'left', marginBottom: '16px', color: texts['text_16'].text_color, fontSize: texts['text_16'].text_size }}>
+                }} style={{ cursor: 'pointer', fontWeight: 700, lineHeight: '100%', letterSpacing: '0%', textAlign: 'left', marginBottom: '16px', color: texts['text_16'].text_color, fontSize: texts['text_16'].text_size }}>
                     {texts['text_16'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_17', 'text', texts['text_17'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', color: texts['text_17'].text_color, fontSize: texts['text_17'].text_size }}>
+                }} style={{ cursor: 'pointer', fontFamily: 'Afacad', fontWeight: 400, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', color: texts['text_17'].text_color, fontSize: texts['text_17'].text_size }}>
                     {texts['text_17'].content}
                 </div>
             </div>
@@ -265,7 +256,7 @@ export default function JadeWhisperTemplate() {
                 <img onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('image_2', 'image', images['image_2'])
-                }} src={images['image_2'] ? images['image_2'].url : '/images/logo.png'} alt="Wedding" className="object-cover w-full h-auto mx-auto rounded-[8px]" />
+                }} src={images['image_2'] ? images['image_2'].url : '/images/logo.png'} alt="Wedding" className="cursor-pointer object-cover w-full h-auto mx-auto rounded-[8px]" />
             </div>
 
             {/* Groom Section */}
@@ -273,19 +264,19 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_18', 'text', texts['text_18'])
-                }} style={{ fontWeight: 700, lineHeight: '100%', textAlign: 'left', marginBottom: '12px', color: texts['text_18'].text_color, fontSize: texts['text_18'].text_size }}>
+                }} style={{ cursor: 'pointer', fontWeight: 700, lineHeight: '100%', textAlign: 'left', marginBottom: '12px', color: texts['text_18'].text_color, fontSize: texts['text_18'].text_size }}>
                     {texts['text_18'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_19', 'text', texts['text_19'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_19'].text_color, fontSize: texts['text_19'].text_size }}>
+                }} style={{ cursor: 'pointer', fontFamily: 'Afacad', fontWeight: 400, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_19'].text_color, fontSize: texts['text_19'].text_size }}>
                     {texts['text_19'].content}
                 </div>
                 <img onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('image_3', 'image', images['image_3'])
-                }} src={images['image_3'] ? images['image_3'].url : '/images/logo.png'} alt="Groom" className="object-cover w-full h-auto rounded-[16px]" />
+                }} src={images['image_3'] ? images['image_3'].url : '/images/logo.png'} alt="Groom" className="cursor-pointer object-cover w-full h-auto rounded-[16px]" />
             </div>
 
             {/* Bride Section */}
@@ -293,56 +284,65 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_20', 'text', texts['text_20'])
-                }} style={{ fontWeight: 700, lineHeight: '100%', textAlign: 'right', marginBottom: '12px', color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
+                }} style={{ cursor: 'pointer', fontWeight: 700, lineHeight: '100%', textAlign: 'right', marginBottom: '12px', color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
                     {texts['text_20'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_21', 'text', texts['text_21'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>
+                }} style={{ cursor: 'pointer', fontFamily: 'Afacad', fontWeight: 400, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>
                     {texts['text_21'].content}
                 </div>
                 <img onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('image_4', 'image', images['image_4'])
-                }} src={images['image_4'] ? images['image_4'].url : '/images/logo.png'} alt="Bride" className="object-cover w-full h-auto rounded-[16px]" />
+                }} src={images['image_4'] ? images['image_4'].url : '/images/logo.png'} alt="Bride" className="cursor-pointer object-cover w-full h-auto rounded-[16px]" />
             </div>
 
             <div className="w-[80%] mx-auto mt-[2rem] pb-[1rem] relative">
-                <svg className="absolute top-[30%] right-0" width="57" height="56" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M31.46 11.576C28.1054 2.7015 16.2266 0.204146 8.95961 6.22203C5.4638 9.11718 2.87062 14.1924 3.33817 22.0611C3.79377 29.7267 7.1703 39.9951 15.4751 53.0987C30.709 50.1657 40.5007 45.5871 46.3951 40.6652C52.4457 35.6127 54.3634 30.2458 54.0757 25.7159C53.4776 16.2996 43.5187 9.3613 34.7571 13.0006L32.373 13.9907L31.46 11.576Z" fill="#A2DB97" stroke="white" strokeWidth="5" />
+                <svg onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedComponent('bg_color_6', 'background_color', background_colors['bg_color_6'])
+                }} className="absolute top-[30%] right-0 cursor-pointer" width="57" height="56" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M31.46 11.576C28.1054 2.7015 16.2266 0.204146 8.95961 6.22203C5.4638 9.11718 2.87062 14.1924 3.33817 22.0611C3.79377 29.7267 7.1703 39.9951 15.4751 53.0987C30.709 50.1657 40.5007 45.5871 46.3951 40.6652C52.4457 35.6127 54.3634 30.2458 54.0757 25.7159C53.4776 16.2996 43.5187 9.3613 34.7571 13.0006L32.373 13.9907L31.46 11.576Z" fill={background_colors['bg_color_6'].color} stroke="white" strokeWidth="5" />
                 </svg>
-                <svg className="absolute top-[50%] left-0" width="70" height="69" viewBox="0 0 70 69" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M30.9213 14.1548C34.8804 2.61595 49.9744 -0.988373 59.4741 6.39552C64.0831 9.97808 67.5454 16.3512 67.2636 26.2589C66.9875 35.9609 63.1031 49.0046 53.1483 65.7499C33.9073 62.7055 21.3926 57.357 13.754 51.3692C5.95321 45.2544 3.26394 38.5186 3.4538 32.684C3.84539 20.6585 16.2636 11.352 27.6688 15.6811L30.0829 16.5978L30.9213 14.1548Z" fill="#B2CDAC" stroke="white" strokeWidth="5" />
+                <svg onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedComponent('bg_color_7', 'background_color', background_colors['bg_color_7'])
+                }} className="absolute top-[50%] left-0 cursor-pointer" width="70" height="69" viewBox="0 0 70 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30.9213 14.1548C34.8804 2.61595 49.9744 -0.988373 59.4741 6.39552C64.0831 9.97808 67.5454 16.3512 67.2636 26.2589C66.9875 35.9609 63.1031 49.0046 53.1483 65.7499C33.9073 62.7055 21.3926 57.357 13.754 51.3692C5.95321 45.2544 3.26394 38.5186 3.4538 32.684C3.84539 20.6585 16.2636 11.352 27.6688 15.6811L30.0829 16.5978L30.9213 14.1548Z" fill={background_colors['bg_color_7'].color} stroke="white" strokeWidth="5" />
                 </svg>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_22', 'text', texts['text_22'])
-                }} style={{ textAlign: 'center', fontWeight: 600, lineHeight: '100%', letterSpacing: '0%', color: texts['text_22'].text_color, fontSize: texts['text_22'].text_size }}>
+                }} style={{ cursor: 'pointer', textAlign: 'center', fontWeight: 600, lineHeight: '100%', letterSpacing: '0%', color: texts['text_22'].text_color, fontSize: texts['text_22'].text_size }}>
                     {texts['text_22'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_23', 'text', texts['text_23'])
-                }} style={{ fontFamily: 'Afacad', margin: "1rem auto 1.5rem auto", width: "283px", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_23'].text_color, fontSize: texts['text_23'].text_size }}>
+                }} style={{ cursor: 'pointer', fontFamily: 'Afacad', margin: "1rem auto 1.5rem auto", width: "283px", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_23'].text_color, fontSize: texts['text_23'].text_size }}>
                     {texts['text_23'].content}
                 </div>
-                <img src="/images/qr-mimy.png" alt="qr" className="w-[135px] h-[135px] mx-auto" />
+                <img onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedComponent('image_qr', 'image', images['image_qr'])
+                }} src={images['image_qr'] ? images['image_qr'].url : '/images/qr-mimy.png'} alt="qr" className="w-[135px] h-[135px] mx-auto cursor-pointer" />
                 <div className="flex flex-col mt-[1rem]">
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-                    }} className="w-[max-content] mx-auto px-[20px] py-[6px] text-center rounded-[24px]" style={{ backgroundColor: send_gifts['send_gift_1'].background_color, textAlign: 'center', fontWeight: 500, color: send_gifts['send_gift_1'].text_color, fontSize: send_gifts['send_gift_1'].text_size }}>{send_gifts['send_gift_1'].content}</div>
+                    }} className="cursor-pointer w-[max-content] mx-auto px-[20px] py-[6px] text-center rounded-[24px]" style={{ backgroundColor: send_gifts['send_gift_1'].background_color, borderColor: send_gifts['send_gift_1'].border_color, borderWidth: '1px', textAlign: 'center', fontWeight: 500, color: send_gifts['send_gift_1'].text_color, fontSize: send_gifts['send_gift_1'].text_size }}>{send_gifts['send_gift_1'].content}</div>
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-                    }} style={{ marginTop: "1rem", textAlign: 'center', lineHeight: '1', fontWeight: 400, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
+                    }} className="cursor-pointer" style={{ marginTop: "1rem", textAlign: 'center', lineHeight: '1', fontWeight: 400, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
                         {send_gifts['send_gift_1'].bank_name}
                     </div>
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-                    }} style={{ marginTop: "0.5rem", textAlign: 'center', lineHeight: '1', fontWeight: 400, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
+                    }} className="cursor-pointer" style={{ marginTop: "0.5rem", textAlign: 'center', lineHeight: '1', fontWeight: 400, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
                         {send_gifts['send_gift_1'].bank_number}
                     </div>
                     {/* <div onClick={(e) => {

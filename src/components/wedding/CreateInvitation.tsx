@@ -3,11 +3,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import ColorDisplay from "./ColorDisplay";
 import NumberInput from "./NumberInput";
 import ImageUpload from "./ImageUpload";
-import ImageGallery from "./ImageGallery";
-import RefreshableLimitIndicator from "./RefreshableLimitIndicator";
 import SunshineVowTemplate from "@/wedding-templates/SunshineVow.template";
 import useSunshineVowStore, { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, UrlMapItem } from "@/states/templates/state";
-import PublishInvitationModal, { Template } from "@/components/popup/PublishInvitationModal";
+import PublishInvitationModal from "@/components/popup/PublishInvitationModal";
 import SuccessPublishModal from "@/components/popup/SuccessPublishModal";
 import SaveDraftModal from "@/components/popup/SaveDraftModal";
 import { toast } from "react-hot-toast";
@@ -15,26 +13,26 @@ import OliveHarmonyTemplate from "@/wedding-templates/OliveHarmony.template";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { originalOliveHarmonyState } from "@/states/origin_state/olive_harmony";
 import CocoaEmbraceTemplate from "@/wedding-templates/CocoaEmbrace.template";
 import GoldenBondTemplate from "@/wedding-templates/GoldenBond.template";
 import ForestCharmTemplate from "@/wedding-templates/ForestCharm.template";
 import JadeWhisperTemplate from "@/wedding-templates/JadeWhisper.template";
-import { originalSunshineVowState } from "@/states/origin_state/sunshine_vow";
 import Button from "../ui/Button";
 import CloseIcon from "../icons/close";
-import { TemplateId } from "@/types/wedding.type";
+import { TemplateId, templateSunshineVow } from "@/types/wedding.type";
 
 export default function CreateInvitation() {
   const searchParams = useSearchParams();
   const templateId = searchParams.get("template_id");
 
   const router = useRouter();
-  // State để trigger refresh limit indicators và gallery
-  const [refreshLimitTrigger, setRefreshLimitTrigger] = useState(0);
-  const [refreshGalleryTrigger, setRefreshGalleryTrigger] = useState(0);
   const { user } = useAuth();
   console.log(user, "user");
+
+  // Refs for click outside detection
+  const outerDivRef = useRef<HTMLDivElement>(null);
+  const innerDivRef = useRef<HTMLDivElement>(null);
+
   // State cho modal xuất bản
   const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
   // State cho modal thành công
@@ -47,7 +45,6 @@ export default function CreateInvitation() {
 
   // State cho modal lưu nháp
   const [isSaveDraftModalOpen, setIsSaveDraftModalOpen] = useState(false);
-  const [openEditComponent, setOpenEditComponent] = useState<boolean>(false);
 
   const { selectedComponent, setSelectedComponent, updateText, updateImage, updateBackgroundColor, updateUrlMap, updateSendGift, resetAllComponent, resetComponent, template, updateTemplate } = useSunshineVowStore();
 
@@ -91,20 +88,33 @@ export default function CreateInvitation() {
     }
   };
 
+  // Hàm xử lý click outside
+  const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as Node;
+
+    // Kiểm tra nếu click nằm trong outer div nhưng ngoài inner div
+    if (
+      outerDivRef.current &&
+      innerDivRef.current &&
+      outerDivRef.current.contains(target) &&
+      !innerDivRef.current.contains(target)
+    ) {
+      // Bỏ chọn component hiện tại
+      setSelectedComponent(null, null, null);
+    }
+  };
+
+  // Thêm event listener khi component mount
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   useEffect(() => {
     return () => {
-      updateTemplate({
-        template_id: "sunshine_vow",
-        template_name: "Sunshine Vow",
-        template_price: 0,
-        configs: {
-          texts: originalSunshineVowState.texts,
-          images: originalSunshineVowState.images,
-          background_colors: originalSunshineVowState.background_colors,
-          url_maps: originalSunshineVowState.url_maps,
-          send_gifts: originalSunshineVowState.send_gifts
-        }
-      });
+      updateTemplate(templateSunshineVow);
     }
   }, [templateId])
 
@@ -126,42 +136,12 @@ export default function CreateInvitation() {
         return <SunshineVowTemplate />;
     }
   }, [templateId])
-  // Animation variants
-  // const containerVariants = {
-  //   hidden: { opacity: 0 },
-  //   visible: {
-  //     opacity: 1,
-  //     transition: {
-  //       staggerChildren: 0.1,
-  //       delayChildren: 0.1
-  //     }
-  //   }
-  // };
 
-  // const itemVariants = {
-  //   hidden: { opacity: 0, y: 10 },
-  //   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  // };
-
-  // Handle form submission
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   // Logic for saving invitation
-  //   console.log({
-  //     textColor,
-  //     fontSize,
-  //     deleteAll,
-  //     returnToDefault,
-  //     alternativeContent
-  //   });
-  // };
-
-  // console.log(selectedComponent, "wtf")
 
   return (
     <div className="w-full h-full flex flex-col lg:flex-row font-montserrat">
-      <div className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
-        <div className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
+      <div ref={outerDivRef} className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
+        <div ref={innerDivRef} className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
           {renderTemplate}
         </div>
       </div>
@@ -176,8 +156,8 @@ export default function CreateInvitation() {
             <Button
               variant="ghost"
               onClick={handleSaveDraft}
-              className="w-full cursor-pointer"
-              >
+              className="w-full cursor-pointer outline-none"
+            >
               Lưu nháp
             </Button>
             <Button
@@ -186,7 +166,7 @@ export default function CreateInvitation() {
               Xuất bản
             </Button>
           </div>
-          {selectedComponent.id !== null && <div className={`lg:block flex flex-col justify-start items-start gap-2 border-b border-[#E9EAEB] px-[18px] py-[1rem]`}>
+          <div className={`lg:block flex flex-col justify-start items-start gap-2 border-b border-[#E9EAEB] px-[18px] py-[1rem]`}>
             <label className="text-[#4A3B36] text-[14px] font-[600]">Thao tác</label>
             <div className="flex gap-5 w-full">
               <Button variant="ghost" disabled className="disabled:opacity-70 w-full">Xóa bỏ</Button>
@@ -199,7 +179,7 @@ export default function CreateInvitation() {
                 }
               }} className="cursor-pointer w-full">Mặc định</Button>
             </div>
-          </div>}
+          </div>
 
           {selectedComponent.type === 'text' && <div className="flex justify-center gap-5 items-center border-b border-[#E9EAEB] px-[18px] py-[1rem]">
             <div className="flex flex-col items-start w-[48%] gap-2">
@@ -237,9 +217,6 @@ export default function CreateInvitation() {
             }} placeholder="Nhập nội dung" className="bg-[#F5F5F5] w-full rounded-[4px] px-[12px] py-[8px] outline-none text-[#222222]" />
           </div>}
           {selectedComponent && selectedComponent.type === 'image' && <div className="flex flex-col gap-2 items-start px-[18px] py-[1rem]">
-            {/* <label className="text-[#4A3B36] text-[14px] font-[600]">Tải ảnh lên</label>
-
-          <RefreshableLimitIndicator type="image" className="w-full mb-3" refreshTrigger={refreshLimitTrigger} /> */}
             <ImageUpload
               initialImageUrl={(selectedComponent.data as ImageItem)?.url}
               onImageUpload={(file) => {
@@ -248,41 +225,14 @@ export default function CreateInvitation() {
               onImageUploadUrl={(url) => {
                 updateImage(selectedComponent.id ?? '', { url: url });
                 setSelectedComponent(selectedComponent.id ?? '', 'image', { ...selectedComponent.data as ImageItem, url: url });
-
-                setRefreshLimitTrigger(prev => prev + 1);
-                setRefreshGalleryTrigger(prev => prev + 1);
               }}
               onImageRemove={() => {
-                const defaultImageUrl = `/templates/SunshineVow/${selectedComponent.id}.png`;
-                updateImage(selectedComponent.id ?? '', { url: defaultImageUrl });
-                setSelectedComponent(selectedComponent.id ?? '', 'image', { ...selectedComponent.data as ImageItem, url: defaultImageUrl });
+                // const defaultImageUrl = `/templates/SunshineVow/${selectedComponent.id}.png`;
+                // updateImage(selectedComponent.id ?? '', { url: defaultImageUrl });
+                // setSelectedComponent(selectedComponent.id ?? '', 'image', { ...selectedComponent.data as ImageItem, url: defaultImageUrl });
               }}
               className="w-full"
             />
-
-            {/* <div className="mt-4 w-full">
-              <ImageGallery
-                onImageSelect={(url) => {
-                  updateImage(selectedComponent.id ?? '', { url: url });
-                  setSelectedComponent(selectedComponent.id ?? '', 'image', { ...selectedComponent.data as ImageItem, url: url });
-                }}
-                onImageDelete={(imageId, imageUrl) => {
-                  // Nếu ảnh đang được chọn là ảnh bị xóa, reset về ảnh mặc định
-                  const currentImage = selectedComponent.data as ImageItem;
-                  if (currentImage?.url === imageUrl) {
-                    const defaultImageUrl = `/templates/SunshineVow/${selectedComponent.id}.png`;
-                    updateImage(selectedComponent.id ?? '', { url: defaultImageUrl });
-                    setSelectedComponent(selectedComponent.id ?? '', 'image', { ...currentImage, url: defaultImageUrl });
-                  }
-
-                  setRefreshLimitTrigger(prev => prev + 1);
-                  setRefreshGalleryTrigger(prev => prev + 1);
-                }}
-                selectedUrl={(selectedComponent.data as ImageItem)?.url}
-                className="w-full"
-                refreshTrigger={refreshGalleryTrigger}
-              />
-            </div> */}
           </div>}
           {selectedComponent && selectedComponent.type === 'background_color' && <div className="flex gap-2 justify-between px-[18px] py-[1rem]">
             <div className="flex flex-col items-start w-[48%] gap-2">

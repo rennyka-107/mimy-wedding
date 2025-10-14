@@ -46,8 +46,8 @@ export const originalCocoaEmbraceState: {
   },
 
   background_colors: {
-    bg_color_1: { id: 'bg_color_1', color: '#B46B4D', border_color: 'none' },
-    bg_color_2: { id: 'bg_color_2', color: '#050505', border_color: 'none' },
+    bg_color_1: { id: 'bg_color_1', color: '#B46B4D', border_color: '#B46B4D' },
+    bg_color_2: { id: 'bg_color_2', color: '#050505', border_color: '#050505' },
     bg_color_3: { id: 'bg_color_3', color: '#FFFFFF', border_color: '#D9D9D9' },
   },
 
@@ -63,7 +63,7 @@ export const originalCocoaEmbraceState: {
       text_size: '16px',
       text_bank_size: '18px',
       background_color: '#B46B4D',
-      border_color: 'none',
+      border_color: '#B46B4D',
       content: 'Send gifts',
       bank_name: 'TP Bank',
       bank_number: 'Account number: 0000000000',

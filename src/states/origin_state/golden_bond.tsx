@@ -55,13 +55,14 @@ export const originalGoldenBondState: {
     image_6: { id: 'image_6', url: '/templates/GoldenBond/6.png', style: { objectFit: 'cover', borderRadius: 'none' } },
     image_four: { id: 'image_four', url: '/templates/GoldenBond/four.png', style: { objectFit: 'cover', borderRadius: 'none' } },
     image_bird: { id: 'image_bird', url: '/templates/GoldenBond/bird.png', style: { objectFit: 'cover', borderRadius: 'none' } },
+    image_qr: { id: 'image_qr', url: '/images/qr-mimy.png', style: { objectFit: 'cover', borderRadius: 'none' } },
   },
 
   background_colors: {
     bg_color_1: { id: 'bg_color_1', color: '#FFF0CC', border_color: 'none' },
     bg_color_2: { id: 'bg_color_2', color: '#FFF0CC', border_color: 'none' },
-    bg_color_3: { id: 'bg_color_3', color: '#DB8700', border_color: 'none' },
-    bg_color_4: { id: 'bg_color_4', color: '#000000', border_color: 'none' },
+    bg_color_3: { id: 'bg_color_3', color: '#DB8700', border_color: '#DB8700' },
+    bg_color_4: { id: 'bg_color_4', color: '#000000', border_color: '#000000' },
     bg_color_5: { id: 'bg_color_5', color: '#FFFFFF', border_color: '#D9D9D9' },
     bg_color_6: { id: 'bg_color_6', color: '#FFFEF9', border_color: 'none' },
   },
