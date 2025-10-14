@@ -165,7 +165,7 @@ export default function EditInvitation() {
             <button onClick={() => {
               if (selectedComponent.id !== null) {
                 console.log(selectedComponent.id, selectedComponent.type)
-                resetComponent(selectedComponent.id, selectedComponent.type);
+                resetComponent(selectedComponent.id, selectedComponent.type, template.template_id);
               } else {
                 resetAllComponent();
               }

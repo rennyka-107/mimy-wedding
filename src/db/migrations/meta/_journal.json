@@ -71,6 +71,13 @@
       "when": 1759163099284,
       "tag": "0009_great_vivisector",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1760375127176,
+      "tag": "0010_groovy_nico_minoru",
+      "breakpoints": true
     }
   ]
 }

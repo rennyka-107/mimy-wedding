@@ -5,6 +5,7 @@ import Header from "@/components/wedding/Header";
 import Footer from "@/components/wedding/Footer";
 import localFont from "next/font/local";
 import Providers from "@/components/Providers";
+import { VisitTracker } from "@/components/VisitTracker";
 
 const thePoisonedHeart = localFont({
   src: "../../public/fonts/ThePoisonedHeart.otf",
@@ -55,6 +56,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${thePoisonedHeart.variable} ${geistMono.variable} ${postNoBillsJaffnaSemiBold.variable} ${pecita.variable} ${postNoBillsJaffnaExtraBold.variable} overflow-y-auto antialiased min-h-screen flex flex-col`}
       >
         <Providers>
+          <VisitTracker />
           <Header />
           <main className="flex-1 bg-white">
             {children}
