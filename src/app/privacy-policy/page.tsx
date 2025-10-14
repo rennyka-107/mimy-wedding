@@ -3,7 +3,7 @@ import Content from "@/components/wedding/Content";
 const contents = [
     {
         label: "1. Thông tin thu thập", 
-        value: ["Chúng tôi có thể thu thập thông tin cá nhân (tên, email, số điện thoại) và thông tin phi cá nhân (loại thiết bị, trình duyệt, hành vi sử dụng website)."],
+        value: ["Chúng tôi có thể thu thập thông tin cá nhân (tên, email, số điện thoại) và thông tin phi cá nhân (loại thiết bị, trình duyệt, hành vi sử dụng website,...)."],
         id: "1"
     },
     {
@@ -38,12 +38,12 @@ const contents = [
     },
     {
         label: "8. Thay đổi điều khoản", 
-        value: [" Chúng tôi có thể cập nhật, điều chỉnh điều khoản dịch vụ bất kỳ lúc nào.", " Phiên bản cập nhật sẽ được công bố trên website, và việc tiếp tục sử dụng dịch vụ đồng nghĩa với việc bạn chấp nhận điều khoản mới.",],
+        value: [" Chúng tôi có thể cập nhật, điều chỉnh chính sách bảo mật bất kỳ lúc nào.", " Phiên bản cập nhật sẽ được công bố trên website, và việc tiếp tục sử dụng dịch vụ đồng nghĩa với việc bạn chấp nhận chính sách mới.",],
         id: "8"
     },
     {
         label: "9. Liên hệ", 
-        value: ["Nếu có thắc mắc, vui lòng liên hệ qua email hỗ trợ của chúng tôi: ", "Email: mimy.contact@gmail.com", "Zalo: 035.389.7973"],
+        value: ["Nếu có thắc mắc, vui lòng liên hệ qua email hỗ trợ của chúng tôi: ", "Email: contact@mimy.vn", "Zalo: 035.389.7973"],
         id: "9"
     },
 ]

@@ -3,7 +3,7 @@ import Content from "@/components/wedding/Content";
 const contents = [
     {
         label: "1. Giới thiệu", 
-        value: ["Chào mừng bạn đến với website thiết kế thiệp cưới online của chúng tôi. Khi truy cập và sử dụng dịch vụ, bạn đồng ý tuân thủ đầy đủ các điều khoản dưới đây. Vui lòng đọc kỹ trước khi bắt đầu sử dụng."],
+        value: ["Chào mừng bạn đến với website thiết kế thiệp online của chúng tôi. Khi truy cập và sử dụng dịch vụ, bạn đồng ý tuân thủ đầy đủ các điều khoản dưới đây. Vui lòng đọc kỹ trước khi bắt đầu sử dụng."],
         id: "1"
     },
     {
@@ -33,7 +33,7 @@ const contents = [
         label: "4. Sử dụng nội dung cho mục đích quảng bá", 
         value: [
             "Khi bạn sử dụng dịch vụ và tạo thiệp, chúng tôi có thể trích dẫn một phần hình ảnh, mẫu hoặc nội dung để phục vụ mục đích quảng bá, giới thiệu dịch vụ trên website hoặc kênh truyền thông, trừ khi bạn yêu cầu bằng văn bản không sử dụng.",
-            "Chúng tôi cam kết không tiết lộ thông tin cá nhân nhạy cảm (tên, địa chỉ, số điện thoại…) mà không có sự đồng ý của bạn."
+            "Chúng tôi cam kết không tiết lộ thông tin cá nhân nhạy cảm (địa chỉ, số điện thoại, email, số tài khoản ngân hàng) mà không có sự đồng ý của bạn."
         ],
         id: "4"
     },

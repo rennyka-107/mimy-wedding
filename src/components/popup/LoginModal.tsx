@@ -179,7 +179,7 @@ export default function LoginModal({ isOpen, onClose, callback }: LoginModalProp
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 0C0.895431 0 0 0.895431 0 2V14C0 15.1046 0.895431 16 2 16H14C15.1046 16 16 15.1046 16 14V2C16 0.895431 15.1046 0 14 0H2ZM12.0303 4.96967C12.3196 5.25897 12.3232 5.72582 12.041 6.01947L8.04876 11.0097C8.043 11.0169 8.03685 11.0238 8.03032 11.0303C7.73743 11.3232 7.26256 11.3232 6.96966 11.0303L4.32322 8.38388C4.03032 8.09099 4.03032 7.61612 4.32322 7.32322C4.61611 7.03033 5.09098 7.03033 5.38388 7.32322L7.4774 9.41674L10.9498 4.9921C10.9559 4.98424 10.9626 4.97674 10.9697 4.96967C11.2626 4.67678 11.7374 4.67678 12.0303 4.96967Z" fill="#FD8C06" />
               </svg>
-              <span className="text-[#383637] font-montserrat text-[14px] font-[500] pl-3 w-fit">Tôi đồng ý với Điều khoản dịch vụ và Chính sách bảo mật</span>
+              <span className="text-[#383637] font-montserrat text-[14px] font-[500] pl-3 w-fit">Tôi đồng ý với <a href="https://mimy.vn/teams-of-service" className="font-[600] text-[#FD8C06]">Điều khoản dịch vụ</a>  và  <a href="https://mimy.vn/privacy-policy" className="font-[600] text-[#FD8C06]">Chính sách bảo mật</a></span>
             </div>
             <div className="w-full flex mb-10">
               <Button
