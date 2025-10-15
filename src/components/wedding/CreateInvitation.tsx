@@ -161,7 +161,7 @@ export default function CreateInvitation() {
   return (
     <div className="w-full h-full flex flex-col lg:flex-row font-montserrat">
       <div className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
-        <div className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
+        <div className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white border-none shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
           {renderTemplate}
         </div>
       </div>
