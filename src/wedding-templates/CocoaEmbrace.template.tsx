@@ -8,6 +8,7 @@ import { originalOliveHarmonyState } from "@/states/origin_state/olive_harmony";
 import WeddingGoogleMap from "@/components/wedding/WeddingGoogleMap";
 import CheckCircle from "@/components/icons/check_circle";
 import { originalCocoaEmbraceState } from "@/states/origin_state/cocoa_embrace";
+import { templateCocoaEmbrace } from "@/types/wedding.type";
 
 export default function CocoaEmbraceTemplate() {
   const params = useParams();
@@ -19,18 +20,7 @@ export default function CocoaEmbraceTemplate() {
   const { template: { configs: { texts, images, background_colors, url_maps, send_gifts } }, setSelectedComponent, updateTemplate } = useTemplateStore();
 
   useEffect(() => {
-    updateTemplate({
-      template_id: 'cocoa_embrace',
-      template_name: 'Cocoa Embrace',
-      template_price: 30000,
-      configs: {
-        texts: originalCocoaEmbraceState.texts,
-        images: originalCocoaEmbraceState.images,
-        background_colors: originalCocoaEmbraceState.background_colors,
-        url_maps: originalCocoaEmbraceState.url_maps,
-        send_gifts: originalCocoaEmbraceState.send_gifts,
-      }
-    })
+    updateTemplate(templateCocoaEmbrace)
   }, [])
 
   // Handle form submission
@@ -69,18 +59,18 @@ export default function CocoaEmbraceTemplate() {
           <img onClick={(e) => {
             e.stopPropagation();
             setSelectedComponent('image_1', 'image', images['image_1'])
-          }} src={images['image_1'] ? images['image_1'].url : '/images/logo.png'} alt="Hero" className="object-cover w-full h-full" />
+          }} src={images['image_1'] ? images['image_1'].url : '/images/logo.png'} alt="Hero" className="cursor-pointer object-cover w-full h-full" />
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_1', 'text', texts['text_1'])
-        }} className="px-[48px] font-pecita text-center w-full" style={{ color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }}>
+        }} className="px-[48px] cursor-pointer font-pecita text-center w-full" style={{ color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }}>
           {texts['text_1'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_2', 'text', texts['text_2'])
-        }} className="px-[48px]" style={{ color: texts['text_2'].text_color, fontSize: texts['text_2'].text_size }}>
+        }} className="px-[48px] cursor-pointer" style={{ color: texts['text_2'].text_color, fontSize: texts['text_2'].text_size }}>
           {texts['text_2'].content}
         </div>
         <div className="px-[48px] flex justify-between mt-[2rem]">
@@ -88,109 +78,109 @@ export default function CocoaEmbraceTemplate() {
             <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_3', 'text', texts['text_3'])
-            }} style={{ color: texts['text_3'].text_color, fontSize: texts['text_3'].text_size }}>{texts['text_3'].content}</div>
+            }} style={{ cursor: 'pointer', color: texts['text_3'].text_color, fontSize: texts['text_3'].text_size }}>{texts['text_3'].content}</div>
             <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_4', 'text', texts['text_4'])
-            }} style={{ color: texts['text_4'].text_color, fontSize: texts['text_4'].text_size }}>{texts['text_4'].content}</div>
+            }} style={{ cursor: 'pointer', color: texts['text_4'].text_color, fontSize: texts['text_4'].text_size }}>{texts['text_4'].content}</div>
             <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_5', 'text', texts['text_5'])
-            }} style={{ color: texts['text_5'].text_color, fontSize: texts['text_5'].text_size }}>{texts['text_5'].content}</div>
+            }} style={{ cursor: 'pointer', color: texts['text_5'].text_color, fontSize: texts['text_5'].text_size }}>{texts['text_5'].content}</div>
           </div>
           <div className="flex flex-col gap-[4px] items-end flex-1">
             <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_6', 'text', texts['text_6'])
-            }} style={{ color: texts['text_6'].text_color, fontSize: texts['text_6'].text_size }}>{texts['text_6'].content}</div>
+            }} style={{ cursor: 'pointer', color: texts['text_6'].text_color, fontSize: texts['text_6'].text_size }}>{texts['text_6'].content}</div>
             <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_7', 'text', texts['text_7'])
-            }} style={{ color: texts['text_7'].text_color, fontSize: texts['text_7'].text_size }}>{texts['text_7'].content}</div>
+            }} style={{ cursor: 'pointer', color: texts['text_7'].text_color, fontSize: texts['text_7'].text_size }}>{texts['text_7'].content}</div>
             <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_8', 'text', texts['text_8'])
-            }} style={{ color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>{texts['text_8'].content}</div>
+            }} style={{ cursor: 'pointer', color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>{texts['text_8'].content}</div>
           </div>
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_9', 'text', texts['text_9'])
-        }} className="px-[48px] font-pecita text-center leading-[1] w-full mt-[2rem]" style={{ color: texts['text_9'].text_color, fontSize: texts['text_9'].text_size }}>
+        }} className="cursor-pointer px-[48px] font-pecita text-center leading-[1] w-full mt-[2rem]" style={{ color: texts['text_9'].text_color, fontSize: texts['text_9'].text_size }}>
           {texts['text_9'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_10', 'text', texts['text_10'])
-        }} className="px-[48px] text-center w-full" style={{ color: texts['text_10'].text_color, fontSize: texts['text_10'].text_size }}>
+        }} className="cursor-pointer px-[48px] text-center w-full" style={{ color: texts['text_10'].text_color, fontSize: texts['text_10'].text_size }}>
           {texts['text_10'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_11', 'text', texts['text_11'])
-        }} className="px-[32px] font-pecita leading-[1] mt-[2rem] text-center w-full" style={{ color: texts['text_11'].text_color, fontSize: texts['text_11'].text_size }}>
+        }} className="cursor-pointer px-[32px] font-pecita leading-[1] mt-[2rem] text-center w-full" style={{ color: texts['text_11'].text_color, fontSize: texts['text_11'].text_size }}>
           {texts['text_11'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_12', 'text', texts['text_12'])
-        }} className="px-[32px] font-pecita leading-[1] text-center w-full" style={{ color: texts['text_12'].text_color, fontSize: texts['text_12'].text_size }}>
+        }} className="cursor-pointer px-[32px] font-pecita leading-[1] text-center w-full" style={{ color: texts['text_12'].text_color, fontSize: texts['text_12'].text_size }}>
           {texts['text_12'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_13', 'text', texts['text_13'])
-        }} className="px-[32px] mt-[1rem] text-center w-full" style={{ color: texts['text_13'].text_color, fontSize: texts['text_13'].text_size }}>
+        }} className="cursor-pointer px-[32px] mt-[1rem] text-center w-full" style={{ color: texts['text_13'].text_color, fontSize: texts['text_13'].text_size }}>
           {texts['text_13'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_14', 'text', texts['text_14'])
-        }} className="px-[32px] text-center w-full" style={{ color: texts['text_14'].text_color, fontSize: texts['text_14'].text_size }}>
+        }} className="cursor-pointer px-[32px] text-center w-full" style={{ color: texts['text_14'].text_color, fontSize: texts['text_14'].text_size }}>
           {texts['text_14'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_15', 'text', texts['text_15'])
-        }} className="px-[32px] mt-[1.5rem] text-center w-full" style={{ color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}>
+        }} className="cursor-pointer px-[32px] mt-[1.5rem] text-center w-full" style={{ color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}>
           {texts['text_15'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_16', 'text', texts['text_16'])
-        }} className="px-[32px] text-center w-full" style={{ color: texts['text_16'].text_color, fontSize: texts['text_16'].text_size }}>
+        }} className="cursor-pointer px-[32px] text-center w-full" style={{ color: texts['text_16'].text_color, fontSize: texts['text_16'].text_size }}>
           {texts['text_16'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_17', 'text', texts['text_17'])
-        }} className="px-[32px] text-center w-full" style={{ color: texts['text_17'].text_color, fontSize: texts['text_17'].text_size }}>
+        }} className="cursor-pointer px-[32px] text-center w-full" style={{ color: texts['text_17'].text_color, fontSize: texts['text_17'].text_size }}>
           {texts['text_17'].content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_18', 'text', texts['text_18'])
-        }} className="px-[32px] mt-[1.5rem] text-center w-full" style={{ color: texts['text_18'].text_color, fontSize: texts['text_18'].text_size }}>
+        }} className="cursor-pointer px-[32px] mt-[1.5rem] text-center w-full" style={{ color: texts['text_18'].text_color, fontSize: texts['text_18'].text_size }}>
           {texts['text_18'].content}
         </div>
         <div className="mt-[8px] flex justify-center items-center gap-[10px]">
           <div onClick={(e) => {
             e.stopPropagation();
             setSelectedComponent('bg_color_1', 'background_color', background_colors['bg_color_1'])
-          }} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_1'].color, border: background_colors['bg_color_1'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_1'].border_color}` }} />
+          }} style={{ cursor: 'pointer', width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_1'].color, border: background_colors['bg_color_1'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_1'].border_color}` }} />
           <div onClick={(e) => {
             e.stopPropagation();
             setSelectedComponent('bg_color_2', 'background_color', background_colors['bg_color_2'])
-          }} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_2'].color, border: background_colors['bg_color_2'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_2'].border_color}` }} />
+          }} style={{ cursor: 'pointer', width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_2'].color, border: background_colors['bg_color_2'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_2'].border_color}` }} />
           <div onClick={(e) => {
             e.stopPropagation();
             setSelectedComponent('bg_color_3', 'background_color', background_colors['bg_color_3'])
-          }} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_3'].color, border: background_colors['bg_color_3'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_3'].border_color}` }} />
+          }} style={{ cursor: 'pointer', width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_3'].color, border: background_colors['bg_color_3'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_3'].border_color}` }} />
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_19', 'text', texts['text_19'])
-        }} className="px-[32px] mt-[1.5rem] text-center w-full" style={{ color: texts['text_19'].text_color, fontSize: texts['text_19'].text_size }}>
+        }} className="cursor-pointer px-[32px] mt-[1.5rem] text-center w-full" style={{ color: texts['text_19'].text_color, fontSize: texts['text_19'].text_size }}>
           {texts['text_19'].content}
         </div>
         <div className="flex justify-center">
@@ -205,7 +195,7 @@ export default function CocoaEmbraceTemplate() {
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_20', 'text', texts['text_20'])
-        }} className="px-[48px] mt-[1.5rem] w-full font-[800]" style={{ color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
+        }} className="cursor-pointer px-[48px] mt-[1.5rem] w-full font-[800]" style={{ color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
           {texts['text_20'].content}
         </div>
         <div className="px-[48px]">
@@ -217,11 +207,11 @@ export default function CocoaEmbraceTemplate() {
               <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_21', 'text', texts['text_21'])
-              }} style={{ textAlign: 'left', fontWeight: 500, color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>{texts['text_21'].content}</div>
+              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 500, color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>{texts['text_21'].content}</div>
               <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_22', 'text', texts['text_22'])
-              }} style={{ textAlign: 'left', fontWeight: 700, color: texts['text_22'].text_color, fontSize: texts['text_22'].text_size }}>{texts['text_22'].content}</div>
+              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 700, color: texts['text_22'].text_color, fontSize: texts['text_22'].text_size }}>{texts['text_22'].content}</div>
             </div>
           </div>
           <div className="flex items-center gap-[1rem] py-[12px]" style={{ borderStyle: 'dashed', borderBottomWidth: '1px', borderColor: '#B46B4D' }}>
@@ -232,11 +222,11 @@ export default function CocoaEmbraceTemplate() {
               <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_23', 'text', texts['text_23'])
-              }} style={{ textAlign: 'left', fontWeight: 500, color: texts['text_23'].text_color, fontSize: texts['text_23'].text_size }}>{texts['text_23'].content}</div>
+              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 500, color: texts['text_23'].text_color, fontSize: texts['text_23'].text_size }}>{texts['text_23'].content}</div>
               <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_24', 'text', texts['text_24'])
-              }} style={{ textAlign: 'left', fontWeight: 700, color: texts['text_24'].text_color, fontSize: texts['text_24'].text_size }}>{texts['text_24'].content}</div>
+              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 700, color: texts['text_24'].text_color, fontSize: texts['text_24'].text_size }}>{texts['text_24'].content}</div>
             </div>
           </div>
           <div className="flex items-center gap-[1rem] py-[12px]" style={{ borderStyle: 'dashed', borderBottomWidth: '1px', borderColor: '#B46B4D' }}>
@@ -247,11 +237,11 @@ export default function CocoaEmbraceTemplate() {
               <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_25', 'text', texts['text_25'])
-              }} style={{ textAlign: 'left', fontWeight: 500, color: texts['text_25'].text_color, fontSize: texts['text_25'].text_size }}>{texts['text_25'].content}</div>
+              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 500, color: texts['text_25'].text_color, fontSize: texts['text_25'].text_size }}>{texts['text_25'].content}</div>
               <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_26', 'text', texts['text_26'])
-              }} style={{ textAlign: 'left', fontWeight: 700, color: texts['text_26'].text_color, fontSize: texts['text_26'].text_size }}>{texts['text_26'].content}</div>
+              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 700, color: texts['text_26'].text_color, fontSize: texts['text_26'].text_size }}>{texts['text_26'].content}</div>
             </div>
           </div>
         </div>
@@ -262,23 +252,23 @@ export default function CocoaEmbraceTemplate() {
                 <div onClick={(e) => {
                   e.stopPropagation();
                   setSelectedComponent('text_27', 'text', texts['text_27'])
-                }} style={{ textAlign: 'center', lineHeight: '1', fontWeight: 800, color: texts['text_27'].text_color, fontSize: texts['text_27'].text_size }}>
+                }} className="cursor-pointer" style={{ textAlign: 'center', lineHeight: '1', fontWeight: 800, color: texts['text_27'].text_color, fontSize: texts['text_27'].text_size }}>
                   {texts['text_27'].content}
                 </div>
                 <div onClick={(e) => {
                   e.stopPropagation();
                   setSelectedComponent('text_28', 'text', texts['text_28'])
-                }} style={{ textAlign: 'center', lineHeight: '1', fontWeight: 600, color: texts['text_28'].text_color, fontSize: texts['text_28'].text_size }}>
+                }} className="cursor-pointer" style={{ textAlign: 'center', lineHeight: '1', fontWeight: 600, color: texts['text_28'].text_color, fontSize: texts['text_28'].text_size }}>
                   {texts['text_28'].content}
                 </div>
                 <Image onClick={(e) => {
                   e.stopPropagation();
                   setSelectedComponent('image_3', 'image', images['image_3'])
-                }} src={images['image_3'].url} alt={images['image_3'].id} width={100} height={100} style={{ width: '80px', height: '80px', marginTop: '1rem' }} />
+                }} src={images['image_3'].url} alt={images['image_3'].id} width={100} height={100} className="cursor-pointer" style={{ width: '150px', height: '150px', marginTop: '1rem' }} />
                 <div onClick={(e) => {
                   e.stopPropagation();
                   setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-                }} className="w-[max-content] px-[20px] py-[4px] text-center rounded-[24px]" style={{ backgroundColor: send_gifts['send_gift_1'].background_color, textAlign: 'center', fontWeight: 700, color: send_gifts['send_gift_1'].text_color, fontSize: send_gifts['send_gift_1'].text_size }}>{send_gifts['send_gift_1'].content}</div>
+                }} className="cursor-pointer w-[max-content] px-[20px] py-[4px] text-center rounded-[24px]" style={{ backgroundColor: send_gifts['send_gift_1'].background_color, borderColor: send_gifts['send_gift_1'].border_color, borderWidth: '1px', textAlign: 'center', fontWeight: 700, color: send_gifts['send_gift_1'].text_color, fontSize: send_gifts['send_gift_1'].text_size }}>{send_gifts['send_gift_1'].content}</div>
               </div>
             </div>
             <div className="flex flex-col">
@@ -286,19 +276,19 @@ export default function CocoaEmbraceTemplate() {
               <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-              }} style={{ marginTop: "1rem", textAlign: 'center', lineHeight: '1', fontWeight: 500, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
+              }} className="cursor-pointer" style={{ marginTop: "1rem", textAlign: 'center', lineHeight: '1', fontWeight: 500, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
                 {send_gifts['send_gift_1'].bank_name}
               </div>
               <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-              }} style={{ marginTop: "0.2rem", textAlign: 'center', lineHeight: '1', fontWeight: 500, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
+              }} className="cursor-pointer" style={{ marginTop: "0.2rem", textAlign: 'center', lineHeight: '1', fontWeight: 500, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
                 {send_gifts['send_gift_1'].bank_number}
               </div>
               <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-              }} style={{ marginTop: "0.2rem", textAlign: 'center', lineHeight: '1', fontWeight: 500, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
+              }} className="cursor-pointer" style={{ marginTop: "0.2rem", textAlign: 'center', lineHeight: '1', fontWeight: 500, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
                 {send_gifts['send_gift_1'].bank_holder}
               </div>
             </div>
@@ -308,12 +298,12 @@ export default function CocoaEmbraceTemplate() {
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('image_2', 'image', images['image_2'])
-        }} style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '250px', background: `url(${images['image_2'].url}) 100% 100%`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+        }} className="cursor-pointer" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '250px', background: `url(${images['image_2'].url}) 100% 100%`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
           <div className="bg-black" style={{ position: 'absolute', width: '100%', height: '100%', opacity: 0.5 }} />
           <div onClick={(e) => {
             e.stopPropagation();
             setSelectedComponent('text_29', 'text', texts['text_29'])
-          }} style={{ position: 'relative', zIndex: 1, padding: '0 48px', textAlign: 'left', lineHeight: '1', fontWeight: 400, color: texts['text_29'].text_color, fontSize: texts['text_29'].text_size }}>
+          }} className="cursor-pointer" style={{ position: 'relative', zIndex: 1, padding: '0 48px', textAlign: 'left', lineHeight: '1', fontWeight: 400, color: texts['text_29'].text_color, fontSize: texts['text_29'].text_size }}>
             {texts['text_29'].content}
           </div>
         </div>

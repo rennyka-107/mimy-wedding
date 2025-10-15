@@ -6,6 +6,7 @@ import Image from "next/image";
 import WeddingGoogleMap from "@/components/wedding/WeddingGoogleMap";
 import { useEffect, useState } from "react";
 import { originalJadeWhisperState } from "@/states/origin_state/jade_whisper";
+import { templateJadeWhisper } from "@/types/wedding.type";
 
 
 export default function JadeWhisperTemplate() {
@@ -16,18 +17,7 @@ export default function JadeWhisperTemplate() {
     const [countdown, setCountdown] = useState({ days: 18, hours: 1, minutes: 31, seconds: 3 });
 
     useEffect(() => {
-        updateTemplate({
-            template_id: 'jade_whisper',
-            template_name: 'Jade Whisper',
-            template_price: 50000,
-            configs: {
-                texts: originalJadeWhisperState.texts,
-                images: originalJadeWhisperState.images,
-                background_colors: originalJadeWhisperState.background_colors,
-                url_maps: originalJadeWhisperState.url_maps,
-                send_gifts: originalJadeWhisperState.send_gifts,
-            }
-        })
+        updateTemplate(templateJadeWhisper)
     }, [])
 
     useEffect(() => {
@@ -60,7 +50,7 @@ export default function JadeWhisperTemplate() {
             <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('image_1', 'image', images['image_1'])
-            }} className="absolute top-[50px] left-1/2 -translate-x-1/2 z-1"
+            }} className="cursor-pointer absolute top-[50px] left-1/2 -translate-x-1/2 z-1"
                 style={{
                     width: "90%",
                     margin: "auto",
@@ -88,53 +78,53 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_1', 'text', texts['text_1'])
-                }} style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '40px', letterSpacing: '0%', textAlign: 'center', color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '40px', letterSpacing: '0%', textAlign: 'center', color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }}>
                     {texts['text_1'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_2', 'text', texts['text_2'])
-                }} style={{ fontFamily: 'Send Flowers', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', color: texts['text_2'].text_color, fontSize: texts['text_2'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Send Flowers', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', color: texts['text_2'].text_color, fontSize: texts['text_2'].text_size }}>
                     {texts['text_2'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_3', 'text', texts['text_3'])
-                }} style={{ fontFamily: 'Send Flowers', fontWeight: 400, lineHeight: '1.2', textAlign: 'center', marginTop: '8px', color: texts['text_3'].text_color, fontSize: texts['text_3'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Send Flowers', fontWeight: 400, lineHeight: '1.2', textAlign: 'center', marginTop: '8px', color: texts['text_3'].text_color, fontSize: texts['text_3'].text_size }}>
                     {texts['text_3'].content}
                 </div>
                 <div style={{ alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', backgroundColor: background_colors['bg_color_1'].color, padding: '2rem', marginTop: '1rem' }}>
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('text_4', 'text', texts['text_4'])
-                    }} style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '82%', letterSpacing: '0%', textAlign: 'center', color: texts['text_4'].text_color, fontSize: texts['text_4'].text_size }}>
+                    }} className="cursor-pointer" style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '82%', letterSpacing: '0%', textAlign: 'center', color: texts['text_4'].text_color, fontSize: texts['text_4'].text_size }}>
                         {texts['text_4'].content}
                     </div>
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('text_5', 'text', texts['text_5'])
-                    }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_5'].text_color, fontSize: texts['text_5'].text_size }}>
+                    }} className="cursor-pointer" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_5'].text_color, fontSize: texts['text_5'].text_size }}>
                         {texts['text_5'].content}
                     </div>
                 </div>
             </div>
-            
+
             <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_6', 'text', texts['text_6'])
-            }} style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '40px', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_6'].text_color, fontSize: texts['text_6'].text_size }}>
+            }} className="cursor-pointer" style={{ fontFamily: 'Viaoda Libre', fontWeight: 400, lineHeight: '40px', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_6'].text_color, fontSize: texts['text_6'].text_size }}>
                 {texts['text_6'].content}
             </div>
             <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_7', 'text', texts['text_7'])
-            }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_7'].text_color, fontSize: texts['text_7'].text_size }}>
+            }} className="cursor-pointer" style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_7'].text_color, fontSize: texts['text_7'].text_size }}>
                 {texts['text_7'].content}
             </div>
             <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_8', 'text', texts['text_8'])
-            }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>
+            }} className="cursor-pointer" style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginTop: '16px', padding: '0 20px', color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>
                 {texts['text_8'].content}
             </div>
             {/* Countdown Timer */}
@@ -142,22 +132,22 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('bg_color_2', 'background_color', background_colors['bg_color_2'])
-                }} style={{ borderRadius: "50px", backgroundColor: background_colors['bg_color_2'].color, border: `1px solid ${background_colors['bg_color_2'].border_color}` }} className="flex justify-center gap-[12px]">
+                }} style={{ borderRadius: "50px", backgroundColor: background_colors['bg_color_2'].color, border: `1px solid ${background_colors['bg_color_2'].border_color}` }} className="cursor-pointer flex justify-center gap-[12px]">
                     <div style={{ width: '70px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 8px', borderRadius: '8px' }}>
                         <div style={{ fontSize: '20px', fontWeight: 700, color: '#2B2B2B' }}>{countdown.days}</div>
                         <div onClick={(e) => {
                             e.stopPropagation();
                             setSelectedComponent('text_9', 'text', texts['text_9'])
-                        }} style={{ fontSize: texts['text_9'].text_size, fontWeight: 400, color: texts['text_9'].text_color }}>
+                        }} className="cursor-pointer" style={{ fontSize: texts['text_9'].text_size, fontWeight: 400, color: texts['text_9'].text_color }}>
                             {texts['text_9'].content}
                         </div>
                     </div>
-                    <div style={{ width: '70px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 8px', borderRadius: '8px',  }}>
+                    <div style={{ width: '70px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 8px', borderRadius: '8px', }}>
                         <div style={{ fontSize: '20px', fontWeight: 700, color: '#2B2B2B' }}>{String(countdown.hours).padStart(2, '0')}</div>
                         <div onClick={(e) => {
                             e.stopPropagation();
                             setSelectedComponent('text_10', 'text', texts['text_10'])
-                        }} style={{ fontSize: texts['text_10'].text_size, fontWeight: 400, color: texts['text_10'].text_color }}>
+                        }} className="cursor-pointer" style={{ fontSize: texts['text_10'].text_size, fontWeight: 400, color: texts['text_10'].text_color }}>
                             {texts['text_10'].content}
                         </div>
                     </div>
@@ -166,7 +156,7 @@ export default function JadeWhisperTemplate() {
                         <div onClick={(e) => {
                             e.stopPropagation();
                             setSelectedComponent('text_11', 'text', texts['text_11'])
-                        }} style={{ fontSize: texts['text_11'].text_size, fontWeight: 400, color: texts['text_11'].text_color }}>
+                        }} className="cursor-pointer" style={{ fontSize: texts['text_11'].text_size, fontWeight: 400, color: texts['text_11'].text_color }}>
                             {texts['text_11'].content}
                         </div>
                     </div>
@@ -175,7 +165,7 @@ export default function JadeWhisperTemplate() {
                         <div onClick={(e) => {
                             e.stopPropagation();
                             setSelectedComponent('text_12', 'text', texts['text_12'])
-                        }} style={{ fontSize: texts['text_12'].text_size, fontWeight: 400, color: texts['text_12'].text_color }}>
+                        }} className="cursor-pointer" style={{ fontSize: texts['text_12'].text_size, fontWeight: 400, color: texts['text_12'].text_color }}>
                             {texts['text_12'].content}
                         </div>
                     </div>
@@ -187,13 +177,13 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_13', 'text', texts['text_13'])
-                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_13'].text_color, fontSize: texts['text_13'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_13'].text_color, fontSize: texts['text_13'].text_size }}>
                     {texts['text_13'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_14', 'text', texts['text_14'])
-                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', marginTop: '12px', color: texts['text_14'].text_color, fontSize: texts['text_14'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', marginTop: '12px', color: texts['text_14'].text_color, fontSize: texts['text_14'].text_size }}>
                     {texts['text_14'].content}
                 </div>
             </div>
@@ -203,27 +193,9 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_15', 'text', texts['text_15'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}>
                     {texts['text_15'].content}
                 </div>
-                {/* <div onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedComponent('text_16', 'text', texts['text_16'])
-                }} style={{ width: "364px", margin: "auto", fontWeight: 400, lineHeight: '1.3', marginTop: '8px', color: texts['text_16'].text_color, fontSize: texts['text_16'].text_size }}>
-                    {texts['text_16'].content}
-                </div> */}
-                {/* <div onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedComponent('text_12', 'text', texts['text_12'])
-                }} style={{ fontWeight: 700, lineHeight: '1.3', color: texts['text_12'].text_color, fontSize: texts['text_12'].text_size }}>
-                    {texts['text_12'].content}
-                </div> */}
-                {/* <div onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedComponent('text_17', 'text', texts['text_17'])
-                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', marginTop: '12px', padding: '0 10px', color: texts['text_17'].text_color, fontSize: texts['text_17'].text_size }}>
-                    {texts['text_17'].content}
-                </div> */}
             </div>
 
             <div className="flex justify-center">
@@ -241,37 +213,38 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_15', 'text', texts['text_15'])
-                }} style={{ fontWeight: 500, lineHeight: '1.4', marginBottom: '12px', color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}>
+                }} className="cursor-pointer" style={{ fontWeight: 500, lineHeight: '1.4', marginBottom: '12px', color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}>
                     {texts['text_15'].content}
+                </div>
+                <div onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedComponent('text_16', 'text', texts['text_16'])
+                }} className="cursor-pointer" style={{ fontWeight: 700, lineHeight: '100%', letterSpacing: '0%', textAlign: 'center', marginBottom: '16px', color: texts['text_16'].text_color, fontSize: texts['text_16'].text_size }}>
+                    {texts['text_16'].content}
                 </div>
                 <div className="mt-[8px] flex justify-center items-center gap-[10px]">
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('bg_color_2', 'background_color', background_colors['bg_color_2'])
-                    }} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_2'].color, border: background_colors['bg_color_2'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_2'].border_color}` }} />
+                    }} className="cursor-pointer" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_2'].color, border: background_colors['bg_color_2'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_2'].border_color}` }} />
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('bg_color_3', 'background_color', background_colors['bg_color_3'])
-                    }} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_3'].color, border: background_colors['bg_color_3'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_3'].border_color}` }} />
+                    }} className="cursor-pointer" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_3'].color, border: background_colors['bg_color_3'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_3'].border_color}` }} />
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('bg_color_4', 'background_color', background_colors['bg_color_4'])
-                    }} style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_4'].color, border: background_colors['bg_color_4'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_4'].border_color}` }} />
+                    }} className="cursor-pointer" style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: background_colors['bg_color_4'].color, border: background_colors['bg_color_4'].border_color === 'none' ? 'none' : `1px solid ${background_colors['bg_color_4'].border_color}` }} />
                 </div>
             </div>
 
             {/* Thank You Section */}
-            <div className="px-[32px] pb-[30px]">
-                <div onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedComponent('text_16', 'text', texts['text_16'])
-                }} style={{ fontWeight: 700, lineHeight: '100%', letterSpacing: '0%', textAlign: 'left', marginBottom: '16px', color: texts['text_16'].text_color, fontSize: texts['text_16'].text_size }}>
-                    {texts['text_16'].content}
-                </div>
+            <div className="px-[32px] pb-[10px]">
+
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_17', 'text', texts['text_17'])
-                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', color: texts['text_17'].text_color, fontSize: texts['text_17'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', color: texts['text_17'].text_color, fontSize: texts['text_17'].text_size }}>
                     {texts['text_17'].content}
                 </div>
             </div>
@@ -281,7 +254,7 @@ export default function JadeWhisperTemplate() {
                 <img onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('image_2', 'image', images['image_2'])
-                }} src={images['image_2'] ? images['image_2'].url : '/images/logo.png'} alt="Wedding" className="object-cover w-full h-auto mx-auto rounded-[8px]" />
+                }} src={images['image_2'] ? images['image_2'].url : '/images/logo.png'} alt="Wedding" className="cursor-pointer object-cover w-full h-auto mx-auto rounded-[8px]" />
             </div>
 
             {/* Groom Section */}
@@ -289,19 +262,19 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_18', 'text', texts['text_18'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', textAlign: 'left', marginBottom: '12px', color: texts['text_18'].text_color, fontSize: texts['text_18'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', textAlign: 'left', marginBottom: '12px', color: texts['text_18'].text_color, fontSize: texts['text_18'].text_size }}>
                     {texts['text_18'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_19', 'text', texts['text_19'])
-                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_19'].text_color, fontSize: texts['text_19'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_19'].text_color, fontSize: texts['text_19'].text_size }}>
                     {texts['text_19'].content}
                 </div>
                 <img onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('image_3', 'image', images['image_3'])
-                }} src={images['image_3'] ? images['image_3'].url : '/images/logo.png'} alt="Groom" className="object-cover w-full h-auto rounded-[16px]" />
+                }} src={images['image_3'] ? images['image_3'].url : '/images/logo.png'} alt="Groom" className="cursor-pointer object-cover w-full h-auto rounded-[16px]" />
             </div>
 
             {/* Bride Section */}
@@ -309,19 +282,19 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_20', 'text', texts['text_20'])
-                }} style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', textAlign: 'left', marginBottom: '12px', color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Afacad', fontWeight: 400, lineHeight: '100%', textAlign: 'left', marginBottom: '12px', color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
                     {texts['text_20'].content}
                 </div>
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_21', 'text', texts['text_21'])
-                }} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, letterSpacing: '0%', textAlign: 'justify', textJustify: 'inter-word', marginBottom: '16px', color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>
                     {texts['text_21'].content}
                 </div>
                 <img onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('image_4', 'image', images['image_4'])
-                }} src={images['image_4'] ? images['image_4'].url : '/images/logo.png'} alt="Bride" className="object-cover w-full h-auto rounded-[16px]" />
+                }} src={images['image_4'] ? images['image_4'].url : '/images/logo.png'} alt="Bride" className="cursor-pointer object-cover w-full h-auto rounded-[16px]" />
             </div>
 
             <div className="w-[80%] mx-auto mt-[2rem] pb-[1rem] relative">
@@ -340,33 +313,30 @@ export default function JadeWhisperTemplate() {
                 <div onClick={(e) => {
                     e.stopPropagation();
                     setSelectedComponent('text_23', 'text', texts['text_23'])
-                }} style={{ fontFamily: 'Afacad', margin: "1rem auto 1.5rem auto", width: "283px", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_23'].text_color, fontSize: texts['text_23'].text_size }}>
+                }} className="cursor-pointer" style={{ fontFamily: 'Afacad', margin: "1rem auto 1.5rem auto", width: "283px", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_23'].text_color, fontSize: texts['text_23'].text_size }}>
                     {texts['text_23'].content}
                 </div>
-                <img src="/images/qr-mimy.png" alt="qr" className="w-[135px] h-[135px] mx-auto" />
+                <img onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedComponent('image_qr', 'image', images['image_qr'])
+                }} src={images['image_qr'] && images['image_qr'].url} alt="qr" className="w-[135px] h-[135px] mx-auto cursor-pointer" />
                 <div className="flex flex-col mt-[1rem]">
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-                    }} className="w-[max-content] mx-auto px-[20px] py-[6px] text-center rounded-[24px]" style={{ backgroundColor: send_gifts['send_gift_1'].background_color, textAlign: 'center', fontWeight: 500, color: send_gifts['send_gift_1'].text_color, fontSize: send_gifts['send_gift_1'].text_size }}>{send_gifts['send_gift_1'].content}</div>
+                    }} className="cursor-pointer w-[max-content] mx-auto px-[20px] py-[6px] text-center rounded-[24px]" style={{ backgroundColor: send_gifts['send_gift_1'].background_color, textAlign: 'center', fontWeight: 500, color: send_gifts['send_gift_1'].text_color, fontSize: send_gifts['send_gift_1'].text_size, borderColor: send_gifts['send_gift_1'].border_color, borderWidth: '1px' }}>{send_gifts['send_gift_1'].content}</div>
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-                    }} style={{ marginTop: "1rem", textAlign: 'center', lineHeight: '1', fontWeight: 400, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
+                    }} className="cursor-pointer" style={{ marginTop: "1rem", textAlign: 'center', lineHeight: '1', fontWeight: 400, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
                         {send_gifts['send_gift_1'].bank_name}
                     </div>
                     <div onClick={(e) => {
                         e.stopPropagation();
                         setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-                    }} style={{ marginTop: "0.5rem", textAlign: 'center', lineHeight: '1', fontWeight: 400, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
+                    }} className="cursor-pointer" style={{ marginTop: "0.5rem", textAlign: 'center', lineHeight: '1', fontWeight: 400, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
                         {send_gifts['send_gift_1'].bank_number}
                     </div>
-                    {/* <div onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedComponent('send_gift_1', 'send_gift', send_gifts['send_gift_1'])
-                    }} style={{ marginTop: "1rem", textAlign: 'center', lineHeight: '1', fontWeight: 400, color: send_gifts['send_gift_1'].text_bank_color, fontSize: send_gifts['send_gift_1'].text_bank_size }}>
-                        {send_gifts['send_gift_1'].bank_holder}
-                    </div> */}
                 </div>
             </div>
         </div>

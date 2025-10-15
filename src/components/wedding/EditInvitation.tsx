@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ColorDisplay from "./ColorDisplay";
 import NumberInput from "./NumberInput";
 import ImageUpload from "./ImageUpload";
@@ -15,6 +15,11 @@ import OliveHarmonyTemplate from "@/wedding-templates/OliveHarmony.template";
 import { useParams, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { TemplateId, templateSunshineVow } from "@/types/wedding.type";
+import JadeWhisperTemplate from "@/wedding-templates/ForestCharm.template";
+import CocoaEmbraceTemplate from "@/wedding-templates/CocoaEmbrace.template";
+import GoldenBondTemplate from "@/wedding-templates/GoldenBond.template";
+import ForestCharmTemplate from "@/wedding-templates/ForestCharm.template";
 
 export default function EditInvitation() {
   const params = useParams();
@@ -22,11 +27,10 @@ export default function EditInvitation() {
 
   const [isPaid, setIsPaid] = useState(false);
   const router = useRouter();
-  // State để trigger refresh limit indicators và gallery
-  const [refreshLimitTrigger, setRefreshLimitTrigger] = useState(0);
-  const [refreshGalleryTrigger, setRefreshGalleryTrigger] = useState(0);
   const { user } = useAuth();
 
+  const outerDivRef = useRef<HTMLDivElement>(null);
+  const innerDivRef = useRef<HTMLDivElement>(null);
 
   // State cho modal xuất bản
   const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
@@ -38,8 +42,7 @@ export default function EditInvitation() {
     publicEnd: ""
   });
 
-  console.log("id", id);
-
+  const [originalTemplate, setOriginalTemplate] = useState<{ template_id: TemplateId, template_name: string, template_price: number, configs: { texts: { [key: string]: TextItem }; images: { [key: string]: ImageItem }; background_colors: { [key: string]: BackgroundColorItem }; url_maps: { [key: string]: UrlMapItem }; send_gifts: { [key: string]: SendGiftItem }; } } | null>(null);
 
 
   // State cho modal lưu nháp
@@ -59,6 +62,12 @@ export default function EditInvitation() {
             configs: data.data.template_config
           });
           setIsPaid(data.data.public_url !== null && data.data.public_url !== "");
+          setOriginalTemplate({
+            template_id: data.data.template_id as TemplateId,
+            template_name: data.data.template_name,
+            template_price: data.data.template_price,
+            configs: data.data.template_config
+          });
         }
       })
   }
@@ -66,6 +75,9 @@ export default function EditInvitation() {
   useEffect(() => {
     if (!id) return;
     fetchInvitation();
+    return () => {
+      updateTemplate(templateSunshineVow);
+    }
   }, [id]);
   // Hàm xử lý lưu nháp
   const handleSaveDraft = async () => {
@@ -92,7 +104,7 @@ export default function EditInvitation() {
         if (data.status === "success") {
           setIsSaveDraftModalOpen(true);
         } else {
-          toast.error("Đã có lỗi xảy ra trong quá trình lưu nháp! Vui lòng liên hệ với chúng tôi trực tiếp qua zalo hoặc facebook!");
+          toast.error("Đã có lỗi xảy ra trong quá trình lưu nháp! Vui lòng liên hệ với chúng tôi theo địa chỉ contact@mimy.vn!");
         }
       })
 
@@ -103,12 +115,42 @@ export default function EditInvitation() {
     }
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as Node;
+
+    // Kiểm tra nếu click nằm trong outer div nhưng ngoài inner div
+    if (
+      outerDivRef.current &&
+      innerDivRef.current &&
+      outerDivRef.current.contains(target) &&
+      !innerDivRef.current.contains(target)
+    ) {
+      // Bỏ chọn component hiện tại
+      setSelectedComponent(null, null, null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   function renderTemplate() {
     switch (template.template_id) {
       case "sunshine_vow":
         return <SunshineVowTemplate />;
       case "olive_harmony":
         return <OliveHarmonyTemplate />;
+      case "cocoa_embrace":
+        return <CocoaEmbraceTemplate />;
+      case "golden_bond":
+        return <GoldenBondTemplate />;
+      case "forest_charm":
+        return <ForestCharmTemplate />;
+      case "jade_whisper":
+        return <JadeWhisperTemplate />;
       default:
         return <SunshineVowTemplate />;
     }
@@ -117,15 +159,12 @@ export default function EditInvitation() {
 
   return (
     <div className="w-full h-full flex font-montserrat">
-      <div className="w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
-        <div className="w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto">
-         
+      <div ref={outerDivRef} className="w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
+        <div ref={innerDivRef} className="w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto">
           {renderTemplate()}
         </div>
       </div>
       <div className="w-1/4 bg-white h-[calc(100vh-86px)] overflow-y-auto">
-        
-
         <div className="flex justify-center gap-5 items-center border-b border-[#E9EAEB] px-[18px] py-[1rem]">
           <button
             onClick={handleSaveDraft}
@@ -167,7 +206,11 @@ export default function EditInvitation() {
                 console.log(selectedComponent.id, selectedComponent.type)
                 resetComponent(selectedComponent.id, selectedComponent.type, template.template_id);
               } else {
-                resetAllComponent();
+                if(originalTemplate){
+                  resetAllComponent(originalTemplate);
+                } else {
+                  resetAllComponent();
+                }
               }
             }} className="cursor-pointer hover:opacity-70 w-[48%] bg-[#fd8c06] px-[12px] py-[8px] rounded-[4px] text-[14px] font-[500] text-white">Quay về mặc định</button>
           </div>
@@ -210,9 +253,6 @@ export default function EditInvitation() {
         </div>}
         {selectedComponent && selectedComponent.type === 'image' && <div className="flex flex-col gap-2 items-start px-[18px] py-[1rem]">
           <label className="text-[#4A3B36] text-[14px] font-[600]">Tải ảnh lên</label>
-
-          {/* Hiển thị chỉ báo giới hạn ảnh */}
-          <RefreshableLimitIndicator type="image" className="w-full mb-3" refreshTrigger={refreshLimitTrigger} />
           <ImageUpload
             initialImageUrl={(selectedComponent.data as ImageItem)?.url}
             onImageUpload={(file) => {
@@ -222,16 +262,12 @@ export default function EditInvitation() {
             onImageUploadUrl={(url) => {
               updateImage(selectedComponent.id ?? '', { url: url });
               setSelectedComponent(selectedComponent.id ?? '', 'image', { ...selectedComponent.data as ImageItem, url: url });
-
-              // Trigger cập nhật giới hạn ảnh và gallery sau khi upload thành công
-              setRefreshLimitTrigger(prev => prev + 1);
-              setRefreshGalleryTrigger(prev => prev + 1);
             }}
             onImageRemove={() => {
-              // Xóa ảnh hiện tại và sử dụng URL mặc định
-              const defaultImageUrl = `/templates/SunshineVow/${selectedComponent.id}.png`;
-              updateImage(selectedComponent.id ?? '', { url: defaultImageUrl });
-              setSelectedComponent(selectedComponent.id ?? '', 'image', { ...selectedComponent.data as ImageItem, url: defaultImageUrl });
+              // // Xóa ảnh hiện tại và sử dụng URL mặc định
+              // const defaultImageUrl = `/templates/SunshineVow/${selectedComponent.id}.png`;
+              // updateImage(selectedComponent.id ?? '', { url: defaultImageUrl });
+              // setSelectedComponent(selectedComponent.id ?? '', 'image', { ...selectedComponent.data as ImageItem, url: defaultImageUrl });
             }}
             className="w-full"
           />
@@ -251,14 +287,9 @@ export default function EditInvitation() {
                   updateImage(selectedComponent.id ?? '', { url: defaultImageUrl });
                   setSelectedComponent(selectedComponent.id ?? '', 'image', { ...currentImage, url: defaultImageUrl });
                 }
-
-                // Cập nhật lại giới hạn ảnh và gallery sau khi xóa
-                setRefreshLimitTrigger(prev => prev + 1);
-                setRefreshGalleryTrigger(prev => prev + 1); // Refresh gallery sau khi xóa
               }}
               selectedUrl={(selectedComponent.data as ImageItem)?.url}
               className="w-full"
-              refreshTrigger={refreshGalleryTrigger} // Thêm prop refreshTrigger
             />
           </div>
         </div>}
@@ -402,49 +433,49 @@ export default function EditInvitation() {
           publicEnd,
           templateConfigs,
         }, callback) => {
-            fetch("/api/payment?code=" + code).then(res => res.json()).then(data => {
-              console.log(data, "data");
-              if (data.status === "success" && data.data) {
-                const { id: paymentId } = data.data;
-                fetch("/api/orders?id=" + id, {
-                  method: "PUT",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    code,
-                    total_money: templatePrice,
-                    template_id: templateId,
-                    template_price: templatePrice,
-                    user_id: user?.id,
-                    payment_id: paymentId,
-                    public_url: publicUrl,
-                    public_start: publicStart,
-                    public_end: publicEnd,
-                    template_name: templateName,
-                    template_config: templateConfigs
-                  }),
-                }).then(res => res.json()).then(data => {
-                  console.log(data, "data");
-                  if (data.status === "success") {
-                    // Lưu thông tin để hiển thị trong modal thành công
-                    setPublicData({
-                      publicUrl: process.env.NEXT_PUBLIC_BASE_URL + publicUrl,
-                      publicStart,
-                      publicEnd
-                    });
-                    // Hiển thị modal thành công thay vì toast
-                    setIsSuccessModalOpen(true);
-                    callback && callback();
-                  } else {
-                    toast.error("Đã có lỗi xảy ra trong quá trình xuất bản thiệp! Vui lòng liên hệ với chúng tôi trực tiếp qua zalo hoặc facebook!");
-                  }
-                });
-              } else {
-                toast.error("Đơn hàng của bạn chưa được thanh toán! Vui lòng thanh toán để xuất bản thiệp cưới của bạn.");
-              }
-            })
-            // Xử lý xuất bản thiệp
+          fetch("/api/payment?code=" + code).then(res => res.json()).then(data => {
+            console.log(data, "data");
+            if (data.status === "success" && data.data) {
+              const { id: paymentId } = data.data;
+              fetch("/api/orders?id=" + id, {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  code,
+                  total_money: templatePrice,
+                  template_id: templateId,
+                  template_price: templatePrice,
+                  user_id: user?.id,
+                  payment_id: paymentId,
+                  public_url: publicUrl,
+                  public_start: publicStart,
+                  public_end: publicEnd,
+                  template_name: templateName,
+                  template_config: templateConfigs
+                }),
+              }).then(res => res.json()).then(data => {
+                console.log(data, "data");
+                if (data.status === "success") {
+                  // Lưu thông tin để hiển thị trong modal thành công
+                  setPublicData({
+                    publicUrl: process.env.NEXT_PUBLIC_BASE_URL + publicUrl,
+                    publicStart,
+                    publicEnd
+                  });
+                  // Hiển thị modal thành công thay vì toast
+                  setIsSuccessModalOpen(true);
+                  callback && callback();
+                } else {
+                  toast.error("Đã có lỗi xảy ra trong quá trình xuất bản thiệp! Vui lòng liên hệ với chúng tôi trực tiếp qua zalo hoặc facebook!");
+                }
+              });
+            } else {
+              toast.error("Đơn hàng của bạn chưa được thanh toán! Vui lòng thanh toán để xuất bản thiệp cưới của bạn.");
+            }
+          })
+          // Xử lý xuất bản thiệp
         }}
         isPaid={false} // Thay đổi thành true nếu sử dụng phiên bản trả phí
         templates={[

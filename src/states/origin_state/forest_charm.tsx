@@ -43,10 +43,12 @@ export const originalForestCharmState: {
 
   background_colors: {
     bg_color_1: { id: 'bg_color_1', color: '#FBFFF8', border_color: 'none' },
-    bg_color_2: { id: 'bg_color_2', color: '#5F9654', border_color: 'none' },
-    bg_color_3: { id: 'bg_color_3', color: '#19271A', border_color: 'none' },
+    bg_color_2: { id: 'bg_color_2', color: '#5F9654', border_color: '#5F9654' },
+    bg_color_3: { id: 'bg_color_3', color: '#19271A', border_color: '#19271A' },
     bg_color_4: { id: 'bg_color_4', color: '#FFFFFF', border_color: '#D9D9D9' },
     bg_color_5: { id: 'bg_color_5', color: '#FFFFFF', border_color: 'none' },
+    bg_color_6: { id: 'bg_color_6', color: '#A2DB97', border_color: '#A2DB97' },
+    bg_color_7: { id: 'bg_color_7', color: '#B2CDAC', border_color: '#B2CDAC' },
   },
 
   url_maps: {

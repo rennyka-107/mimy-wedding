@@ -95,7 +95,7 @@ export default function Header() {
               {user ? (
                 <>
                   <button
-                    className="flex items-center gap-2 py-[6px] px-[16px] rounded-[6px]
+                    className="cursor-pointer flex items-center gap-2 py-[6px] px-[16px] rounded-[6px]
              bg-gradient-to-r from-[#FFBB53] to-[#FD8C06]
              text-white font-montserrat text-[16px] font-[600] leading-[24px]
              hover:opacity-90 transition-opacity"
