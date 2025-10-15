@@ -47,7 +47,7 @@ const SuccessPublishModal: React.FC<SuccessPublishModalProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="font-montserrat fixed inset-0 flex items-center justify-center z-50">
           {/* Background overlay */}
           <motion.div
             className="absolute inset-0 bg-black backdrop-blur-[2px] bg-opacity-30"
@@ -87,23 +87,23 @@ const SuccessPublishModal: React.FC<SuccessPublishModalProps> = ({
 
             {/* Content */}
             <div className="p-6">
-              <h1 className="text-[24px] font-[600] text-[#4A3B36] mb-4">
+              <h1 className="text-[24px] font-[600] text-[#383637] mb-4">
                 Thiệp cưới của bạn đã được xuất bản
               </h1>
               
               <div className="space-y-3 mb-6">
-                <p className="text-[#A4A7AE]">
+                <p className="text-[#898A85]">
                   Bạn đã tạo thiệp thành công.
                 </p>
-                <p className="text-[#A4A7AE]">
+                <p className="text-[#898A85]">
                   Thiệp của bạn có hiệu lực từ ngày <span className="font-[600] text-[#fd8c06]">{publicStart}</span> đến ngày <span className="font-[600] text-[#fd8c06]">{publicEnd}</span>.
                 </p>
-                <p className="text-[#A4A7AE]">
+                <p className="text-[#898A85]">
                   Hãy truy cập
                   <span className="font-[600] text-[#fd8c06]"> {publicUrl} </span>
                   để xem ngay thiệp cưới của bạn nhé!
                 </p>
-                <p className="text-[#A4A7AE] font-medium">
+                <p className="text-[#898A85] font-medium">
                   Chúc bạn có một đám cưới trọn vẹn, hạnh phúc và ngập tràn yêu thương!
                 </p>
               </div>

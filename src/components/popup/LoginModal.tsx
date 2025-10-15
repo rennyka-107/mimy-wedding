@@ -109,7 +109,7 @@ export default function LoginModal({ isOpen, onClose, callback }: LoginModalProp
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 w-full">
+        <div className="font-montserrat fixed inset-0 flex items-center justify-center z-50 w-full">
           <motion.div
             className="absolute inset-0 backdrop-blur-[2px] bg-black bg-opacity-5"
             variants={overlayVariants}

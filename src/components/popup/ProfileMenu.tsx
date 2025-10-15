@@ -73,12 +73,12 @@ export default function ProfileMenu({
       text: "Thiệp cưới của bạn",
       href: "/invitations"
     },
-    {
-      id: 'info',
-      icon: <UserInformation />,
-      text: "Thông tin",
-      href: "/profile"
-    },
+    // {
+    //   id: 'info',
+    //   icon: <UserInformation />,
+    //   text: "Thông tin",
+    //   href: "/profile"
+    // },
     // {
     //   id: 'services',
     //   icon: <Services />,
@@ -104,7 +104,7 @@ export default function ProfileMenu({
       {isOpen && (
         <motion.div
           ref={menuRef}
-          className="absolute top-[110%] right-0 w-64 bg-white rounded-lg shadow-lg border border-gray-100 z-[9999]"
+          className="font-montserrat absolute top-[110%] right-0 w-64 bg-white rounded-lg shadow-lg border border-gray-100 z-[9999]"
           variants={menuVariants}
           initial="hidden"
           animate="visible"

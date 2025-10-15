@@ -104,7 +104,7 @@ export default function EditInvitation() {
         if (data.status === "success") {
           setIsSaveDraftModalOpen(true);
         } else {
-          toast.error("Đã có lỗi xảy ra trong quá trình lưu nháp! Vui lòng liên hệ với chúng tôi trực tiếp qua zalo hoặc facebook!");
+          toast.error("Đã có lỗi xảy ra trong quá trình lưu nháp! Vui lòng liên hệ với chúng tôi theo địa chỉ contact@mimy.vn!");
         }
       })
 

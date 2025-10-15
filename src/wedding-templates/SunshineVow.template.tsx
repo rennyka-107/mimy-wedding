@@ -58,7 +58,7 @@ const SunshineVowTemplate: React.FC = () => {
       {/* Hero Section */}
       <WeddingBackground
         background={heroBgUrl}
-        className="min-h-[550px] flex items-end justify-center pb-20 relative"
+        className="min-h-[550px] flex items-end justify-center pb-20 relative border-none"
         additionalStyle={{
           backgroundImage: `url('${heroBgUrl}')`,
           backgroundSize: '448px 306px',

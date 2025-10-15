@@ -122,7 +122,7 @@ export default function QRPaymentModal({
             {/* Modal */}
             <motion.div
               ref={modalRef}
-              className="bg-white rounded-lg shadow-xl w-full max-w-lg m-4 relative z-10"
+              className="bg-white rounded-lg shadow-xl w-full max-w-lg m-4 p-4 relative z-10"
               variants={modalVariants}
               initial="hidden"
               animate="visible"
@@ -141,8 +141,8 @@ export default function QRPaymentModal({
               
               {/* Header */}
               <div className="px-6 pt-6 pb-3">
-                <h2 className="text-2xl font-bold text-gray-800">Quét QR thanh toán</h2>
-                <p className="text-gray-500">Nếu có bất kỳ vấn đề gì, vui lòng liên hệ với chúng tôi ngay!</p>
+                <h2 className="text-2xl font-[600] text-[#383637] pb-2">Quét QR thanh toán</h2>
+                <p className="text-[#898A85] text-[14px]">Nếu có bất kỳ vấn đề gì, vui lòng liên hệ với chúng tôi theo địa chỉ contact@mimy.vn!</p>
               </div>
               
               {/* QR Code */}
@@ -177,16 +177,16 @@ export default function QRPaymentModal({
               {/* Payment details */}
               <div className="px-6">
                 <div className="flex items-center justify-between py-3 border-t border-gray-100">
-                  <span className="text-[#4A3B36] font-[800]">Tổng tiền</span>
-                  <span className="text-[#4A3B36] font-[800]">{amount.toLocaleString()} (VND)</span>
+                  <span className="text-[#383637] font-[600]">Tổng tiền</span>
+                  <span className="text-[#383637] font-[600]">{amount.toLocaleString()} (VND)</span>
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-[#4A3B36] font-[800]">Nội dung thanh toán</span>
-                  <span className="text-[#4A3B36] font-[800]">{code}</span>
+                  <span className="text-[#383637] font-[600]">Nội dung thanh toán</span>
+                  <span className="text-[#383637] font-[600]">{code}</span>
                 </div>
                 
-                <p className="text-sm text-gray-500 py-2">
+                <p className="text-sm text-[#898A85] pt-2 pb-8">
                   {serviceDescription}
                 </p>
               </div>

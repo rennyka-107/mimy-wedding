@@ -21,7 +21,7 @@ export const templateSunshineVow: {
     };
 } = {
     template_id: 'sunshine_vow',
-    template_name: 'Sunshine Vow',
+    template_name: 'Thiệp cưới Sunshine Vow',
     template_price: 60000,
     configs: originalSunshineVowState
 };
@@ -39,7 +39,7 @@ export const templateOliveHarmony: {
     };
 } = {
     template_id: 'olive_harmony',
-    template_name: 'Olive Harmony',
+    template_name: 'Thiệp cưới Olive Harmony',
     template_price: 30000,
     configs: originalOliveHarmonyState
 };
@@ -57,7 +57,7 @@ export const templateCocoaEmbrace: {
     };
 } = {
     template_id: 'cocoa_embrace',
-    template_name: 'Cocoa Embrace',
+    template_name: 'Thiệp cưới Cocoa Embrace',
     template_price: 30000,
     configs: originalCocoaEmbraceState
 };
@@ -75,7 +75,7 @@ export const templateGoldenBond: {
     };
 } = {
     template_id: 'golden_bond',
-    template_name: 'Golden Bond',
+    template_name: 'Thiệp cưới Golden Bond',
     template_price: 30000,
     configs: originalGoldenBondState
 };
@@ -93,7 +93,7 @@ export const templateForestCharm: {
     };
 } = {
     template_id: 'forest_charm',
-    template_name: 'Forest Charm',
+    template_name: 'Thiệp cưới Forest Charm',
     template_price: 50000,
     configs: originalForestCharmState
 };
@@ -111,7 +111,7 @@ export const templateJadeWhisper: {
     };
 } = {
     template_id: 'jade_whisper',
-    template_name: 'Jade Whisper',
+    template_name: 'Thiệp cưới Jade Whisper',
     template_price: 50000,
     configs: originalJadeWhisperState
 };

@@ -338,8 +338,8 @@ export default function InvitationManagement() {
       animate={isInView ? "visible" : "hidden"}
     >
       {/* Stats Cards */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-8">
-        <div className="bg-white rounded-lg p-6 shadow-sm border">
+      <motion.div variants={itemVariants} className="font-montserrat grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mb-8">
+        <div className="bg-white rounded-lg p-6 shadow-sm">
           <div className="flex items-center justify-between">
             <div>
               <div className="text-2xl font-bold text-[#fd8c06] mb-1">{stats.totalInvitations}</div>
@@ -353,7 +353,7 @@ export default function InvitationManagement() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-sm border">
+        <div className="bg-white rounded-lg p-6 shadow-sm">
           <div className="flex items-center justify-between">
             <div>
               <div className="text-2xl font-bold text-[#fd8c06] mb-1">{stats.totalWishes}</div>
@@ -367,7 +367,7 @@ export default function InvitationManagement() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-sm border">
+        <div className="bg-white rounded-lg p-6 shadow-sm">
           <div className="flex items-center justify-between">
             <div>
               <div className="text-2xl font-bold text-[#fd8c06] mb-1">{stats.totalViews}</div>
@@ -384,8 +384,8 @@ export default function InvitationManagement() {
       </motion.div>
 
       {/* Filter Tabs and Table */}
-      <motion.div variants={itemVariants} className="bg-white rounded-lg shadow-sm border">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between p-4 lg:p-6 border-b gap-4">
+      <motion.div variants={itemVariants} className="bg-white rounded-lg shadow-sm">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between p-4 lg:p-6  gap-4">
           <div className="flex flex-wrap gap-1">
             <button
               onClick={() => setActiveFilter("all")}

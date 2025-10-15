@@ -73,7 +73,7 @@ export default function CreateInvitation() {
         if (data.status === "success") {
           setIsSaveDraftModalOpen(true);
         } else {
-          toast.error("Đã có lỗi xảy ra trong quá trình lưu nháp! Vui lòng liên hệ với chúng tôi trực tiếp qua zalo hoặc facebook!");
+          toast.error("Đã có lỗi xảy ra trong quá trình lưu nháp! Vui lòng liên hệ với chúng tôi theo địa chỉ contact@mimy.vn!");
         }
       })
 
@@ -141,7 +141,7 @@ export default function CreateInvitation() {
   return (
     <div className="w-full h-full flex flex-col lg:flex-row font-montserrat">
       <div ref={outerDivRef} className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
-        <div ref={innerDivRef} className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white border shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
+        <div ref={innerDivRef} className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
           {renderTemplate}
         </div>
       </div>
