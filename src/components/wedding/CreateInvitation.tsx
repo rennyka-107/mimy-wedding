@@ -4,7 +4,7 @@ import ColorDisplay from "./ColorDisplay";
 import NumberInput from "./NumberInput";
 import ImageUpload from "./ImageUpload";
 import SunshineVowTemplate from "@/wedding-templates/SunshineVow.template";
-import useSunshineVowStore, { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, UrlMapItem } from "@/states/templates/state";
+import useSunshineVowStore, { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "@/states/templates/state";
 import PublishInvitationModal from "@/components/popup/PublishInvitationModal";
 import SuccessPublishModal from "@/components/popup/SuccessPublishModal";
 import SaveDraftModal from "@/components/popup/SaveDraftModal";
@@ -46,7 +46,7 @@ export default function CreateInvitation() {
   // State cho modal lưu nháp
   const [isSaveDraftModalOpen, setIsSaveDraftModalOpen] = useState(false);
 
-  const { selectedComponent, setSelectedComponent, updateText, updateImage, updateBackgroundColor, updateUrlMap, updateSendGift, resetAllComponent, resetComponent, template, updateTemplate } = useSunshineVowStore();
+  const { selectedComponent, setSelectedComponent, updateText, updateImage, updateBackgroundColor, updateUrlMap, updateSendGift, resetAllComponent, resetComponent, template, updateTemplate, updateTimeline, updateCountdown } = useSunshineVowStore();
 
   // Hàm xử lý lưu nháp
   const handleSaveDraft = async () => {
@@ -353,6 +353,400 @@ export default function CreateInvitation() {
                 updateSendGift(selectedComponent.id ?? '', { bank_number: newContent });
                 setSelectedComponent(selectedComponent.id ?? '', 'send_gift', { ...selectedComponent.data as SendGiftItem, bank_number: newContent });
               }} placeholder="Nhập nội dung" className="bg-[#F5F5F5] w-full rounded-[4px] px-[12px] py-[8px] outline-none text-[#222222]" />
+            </div>
+          </div>}
+          {selectedComponent && selectedComponent.type === 'timeline' && <div className="flex flex-col gap-4 px-[18px] py-[1rem]">
+            <div className="flex justify-between items-center">
+              <label className="text-[#4A3B36] text-[14px] font-[600]">Dòng thời gian</label>
+              <Button
+                onClick={() => {
+                  const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                  const newTimelineItem: Timeline = {
+                    datetime: {
+                      text_color: currentTimeline.length > 0 ? currentTimeline[currentTimeline.length - 1].datetime.text_color : "#000000",
+                      text_size: currentTimeline.length > 0 ? currentTimeline[currentTimeline.length - 1].datetime.text_size : "14px",
+                      content: "00:00"
+                    },
+                    title: {
+                      text_color: currentTimeline.length > 0 ? currentTimeline[currentTimeline.length - 1].title.text_color : "#000000",
+                      text_size: currentTimeline.length > 0 ? currentTimeline[currentTimeline.length - 1].title.text_size : "16px",
+                      content: "Tiêu đề mới"
+                    },
+                    description: {
+                      text_color: currentTimeline.length > 0 ? currentTimeline[currentTimeline.length - 1].description.text_color : "#666666",
+                      text_size: currentTimeline.length > 0 ? currentTimeline[currentTimeline.length - 1].description.text_size : "14px",
+                      content: "Mô tả sự kiện"
+                    }
+                  };
+                  const updatedTimeline = [...currentTimeline, newTimelineItem];
+                  updateTimeline(updatedTimeline);
+                  setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                }}
+                className="cursor-pointer text-[12px]"
+              >
+                + Thêm sự kiện
+              </Button>
+            </div>
+
+            {(selectedComponent?.data as Timeline[])?.map(({ datetime, title, description }: Timeline, index) => (
+              <div className="border border-[#E9EAEB] rounded-[8px] p-[12px]" key={index}>
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-[#4A3B36] text-[12px] font-[600]">Sự kiện {index + 1}</span>
+                  <button
+                    onClick={() => {
+                      const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                      const updatedTimeline = currentTimeline.filter((_, i) => i !== index);
+                      updateTimeline(updatedTimeline);
+                      setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                    }}
+                    className="text-red-500 hover:text-red-700 text-[12px] font-[500]"
+                  >
+                    Xóa
+                  </button>
+                </div>
+
+                {/* Datetime Section */}
+                <div className="mb-3 p-3 bg-blue-50 border border-blue-200 rounded-[6px]">
+                  <label className="text-[#4A3B36] text-[13px] font-[600] mb-2 block">📅 Thời gian</label>
+                  <input
+                    type="text"
+                    value={datetime.content}
+                    onChange={(e) => {
+                      const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                      const updatedTimeline = [...currentTimeline];
+                      updatedTimeline[index] = {
+                        ...updatedTimeline[index],
+                        datetime: { ...updatedTimeline[index].datetime, content: e.target.value }
+                      };
+                      updateTimeline(updatedTimeline);
+                      setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                    }}
+                    placeholder="VD: 10:00"
+                    className="bg-white w-full rounded-[4px] px-[12px] py-[6px] outline-none text-[#222222] text-[14px] mb-2 border border-blue-100"
+                  />
+                  <div className="flex gap-2">
+                    <div className="flex-1">
+                      <label className="text-[#4A3B36] text-[11px] font-[500] mb-1 block">Màu chữ</label>
+                      <ColorDisplay
+                        colorValue={datetime.text_color}
+                        onChange={(color) => {
+                          console.log(color, "color")
+                          const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                          const updatedTimeline = [...currentTimeline];
+                          updatedTimeline[index] = {
+                            ...updatedTimeline[index],
+                            datetime: { ...updatedTimeline[index].datetime, text_color: color }
+                          };
+                          updateTimeline(updatedTimeline);
+                          setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                        }}
+                        className="w-full px-[8px] py-[4px]"
+                        editable={true}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <label className="text-[#4A3B36] text-[11px] font-[500] mb-1 block">Cỡ chữ</label>
+                      <NumberInput
+                        value={Number(datetime.text_size.replace('px', ''))}
+                        onChange={(size) => {
+                          const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                          const updatedTimeline = [...currentTimeline];
+                          updatedTimeline[index] = {
+                            ...updatedTimeline[index],
+                            datetime: { ...updatedTimeline[index].datetime, text_size: `${size}px` }
+                          };
+                          updateTimeline(updatedTimeline);
+                          setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                        }}
+                        min={8}
+                        max={72}
+                        className="w-full px-[8px] py-[4px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Title Section */}
+                <div className="mb-3 p-3 bg-green-50 border border-green-200 rounded-[6px]">
+                  <label className="text-[#4A3B36] text-[13px] font-[600] mb-2 block">✏️ Tiêu đề</label>
+                  <input
+                    type="text"
+                    value={title.content}
+                    onChange={(e) => {
+                      const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                      const updatedTimeline = [...currentTimeline];
+                      updatedTimeline[index] = {
+                        ...updatedTimeline[index],
+                        title: { ...updatedTimeline[index].title, content: e.target.value }
+                      };
+                      updateTimeline(updatedTimeline);
+                      setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                    }}
+                    placeholder="VD: Lễ ăn hỏi"
+                    className="bg-white w-full rounded-[4px] px-[12px] py-[6px] outline-none text-[#222222] text-[14px] mb-2 border border-green-100"
+                  />
+                  <div className="flex gap-2">
+                    <div className="flex-1">
+                      <label className="text-[#4A3B36] text-[11px] font-[500] mb-1 block">Màu chữ</label>
+                      <ColorDisplay
+                        colorValue={title.text_color}
+                        onChange={(color) => {
+                          const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                          const updatedTimeline = [...currentTimeline];
+                          updatedTimeline[index] = {
+                            ...updatedTimeline[index],
+                            title: { ...updatedTimeline[index].title, text_color: color }
+                          };
+                          updateTimeline(updatedTimeline);
+                          setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                        }}
+                        className="w-full px-[8px] py-[4px]"
+                        editable={true}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <label className="text-[#4A3B36] text-[11px] font-[500] mb-1 block">Cỡ chữ</label>
+                      <NumberInput
+                        value={Number(title.text_size.replace('px', ''))}
+                        onChange={(size) => {
+                          const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                          const updatedTimeline = [...currentTimeline];
+                          updatedTimeline[index] = {
+                            ...updatedTimeline[index],
+                            title: { ...updatedTimeline[index].title, text_size: `${size}px` }
+                          };
+                          updateTimeline(updatedTimeline);
+                          setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                        }}
+                        min={8}
+                        max={72}
+                        className="w-full px-[8px] py-[4px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description Section */}
+                <div className="p-3 bg-purple-50 border border-purple-200 rounded-[6px]">
+                  <label className="text-[#4A3B36] text-[13px] font-[600] mb-2 block">📝 Mô tả</label>
+                  <textarea
+                    rows={3}
+                    value={description.content}
+                    onChange={(e) => {
+                      const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                      const updatedTimeline = [...currentTimeline];
+                      updatedTimeline[index] = {
+                        ...updatedTimeline[index],
+                        description: { ...updatedTimeline[index].description, content: e.target.value }
+                      };
+                      updateTimeline(updatedTimeline);
+                      setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                    }}
+                    placeholder="VD: Lễ ăn hỏi tại nhà trai"
+                    className="bg-white w-full rounded-[4px] px-[12px] py-[6px] outline-none text-[#222222] text-[14px] mb-2 border border-purple-100"
+                  />
+                  <div className="flex gap-2">
+                    <div className="flex-1">
+                      <label className="text-[#4A3B36] text-[11px] font-[500] mb-1 block">Màu chữ</label>
+                      <ColorDisplay
+                        colorValue={description.text_color}
+                        onChange={(color) => {
+                          const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                          const updatedTimeline = [...currentTimeline];
+                          updatedTimeline[index] = {
+                            ...updatedTimeline[index],
+                            description: { ...updatedTimeline[index].description, text_color: color }
+                          };
+                          updateTimeline(updatedTimeline);
+                          setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                        }}
+                        className="w-full px-[8px] py-[4px]"
+                        editable={true}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <label className="text-[#4A3B36] text-[11px] font-[500] mb-1 block">Cỡ chữ</label>
+                      <NumberInput
+                        value={Number(description.text_size.replace('px', ''))}
+                        onChange={(size) => {
+                          const currentTimeline = (selectedComponent.data as Timeline[]) || [];
+                          const updatedTimeline = [...currentTimeline];
+                          updatedTimeline[index] = {
+                            ...updatedTimeline[index],
+                            description: { ...updatedTimeline[index].description, text_size: `${size}px` }
+                          };
+                          updateTimeline(updatedTimeline);
+                          setSelectedComponent(selectedComponent.id ?? '', 'timeline', updatedTimeline);
+                        }}
+                        min={8}
+                        max={72}
+                        className="w-full px-[8px] py-[4px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>}
+          {selectedComponent && selectedComponent.type === 'countdown' && <div className="flex flex-col gap-4 px-[18px] py-[1rem]">
+            <div className="p-3 bg-orange-50 border border-orange-200 rounded-[6px]">
+              <label className="text-[#4A3B36] text-[13px] font-[600] mb-2 block">⏰ Đếm ngược</label>
+              
+              <div className="mb-3">
+                <label className="text-[#4A3B36] text-[12px] font-[500] mb-1 block">Ngày & Giờ đích</label>
+                <input
+                  type="datetime-local"
+                  value={
+                    (selectedComponent.data as { content: Date | string })?.content
+                      ? new Date((selectedComponent.data as { content: Date | string }).content).toISOString().slice(0, 16)
+                      : ''
+                  }
+                  onChange={(e) => {
+                    const newDate = new Date(e.target.value);
+                    updateCountdown({
+                      ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                      content: newDate
+                    });
+                    setSelectedComponent(
+                      selectedComponent.id ?? '',
+                      'countdown',
+                      {
+                        ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                        content: newDate
+                      }
+                    );
+                  }}
+                  className="bg-white w-full rounded-[4px] px-[12px] py-[6px] outline-none text-[#222222] text-[14px] mb-2 border border-orange-100"
+                />
+                <p className="text-[#666666] text-[11px] mt-1">
+                  Chọn ngày và giờ để đếm ngược tự động hiển thị trên thiệp
+                </p>
+              </div>
+
+              <div className="mb-3 p-2 bg-white rounded-[4px] border border-orange-100">
+                <label className="text-[#4A3B36] text-[11px] font-[600] mb-2 block">Nhãn văn bản</label>
+                <div className="flex gap-2">
+                  <div className="flex-1">
+                    <label className="text-[#4A3B36] text-[10px] font-[400] mb-1 block">Màu chữ</label>
+                    <ColorDisplay
+                      colorValue={(selectedComponent.data as { text_color: string })?.text_color}
+                      onChange={(color) => {
+                        updateCountdown({
+                          ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                          text_color: color
+                        });
+                        setSelectedComponent(
+                          selectedComponent.id ?? '',
+                          'countdown',
+                          {
+                            ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                            text_color: color
+                          }
+                        );
+                      }}
+                      className="w-full px-[6px] py-[3px]"
+                      editable={true}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label className="text-[#4A3B36] text-[10px] font-[400] mb-1 block">Cỡ chữ</label>
+                    <NumberInput
+                      value={Number((selectedComponent.data as { text_size: string })?.text_size?.replace('px', '') || 16)}
+                      onChange={(size) => {
+                        updateCountdown({
+                          ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                          text_size: `${size}px`
+                        });
+                        setSelectedComponent(
+                          selectedComponent.id ?? '',
+                          'countdown',
+                          {
+                            ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                            text_size: `${size}px`
+                          }
+                        );
+                      }}
+                      min={8}
+                      max={72}
+                      className="w-full px-[6px] py-[3px]"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-3 p-2 bg-white rounded-[4px] border border-orange-100">
+                <label className="text-[#4A3B36] text-[11px] font-[600] mb-2 block">Số đếm ngược</label>
+                <div className="flex gap-2">
+                  <div className="flex-1">
+                    <label className="text-[#4A3B36] text-[10px] font-[400] mb-1 block">Màu số</label>
+                    <ColorDisplay
+                      colorValue={(selectedComponent.data as { number_color: string })?.number_color}
+                      onChange={(color) => {
+                        updateCountdown({
+                          ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                          number_color: color
+                        });
+                        setSelectedComponent(
+                          selectedComponent.id ?? '',
+                          'countdown',
+                          {
+                            ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                            number_color: color
+                          }
+                        );
+                      }}
+                      className="w-full px-[6px] py-[3px]"
+                      editable={true}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label className="text-[#4A3B36] text-[10px] font-[400] mb-1 block">Cỡ số</label>
+                    <NumberInput
+                      value={Number((selectedComponent.data as { number_size: string })?.number_size?.replace('px', '') || 24)}
+                      onChange={(size) => {
+                        updateCountdown({
+                          ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                          number_size: `${size}px`
+                        });
+                        setSelectedComponent(
+                          selectedComponent.id ?? '',
+                          'countdown',
+                          {
+                            ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                            number_size: `${size}px`
+                          }
+                        );
+                      }}
+                      min={8}
+                      max={72}
+                      className="w-full px-[6px] py-[3px]"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-2 bg-white rounded-[4px] border border-orange-100">
+                <label className="text-[#4A3B36] text-[11px] font-[600] mb-2 block">Màu nền</label>
+                <ColorDisplay
+                  colorValue={(selectedComponent.data as { background: string })?.background}
+                  onChange={(color) => {
+                    updateCountdown({
+                      ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                      background: color
+                    });
+                    setSelectedComponent(
+                      selectedComponent.id ?? '',
+                      'countdown',
+                      {
+                        ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                        background: color
+                      }
+                    );
+                  }}
+                  className="w-full px-[8px] py-[4px]"
+                  editable={true}
+                />
+              </div>
             </div>
           </div>}
         </div>

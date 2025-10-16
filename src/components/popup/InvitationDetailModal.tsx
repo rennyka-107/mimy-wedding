@@ -83,7 +83,7 @@ const InvitationDetailModal: React.FC<InvitationDetailModalProps> = ({
                             {/* Header with Image and Title */}
                             <div className="flex items-start gap-6 mb-8">
                                 {/* Image */}
-                                <div className="w-2/7">
+                                {/* <div className="w-2/7">
                                     <div className="w-[200px] h-[280px] bg-gray-100 rounded-lg border border-gray-200 overflow-hidden relative">
                                         {invitation.image ? (
                                             <Image
@@ -101,7 +101,7 @@ const InvitationDetailModal: React.FC<InvitationDetailModalProps> = ({
                                             />
                                         )}
                                     </div>
-                                </div>
+                                </div> */}
 
                                 {/* Title and Basic Info */}
                                 <div className="flex-1">

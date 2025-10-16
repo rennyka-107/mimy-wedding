@@ -1,6 +1,6 @@
 import { BackgroundColorItem, Countdown, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "../templates/state";
 
-export const originalSunshineVowState: {
+export const original2010MyLightState: {
   texts: { [key: string]: TextItem };
   images: { [key: string]: ImageItem };
   background_colors: { [key: string]: BackgroundColorItem };

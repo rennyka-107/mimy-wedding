@@ -1,4 +1,4 @@
-import { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, UrlMapItem } from "../templates/state";
+import { BackgroundColorItem, Countdown, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "../templates/state";
 
 export const originalOliveHarmonyState: {
   texts: { [key: string]: TextItem };
@@ -6,6 +6,8 @@ export const originalOliveHarmonyState: {
   background_colors: { [key: string]: BackgroundColorItem };
   url_maps: { [key: string]: UrlMapItem };
   send_gifts: { [key: string]: SendGiftItem };
+  countdown?: Countdown;
+  timeline?: Timeline[];
 } = {
   texts: {
     text_1: { id: 'text_1', content: "Mình hẹn nhau", text_color: '#3D3D3D', text_size: '36px' },
@@ -87,4 +89,22 @@ export const originalOliveHarmonyState: {
       bank_holder: 'Account holder: Nguyen Van A'
     }
   },
+
+  timeline: [
+    {
+      datetime: { content: '8:00 - 9:00', text_color: '#686868', text_size: '14px' },
+      title: { content: 'Đón khách', text_color: '#3D3D3D', text_size: '16px' },
+      description: { content: '', text_color: '#2E2C2C', text_size: '14px' }
+    },
+    {
+      datetime: { content: '10:00 - 11:00', text_color: '#686868', text_size: '14px' },
+      title: { content: 'Lễ vu quy', text_color: '#3D3D3D', text_size: '16px' },
+      description: { content: '', text_color: '#2E2C2C', text_size: '14px' }
+    },
+    {
+      datetime: { content: '11:15', text_color: '#686868', text_size: '14px' },
+      title: { content: 'Khai tiệc', text_color: '#3D3D3D', text_size: '16px' },
+      description: { content: '', text_color: '#2E2C2C', text_size: '14px' }
+    },
+  ],
 }

@@ -1,6 +1,6 @@
 "use client";
 import { useParams, usePathname } from "next/navigation";
-import useTemplateStore from "@/states/templates/state";
+import useTemplateStore, { Countdown } from "@/states/templates/state";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import WeddingGoogleMap from "@/components/wedding/WeddingGoogleMap";
@@ -12,13 +12,26 @@ import { templateJadeWhisper } from "@/types/wedding.type";
 export default function JadeWhisperTemplate() {
     const params = useParams();
     const pathname = usePathname();
-    const { template: { configs: { texts, images, background_colors, url_maps, send_gifts } }, setSelectedComponent, updateTemplate } = useTemplateStore();
+    const { template: { configs: { texts, images, background_colors, url_maps, send_gifts, countdown: countdownConfig } }, setSelectedComponent, updateTemplate } = useTemplateStore();
 
     const [countdown, setCountdown] = useState({ days: 18, hours: 1, minutes: 31, seconds: 3 });
 
     useEffect(() => {
         updateTemplate(templateJadeWhisper)
     }, [])
+
+    useEffect(() => {
+        if (countdownConfig?.content) {
+            const date = new Date(countdownConfig?.content);
+            const now = new Date();
+            const diff = date.getTime() - now.getTime();
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            setCountdown({ days, hours, minutes, seconds });
+        }
+    }, [countdownConfig?.content]);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -128,45 +141,33 @@ export default function JadeWhisperTemplate() {
                 {texts['text_8'].content}
             </div>
             {/* Countdown Timer */}
-            <div className="mt-[1rem] px-[32px] pb-[30px]">
-                <div onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedComponent('bg_color_2', 'background_color', background_colors['bg_color_2'])
-                }} style={{ borderRadius: "50px", backgroundColor: background_colors['bg_color_2'].color, border: `1px solid ${background_colors['bg_color_2'].border_color}` }} className="cursor-pointer flex justify-center gap-[12px]">
+            <div className="cursor-pointer mt-[1rem] px-[32px] pb-[30px]" onClick={(e) => {
+                e.stopPropagation();
+                setSelectedComponent('countdown', 'countdown', countdownConfig as Countdown)
+            }}>
+                <div style={{ borderRadius: "50px", backgroundColor: countdownConfig?.background }} className="flex justify-center gap-[12px]">
                     <div style={{ width: '70px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 8px', borderRadius: '8px' }}>
-                        <div style={{ fontSize: '20px', fontWeight: 700, color: '#2B2B2B' }}>{countdown.days}</div>
-                        <div onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedComponent('text_9', 'text', texts['text_9'])
-                        }} className="cursor-pointer" style={{ fontSize: texts['text_9'].text_size, fontWeight: 400, color: texts['text_9'].text_color }}>
-                            {texts['text_9'].content}
-                        </div>
-                    </div>
-                    <div style={{ width: '70px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 8px', borderRadius: '8px', }}>
-                        <div style={{ fontSize: '20px', fontWeight: 700, color: '#2B2B2B' }}>{String(countdown.hours).padStart(2, '0')}</div>
-                        <div onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedComponent('text_10', 'text', texts['text_10'])
-                        }} className="cursor-pointer" style={{ fontSize: texts['text_10'].text_size, fontWeight: 400, color: texts['text_10'].text_color }}>
-                            {texts['text_10'].content}
+                        <div style={{ fontSize: countdownConfig?.number_size, fontWeight: 700, color: countdownConfig?.number_color }}>{countdown.days}</div>
+                        <div style={{ cursor: 'pointer', fontSize: countdownConfig?.text_size, fontWeight: 400, color: countdownConfig?.text_color }}>
+                            Days
                         </div>
                     </div>
                     <div style={{ width: '70px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 8px', borderRadius: '8px' }}>
-                        <div style={{ fontSize: '20px', fontWeight: 700, color: '#2B2B2B' }}>{String(countdown.minutes).padStart(2, '0')}</div>
-                        <div onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedComponent('text_11', 'text', texts['text_11'])
-                        }} className="cursor-pointer" style={{ fontSize: texts['text_11'].text_size, fontWeight: 400, color: texts['text_11'].text_color }}>
-                            {texts['text_11'].content}
+                        <div style={{ fontSize: countdownConfig?.number_size, fontWeight: 700, color: countdownConfig?.number_color }}>{String(countdown.hours).padStart(2, '0')}</div>
+                        <div style={{ cursor: 'pointer', fontSize: countdownConfig?.text_size, fontWeight: 400, color: countdownConfig?.text_color }}>
+                            Hours
                         </div>
                     </div>
                     <div style={{ width: '70px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 8px', borderRadius: '8px' }}>
-                        <div style={{ fontSize: '20px', fontWeight: 700, color: '#2B2B2B' }}>{String(countdown.seconds).padStart(2, '0')}</div>
-                        <div onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedComponent('text_12', 'text', texts['text_12'])
-                        }} className="cursor-pointer" style={{ fontSize: texts['text_12'].text_size, fontWeight: 400, color: texts['text_12'].text_color }}>
-                            {texts['text_12'].content}
+                        <div style={{ fontSize: countdownConfig?.number_size, fontWeight: 700, color: countdownConfig?.number_color }}>{String(countdown.minutes).padStart(2, '0')}</div>
+                        <div style={{ cursor: 'pointer', fontSize: countdownConfig?.text_size, fontWeight: 400, color: countdownConfig?.text_color }}>
+                            Minutes
+                        </div>
+                    </div>
+                    <div style={{ width: '70px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 8px', borderRadius: '8px' }}>
+                        <div style={{ fontSize: countdownConfig?.number_size, fontWeight: 700, color: countdownConfig?.number_color }}>{String(countdown.seconds).padStart(2, '0')}</div>
+                        <div style={{ cursor: 'pointer', fontSize: countdownConfig?.text_size, fontWeight: 400, color: countdownConfig?.text_color }}>
+                            Seconds
                         </div>
                     </div>
                 </div>

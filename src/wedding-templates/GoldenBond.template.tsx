@@ -1,6 +1,6 @@
 "use client";
 import { useParams, usePathname } from "next/navigation";
-import useTemplateStore from "@/states/templates/state";
+import useTemplateStore, { Timeline } from "@/states/templates/state";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { originalGoldenBondState } from "@/states/origin_state/golden_bond";
@@ -12,7 +12,7 @@ import { templateGoldenBond } from "@/types/wedding.type";
 export default function GoldenBondTemplate() {
   const params = useParams();
   const pathname = usePathname();
-  const { template: { configs: { texts, images, background_colors, url_maps, send_gifts } }, setSelectedComponent, updateTemplate } = useTemplateStore();
+  const { template: { configs: { texts, images, background_colors, url_maps, send_gifts, timeline } }, setSelectedComponent, updateTemplate } = useTemplateStore();
 
   useEffect(() => {
     updateTemplate(templateGoldenBond)
@@ -206,120 +206,41 @@ export default function GoldenBondTemplate() {
           {texts['text_17'].content}
         </div>
         <img src="/templates/GoldenBond/bird.png" className="w-[96px] h-[55px] absolute bottom-[-10%] left-[50%] translate-y-[-50%] translate-x-[-50%]" />
-        <div className="w-full flex flex-col gap-[0.5rem] my-[1.5rem]">
+        {timeline?.map((item, index) => (
           <div onClick={(e) => {
             e.stopPropagation();
-            setSelectedComponent('text_18', 'text', texts['text_18'])
-          }} style={{ cursor: 'pointer', fontFamily: 'Viaoda Libre', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_18'].text_color, fontSize: texts['text_18'].text_size }}>
-            {texts['text_18'].content}
+            setSelectedComponent('timeline', 'timeline', timeline as Timeline[])
+          }} key={index} className="w-full flex flex-col gap-[0.5rem] my-[1.5rem]">
+            <div style={{ cursor: 'pointer', fontFamily: 'Viaoda Libre', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: item.title.text_color, fontSize: item.title.text_size }}>
+              {item.title.content}
+            </div>
+            <div onClick={(e) => {
+              e.stopPropagation();
+              setSelectedComponent('timeline', 'timeline', timeline as Timeline[])
+            }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: item.datetime.text_color, fontSize: item.datetime.text_size }}>
+              {item.datetime.content}
+            </div>
+            <div onClick={(e) => {
+              e.stopPropagation();
+              setSelectedComponent('timeline', 'timeline', timeline as Timeline[])
+            }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: item.description.text_color, fontSize: item.description.text_size }}>
+              {item.description.content}
+            </div>
           </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_19', 'text', texts['text_19'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_19'].text_color, fontSize: texts['text_19'].text_size }}>
-            {texts['text_19'].content}
-          </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_20', 'text', texts['text_20'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
-            {texts['text_20'].content}
-          </div>
-        </div>
-        <div className="w-full flex flex-col gap-[0.5rem] my-[1.5rem]">
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_21', 'text', texts['text_21'])
-          }} style={{ cursor: 'pointer', fontFamily: 'Viaoda Libre', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>
-            {texts['text_21'].content}
-          </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_22', 'text', texts['text_22'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_22'].text_color, fontSize: texts['text_22'].text_size }}>
-            {texts['text_22'].content}
-          </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_23', 'text', texts['text_23'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_23'].text_color, fontSize: texts['text_23'].text_size }}>
-            {texts['text_23'].content}
-          </div>
-        </div>
-        <div className="w-full flex flex-col gap-[0.5rem] my-[1.5rem]">
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_24', 'text', texts['text_24'])
-          }} style={{ cursor: 'pointer', fontFamily: 'Viaoda Libre', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_24'].text_color, fontSize: texts['text_24'].text_size }}>
-            {texts['text_24'].content}
-          </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_25', 'text', texts['text_25'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_25'].text_color, fontSize: texts['text_25'].text_size }}>
-            {texts['text_25'].content}
-          </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_26', 'text', texts['text_26'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_26'].text_color, fontSize: texts['text_26'].text_size }}>
-            {texts['text_26'].content}
-          </div>
-        </div>
-        <div className="w-full flex flex-col gap-[0.5rem] my-[1.5rem]">
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_27', 'text', texts['text_27'])
-          }} style={{ cursor: 'pointer', fontFamily: 'Viaoda Libre', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_27'].text_color, fontSize: texts['text_27'].text_size }}>
-            {texts['text_27'].content}
-          </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_28', 'text', texts['text_28'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_28'].text_color, fontSize: texts['text_28'].text_size }}>
-            {texts['text_28'].content}
-          </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_29', 'text', texts['text_29'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_29'].text_color, fontSize: texts['text_29'].text_size }}>
-            {texts['text_29'].content}
-          </div>
-        </div>
-        <div className="w-full flex flex-col gap-[0.5rem] my-[1.5rem]">
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_30', 'text', texts['text_30'])
-          }} style={{ cursor: 'pointer', fontFamily: 'Viaoda Libre', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_30'].text_color, fontSize: texts['text_30'].text_size }}>
-            {texts['text_30'].content}
-          </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_31', 'text', texts['text_31'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_31'].text_color, fontSize: texts['text_31'].text_size }}>
-            {texts['text_31'].content}
-          </div>
-          <div onClick={(e) => {
-            e.stopPropagation();
-            setSelectedComponent('text_32', 'text', texts['text_32'])
-          }} style={{ cursor: 'pointer', width: "100%", textAlign: 'center', fontWeight: 400, lineHeight: '100%', letterSpacing: '0%', color: texts['text_32'].text_color, fontSize: texts['text_32'].text_size }}>
-            {texts['text_32'].content}
-          </div>
-        </div>
-
+        ))}
       </div>
       <div className="w-[80%] mx-auto mt-[5rem]">
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_33', 'text', texts['text_33'])
-        }} style={{ cursor: 'pointer', fontFamily: 'Viaoda Libre', textAlign: 'center', fontWeight: 400, lineHeight: '82%', letterSpacing: '0%', color: texts['text_33'].text_color, fontSize: texts['text_33'].text_size }}>
-          {texts['text_33'].content}
+        }} style={{ cursor: 'pointer', fontFamily: 'Viaoda Libre', textAlign: 'center', fontWeight: 400, lineHeight: '82%', letterSpacing: '0%', color: texts['text_33']?.text_color, fontSize: texts['text_33']?.text_size }}>
+          {texts['text_33']?.content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_34', 'text', texts['text_34'])
-        }} style={{ cursor: 'pointer', margin: "1rem auto", width: "283px", textAlign: 'center', fontWeight: 500, lineHeight: '100%', letterSpacing: '0%', color: texts['text_34'].text_color, fontSize: texts['text_34'].text_size }}>
-          {texts['text_34'].content}
+        }} style={{ cursor: 'pointer', margin: "1rem auto", width: "283px", textAlign: 'center', fontWeight: 500, lineHeight: '100%', letterSpacing: '0%', color: texts['text_34']?.text_color, fontSize: texts['text_34']?.text_size }}>
+          {texts['text_34']?.content}
         </div>
         <img onClick={(e) => {
           e.stopPropagation();
@@ -361,14 +282,14 @@ export default function GoldenBondTemplate() {
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_35', 'text', texts['text_35'])
-        }} className="cursor-pointer relative z-1" style={{ fontFamily: 'Viaoda Libre', textAlign: 'center', fontWeight: 400, lineHeight: '82%', letterSpacing: '0%', color: texts['text_35'].text_color, fontSize: texts['text_35'].text_size }}>
-          {texts['text_35'].content}
+        }} className="cursor-pointer relative z-1" style={{ fontFamily: 'Viaoda Libre', textAlign: 'center', fontWeight: 400, lineHeight: '82%', letterSpacing: '0%', color: texts['text_35']?.text_color, fontSize: texts['text_35']?.text_size }}>
+          {texts['text_35']?.content}
         </div>
         <div onClick={(e) => {
           e.stopPropagation();
           setSelectedComponent('text_36', 'text', texts['text_36'])
-        }} className="cursor-pointer relative z-1" style={{ margin: "1rem auto", textAlign: 'center', fontWeight: 500, lineHeight: '100%', letterSpacing: '0%', color: texts['text_36'].text_color, fontSize: texts['text_36'].text_size }}>
-          {texts['text_36'].content}
+        }} className="cursor-pointer relative z-1" style={{ margin: "1rem auto", textAlign: 'center', fontWeight: 500, lineHeight: '100%', letterSpacing: '0%', color: texts['text_36']?.text_color, fontSize: texts['text_36']?.text_size }}>
+          {texts['text_36']?.content}
         </div>
       </div>
     </div>

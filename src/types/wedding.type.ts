@@ -4,9 +4,10 @@ import { originalCocoaEmbraceState } from "@/states/origin_state/cocoa_embrace";
 import { originalGoldenBondState } from "@/states/origin_state/golden_bond";
 import { originalForestCharmState } from "@/states/origin_state/forest_charm";
 import { originalJadeWhisperState } from "@/states/origin_state/jade_whisper";
-import { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, UrlMapItem } from "@/states/templates/state";
+import { original2010MyLightState } from "@/states/origin_state/2010_mylight";
+import { BackgroundColorItem, Countdown, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "@/states/templates/state";
 
-export type TemplateId = 'sunshine_vow' | 'olive_harmony' | 'cocoa_embrace' | 'golden_bond' | 'forest_charm' | 'jade_whisper';
+export type TemplateId = 'sunshine_vow' | 'olive_harmony' | 'cocoa_embrace' | 'golden_bond' | 'forest_charm' | 'jade_whisper' | '2010_my_light';
 
 export const templateSunshineVow: {
     template_id: TemplateId;
@@ -18,12 +19,15 @@ export const templateSunshineVow: {
         background_colors: { [key: string]: BackgroundColorItem };
         url_maps: { [key: string]: UrlMapItem };
         send_gifts: { [key: string]: SendGiftItem };
+        // coundown type date format dd/mm/yyyy hh:mm:ss
+        coundown?: Countdown;
+        timeline?: Timeline[];
     };
 } = {
     template_id: 'sunshine_vow',
     template_name: 'Thiệp cưới Sunshine Vow',
     template_price: 60000,
-    configs: originalSunshineVowState
+    configs: originalSunshineVowState,
 };
 
 export const templateOliveHarmony: {
@@ -36,6 +40,9 @@ export const templateOliveHarmony: {
         background_colors: { [key: string]: BackgroundColorItem };
         url_maps: { [key: string]: UrlMapItem };
         send_gifts: { [key: string]: SendGiftItem };
+        // coundown type date format dd/mm/yyyy hh:mm:ss
+        coundown?: Countdown;
+        timeline?: Timeline[];
     };
 } = {
     template_id: 'olive_harmony',
@@ -54,6 +61,9 @@ export const templateCocoaEmbrace: {
         background_colors: { [key: string]: BackgroundColorItem };
         url_maps: { [key: string]: UrlMapItem };
         send_gifts: { [key: string]: SendGiftItem };
+        // coundown type date format dd/mm/yyyy hh:mm:ss
+        coundown?: Countdown;
+        timeline?: Timeline[];
     };
 } = {
     template_id: 'cocoa_embrace',
@@ -72,6 +82,9 @@ export const templateGoldenBond: {
         background_colors: { [key: string]: BackgroundColorItem };
         url_maps: { [key: string]: UrlMapItem };
         send_gifts: { [key: string]: SendGiftItem };
+        // coundown type date format dd/mm/yyyy hh:mm:ss
+        coundown?: Countdown;
+        timeline?: Timeline[];
     };
 } = {
     template_id: 'golden_bond',
@@ -90,6 +103,9 @@ export const templateForestCharm: {
         background_colors: { [key: string]: BackgroundColorItem };
         url_maps: { [key: string]: UrlMapItem };
         send_gifts: { [key: string]: SendGiftItem };
+        // coundown type date format dd/mm/yyyy hh:mm:ss
+        coundown?: Countdown;
+        timeline?: Timeline[];
     };
 } = {
     template_id: 'forest_charm',
@@ -108,10 +124,34 @@ export const templateJadeWhisper: {
         background_colors: { [key: string]: BackgroundColorItem };
         url_maps: { [key: string]: UrlMapItem };
         send_gifts: { [key: string]: SendGiftItem };
+        // coundown type date format dd/mm/yyyy hh:mm:ss
+        coundown?: Countdown;
+        timeline?: Timeline[];
     };
 } = {
     template_id: 'jade_whisper',
     template_name: 'Thiệp cưới Jade Whisper',
     template_price: 50000,
     configs: originalJadeWhisperState
+};
+
+export const template2010MyLight: {
+    template_id: TemplateId;
+    template_name: string;
+    template_price: number;
+    configs: {
+        texts: { [key: string]: TextItem };
+        images: { [key: string]: ImageItem };
+        background_colors: { [key: string]: BackgroundColorItem };
+        url_maps: { [key: string]: UrlMapItem };
+        send_gifts: { [key: string]: SendGiftItem };
+        // coundown type date format dd/mm/yyyy hh:mm:ss
+        coundown?: Countdown;
+        timeline?: Timeline[];
+    };
+} = {
+    template_id: '2010_my_light',
+    template_name: 'Thiệp cưới 2010 My Light',
+    template_price: 30000,
+    configs: original2010MyLightState
 };

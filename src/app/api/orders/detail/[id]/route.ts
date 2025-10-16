@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { orders } from "@/db/schema";
+import { orders, wishes } from "@/db/schema";
 import { db } from "@/db";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
-// GET - Lấy order theo ID
+// GET - Lấy order theo ID cùng với wishes
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -21,9 +21,19 @@ export async function GET(
       }, { status: 404 });
     }
 
+    // Lấy wishes của order này
+    const orderWishes = await db
+      .select()
+      .from(wishes)
+      .where(eq(wishes.order_id, id))
+      .orderBy(desc(wishes.createdAt));
+
     return NextResponse.json({ 
       status: "success", 
-      data: order[0] 
+      data: {
+        ...order[0],
+        wishes: orderWishes
+      }
     });
   } catch (err) {
     console.error("Error fetching order:", err);

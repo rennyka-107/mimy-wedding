@@ -5,13 +5,6 @@ import Banner from "@/components/wedding/Banner";
 import TemplateList, { TypeTemplate } from "@/components/wedding/TemplateList";
 import FrequentlyAskedQuestions from "@/components/wedding/FrequentlyAskedQuestions";
 import Contact from "@/components/wedding/Contact";
-import ArrowRight from "@/components/icons/arrow_right";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import Button from "@/components/ui/Button";
-import ProfileMenu from "@/components/popup/ProfileMenu";
-import NavItem from "@/components/navigation/NavItem";
 import { useAuth } from "@/context/AuthContext";
 import Header from "@/components/wedding/Header";
 

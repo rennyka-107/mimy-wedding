@@ -34,7 +34,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={` ${pathname === "/" ? "bg-transparent" : "bg-[#F9F9F9] sticky"} top-0 z-50 flex px-0 md:px-[80px]`}>
+      <header className={` ${pathname === "/" ? "bg-transparent" : "bg-white border-b border-[#f5f5f5] sticky"} top-0 z-50 flex px-0 md:px-[80px]`}>
         <div className="px-6 md:pl-[96px] md:pr-[40px] flex justify-between items-center py-[10px] w-full">
           {/* Logo */}
           <div className="py-3">
