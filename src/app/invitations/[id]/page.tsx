@@ -12,7 +12,9 @@ import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import LoginModal from '@/components/popup/LoginModal';
 import { useAuth } from '@/context/AuthContext';
-import { templateCocoaEmbrace, templateForestCharm, templateGoldenBond, templateJadeWhisper, templateOliveHarmony, templateSunshineVow } from '@/types/wedding.type';
+import { template2010ForYa, template2010MyLight, templateCocoaEmbrace, templateForestCharm, templateGoldenBond, templateJadeWhisper, templateOliveHarmony, templateSunshineVow } from '@/types/wedding.type';
+import T2010MyLightTemplate from '@/wedding-templates/2010MyLight.template';
+import T2010ForYaTemplate from '@/wedding-templates/2010ForYa.template';
 
 export default function ViewInvitationPage({
     params,
@@ -48,6 +50,12 @@ export default function ViewInvitationPage({
             case "jade_whisper":
                 updateTemplate(templateJadeWhisper)
                 return;
+            case "2010_my_light":
+                updateTemplate(template2010MyLight)
+                return;
+            case "2010_for_ya":
+                updateTemplate(template2010ForYa)
+                return;
             default:
                 return;
         }
@@ -69,6 +77,10 @@ export default function ViewInvitationPage({
                 if (id === "forest_charm") { return <ForestCharmTemplate /> } else return <ComingSoon />;
             case "jade_whisper":
                 if (id === "jade_whisper") { return <JadeWhisperTemplate /> } else return <ComingSoon />;
+            case "2010_my_light":
+                if (id === "2010_my_light") { return <T2010MyLightTemplate /> } else return <ComingSoon />;
+            case "2010_for_ya":
+                if (id === "2010_for_ya") { return <T2010ForYaTemplate /> } else return <ComingSoon />;
             default:
                 // Else return coming soon page
                 return <ComingSoon />;

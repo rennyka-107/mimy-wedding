@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   title: "Mimy Wedding",
   description: "Mimy Wedding",
   icons: {
-    icon: "/images/logo.png"
+    icon: "/images/logo-icon.png"
   }
 };
 

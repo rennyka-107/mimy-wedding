@@ -8,6 +8,8 @@ import GoldenBondTemplate from '@/wedding-templates/GoldenBond.template';
 import ForestCharmTemplate from '@/wedding-templates/ForestCharm.template';
 import JadeWhisperTemplate from '@/wedding-templates/JadeWhisper.template';
 import toast from 'react-hot-toast';
+import T2010MyLightTemplate from '@/wedding-templates/2010MyLight.template';
+import T2010ForYaTemplate from '@/wedding-templates/2010ForYa.template';
 
 export default function PublicPage({
     params,
@@ -22,6 +24,7 @@ export default function PublicPage({
     const [sender, setSender] = useState<string>("");
     const [openModal, setOpenModal] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
+    const [loading, setLoading] = useState<boolean>(true);
     const [wishes, setWishes] = useState<{ sender: string; content: string }[]>([]);
     useEffect(() => {
         const handleClick = (event: MouseEvent) => {
@@ -37,18 +40,31 @@ export default function PublicPage({
     function renderTemplate() {
         switch (template_id) {
             case "sunshine_vow":
+                if (loading) return <SunshineVowTemplate />;
                 return <SunshineVowTemplate />;
             case "olive_harmony":
+                if (loading) return <OliveHarmonyTemplate />;
                 return <OliveHarmonyTemplate />;
             case "cocoa_embrace":
+                if (loading) return <CocoaEmbraceTemplate />;
                 return <CocoaEmbraceTemplate />;
             case "golden_bond":
+                if (loading) return <GoldenBondTemplate />;
                 return <GoldenBondTemplate />;
             case "forest_charm":
+                if (loading) return <ForestCharmTemplate />;
                 return <ForestCharmTemplate />;
             case "jade_whisper":
+                if (loading) return <JadeWhisperTemplate />;
                 return <JadeWhisperTemplate />;
+            case "2010_my_light":
+                if (loading) return <T2010MyLightTemplate />;
+                return <T2010MyLightTemplate />;
+            case "2010_for_ya":
+                if (loading) return <T2010ForYaTemplate />;
+                return <T2010ForYaTemplate />;
             default:
+                if (loading) return <SunshineVowTemplate />;
                 return <SunshineVowTemplate />;
         }
     }
@@ -103,10 +119,11 @@ export default function PublicPage({
                 template_price: data.data.template_price,
                 configs: data.data.template_config,
             });
-            setWishes(data.data.wishes.map((wish: any) => ({
+            setWishes(data.data.wishes.map((wish: { sender: string; content: string }) => ({
                 sender: wish.sender,
                 content: wish.content,
             })));
+            setLoading(false);
         } else {
             console.log("Error:", data.message);
         }

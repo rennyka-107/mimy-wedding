@@ -203,7 +203,7 @@ export default function CocoaEmbraceTemplate() {
           setSelectedComponent('timeline', 'timeline', timeline as Timeline[])
         }}>
           {timeline?.map((timeline, index) =>
-            <div className="flex items-center gap-[1rem] py-[12px]" style={{ borderStyle: 'dashed', borderBottomWidth: '1px', borderColor: '#B46B4D' }}>
+            <div key={index} className="flex items-center gap-[1rem] py-[12px]" style={{ borderStyle: 'dashed', borderBottomWidth: '1px', borderColor: '#B46B4D' }}>
               <div className="rounded-[50%] w-[32px] h-[32px] flex items-center justify-center bg-[#F8F7F7] text-[#B46B4D] font-[700]">
                 {index + 1}
               </div>
