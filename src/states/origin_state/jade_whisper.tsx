@@ -1,4 +1,4 @@
-import { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, UrlMapItem } from "../templates/state";
+import { BackgroundColorItem, Countdown, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "../templates/state";
 
 export const originalJadeWhisperState: {
   texts: { [key: string]: TextItem };
@@ -6,6 +6,8 @@ export const originalJadeWhisperState: {
   background_colors: { [key: string]: BackgroundColorItem };
   url_maps: { [key: string]: UrlMapItem };
   send_gifts: { [key: string]: SendGiftItem };
+  countdown?: Countdown;
+  timeline?: Timeline[];
 } = {
   texts: {
     text_1: { id: 'text_1', content: "CÔ DÂU & CHÚ RỂ", text_color: '#254C1E', text_size: '20px' },
@@ -69,4 +71,14 @@ export const originalJadeWhisperState: {
       bank_holder: ''
     }
   },
+
+  countdown: {
+    text_color: '#5C5C5C',
+    text_size: '16px',
+    number_color: '#2B2B2B',
+    number_size: '20px',
+    background: '#fbfff8',
+    content: new Date('2025-10-30T10:00:00')
+  }
+  
 }

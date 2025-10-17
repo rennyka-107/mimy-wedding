@@ -19,27 +19,14 @@ export function useVisitTracker(options: VisitTrackerOptions = {}) {
     console.log('[useVisitTracker] hasTracked.current:', hasTracked.current);
     console.log('[useVisitTracker] lastOptionsRef.current:', lastOptionsRef.current);
     
-    // SKIP nếu cả 2 đều undefined - component chưa sẵn sàng
-    if (currentOptions.region === undefined && currentOptions.sub_id === undefined) {
-      console.log('[useVisitTracker] Both undefined, not ready yet, skipping');
-      return;
-    }
-    
-    // Reset hasTracked nếu options thay đổi từ undefined sang có giá trị
+    // Reset hasTracked nếu options thay đổi
     if (lastOptionsRef.current !== optionsStringified) {
       const lastOpts = lastOptionsRef.current ? JSON.parse(lastOptionsRef.current) : {};
       
       console.log('[useVisitTracker] Options changed from:', lastOpts, 'to:', currentOptions);
       
-      // Nếu trước đó cả 2 undefined, giờ có giá trị -> reset để track
-      const wasEmpty = lastOpts.region === undefined && lastOpts.sub_id === undefined;
-      const hasValue = currentOptions.region !== undefined || currentOptions.sub_id !== undefined;
-      
-      if (wasEmpty && hasValue) {
-        console.log('[useVisitTracker] Changed from empty to has value, resetting hasTracked');
-        hasTracked.current = false;
-      }
-      
+      // Reset để track lại khi options thay đổi
+      hasTracked.current = false;
       lastOptionsRef.current = optionsStringified;
     }
     

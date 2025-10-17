@@ -35,7 +35,7 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({
 
   return (
     <div 
-      className={`flex items-center bg-[#F5F5F5] rounded-[4px] px-3 py-2 ${className} ${editable ? 'cursor-pointer' : ''}`}
+      className={`relative flex items-center bg-[#F5F5F5] rounded-[4px] px-3 py-2 ${className} ${editable ? 'cursor-pointer' : ''}`}
       onClick={handleClick}
     >
       <div 
@@ -49,7 +49,7 @@ const ColorDisplay: React.FC<ColorDisplayProps> = ({
           type="color"
           value={colorValue}
           onChange={handleColorChange}
-          className="invisible absolute"
+          className="invisible absolute top-0 left-0"
         />
       )}
     </div>

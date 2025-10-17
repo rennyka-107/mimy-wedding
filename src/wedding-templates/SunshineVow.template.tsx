@@ -20,7 +20,7 @@ const SunshineVowTemplate: React.FC = () => {
   const [wishes, setWishes] = useState('');
   const [attendance, setAttendance] = useState<"yes" | "no">("yes");
 
-  const { template: { configs: { texts, images, background_colors, url_maps, send_gifts } }, setSelectedComponent } = useTemplateStore();
+  const { template: { configs: { texts, images, background_colors, url_maps, send_gifts, timeline } }, setSelectedComponent } = useTemplateStore();
 
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
@@ -365,29 +365,16 @@ const SunshineVowTemplate: React.FC = () => {
             className="cursor-pointer font-plus-jakarta-sans text-center mb-2 leading-[82%]" style={{ color: texts['text_29'].text_color, fontSize: texts['text_29'].text_size }}
           />
 
-          <div className="p-4 flex flex-col items-center">
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_30', 'text', texts['text_30']) }} content={texts['text_30'].content} className="cursor-pointer font-plus-jakarta-sans" style={{ color: texts['text_30'].text_color, fontSize: texts['text_30'].text_size }} />
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_31', 'text', texts['text_31']) }} content={texts['text_31'].content} className="mb-2 cursor-pointer font-plus-jakarta-sans" style={{ color: texts['text_31'].text_color, fontSize: texts['text_31'].text_size }} />
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_32', 'text', texts['text_32']) }} content={texts['text_32'].content} className="cursor-pointer font-[600] font-plus-jakarta-sans" style={{ color: texts['text_32'].text_color, fontSize: texts['text_32'].text_size }} />
-          </div>
-
-          <div className="p-4 flex flex-col items-center">
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_33', 'text', texts['text_33']) }} content={texts['text_33'].content} className="cursor-pointer font-plus-jakarta-sans" style={{ color: texts['text_33'].text_color, fontSize: texts['text_33'].text_size }} />
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_34', 'text', texts['text_34']) }} content={texts['text_34'].content} className="mb-2 cursor-pointer font-plus-jakarta-sans" style={{ color: texts['text_34'].text_color, fontSize: texts['text_34'].text_size }} />
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_35', 'text', texts['text_35']) }} content={texts['text_35'].content} className="cursor-pointer font-[600] font-plus-jakarta-sans" style={{ color: texts['text_35'].text_color, fontSize: texts['text_35'].text_size }} />
-          </div>
-
-          <div className="p-4 flex flex-col items-center">
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_36', 'text', texts['text_36']) }} content={texts['text_36'].content} className="cursor-pointer font-plus-jakarta-sans" style={{ color: texts['text_36'].text_color, fontSize: texts['text_36'].text_size }} />
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_37', 'text', texts['text_37']) }} content={texts['text_37'].content} className="mb-2 cursor-pointer font-plus-jakarta-sans" style={{ color: texts['text_37'].text_color, fontSize: texts['text_37'].text_size }} />
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_38', 'text', texts['text_38']) }} content={texts['text_38'].content} className="cursor-pointer font-[600] font-plus-jakarta-sans" style={{ color: texts['text_38'].text_color, fontSize: texts['text_38'].text_size }} />
-          </div>
-
-          <div className="p-4 flex flex-col items-center">
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_39', 'text', texts['text_39']) }} content={texts['text_39'].content} className="cursor-pointer font-plus-jakarta-sans" style={{ color: texts['text_39'].text_color, fontSize: texts['text_39'].text_size }} />
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_40', 'text', texts['text_40']) }} content={texts['text_40'].content} className="mb-2 cursor-pointer font-plus-jakarta-sans" style={{ color: texts['text_40'].text_color, fontSize: texts['text_40'].text_size }} />
-            <WeddingText onClick={(e) => { e.stopPropagation(); setSelectedComponent('text_41', 'text', texts['text_41']) }} content={texts['text_41'].content} className="cursor-pointer font-[600] font-plus-jakarta-sans" style={{ color: texts['text_41'].text_color, fontSize: texts['text_41'].text_size }} />
-          </div>
+          {timeline?.map(({ datetime, title, description }, index) => (
+            <div onClick={(e) => {
+              e.stopPropagation();
+              setSelectedComponent('timeline', 'timeline', timeline)
+            }} className="p-4 flex flex-col items-center" key={title.content + index.toString()}>
+              <WeddingText content={title.content} className="cursor-pointer font-plus-jakarta-sans" style={{ color: title.text_color, fontSize: title.text_size }} />
+              <WeddingText content={datetime.content} className="mb-2 cursor-pointer font-plus-jakarta-sans" style={{ color: datetime.text_color, fontSize: datetime.text_size }} />
+              <WeddingText content={description.content} className="cursor-pointer font-[600] font-plus-jakarta-sans" style={{ color: description.text_color, fontSize: description.text_size }} />
+            </div>
+          ))}
         </WeddingBackground>
       </div>
 

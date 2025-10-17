@@ -1,4 +1,4 @@
-import { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, UrlMapItem } from "../templates/state";
+import { BackgroundColorItem, Countdown, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "../templates/state";
 
 export const originalSunshineVowState: {
   texts: { [key: string]: TextItem };
@@ -6,6 +6,8 @@ export const originalSunshineVowState: {
   background_colors: { [key: string]: BackgroundColorItem };
   url_maps: { [key: string]: UrlMapItem };
   send_gifts: { [key: string]: SendGiftItem };
+  countdown?: Countdown;
+  timeline?: Timeline[];
 } = {
   texts: {
     text_1: { id: 'text_1', content: "we're married", text_color: '#FFFFFF', text_size: '48px' },
@@ -37,18 +39,6 @@ export const originalSunshineVowState: {
     text_27: { id: 'text_27', content: '01 Cong xa Paris Street | Ho Chi Minh City', text_color: '#655E5E', text_size: '16px' },
     text_28: { id: 'text_28', content: 'Dress Code', text_color: '#787878', text_size: '16px' },
     text_29: { id: 'text_29', content: 'Timeline', text_color: '#3F3931', text_size: '48px' },
-    text_30: { id: 'text_30', content: 'Wedding Ceremony', text_color: '#3F3931', text_size: '24px' },
-    text_31: { id: 'text_31', content: '10:00 - 12:00', text_color: '#2E2C2C', text_size: '16px' },
-    text_32: { id: 'text_32', content: 'Photo session with family and friends', text_color: '#2E2C2C', text_size: '14px' },
-    text_33: { id: 'text_33', content: 'Wedding Reception', text_color: '#3F3931', text_size: '24px' },
-    text_34: { id: 'text_34', content: '12:00 - 15:00', text_color: '#2E2C2C', text_size: '16px' },
-    text_35: { id: 'text_35', content: 'Lunch and celebration with relatives', text_color: '#2E2C2C', text_size: '14px' },
-    text_36: { id: 'text_36', content: 'Performance', text_color: '#3F3931', text_size: '24px' },
-    text_37: { id: 'text_37', content: '15:00 - 18:00', text_color: '#2E2C2C', text_size: '16px' },
-    text_38: { id: 'text_38', content: 'Live music and special performances', text_color: '#2E2C2C', text_size: '14px' },
-    text_39: { id: 'text_39', content: 'Gift Giving', text_color: '#3F3931', text_size: '24px' },
-    text_40: { id: 'text_40', content: '18:00 - 19:00', text_color: '#2E2C2C', text_size: '16px' },
-    text_41: { id: 'text_41', content: 'Gift ceremony and guest appreciation', text_color: '#2E2C2C', text_size: '14px' },
     text_42: { id: 'text_42', content: 'SEND WISHES', text_color: '#3F3931', text_size: '36px' },
     text_43: { id: 'text_43', content: 'Thank you for taking the time to share this happiness with us.', text_color: '#787878', text_size: '15px' },
     text_44: { id: 'text_44', content: 'Your name', text_color: '#787878', text_size: '15px' },
@@ -102,4 +92,27 @@ export const originalSunshineVowState: {
       bank_holder: 'Account holder: Nguyen Van A',
     }
   },
+
+  timeline: [
+    {
+      datetime: { content: '10:00 - 12:00', text_color: '#2E2C2C', text_size: '16px' },
+      title: { content: 'Wedding Ceremony', text_color: '#3F3931', text_size: '24px' },
+      description: { content: 'Photo session with family and friends', text_color: '#2E2C2C', text_size: '14px' }
+    },
+    {
+      datetime: { content: '12:00 - 15:00', text_color: '#2E2C2C', text_size: '16px' },
+      title: { content: 'Wedding Reception', text_color: '#3F3931', text_size: '24px' },
+      description: { content: 'Lunch and celebration with relatives', text_color: '#2E2C2C', text_size: '14px' }
+    },
+    {
+      datetime: { content: '15:00 - 18:00', text_color: '#2E2C2C', text_size: '16px' },
+      title: { content: 'Performance', text_color: '#3F3931', text_size: '24px' },
+      description: { content: 'Live music and special performances', text_color: '#2E2C2C', text_size: '14px' }
+    },
+    {
+      datetime: { content: '18:00 - 19:00', text_color: '#2E2C2C', text_size: '16px' },
+      title: { content: 'Gift Giving', text_color: '#3F3931', text_size: '24px' },
+      description: { content: 'Gift ceremony and guest appreciation', text_color: '#2E2C2C', text_size: '14px' }
+    }
+  ],
 }

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useParams, usePathname } from "next/navigation";
-import useTemplateStore from "@/states/templates/state";
+import useTemplateStore, { Timeline } from "@/states/templates/state";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { originalOliveHarmonyState } from "@/states/origin_state/olive_harmony";
@@ -17,7 +17,7 @@ export default function CocoaEmbraceTemplate() {
   const [name, setName] = useState('');
   const [wishes, setWishes] = useState('');
   const [attendance, setAttendance] = useState<"yes" | "no">("yes");
-  const { template: { configs: { texts, images, background_colors, url_maps, send_gifts } }, setSelectedComponent, updateTemplate } = useTemplateStore();
+  const { template: { configs: { texts, images, background_colors, url_maps, send_gifts, timeline } }, setSelectedComponent, updateTemplate } = useTemplateStore();
 
   useEffect(() => {
     updateTemplate(templateCocoaEmbrace)
@@ -198,52 +198,21 @@ export default function CocoaEmbraceTemplate() {
         }} className="cursor-pointer px-[48px] mt-[1.5rem] w-full font-[800]" style={{ color: texts['text_20'].text_color, fontSize: texts['text_20'].text_size }}>
           {texts['text_20'].content}
         </div>
-        <div className="px-[48px]">
-          <div className="flex items-center gap-[1rem] py-[12px]" style={{ borderStyle: 'dashed', borderBottomWidth: '1px', borderColor: '#B46B4D' }}>
-            <div className="rounded-[50%] w-[32px] h-[32px] flex items-center justify-center bg-[#F8F7F7] text-[#B46B4D] font-[700]">
-              1
+        <div className="cursor-pointer px-[48px]" onClick={(e) => {
+          e.stopPropagation();
+          setSelectedComponent('timeline', 'timeline', timeline as Timeline[])
+        }}>
+          {timeline?.map((timeline, index) =>
+            <div className="flex items-center gap-[1rem] py-[12px]" style={{ borderStyle: 'dashed', borderBottomWidth: '1px', borderColor: '#B46B4D' }}>
+              <div className="rounded-[50%] w-[32px] h-[32px] flex items-center justify-center bg-[#F8F7F7] text-[#B46B4D] font-[700]">
+                {index + 1}
+              </div>
+              <div className="flex flex-col">
+                <div style={{ textAlign: 'left', fontWeight: 500, color: timeline.datetime.text_color, fontSize: timeline.datetime.text_size }}>{timeline.datetime.content}</div>
+                <div style={{ textAlign: 'left', fontWeight: 700, color: timeline.title.text_color, fontSize: timeline.title.text_size }}>{timeline.title.content}</div>
+              </div>
             </div>
-            <div className="flex flex-col">
-              <div onClick={(e) => {
-                e.stopPropagation();
-                setSelectedComponent('text_21', 'text', texts['text_21'])
-              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 500, color: texts['text_21'].text_color, fontSize: texts['text_21'].text_size }}>{texts['text_21'].content}</div>
-              <div onClick={(e) => {
-                e.stopPropagation();
-                setSelectedComponent('text_22', 'text', texts['text_22'])
-              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 700, color: texts['text_22'].text_color, fontSize: texts['text_22'].text_size }}>{texts['text_22'].content}</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-[1rem] py-[12px]" style={{ borderStyle: 'dashed', borderBottomWidth: '1px', borderColor: '#B46B4D' }}>
-            <div className="rounded-[50%] w-[32px] h-[32px] flex items-center justify-center bg-[#F8F7F7] text-[#B46B4D] font-[700]">
-              2
-            </div>
-            <div className="flex flex-col">
-              <div onClick={(e) => {
-                e.stopPropagation();
-                setSelectedComponent('text_23', 'text', texts['text_23'])
-              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 500, color: texts['text_23'].text_color, fontSize: texts['text_23'].text_size }}>{texts['text_23'].content}</div>
-              <div onClick={(e) => {
-                e.stopPropagation();
-                setSelectedComponent('text_24', 'text', texts['text_24'])
-              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 700, color: texts['text_24'].text_color, fontSize: texts['text_24'].text_size }}>{texts['text_24'].content}</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-[1rem] py-[12px]" style={{ borderStyle: 'dashed', borderBottomWidth: '1px', borderColor: '#B46B4D' }}>
-            <div className="rounded-[50%] w-[32px] h-[32px] flex items-center justify-center bg-[#F8F7F7] text-[#B46B4D] font-[700]">
-              3
-            </div>
-            <div className="flex flex-col">
-              <div onClick={(e) => {
-                e.stopPropagation();
-                setSelectedComponent('text_25', 'text', texts['text_25'])
-              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 500, color: texts['text_25'].text_color, fontSize: texts['text_25'].text_size }}>{texts['text_25'].content}</div>
-              <div onClick={(e) => {
-                e.stopPropagation();
-                setSelectedComponent('text_26', 'text', texts['text_26'])
-              }} className="cursor-pointer" style={{ textAlign: 'left', fontWeight: 700, color: texts['text_26'].text_color, fontSize: texts['text_26'].text_size }}>{texts['text_26'].content}</div>
-            </div>
-          </div>
+          )}
         </div>
         <div className="px-[48px] py-[36px]">
           <div className="flex flex-col items-center">

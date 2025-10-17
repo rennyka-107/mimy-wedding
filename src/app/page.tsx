@@ -5,18 +5,28 @@ import Banner from "@/components/wedding/Banner";
 import TemplateList, { TypeTemplate } from "@/components/wedding/TemplateList";
 import FrequentlyAskedQuestions from "@/components/wedding/FrequentlyAskedQuestions";
 import Contact from "@/components/wedding/Contact";
-import ArrowRight from "@/components/icons/arrow_right";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import Button from "@/components/ui/Button";
-import ProfileMenu from "@/components/popup/ProfileMenu";
-import NavItem from "@/components/navigation/NavItem";
 import { useAuth } from "@/context/AuthContext";
 import Header from "@/components/wedding/Header";
 
 const templates: TypeTemplate[] = [
-
+  {
+    id: "2010_my_light",
+    name: 'Thiệp cưới 20-10 My Light',
+    url: "/images/20-10-mylight.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 30000,
+  },
+  {
+    id: "2010_for_ya",
+    name: 'Thiệp cưới 20-10 For Ya',
+    url: "/images/2010_for_ya.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 30000,
+  },
   {
     id: "jade_whisper",
     name: 'Thiệp cưới Jade Whisper',

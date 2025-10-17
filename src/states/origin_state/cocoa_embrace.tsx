@@ -1,4 +1,4 @@
-import { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, UrlMapItem } from "../templates/state";
+import { BackgroundColorItem, Countdown, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "../templates/state";
 
 export const originalCocoaEmbraceState: {
   texts: { [key: string]: TextItem };
@@ -6,6 +6,8 @@ export const originalCocoaEmbraceState: {
   background_colors: { [key: string]: BackgroundColorItem };
   url_maps: { [key: string]: UrlMapItem };
   send_gifts: { [key: string]: SendGiftItem };
+  countdown?: Countdown;
+  timeline?: Timeline[];
 } = {
   texts: {
     text_1: { id: 'text_1', content: "Ngày chung đôi", text_color: '#B46B4D', text_size: '48px' },
@@ -28,12 +30,6 @@ export const originalCocoaEmbraceState: {
     text_18: { id: 'text_18', content: 'DRESS CODE', text_color: '#9A9A9A', text_size: '16px' },
     text_19: { id: 'text_19', content: 'Nếu bạn chưa quen đường, mình đã chuẩn bị sẵn link Google Maps để bạn dễ dàng tìm thấy', text_color: '#8C8A8A', text_size: '14px' },
     text_20: { id: 'text_20', content: 'TIMELINE DỰ KIẾN', text_color: '#B46B4D', text_size: '24px' },
-    text_21: { id: 'text_21', content: '8:00 - 9:00', text_color: '#686868', text_size: '14px' },
-    text_22: { id: 'text_22', content: 'Đón khách', text_color: '#3D3D3D', text_size: '16px' },
-    text_23: { id: 'text_23', content: '10:00 - 11:00', text_color: '#686868', text_size: '14px' },
-    text_24: { id: 'text_24', content: 'Lễ vu quy', text_color: '#3D3D3D', text_size: '16px' },
-    text_25: { id: 'text_25', content: '11:15', text_color: '#686868', text_size: '14px' },
-    text_26: { id: 'text_26', content: 'Khai tiệc', text_color: '#3D3D3D', text_size: '16px' },
     text_27: { id: 'text_27', content: 'Gift Giving', text_color: '#5C4A3B', text_size: '36px' },
     text_28: { id: 'text_28', content: 'Thank you for taking the time to share this happiness with us.', text_color: '#787878', text_size: '15px' },
     text_29: { id: 'text_29', content: 'Cảm ơn bạn đã gửi gắm tình cảm cho chúng mình. Sự có mặt của bạn là món quà quý giá nhất, và chúng mình trân trọng được sẻ chia hạnh phúc này cùng bạn.', text_color: '#FFFFFF', text_size: '16px' },
@@ -70,4 +66,22 @@ export const originalCocoaEmbraceState: {
       bank_holder: 'Account holder: Nguyen Van A'
     }
   },
+
+  timeline: [
+    {
+      datetime: { content: '8:00 - 9:00', text_color: '#686868', text_size: '14px' },
+      title: { content: 'Đón khách', text_color: '#3D3D3D', text_size: '16px' },
+      description: { content: '', text_color: '#2E2C2C', text_size: '14px' }
+    },
+    {
+      datetime: { content: '10:00 - 11:00', text_color: '#686868', text_size: '14px' },
+      title: { content: 'Lễ vu quy', text_color: '#3D3D3D', text_size: '16px' },
+      description: { content: '', text_color: '#2E2C2C', text_size: '14px' }
+    },
+    {
+      datetime: { content: '11:15', text_color: '#686868', text_size: '14px' },
+      title: { content: 'Khai tiệc', text_color: '#3D3D3D', text_size: '16px' },
+      description: { content: '', text_color: '#2E2C2C', text_size: '14px' }
+    },
+  ],
 }

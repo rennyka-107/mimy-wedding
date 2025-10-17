@@ -25,6 +25,7 @@ interface Invitation {
   endDate: string;
   public_url: string;
   views: number;
+  wishes: number;
 }
 
 export default function InvitationManagement() {
@@ -82,7 +83,7 @@ export default function InvitationManagement() {
         if (data.status === "success" && data.data) {
           const now = new Date();
 
-          const mappedInvitations = data.data.map((order: { id: number, template_name: string, template_price: number, public_start: string, public_end: string, public_url: string, views: number }) => {
+          const mappedInvitations = data.data.map((order: { id: number, template_name: string, template_price: number, public_start: string, public_end: string, public_url: string, views: number, wishes: Array<unknown> }) => {
             let status = "Bản nháp";
 
             if (order.public_start && order.public_end) {
@@ -108,14 +109,23 @@ export default function InvitationManagement() {
               startDate: order.public_start ? new Date(order.public_start).toLocaleDateString('vi-VN') : "",
               endDate: order.public_end ? new Date(order.public_end).toLocaleDateString('vi-VN') : "",
               public_url: order.public_url ? order.public_url : "",
-              views: order.views || 0
+              views: order.views || 0,
+              wishes: order.wishes ? order.wishes.length : 0
             };
           });
 
           setInvitations(mappedInvitations);
 
-          // Fetch wishes stats and update stats
-          getWishesStats(mappedInvitations);
+          // Calculate stats from mapped invitations
+          const totalWishes = mappedInvitations.reduce((sum: number, inv: { wishes: number }) => sum + inv.wishes, 0);
+          const totalViews = mappedInvitations.reduce((sum: number, inv: { views: number }) => sum + inv.views, 0);
+          
+          setStats({
+            totalInvitations: mappedInvitations.length,
+            totalWishes: totalWishes,
+            totalViews: totalViews,
+            totalImages: 10 // This should come from images API
+          });
         }
       })
       .catch(error => {
@@ -219,9 +229,9 @@ export default function InvitationManagement() {
             id: invitation.id.toString(),
             name: invitation.name,
             price: invitation.price,
-            url: invitation.public_url ? process.env.NEXT_PUBLIC_BASE_URL + invitation.public_url : "mimy.vn/huyenmy-duclong",
+            url: invitation.public_url ? process.env.NEXT_PUBLIC_BASE_URL + invitation.public_url : " Chưa xuất bản",
             views: invitation.views || 0,
-            wishes: 0,
+            wishes: invitation.wishes || 0,
             startDate: invitation.startDate,
             endDate: invitation.endDate
           }

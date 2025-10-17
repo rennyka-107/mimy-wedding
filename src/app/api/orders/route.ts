@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { orders, users } from "@/db/schema";
+import { orders, users, wishes } from "@/db/schema";
 import { db } from "@/db";
-import { eq, desc, and } from "drizzle-orm";
+import { eq, desc, and, inArray } from "drizzle-orm";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 
@@ -37,11 +37,19 @@ export async function GET(req: Request) {
         }, { status: 404 });
       }
 
+      // Lấy wishes của order này
+      const orderWishes = await db
+        .select()
+        .from(wishes)
+        .where(eq(wishes.order_id, order[0].id))
+        .orderBy(desc(wishes.createdAt));
+
       // Convert BigInt fields to strings for JSON serialization
       const orderData = {
         ...order[0],
         total_money: order[0].total_money.toString(),
-        template_price: order[0].template_price.toString()
+        template_price: order[0].template_price.toString(),
+        wishes: orderWishes
       };
 
       // Tăng view count
@@ -72,11 +80,19 @@ export async function GET(req: Request) {
         }, { status: 404 });
       }
 
+      // Lấy wishes của order này
+      const orderWishes = await db
+        .select()
+        .from(wishes)
+        .where(eq(wishes.order_id, order[0].id))
+        .orderBy(desc(wishes.createdAt));
+
       // Convert BigInt fields to strings for JSON serialization
       const orderData = {
         ...order[0],
         total_money: order[0].total_money.toString(),
-        template_price: order[0].template_price.toString()
+        template_price: order[0].template_price.toString(),
+        wishes: orderWishes
       };
 
       // Tăng view count
@@ -116,11 +132,31 @@ export async function GET(req: Request) {
         .orderBy(desc(orders.createdAt));
     }
 
-    // Convert BigInt fields to strings for JSON serialization
+    // Lấy wishes cho tất cả orders (optimized với inArray)
+    const orderIds = orderList.map(order => order.id);
+    const allWishes = orderIds.length > 0 
+      ? await db
+          .select()
+          .from(wishes)
+          .where(inArray(wishes.order_id, orderIds))
+          .orderBy(desc(wishes.createdAt))
+      : [];
+    
+    // Group wishes by order_id
+    const wishesByOrderId: { [key: string]: typeof allWishes } = {};
+    allWishes.forEach(wish => {
+      if (!wishesByOrderId[wish.order_id as string]) {
+        wishesByOrderId[wish.order_id as string] = [];
+      }
+      wishesByOrderId[wish.order_id as string].push(wish);
+    });
+
+    // Convert BigInt fields to strings for JSON serialization and add wishes
     const serializedOrderList = orderList.map(order => ({
       ...order,
       total_money: order.total_money.toString(),
-      template_price: order.template_price.toString()
+      template_price: order.template_price.toString(),
+      wishes: wishesByOrderId[order.id] || []
     }));
 
     return NextResponse.json({

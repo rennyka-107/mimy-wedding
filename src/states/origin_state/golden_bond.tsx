@@ -1,4 +1,4 @@
-import { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, UrlMapItem } from "../templates/state";
+import { BackgroundColorItem, Countdown, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "../templates/state";
 
 export const originalGoldenBondState: {
   texts: { [key: string]: TextItem };
@@ -6,6 +6,8 @@ export const originalGoldenBondState: {
   background_colors: { [key: string]: BackgroundColorItem };
   url_maps: { [key: string]: UrlMapItem };
   send_gifts: { [key: string]: SendGiftItem };
+  countdown?: Countdown;
+  timeline?: Timeline[];
 } = {
   texts: {
     text_1: { id: 'text_1', content: "Save the Date", text_color: '#FFFFFF', text_size: '64px' },
@@ -86,4 +88,32 @@ export const originalGoldenBondState: {
       bank_holder: 'Account holder: Nguyen Van A'
     }
   },
+
+  timeline: [
+    {
+      datetime: { content: '8:00 - 9:00', text_color: '#8C8A8A', text_size: '16px' },
+      title: { content: 'Lễ Thành Hôn', text_color: '#5C4A3B', text_size: '22px' },
+      description: { content: 'Nghi thức cưới truyền thống tại nhà thờ', text_color: '#8C8A8A', text_size: '14px' }
+    },
+    {
+      datetime: { content: '9:00 - 10:00', text_color: '#8C8A8A', text_size: '16px' },
+      title: { content: 'Chụp Ảnh Cưới', text_color: '#5C4A3B', text_size: '22px' },
+      description: { content: 'Chụp ảnh kỷ niệm cùng gia đình và bạn bè', text_color: '#8C8A8A', text_size: '14px' }
+    },
+    {
+      datetime: { content: '10:00 - 12:00', text_color: '#8C8A8A', text_size: '16px' },
+      title: { content: 'Tiệc Cưới', text_color: '#5C4A3B', text_size: '22px' },
+      description: { content: 'Tiệc buffet và các hoạt động vui chơi', text_color: '#8C8A8A', text_size: '14px' }
+    },
+    {
+      datetime: { content: '12:00 - 13:00', text_color: '#8C8A8A', text_size: '16px' },
+      title: { content: 'Biểu Diễn', text_color: '#5C4A3B', text_size: '22px' },
+      description: { content: 'Nhạc sống và các tiết mục đặc biệt', text_color: '#8C8A8A', text_size: '14px' }
+    },
+    {
+      datetime: { content: '13:00 - 14:00', text_color: '#8C8A8A', text_size: '16px' },
+      title: { content: 'Tặng Quà', text_color: '#5C4A3B', text_size: '22px' },
+      description: { content: 'Nghi thức tặng quà và cảm ơn khách mời', text_color: '#8C8A8A', text_size: '14px' }
+    }
+  ],
 }

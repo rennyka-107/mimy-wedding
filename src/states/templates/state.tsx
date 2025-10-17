@@ -5,7 +5,35 @@ import { originalCocoaEmbraceState } from '../origin_state/cocoa_embrace';
 import { originalGoldenBondState } from '../origin_state/golden_bond';
 import { originalForestCharmState } from '../origin_state/forest_charm';
 import { originalJadeWhisperState } from '../origin_state/jade_whisper';
-import { TemplateId } from '@/types/wedding.type';
+import { TemplateId, templateSunshineVow } from '@/types/wedding.type';
+import { original2010MyLightState } from '../origin_state/2010_mylight';
+
+export interface Countdown {
+  text_color: string;
+  text_size: string;
+  number_color: string;
+  number_size: string;
+  background: string;
+  content: Date;
+}
+
+export interface Timeline {
+  datetime: {
+    text_color: string;
+    text_size: string;
+    content: string;
+  };
+  title: {
+    text_color: string;
+    text_size: string;
+    content: string;
+  };
+  description: {
+    text_color: string;
+    text_size: string;
+    content: string;
+  };
+}
 
 // Define interfaces for different template elements
 export interface TextItem {
@@ -47,9 +75,6 @@ export interface SendGiftItem {
 }
 
 
-
-
-
 // Define the state structure
 export interface TemplateState {
   template: {
@@ -62,14 +87,16 @@ export interface TemplateState {
       background_colors: { [key: string]: BackgroundColorItem };
       url_maps: { [key: string]: UrlMapItem };
       send_gifts: { [key: string]: SendGiftItem };
+      timeline?: Timeline[];
+      countdown?: Countdown;
     };
   };
 
   // Selected component
   selectedComponent: {
     id: string | null;
-    type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null;
-    data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | null;
+    type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null;
+    data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | Timeline[] | Countdown | null;
   };
 
   updateTemplate: (template: {
@@ -82,10 +109,12 @@ export interface TemplateState {
       background_colors: { [key: string]: BackgroundColorItem };
       url_maps: { [key: string]: UrlMapItem };
       send_gifts: { [key: string]: SendGiftItem };
+      timeline?: Timeline[];
+      countdown?: Countdown;
     };
   }) => void;
 
-  setSelectedComponent: (id: string | null, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | null) => void;
+  setSelectedComponent: (id: string | null, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | Timeline[] | Countdown | null) => void;
 
   resetAllComponent: (template?: {
     template_id: TemplateId;
@@ -97,15 +126,19 @@ export interface TemplateState {
       background_colors: { [key: string]: BackgroundColorItem };
       url_maps: { [key: string]: UrlMapItem };
       send_gifts: { [key: string]: SendGiftItem };
+      timeline?: Timeline[];
+      countdown?: Countdown;
     };
   }) => void;
-  resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, template_id: TemplateId) => void;
+  resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null, template_id: TemplateId) => void;
   // Actions for template elements
   updateText: (id: string, updates: Partial<TextItem>) => void;
   updateImage: (id: string, updates: Partial<ImageItem>) => void;
   updateBackgroundColor: (id: string, updates: Partial<BackgroundColorItem>) => void;
   updateUrlMap: (id: string, updates: Partial<UrlMapItem>) => void;
   updateSendGift: (id: string, updates: Partial<SendGiftItem>) => void;
+  updateTimeline: (updates: Timeline[]) => void;
+  updateCountdown: (updates: Countdown) => void;
 }
 
 function getOriginalState(template_id: TemplateId) {
@@ -122,6 +155,8 @@ function getOriginalState(template_id: TemplateId) {
       return originalForestCharmState;
     case 'jade_whisper':
       return originalJadeWhisperState;
+    case '2010_my_light':
+      return original2010MyLightState;
     default:
       return originalSunshineVowState;
   }
@@ -129,22 +164,7 @@ function getOriginalState(template_id: TemplateId) {
 
 // Create the store
 const useTemplateStore = create<TemplateState>((set) => ({
-  template: {
-    template_id: 'sunshine_vow',
-    template_name: 'Sunshine Vow',
-    template_price: 60000,
-    configs: {
-      texts: originalSunshineVowState.texts,
-
-      images: originalSunshineVowState.images,
-
-      background_colors: originalSunshineVowState.background_colors,
-
-      url_maps: originalSunshineVowState.url_maps,
-
-      send_gifts: originalSunshineVowState.send_gifts,
-    }
-  },
+  template: templateSunshineVow,
   // Initial state - template elements
   updateTemplate: (template: {
     template_id: TemplateId;
@@ -156,6 +176,8 @@ const useTemplateStore = create<TemplateState>((set) => ({
       background_colors: { [key: string]: BackgroundColorItem };
       url_maps: { [key: string]: UrlMapItem };
       send_gifts: { [key: string]: SendGiftItem };
+      timeline?: Timeline[];
+      countdown?: Countdown;
     };
   }) => {
     set((state) => ({
@@ -170,6 +192,8 @@ const useTemplateStore = create<TemplateState>((set) => ({
           background_colors: template.configs.background_colors,
           url_maps: template.configs.url_maps,
           send_gifts: template.configs.send_gifts,
+          timeline: template.configs?.timeline,
+          countdown: template.configs?.countdown,
         },
       },
     }))
@@ -181,7 +205,7 @@ const useTemplateStore = create<TemplateState>((set) => ({
     data: null,
   },
 
-  setSelectedComponent: (id: string | null, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | null) => set((state) => ({
+  setSelectedComponent: (id: string | null, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | Timeline[] | Countdown | null) => set((state) => ({
     selectedComponent: {
       id,
       type,
@@ -197,6 +221,8 @@ const useTemplateStore = create<TemplateState>((set) => ({
       background_colors: { [key: string]: BackgroundColorItem };
       url_maps: { [key: string]: UrlMapItem };
       send_gifts: { [key: string]: SendGiftItem };
+      timeline?: Timeline[];
+      countdown?: Countdown;
     };
   }) => set((state) => ({
     template: {
@@ -207,12 +233,14 @@ const useTemplateStore = create<TemplateState>((set) => ({
         background_colors: template?.configs.background_colors ?? state.template.configs.background_colors,
         url_maps: template?.configs.url_maps ?? state.template.configs.url_maps,
         send_gifts: template?.configs.send_gifts ?? state.template.configs.send_gifts,
+        timeline: template?.configs.timeline ?? state.template.configs.timeline,
+        countdown: template?.configs.countdown ?? state.template.configs.countdown,
       }
     }
 
   })),
 
-  resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | null, template_id: TemplateId) => {
+  resetComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null, template_id: TemplateId) => {
     switch (type) {
       case 'text':
         set((state) => ({
@@ -319,6 +347,40 @@ const useTemplateStore = create<TemplateState>((set) => ({
           }
         }))
         return
+      case 'timeline':
+        const timeline = getOriginalState(template_id)?.timeline;
+        if (!timeline) return;
+        set((state) => ({
+          template: {
+            ...state.template,
+            configs: {
+              ...state.template.configs,
+              timeline: timeline,
+            }
+          },
+          selectedComponent: {
+            ...state.selectedComponent,
+            data: timeline
+          }
+        }))
+        return
+      case 'countdown':
+        const countdown = getOriginalState(template_id)?.countdown;
+        if (!countdown) return;
+        set((state) => ({
+          template: {
+            ...state.template,
+            configs: {
+              ...state.template.configs,
+              countdown: countdown,
+            }
+          },
+          selectedComponent: {
+            ...state.selectedComponent,
+            data: countdown
+          }
+        }))
+        return
       default:
         break;
     }
@@ -401,6 +463,26 @@ const useTemplateStore = create<TemplateState>((set) => ({
             ...updates
           },
         },
+      }
+    }
+  })),
+
+  updateTimeline: (updates) => set((state) => ({
+    template: {
+      ...state.template,
+      configs: {
+        ...state.template.configs,
+        timeline: updates
+      }
+    }
+  })),
+
+  updateCountdown: (updates) => set((state) => ({
+    template: {
+      ...state.template,
+      configs: {
+        ...state.template.configs,
+        countdown: updates
       }
     }
   })),
