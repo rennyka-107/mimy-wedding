@@ -153,7 +153,7 @@ export const template2010MyLight: {
 } = {
     template_id: '2010_my_light',
     template_name: 'Thiệp cưới 2010 My Light',
-    template_price: 30000,
+    template_price: 20000,
     configs: original2010MyLightState
 };
 
@@ -174,6 +174,6 @@ export const template2010ForYa: {
 } = {
     template_id: '2010_for_ya',
     template_name: 'Thiệp cưới 2010 For Ya',
-    template_price: 30000,
+    template_price: 20000,
     configs: original2010ForYaState
 };

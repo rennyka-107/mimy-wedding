@@ -60,7 +60,7 @@ const SuccessPublishModal: React.FC<SuccessPublishModalProps> = ({
 
           {/* Modal */}
           <motion.div
-            className="bg-white rounded-lg shadow-xl w-full max-w-[500px] m-4 relative z-10"
+            className="bg-white rounded-lg shadow-xl w-full max-w-[500px] m-4 p-4 relative z-10 overflow-hidden"
             variants={modalVariants}
             initial="hidden"
             animate="visible"
@@ -92,18 +92,18 @@ const SuccessPublishModal: React.FC<SuccessPublishModalProps> = ({
               </h1>
               
               <div className="space-y-3 mb-6">
-                <p className="text-[#898A85]">
+                <p className="text-[#383637]">
                   Bạn đã tạo thiệp thành công.
                 </p>
-                <p className="text-[#898A85]">
+                <p className="text-[#383637]">
                   Thiệp của bạn có hiệu lực từ ngày <span className="font-[600] text-[#fd8c06]">{publicStart}</span> đến ngày <span className="font-[600] text-[#fd8c06]">{publicEnd}</span>.
                 </p>
-                <p className="text-[#898A85]">
+                <p className="text-[#383637]">
                   Hãy truy cập
                   <span className="font-[600] text-[#fd8c06]"> {publicUrl} </span>
                   để xem ngay thiệp cưới của bạn nhé!
                 </p>
-                <p className="text-[#898A85] font-medium">
+                <p className="text-[#383637] font-medium">
                   Chúc bạn có một đám cưới trọn vẹn, hạnh phúc và ngập tràn yêu thương!
                 </p>
               </div>

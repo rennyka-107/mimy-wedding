@@ -10,7 +10,7 @@ const templates: TypeTemplate[] = [
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 30000,
+    price: 20000,
   },
   {
     id: "2010_for_ya",
@@ -19,7 +19,7 @@ const templates: TypeTemplate[] = [
     is_free: true,
     image_quantity: 5,
     theme_color: "yellow",
-    price: 30000,
+    price: 20000,
   },
   {
     id: "olive_harmony",
