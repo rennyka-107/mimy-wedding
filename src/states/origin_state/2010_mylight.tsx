@@ -10,57 +10,19 @@ export const original2010MyLightState: {
   timeline?: Timeline[];
 } = {
   texts: {
-    text_1: { id: 'text_1', content: "we're married", text_color: '#FFFFFF', text_size: '48px' },
-    text_2: { id: 'text_2', content: 'our story', text_color: '#2E2C2C', text_size: '64px' },
-    text_3: { id: 'text_3', content: 'We first met in college, and what started out to be extraordinary. What began with simple conversations slowly grew into laughter, trust and deep connection. Through every season of life, we\'ve faced challenges and celebrated milestones, always finding strength in each other. Today, our story continues as we embark on this beautiful journey with the promise of forever.', text_color: '#655E5E', text_size: '16px' },
-    text_4: { id: 'text_4', content: 'bride', text_color: '#2E2C2C', text_size: '32px' },
-    text_5: { id: 'text_5', content: 'groom', text_color: '#2E2C2C', text_size: '32px' },
-    text_6: { id: 'text_6', content: 'our wedding', text_color: '#2E2C2C', text_size: '64px' },
-    text_7: { id: 'text_7', content: 'We cordially invite you to celebrate the wedding with us', text_color: '#655E5E', text_size: '16px' },
-    text_8: { id: 'text_8', content: 'T2', text_color: '#655E5E', text_size: '15px' },
-    text_9: { id: 'text_9', content: 'T3', text_color: '#655E5E', text_size: '15px' },
-    text_10: { id: 'text_10', content: 'T4', text_color: '#655E5E', text_size: '15px' },
-    text_11: { id: 'text_11', content: 'T5', text_color: '#655E5E', text_size: '15px' },
-    text_12: { id: 'text_12', content: 'T6', text_color: '#655E5E', text_size: '15px' },
-    text_13: { id: 'text_13', content: 'T7', text_color: '#655E5E', text_size: '15px' },
-    text_14: { id: 'text_14', content: 'CN', text_color: '#655E5E', text_size: '15px' },
-    text_15: { id: 'text_15', content: '30', text_color: '#655E5E', text_size: '15px' },
-    text_16: { id: 'text_16', content: '31', text_color: '#655E5E', text_size: '15px' },
-    text_17: { id: 'text_17', content: '1', text_color: '#655E5E', text_size: '15px' },
-    text_18: { id: 'text_18', content: '2', text_color: '#655E5E', text_size: '15px' },
-    text_19: { id: 'text_19', content: '3', text_color: '#655E5E', text_size: '15px' },
-    text_20: { id: 'text_20', content: '4', text_color: '#655E5E', text_size: '15px' },
-    text_21: { id: 'text_21', content: '5', text_color: '#655E5E', text_size: '15px' },
-    text_22: { id: 'text_22', content: 'Date & Time of the wedding', text_color: '#2E2C2C', text_size: '16px' },
-    text_23: { id: 'text_23', content: 'OCTOBER 15, 2023', text_color: '#655E5E', text_size: '16px' },
-    text_24: { id: 'text_24', content: '10:00 AM', text_color: '#655E5E', text_size: '16px' },
-    text_25: { id: 'text_25', content: 'Wedding venue', text_color: '#2E2C2C', text_size: '16px' },
-    text_26: { id: 'text_26', content: 'NOTRE DAME CATHEDRAL OF SAIGON', text_color: '#655E5E', text_size: '16px' },
-    text_27: { id: 'text_27', content: '01 Cong xa Paris Street | Ho Chi Minh City', text_color: '#655E5E', text_size: '16px' },
-    text_28: { id: 'text_28', content: 'Dress Code', text_color: '#787878', text_size: '16px' },
-    text_29: { id: 'text_29', content: 'Timeline', text_color: '#3F3931', text_size: '48px' },
-    text_42: { id: 'text_42', content: 'SEND WISHES', text_color: '#3F3931', text_size: '36px' },
-    text_43: { id: 'text_43', content: 'Thank you for taking the time to share this happiness with us.', text_color: '#787878', text_size: '15px' },
-    text_44: { id: 'text_44', content: 'Your name', text_color: '#787878', text_size: '15px' },
-    text_45: { id: 'text_45', content: 'Enter your wish', text_color: '#787878', text_size: '15px' },
-    text_46: { id: 'text_46', content: 'Will you attend the party?', text_color: '#787878', text_size: '15px' },
-    text_47: { id: 'text_47', content: 'Of course', text_color: '#655E5E', text_size: '14px' },
-    text_48: { id: 'text_48', content: 'I’m busy already', text_color: '#655E5E', text_size: '14px' },
-    text_49: { id: 'text_49', content: 'Send wishes', text_color: '#3F3931', text_size: '15px' },
-    text_50: { id: 'text_50', content: 'Gift Giving', text_color: '#3F3931', text_size: '36px' },
-    text_51: { id: 'text_51', content: 'Thank you for taking the time to share this happiness with us.', text_color: '#787878', text_size: '15px' },
-    text_52: { id: 'text_52', content: 'Thanks & Best regards', text_color: '#FFFFFF', text_size: '32px' },
-    text_53: { id: 'text_53', content: 'Thank you for taking the time to share this happiness with us.', text_color: '#FFFFFF', text_size: '15px' },
+    text_1: { id: 'text_1', content: "Gửi đến", text_color: '#222D35', text_size: '96px' },
+    text_2: { id: 'text_2', content: 'mẹ yêu', text_color: '#4E746A', text_size: '96px' },
+    text_3: { id: 'text_3', content: 'của con', text_color: '#222D35', text_size: '96px' },
+    text_4: { id: 'text_4', content: 'Lời cảm ơn mãi không vơi', text_color: '#6B726E', text_size: '18px' },
+    text_5: { id: 'text_5', content: 'Mong mẹ mạnh khỏe, đời đời bình an.', text_color: '#6B726E', text_size: '18px' },
+    text_6: { id: 'text_6', content: 'Mẹ thân yêu, trong mỗi bước đi trên chặng đường của con đều có hình bóng mẹ phía sau. Con không có lời hay ý đẹp nào, chỉ có tấm lòng biết ơn sâu sắc nhất. Cảm ơn mẹ đã sinh thành, dưỡng dục, luôn là bờ bến yêu thương mỗi khi con vấp ngã. Con chúc mẹ luôn dồi dào sức khỏe, bình an và mãi ở bên cạnh chúng con. ', text_color: '#6B726E', text_size: '18px' },
+    text_7: { id: 'text_7', content: 'Chúc mẹ sức khỏe, niềm vui và cuộc sống này sẽ thật nhẹ nhàng với mẹ của con. Con luôn ở đây và yêu thương mẹ.', text_color: '#6B726E', text_size: '18px' },
   },
 
   images: {
-    image_1: { id: 'image_1', url: '/templates/SunShineVow/image-1.png', style: { width: '100%', height: 'auto' } },
-    image_2: { id: 'image_2', url: '/templates/SunShineVow/image-2.png', style: { objectFit: 'cover', borderRadius: '8px' } },
-    image_3: { id: 'image_3', url: '/templates/SunShineVow/image-3.png', style: { objectFit: 'cover', borderRadius: '8px' } },
-    image_4: { id: 'image_4', url: '/templates/SunShineVow/image-4.png', style: { objectFit: 'cover', borderRadius: '8px' } },
-    image_5: { id: 'image_5', url: '/templates/SunShineVow/image-5.png', style: { objectFit: 'cover', borderRadius: '8px' } },
-    image_6: { id: 'image_6', url: '/templates/SunShineVow/image-6.png', style: { objectFit: 'cover', borderRadius: '8px' } },
-    image_7: { id: 'image_7', url: '/images/qr-mimy.png', style: { objectFit: 'cover', borderRadius: '8px' } },
+    image_1: { id: 'image_1', url: '/templates/2010MyLight/2.png', style: { width: '100%', height: 'auto' } },
+    image_2: { id: 'image_2', url: '/templates/2010MyLight/3.png', style: { objectFit: 'cover', borderRadius: '8px' } },
+    image_3: { id: 'image_3', url: '/templates/2010MyLight/4.png', style: { objectFit: 'cover', borderRadius: '8px' } },
   },
 
   background_colors: {
@@ -92,27 +54,4 @@ export const original2010MyLightState: {
       bank_holder: 'Account holder: Nguyen Van A',
     }
   },
-
-  timeline: [
-    {
-      datetime: { content: '10:00 - 12:00', text_color: '#2E2C2C', text_size: '16px' },
-      title: { content: 'Wedding Ceremony', text_color: '#3F3931', text_size: '24px' },
-      description: { content: 'Photo session with family and friends', text_color: '#2E2C2C', text_size: '14px' }
-    },
-    {
-      datetime: { content: '12:00 - 15:00', text_color: '#2E2C2C', text_size: '16px' },
-      title: { content: 'Wedding Reception', text_color: '#3F3931', text_size: '24px' },
-      description: { content: 'Lunch and celebration with relatives', text_color: '#2E2C2C', text_size: '14px' }
-    },
-    {
-      datetime: { content: '15:00 - 18:00', text_color: '#2E2C2C', text_size: '16px' },
-      title: { content: 'Performance', text_color: '#3F3931', text_size: '24px' },
-      description: { content: 'Live music and special performances', text_color: '#2E2C2C', text_size: '14px' }
-    },
-    {
-      datetime: { content: '18:00 - 19:00', text_color: '#2E2C2C', text_size: '16px' },
-      title: { content: 'Gift Giving', text_color: '#3F3931', text_size: '24px' },
-      description: { content: 'Gift ceremony and guest appreciation', text_color: '#2E2C2C', text_size: '14px' }
-    }
-  ],
 }

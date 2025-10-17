@@ -1,7 +1,26 @@
-
+'use client';
 import TemplateList, { TypeTemplate } from "@/components/wedding/TemplateList";
+import { useState, useRef, useEffect } from "react";
 
 const templates: TypeTemplate[] = [
+  {
+    id: "2010_my_light",
+    name: 'Thiệp cưới 20-10 My Light',
+    url: "/images/20-10-mylight.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 30000,
+  },
+  {
+    id: "2010_for_ya",
+    name: 'Thiệp cưới 20-10 For Ya',
+    url: "/images/2010_for_ya.png",
+    is_free: true,
+    image_quantity: 5,
+    theme_color: "yellow",
+    price: 30000,
+  },
   {
     id: "olive_harmony",
     name: 'Thiệp cưới Olive Harmony',
@@ -274,6 +293,170 @@ const templates: TypeTemplate[] = [
 ]
 
 export default function ListTemplatePage() {
+  const [displayTemplates, setDisplayTemplates] = useState<TypeTemplate[]>(templates);
+  const [showPricePopup, setShowPricePopup] = useState(false);
+  const [showColorPopup, setShowColorPopup] = useState(false);
+  const [showTypePopup, setShowTypePopup] = useState(false);
+  const [selectedPriceSort, setSelectedPriceSort] = useState<'default' | 'asc' | 'desc'>('default');
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+
+  const pricePopupRef = useRef<HTMLDivElement>(null);
+  const colorPopupRef = useRef<HTMLDivElement>(null);
+  const typePopupRef = useRef<HTMLDivElement>(null);
+
+  // Handle click outside to close popups
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (pricePopupRef.current && !pricePopupRef.current.contains(event.target as Node)) {
+        setShowPricePopup(false);
+      }
+      if (colorPopupRef.current && !colorPopupRef.current.contains(event.target as Node)) {
+        setShowColorPopup(false);
+      }
+      if (typePopupRef.current && !typePopupRef.current.contains(event.target as Node)) {
+        setShowTypePopup(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleSearch = (search: string) => {
+    let filteredTemplates = templates.filter(template =>
+      template.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+    // Apply type filter
+    if (selectedTypes.length > 0) {
+      filteredTemplates = filteredTemplates.filter(template => {
+        return selectedTypes.some(type => template.name.toLowerCase().includes(type.toLowerCase()));
+      });
+    }
+
+    // Apply color filter
+    if (selectedColors.length > 0) {
+      filteredTemplates = filteredTemplates.filter(template =>
+        selectedColors.includes(template.theme_color)
+      );
+    }
+
+    // Apply price sort
+    if (selectedPriceSort === 'asc') {
+      filteredTemplates = [...filteredTemplates].sort((a, b) => a.price - b.price);
+    } else if (selectedPriceSort === 'desc') {
+      filteredTemplates = [...filteredTemplates].sort((a, b) => b.price - a.price);
+    }
+
+    setDisplayTemplates(filteredTemplates);
+  };
+
+  const handlePriceSort = (sort: 'default' | 'asc' | 'desc') => {
+    setSelectedPriceSort(sort);
+    let sortedTemplates = [...displayTemplates];
+
+    if (sort === 'asc') {
+      sortedTemplates = sortedTemplates.sort((a, b) => a.price - b.price);
+    } else if (sort === 'desc') {
+      sortedTemplates = sortedTemplates.sort((a, b) => b.price - a.price);
+    } else {
+      // Reset to original order with current filters
+      sortedTemplates = templates.filter(template => {
+        const matchesType = selectedTypes.length === 0 || selectedTypes.some(type => template.name.toLowerCase().includes(type.toLowerCase()));
+        const matchesColor = selectedColors.length === 0 || selectedColors.includes(template.theme_color);
+        return matchesType && matchesColor;
+      });
+    }
+
+    setDisplayTemplates(sortedTemplates);
+    setShowPricePopup(false);
+  };
+
+  const handleColorToggle = (color: string) => {
+    const newColors = selectedColors.includes(color)
+      ? selectedColors.filter(c => c !== color)
+      : [...selectedColors, color];
+
+    setSelectedColors(newColors);
+
+    let filteredTemplates = templates;
+
+    // Apply type filter
+    if (selectedTypes.length > 0) {
+      filteredTemplates = filteredTemplates.filter(template => {
+        return selectedTypes.some(type => template.name.toLowerCase().includes(type.toLowerCase()));
+      });
+    }
+
+    // Apply color filter
+    if (newColors.length > 0) {
+      filteredTemplates = filteredTemplates.filter(template =>
+        newColors.includes(template.theme_color)
+      );
+    }
+
+    // Apply current price sort
+    if (selectedPriceSort === 'asc') {
+      filteredTemplates = [...filteredTemplates].sort((a, b) => a.price - b.price);
+    } else if (selectedPriceSort === 'desc') {
+      filteredTemplates = [...filteredTemplates].sort((a, b) => b.price - a.price);
+    }
+
+    setDisplayTemplates(filteredTemplates);
+  };
+
+  const handleTypeToggle = (type: string) => {
+    const newTypes = selectedTypes.includes(type)
+      ? selectedTypes.filter(t => t !== type)
+      : [...selectedTypes, type];
+
+    setSelectedTypes(newTypes);
+
+    let filteredTemplates = templates;
+
+    // Apply type filter
+    if (newTypes.length > 0) {
+      filteredTemplates = filteredTemplates.filter(template => {
+        return newTypes.some(t => template.name.toLowerCase().includes(t.toLowerCase()));
+      });
+    }
+
+    // Apply color filter
+    if (selectedColors.length > 0) {
+      filteredTemplates = filteredTemplates.filter(template =>
+        selectedColors.includes(template.theme_color)
+      );
+    }
+
+    // Apply current price sort
+    if (selectedPriceSort === 'asc') {
+      filteredTemplates = [...filteredTemplates].sort((a, b) => a.price - b.price);
+    } else if (selectedPriceSort === 'desc') {
+      filteredTemplates = [...filteredTemplates].sort((a, b) => b.price - a.price);
+    }
+
+    setDisplayTemplates(filteredTemplates);
+  };
+
+  const colorOptions = [
+    { value: 'green', label: 'Xanh' },
+    { value: 'red', label: 'Đỏ' },
+    { value: 'lavender', label: 'Tím' },
+    { value: 'yellow', label: 'Vàng' },
+    { value: 'pink', label: 'Hồng' },
+    { value: 'blue', label: 'Nâu' },
+  ];
+
+  const typeOptions = [
+    { value: 'cưới', label: 'Thiệp cưới' },
+    { value: 'sinh nhật', label: 'Thiệp sinh nhật' },
+    { value: '20-10', label: 'Thiệp 20-10' },
+    { value: 'đầy tháng', label: 'Thiệp con đầy tháng' },
+    { value: 'tốt nghiệp', label: 'Thiệp mời lễ tốt nghiệp' },
+    { value: 'kỷ niệm', label: 'Thiệp kỷ niệm' },
+  ];
+
   return (
     <div className="w-full bg-[#FFFFFF] px-0 md:px-[10%] py-10 md:py-[50px]">
       <div>
@@ -289,26 +472,135 @@ export default function ListTemplatePage() {
         </div>
         <div className="flex flex-col md:flex-row md:justify-between pt-6 mx-[50px] gap-4">
           <div className="flex gap-2 w-full ">
-            <div className="flex justify-center items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-fit h-fit">
-              <span className="lg:block hidden pr-2 font-[600] text-[#383637]">Loại thiệp</span>
-              <span className="lg:hidden block pr-2 font-[600] text-[#383637]">Loại</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 4.5L6 7.5L3 4.5" stroke="#383637" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            {/* Type Filter with Popup */}
+            <div className="relative" ref={typePopupRef}>
+              <div
+                onClick={() => setShowTypePopup(!showTypePopup)}
+                className="flex justify-center items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-fit h-fit cursor-pointer hover:bg-[#f0f0f0] transition-colors"
+              >
+                <span className="lg:block hidden pr-2 font-[600] text-[#383637]">Loại thiệp</span>
+                <span className="lg:hidden block pr-2 font-[600] text-[#383637]">Loại</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 4.5L6 7.5L3 4.5" stroke="#383637" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+
+              {/* Type Popup */}
+              {showTypePopup && (
+                <div className="absolute top-full mt-2 left-0 bg-white rounded-[8px] shadow-lg border border-gray-200 py-2 w-[200px] z-50">
+                  {typeOptions.map((type) => (
+                    <div
+                      key={type.value}
+                      onClick={() => handleTypeToggle(type.value)}
+                      className="px-4 py-2 hover:bg-gray-50 cursor-pointer font-montserrat text-[14px] text-[#383637] flex items-center justify-start gap-2"
+                    >
+                      <div className="w-[20%]">
+                        {selectedTypes.includes(type.value) && (
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.3334 4L6.00002 11.3333L2.66669 8" stroke="#383637" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </div>
+                      <span className="flex-1">{type.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            <div className="flex justify-center items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-fit h-fit">
-              <span className="lg:block hidden pr-2 font-[600] text-[#383637]">Mức giá</span>
-              <span className="lg:hidden block pr-2 font-[600] text-[#383637]">Giá</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 4.5L6 7.5L3 4.5" stroke="#383637" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+
+            {/* Price Filter with Popup */}
+            <div className="relative" ref={pricePopupRef}>
+              <div
+                onClick={() => setShowPricePopup(!showPricePopup)}
+                className="flex justify-center items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-fit h-fit cursor-pointer hover:bg-[#f0f0f0] transition-colors"
+              >
+                <span className="lg:block hidden pr-2 font-[600] text-[#383637]">Mức giá</span>
+                <span className="lg:hidden block pr-2 font-[600] text-[#383637]">Giá</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 4.5L6 7.5L3 4.5" stroke="#383637" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+
+              {/* Price Popup */}
+              {showPricePopup && (
+                <div className="absolute top-full mt-2 left-0 bg-white rounded-[8px] shadow-lg border border-gray-200 py-2 w-[150px] z-50">
+                  <div
+                    onClick={() => handlePriceSort('default')}
+                    className="px-4 py-2 hover:bg-gray-50 cursor-pointer font-montserrat text-[14px] text-[#383637] flex items-center justify-start"
+                  >
+                    <div className="w-[20%]">
+                      {selectedPriceSort === 'default' && (
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13.3334 4L6.00002 11.3333L2.66669 8" stroke="#383637" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className="flex-1">Mặc định</span>
+                  </div>
+                  <div
+                    onClick={() => handlePriceSort('asc')}
+                    className="px-4 py-2 hover:bg-gray-50 cursor-pointer font-montserrat text-[14px] text-[#383637] flex items-center justify-start"
+                  >
+                    <div className="w-[20%]">
+                      {selectedPriceSort === 'asc' && (
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13.3334 4L6.00002 11.3333L2.66669 8" stroke="#383637" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className="flex-1">Tăng dần</span>
+                  </div>
+                  <div
+                    onClick={() => handlePriceSort('desc')}
+                    className="px-4 py-2 hover:bg-gray-50 cursor-pointer font-montserrat text-[14px] text-[#383637] flex items-center justify-start"
+                  >
+                    <div className="w-[20%]">
+                      {selectedPriceSort === 'desc' && (
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13.3334 4L6.00002 11.3333L2.66669 8" stroke="#383637" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </div>
+                    <span className="flex-1">Giảm dần</span>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="flex justify-center items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-fit h-fit">
-              <span className="lg:block hidden pr-2 font-[600] text-[#383637]">Màu sắc</span>
-              <span className="lg:hidden block pr-2 font-[600] text-[#383637]">Màu</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 4.5L6 7.5L3 4.5" stroke="#383637" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+
+            {/* Color Filter with Popup */}
+            <div className="relative" ref={colorPopupRef}>
+              <div
+                onClick={() => setShowColorPopup(!showColorPopup)}
+                className="flex justify-center items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-fit h-fit cursor-pointer hover:bg-[#f0f0f0] transition-colors"
+              >
+                <span className="lg:block hidden pr-2 font-[600] text-[#383637]">Màu sắc</span>
+                <span className="lg:hidden block pr-2 font-[600] text-[#383637]">Màu</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 4.5L6 7.5L3 4.5" stroke="#383637" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+
+              {/* Color Popup */}
+              {showColorPopup && (
+                <div className="absolute top-full mt-2 left-0 bg-white rounded-[8px] shadow-lg border border-gray-200 py-2 w-[150px] z-50">
+                  {colorOptions.map((color) => (
+                    <div
+                      key={color.value}
+                      onClick={() => handleColorToggle(color.value)}
+                      className="px-4 py-2 hover:bg-gray-50 cursor-pointer font-montserrat text-[14px] text-[#383637] flex items-center justify-start gap-2"
+                    >
+                      <div className="w-[20%]">
+                        {selectedColors.includes(color.value) && (
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.3334 4L6.00002 11.3333L2.66669 8" stroke="#383637" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </div>
+                      <span className="flex-1">{color.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div className="flex justify-start items-center px-4 py-2 bg-[#f9f9f9] rounded-[4px] text-[14px] w-full md:w-[500px] h-fit overflow-hidden">
@@ -317,6 +609,7 @@ export default function ListTemplatePage() {
               <path d="M15.75 15.7498L12.4875 12.4873" stroke="#383637" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <input
+              onChange={(e) => handleSearch(e.target.value)}
               type="text"
               placeholder="Tìm kiếm theo tên thiệp"
               className="font-montserrat font-[500] text-[#383637] placeholder-[#898A85] rounded-[8px] px-3  outline-none transition-colors duration-200"
@@ -325,7 +618,7 @@ export default function ListTemplatePage() {
         </div>
       </div>
       <div className="flex w-full">
-        <TemplateList templates={templates} />
+        <TemplateList templates={displayTemplates} />
       </div>
       {/* <Footer /> */}
     </div>

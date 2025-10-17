@@ -20,6 +20,8 @@ import JadeWhisperTemplate from "@/wedding-templates/JadeWhisper.template";
 import Button from "../ui/Button";
 import CloseIcon from "../icons/close";
 import { TemplateId, templateSunshineVow } from "@/types/wedding.type";
+import T2010MyLightTemplate from "@/wedding-templates/2010MyLight.template";
+import T2010ForYaTemplate from "@/wedding-templates/2010ForYa.template";
 
 export default function CreateInvitation() {
   const searchParams = useSearchParams();
@@ -132,6 +134,10 @@ export default function CreateInvitation() {
         return <ForestCharmTemplate />;
       case "jade_whisper":
         return <JadeWhisperTemplate />;
+      case "2010_my_light":
+        return <T2010MyLightTemplate />;
+      case "2010_for_ya":
+        return <T2010ForYaTemplate />;
       default:
         return <SunshineVowTemplate />;
     }
@@ -591,7 +597,7 @@ export default function CreateInvitation() {
           {selectedComponent && selectedComponent.type === 'countdown' && <div className="flex flex-col gap-4 px-[18px] py-[1rem]">
             <div className="p-3 bg-orange-50 border border-orange-200 rounded-[6px]">
               <label className="text-[#4A3B36] text-[13px] font-[600] mb-2 block">⏰ Đếm ngược</label>
-              
+
               <div className="mb-3">
                 <label className="text-[#4A3B36] text-[12px] font-[500] mb-1 block">Ngày & Giờ đích</label>
                 <input

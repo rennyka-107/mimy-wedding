@@ -6,8 +6,9 @@ import { originalForestCharmState } from "@/states/origin_state/forest_charm";
 import { originalJadeWhisperState } from "@/states/origin_state/jade_whisper";
 import { original2010MyLightState } from "@/states/origin_state/2010_mylight";
 import { BackgroundColorItem, Countdown, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "@/states/templates/state";
+import { original2010ForYaState } from "@/states/origin_state/2010_for_ya";
 
-export type TemplateId = 'sunshine_vow' | 'olive_harmony' | 'cocoa_embrace' | 'golden_bond' | 'forest_charm' | 'jade_whisper' | '2010_my_light';
+export type TemplateId = 'sunshine_vow' | 'olive_harmony' | 'cocoa_embrace' | 'golden_bond' | 'forest_charm' | 'jade_whisper' | '2010_my_light' | '2010_for_ya';
 
 export const templateSunshineVow: {
     template_id: TemplateId;
@@ -154,4 +155,25 @@ export const template2010MyLight: {
     template_name: 'Thiệp cưới 2010 My Light',
     template_price: 30000,
     configs: original2010MyLightState
+};
+
+export const template2010ForYa: {
+    template_id: TemplateId;
+    template_name: string;
+    template_price: number;
+    configs: {
+        texts: { [key: string]: TextItem };
+        images: { [key: string]: ImageItem };
+        background_colors: { [key: string]: BackgroundColorItem };
+        url_maps: { [key: string]: UrlMapItem };
+        send_gifts: { [key: string]: SendGiftItem };
+        // coundown type date format dd/mm/yyyy hh:mm:ss
+        coundown?: Countdown;
+        timeline?: Timeline[];
+    };
+} = {
+    template_id: '2010_for_ya',
+    template_name: 'Thiệp cưới 2010 For Ya',
+    template_price: 30000,
+    configs: original2010ForYaState
 };

@@ -6,6 +6,7 @@ import { originalGoldenBondState } from '../origin_state/golden_bond';
 import { originalForestCharmState } from '../origin_state/forest_charm';
 import { originalJadeWhisperState } from '../origin_state/jade_whisper';
 import { TemplateId, templateSunshineVow } from '@/types/wedding.type';
+import { original2010MyLightState } from '../origin_state/2010_mylight';
 
 export interface Countdown {
   text_color: string;
@@ -154,6 +155,8 @@ function getOriginalState(template_id: TemplateId) {
       return originalForestCharmState;
     case 'jade_whisper':
       return originalJadeWhisperState;
+    case '2010_my_light':
+      return original2010MyLightState;
     default:
       return originalSunshineVowState;
   }
