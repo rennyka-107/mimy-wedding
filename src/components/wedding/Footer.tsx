@@ -9,7 +9,7 @@ export default function Footer() {
     const footerRef = useRef(null);
     const isInView = useInView(footerRef, { once: true, amount: 0.3 });
     
-    if (pathname.includes("invitations")) return null;
+    if (pathname.includes("invitations") || pathname.includes("p/")) return null;
     
     // Animation variants
     const footerVariants = {

@@ -10,6 +10,7 @@ import JadeWhisperTemplate from '@/wedding-templates/JadeWhisper.template';
 import toast from 'react-hot-toast';
 import T2010MyLightTemplate from '@/wedding-templates/2010MyLight.template';
 import T2010ForYaTemplate from '@/wedding-templates/2010ForYa.template';
+import PageNotFound from '@/components/ui/PageNotFound';
 
 export default function PublicPage({
     params,
@@ -135,7 +136,7 @@ export default function PublicPage({
 
     return (
         <div className="w-full h-full flex items-center justify-center bg-[#f9f9f9]">
-            <div className="w-[448px] h-full bg-white border shadow-sm rounded-sm overflow-y-auto">
+            {!loading ? <div className="w-[448px] h-full bg-white border shadow-sm rounded-sm overflow-y-auto">
                 {renderTemplate()}
                 <div ref={ref} className={`fixed bottom-0 px-[24px] py-[20px] w-[inherit] rounded-t-[24px] ${openModal ? "bg-white" : "bg-transparent"}`}>
                     {/* Wishes List */}
@@ -227,7 +228,9 @@ export default function PublicPage({
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> : <>
+                <PageNotFound />
+            </>}
         </div>
     );
 }

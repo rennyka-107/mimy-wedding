@@ -37,6 +37,7 @@ export default function CreateInvitation() {
 
   // State cho modal xuất bản
   const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
+  const [loading, setLoading] = useState<boolean>(true);
   // State cho modal thành công
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [publicData, setPublicData] = useState({
@@ -121,38 +122,45 @@ export default function CreateInvitation() {
   }, [templateId])
 
   const renderTemplate = useMemo(() => {
-    switch (templateId) {
-      case "sunshine_vow":
-        return <SunshineVowTemplate />;
-      case "olive_harmony":
-        return <OliveHarmonyTemplate />;
-      case "cocoa_embrace":
-        return <CocoaEmbraceTemplate />;
-      case "golden_bond":
-        return <GoldenBondTemplate />;
-      case "forest_charm":
-        return <ForestCharmTemplate />;
-      case "jade_whisper":
-        return <JadeWhisperTemplate />;
-      case "2010_my_light":
-        return <T2010MyLightTemplate />;
-      case "2010_for_ya":
-        return <T2010ForYaTemplate />;
-      default:
-        return <SunshineVowTemplate />;
+    if (loading) {
+      setLoading(false);
+      return <></>
+    } else {
+      switch (templateId) {
+        case "sunshine_vow":
+          return <SunshineVowTemplate />;
+        case "olive_harmony":
+          return <OliveHarmonyTemplate />;
+        case "cocoa_embrace":
+          return <CocoaEmbraceTemplate />;
+        case "golden_bond":
+          return <GoldenBondTemplate />;
+        case "forest_charm":
+          return <ForestCharmTemplate />;
+        case "jade_whisper":
+          return <JadeWhisperTemplate />;
+        case "2010_my_light":
+          return <T2010MyLightTemplate />;
+        case "2010_for_ya":
+          return <T2010ForYaTemplate />;
+        default:
+          return <SunshineVowTemplate />;
+      }
     }
-  }, [templateId])
+
+
+  }, [templateId, loading])
 
 
   return (
     <div className="w-full h-full flex flex-col lg:flex-row font-montserrat">
-      <div ref={outerDivRef} className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
+      {!loading &&<div ref={outerDivRef} className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
         <div ref={innerDivRef} className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
           {renderTemplate}
         </div>
-      </div>
+      </div>}
 
-      <div className={`edit-box max-h-[50vh] lg:max-h-[calc(100vh-86px)] flex flex-col items-end gap-[0.5rem] lg:block w-full absolute bottom-0 z-[1] lg:static lg:w-1/4 lg:h-[calc(100vh-86px)]`}>
+      {!loading && <div className={`edit-box max-h-[50vh] lg:max-h-[calc(100vh-86px)] flex flex-col items-end gap-[0.5rem] lg:block w-full absolute bottom-0 z-[1] lg:static lg:w-1/4 lg:h-[calc(100vh-86px)]`}>
         <div onClick={() => setSelectedComponent(null, null, null)} className="lg:hidden w-[fit-content] p-[12px] bg-white rounded-[50%] border">
           <CloseIcon />
         </div>
@@ -756,7 +764,7 @@ export default function CreateInvitation() {
             </div>
           </div>}
         </div>
-      </div>
+      </div>}
 
       {/* Modal xuất bản thiệp */}
       <PublishInvitationModal

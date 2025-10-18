@@ -30,7 +30,7 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  // if(pathname === '/') return <></>
+  if(pathname.includes("/p/")) return <></>
 
   return (
     <>
