@@ -155,16 +155,24 @@ export default function PublicPage({
                     {wishes.length > 0 && (
                         <div className="mb-4 overflow-hidden relative" style={{ height: '180px' }}>
                             <style jsx>{`
-                                @keyframes scrollUpContinuous {
+                                @keyframes scrollUp {
                                     0% {
-                                        transform: translateY(0);
+                                        transform: translateY(100%);
+                                        opacity: 0;
+                                    }
+                                    10% {
+                                        opacity: 1;
+                                    }
+                                    90% {
+                                        opacity: 1;
                                     }
                                     100% {
-                                        transform: translateY(-50%);
+                                        transform: translateY(-100%);
+                                        opacity: 0;
                                     }
                                 }
-                                .wishes-container {
-                                    animation: scrollUpContinuous 10s linear infinite;
+                                .wish-item {
+                                    animation: scrollUp 20s linear infinite;
                                 }
                                 .fade-overlay {
                                     position: absolute;
@@ -177,27 +185,18 @@ export default function PublicPage({
                                     z-index: 10;
                                 }
                             `}</style>
-                            <div className="wishes-container flex flex-col gap-3">
-                                {[...wishes.slice(-8), ...wishes.slice(-8)].map((wish, index) => {
-                                    const position = index % wishes.slice(-8).length;
-                                    const totalWishes = wishes.slice(-8).length;
-                                    const reversedIndex = totalWishes - 1 - position;
-
-                                    let opacity = 1;
-                                    if (reversedIndex === 0) opacity = 0.3;
-                                    else if (reversedIndex === 1) opacity = 0.6;
-                                    else if (reversedIndex === 2) opacity = 0.85;
-
+                            <div className="flex flex-col gap-3">
+                                {wishes.map((wish, index) => {
                                     return (
                                         <div
-                                            key={`wish-${index}`}
-                                            className="px-[18px] py-[6px] w-[fit-content] border-none"
+                                            key={`wish-${wish.sender}-${index}`}
+                                            className="wish-item px-[18px] py-[6px] w-[fit-content] border-none"
                                             style={{
-                                                // opacity,
                                                 backgroundColor: '#FFF8EF',
                                                 backdropFilter: 'blur(50px)',
                                                 boxShadow: '0px 2px 2px 0px rgba(100, 78, 55, 0.15)',
-                                                borderRadius: '550px'
+                                                borderRadius: '550px',
+                                                animationDelay: `${index * 2}s`
                                             }}
                                         >
                                             <div className="row gap-1">
