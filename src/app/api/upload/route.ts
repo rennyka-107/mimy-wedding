@@ -7,7 +7,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { db } from "@/db";
 import { users, images } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { checkImageLimit } from "@/utils/limits";
+// import { checkImageLimit } from "@/utils/limits";
 
 export const dynamic = "force-dynamic";
 
@@ -65,14 +65,14 @@ export async function POST(req: NextRequest) {
     }
     
     // Kiểm tra giới hạn số lượng ảnh
-    const checkResult = await checkImageLimit(user.id);
+    // const checkResult = await checkImageLimit(user.id);
     
-    if (!checkResult.allowed) {
-      return NextResponse.json(
-        { error: checkResult.message },
-        { status: 403 }
-      );
-    }
+    // if (!checkResult.allowed) {
+    //   return NextResponse.json(
+    //     { error: checkResult.message },
+    //     { status: 403 }
+    //   );
+    // }
 
     // Tạo tên file ngẫu nhiên để tránh trùng lặp
     const buffer = await file.arrayBuffer();

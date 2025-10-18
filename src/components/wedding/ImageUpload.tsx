@@ -59,11 +59,11 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload, onImageUploadU
   const uploadFile = async (file: File) => {
     try {
       // Kiểm tra giới hạn ảnh trước khi upload
-      const canUpload = checkAndWarnImageLimit(1);
-      if (!canUpload) {
-        setUploadError("Vượt quá giới hạn số lượng ảnh. Vui lòng nâng cấp gói hoặc xóa bớt ảnh cũ.");
-        return;
-      }
+      // const canUpload = checkAndWarnImageLimit(1);
+      // if (!canUpload) {
+      //   setUploadError("Vượt quá giới hạn số lượng ảnh. Vui lòng nâng cấp gói hoặc xóa bớt ảnh cũ.");
+      //   return;
+      // }
       
       setIsUploading(true);
       setUploadError(null);

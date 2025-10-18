@@ -22,6 +22,7 @@ import CloseIcon from "../icons/close";
 import { TemplateId, templateSunshineVow } from "@/types/wedding.type";
 import T2010MyLightTemplate from "@/wedding-templates/2010MyLight.template";
 import T2010ForYaTemplate from "@/wedding-templates/2010ForYa.template";
+import { LoadingRing } from "../ui/Loading";
 
 export default function CreateInvitation() {
   const searchParams = useSearchParams();
@@ -154,6 +155,9 @@ export default function CreateInvitation() {
 
   return (
     <div className="w-full h-full flex flex-col lg:flex-row font-montserrat">
+      {loading && <div className="w-full h-[100vh] flex items-center justify-center">
+        <LoadingRing />
+      </div>}
       {!loading &&<div ref={outerDivRef} className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
         <div ref={innerDivRef} className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
           {renderTemplate}

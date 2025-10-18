@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import T2010MyLightTemplate from '@/wedding-templates/2010MyLight.template';
 import T2010ForYaTemplate from '@/wedding-templates/2010ForYa.template';
 import PageNotFound from '@/components/ui/PageNotFound';
+import { LoadingRing, LoadingSkeleton } from '@/components/ui/Loading';
 
 export default function PublicPage({
     params,
@@ -26,6 +27,7 @@ export default function PublicPage({
     const [openModal, setOpenModal] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const [isExpire, setIsExpire] = useState<boolean>(false);
     const [wishes, setWishes] = useState<{ sender: string; content: string }[]>([]);
     useEffect(() => {
         const handleClick = (event: MouseEvent) => {
@@ -111,23 +113,33 @@ export default function PublicPage({
 
 
     async function fetchData() {
-        const response = await fetch(`/api/orders?publicUrl=${publicUrl}`);
-        const data = await response.json();
-        if (data.status === "success") {
-            updateTemplate({
-                template_id: data.data.template_id,
-                template_name: data.data.template_name,
-                template_price: data.data.template_price,
-                configs: data.data.template_config,
-            });
-            setWishes(data.data.wishes.map((wish: { sender: string; content: string }) => ({
-                sender: wish.sender,
-                content: wish.content,
-            })));
+        try {
+            const response = await fetch(`/api/orders?publicUrl=${publicUrl}`);
+            const data = await response.json();
+            if (data.status === "success") {
+                updateTemplate({
+                    template_id: data.data.template_id,
+                    template_name: data.data.template_name,
+                    template_price: data.data.template_price,
+                    configs: data.data.template_config,
+                });
+                setWishes(data.data.wishes.map((wish: { sender: string; content: string }) => ({
+                    sender: wish.sender,
+                    content: wish.content,
+                })));
+                setLoading(false);
+                setIsExpire(false);
+            } else {
+                setLoading(false);
+                setIsExpire(true);
+                console.log("Error:", data.message);
+            }
+        } catch (error) {
             setLoading(false);
-        } else {
-            console.log("Error:", data.message);
+            setIsExpire(true);
+            console.log("Error:", error);
         }
+
     }
 
     useEffect(() => {
@@ -136,7 +148,7 @@ export default function PublicPage({
 
     return (
         <div className="w-full h-full flex items-center justify-center bg-[#f9f9f9]">
-            {!loading ? <div className="w-[448px] h-full bg-white border shadow-sm rounded-sm overflow-y-auto">
+            {!loading ? !isExpire ? <div className="w-[448px] h-full bg-white border shadow-sm rounded-sm overflow-y-auto">
                 {renderTemplate()}
                 <div ref={ref} className={`fixed bottom-0 px-[24px] py-[20px] w-[inherit] rounded-t-[24px] ${openModal ? "bg-white" : "bg-transparent"}`}>
                     {/* Wishes List */}
@@ -228,9 +240,9 @@ export default function PublicPage({
                         </div>
                     </div>
                 </div>
-            </div> : <>
-                <PageNotFound />
-            </>}
+            </div> : <PageNotFound /> : <div className="w-full h-[100vh] flex items-center justify-center">
+                <LoadingRing />
+            </div>}
         </div>
     );
 }
