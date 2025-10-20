@@ -68,7 +68,7 @@ export default function T2010MyLightTemplate() {
             <img onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('image_2', 'image', images['image_2'])
-            }} src={images['image_2'].url} className="w-full px-[30px] rounded-[16px] mt-[24px] cursor-pointer" />
+            }} src={images['image_2'].url} className="w-full px-[30px] !rounded-[16px] mt-[24px] cursor-pointer" />
             <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_7', 'text', texts['text_7'])
@@ -76,7 +76,7 @@ export default function T2010MyLightTemplate() {
             <img onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('image_3', 'image', images['image_3'])
-            }} src={images['image_3'].url} className="w-full px-[30px] rounded-[16px] my-[24px] cursor-pointer" />
+            }} src={images['image_3'].url} className="w-full px-[30px] !rounded-[16px] my-[24px] cursor-pointer" />
         </div>
 
 

@@ -10,6 +10,8 @@ import JadeWhisperTemplate from '@/wedding-templates/JadeWhisper.template';
 import toast from 'react-hot-toast';
 import T2010MyLightTemplate from '@/wedding-templates/2010MyLight.template';
 import T2010ForYaTemplate from '@/wedding-templates/2010ForYa.template';
+import PageNotFound from '@/components/ui/PageNotFound';
+import { LoadingRing, LoadingSkeleton } from '@/components/ui/Loading';
 
 export default function PublicPage({
     params,
@@ -25,6 +27,7 @@ export default function PublicPage({
     const [openModal, setOpenModal] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const [isExpire, setIsExpire] = useState<boolean>(false);
     const [wishes, setWishes] = useState<{ sender: string; content: string }[]>([]);
     useEffect(() => {
         const handleClick = (event: MouseEvent) => {
@@ -110,23 +113,33 @@ export default function PublicPage({
 
 
     async function fetchData() {
-        const response = await fetch(`/api/orders?publicUrl=${publicUrl}`);
-        const data = await response.json();
-        if (data.status === "success") {
-            updateTemplate({
-                template_id: data.data.template_id,
-                template_name: data.data.template_name,
-                template_price: data.data.template_price,
-                configs: data.data.template_config,
-            });
-            setWishes(data.data.wishes.map((wish: { sender: string; content: string }) => ({
-                sender: wish.sender,
-                content: wish.content,
-            })));
+        try {
+            const response = await fetch(`/api/orders?publicUrl=${publicUrl}`);
+            const data = await response.json();
+            if (data.status === "success") {
+                updateTemplate({
+                    template_id: data.data.template_id,
+                    template_name: data.data.template_name,
+                    template_price: data.data.template_price,
+                    configs: data.data.template_config,
+                });
+                setWishes(data.data.wishes.map((wish: { sender: string; content: string }) => ({
+                    sender: wish.sender,
+                    content: wish.content,
+                })));
+                setLoading(false);
+                setIsExpire(false);
+            } else {
+                setLoading(false);
+                setIsExpire(true);
+                console.log("Error:", data.message);
+            }
+        } catch (error) {
             setLoading(false);
-        } else {
-            console.log("Error:", data.message);
+            setIsExpire(true);
+            console.log("Error:", error);
         }
+
     }
 
     useEffect(() => {
@@ -135,23 +148,31 @@ export default function PublicPage({
 
     return (
         <div className="w-full h-full flex items-center justify-center bg-[#f9f9f9]">
-            <div className="w-[448px] h-full bg-white border shadow-sm rounded-sm overflow-y-auto">
+            {!loading ? !isExpire ? <div className="w-[448px] h-full bg-white border shadow-sm rounded-sm overflow-y-auto">
                 {renderTemplate()}
                 <div ref={ref} className={`fixed bottom-0 px-[24px] py-[20px] w-[inherit] rounded-t-[24px] ${openModal ? "bg-white" : "bg-transparent"}`}>
                     {/* Wishes List */}
                     {wishes.length > 0 && (
                         <div className="mb-4 overflow-hidden relative" style={{ height: '180px' }}>
                             <style jsx>{`
-                                @keyframes scrollUpContinuous {
+                                @keyframes scrollUp {
                                     0% {
-                                        transform: translateY(0);
+                                        transform: translateY(100%);
+                                        opacity: 0;
+                                    }
+                                    10% {
+                                        opacity: 1;
+                                    }
+                                    90% {
+                                        opacity: 1;
                                     }
                                     100% {
-                                        transform: translateY(-50%);
+                                        transform: translateY(-100%);
+                                        opacity: 0;
                                     }
                                 }
-                                .wishes-container {
-                                    animation: scrollUpContinuous 10s linear infinite;
+                                .wish-item {
+                                    animation: scrollUp 20s linear infinite;
                                 }
                                 .fade-overlay {
                                     position: absolute;
@@ -164,27 +185,18 @@ export default function PublicPage({
                                     z-index: 10;
                                 }
                             `}</style>
-                            <div className="wishes-container flex flex-col gap-3">
-                                {[...wishes.slice(-8), ...wishes.slice(-8)].map((wish, index) => {
-                                    const position = index % wishes.slice(-8).length;
-                                    const totalWishes = wishes.slice(-8).length;
-                                    const reversedIndex = totalWishes - 1 - position;
-
-                                    let opacity = 1;
-                                    if (reversedIndex === 0) opacity = 0.3;
-                                    else if (reversedIndex === 1) opacity = 0.6;
-                                    else if (reversedIndex === 2) opacity = 0.85;
-
+                            <div className="flex flex-col gap-3">
+                                {wishes.map((wish, index) => {
                                     return (
                                         <div
-                                            key={`wish-${index}`}
-                                            className="px-[18px] py-[6px] w-[fit-content] border-none"
+                                            key={`wish-${wish.sender}-${index}`}
+                                            className="wish-item px-[18px] py-[6px] w-[fit-content] border-none"
                                             style={{
-                                                // opacity,
                                                 backgroundColor: '#FFF8EF',
                                                 backdropFilter: 'blur(50px)',
                                                 boxShadow: '0px 2px 2px 0px rgba(100, 78, 55, 0.15)',
-                                                borderRadius: '550px'
+                                                borderRadius: '550px',
+                                                animationDelay: `${index * 2}s`
                                             }}
                                         >
                                             <div className="row gap-1">
@@ -227,7 +239,9 @@ export default function PublicPage({
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> : <PageNotFound /> : <div className="w-full h-[100vh] flex items-center justify-center">
+                <LoadingRing />
+            </div>}
         </div>
     );
 }

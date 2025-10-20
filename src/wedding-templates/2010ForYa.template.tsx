@@ -98,19 +98,19 @@ export default function T2010ForYaTemplate() {
             <img onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('image_2', 'image', images['image_2'])
-            }} src={images['image_2'].url} className="w-full h-[364px] object-cover object-center px-[30px] rounded-[56px] mt-[24px] cursor-pointer" />
+            }} src={images['image_2'].url} className="w-full aspect-square object-cover p-[30px] rounded-[56px] mt-[0] cursor-pointer" />
             <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_7', 'text', texts['text_7'])
-            }} style={{ marginTop: '2rem', padding: '0 30px', fontWeight: 400, textAlign: 'justify', textJustify: 'inter-word', letterSpacing: '0%', lineHeight: '100%', cursor: 'pointer', color: texts['text_7'].text_color, fontSize: texts['text_7'].text_size }}>{texts['text_7'].content}</div>
+            }} style={{ marginTop: '0', padding: '0 30px', fontWeight: 400, textAlign: 'justify', textJustify: 'inter-word', letterSpacing: '0%', lineHeight: '100%', cursor: 'pointer', color: texts['text_7'].text_color, fontSize: texts['text_7'].text_size }}>{texts['text_7'].content}</div>
             <img onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('image_3', 'image', images['image_3'])
-            }} src={images['image_3'].url} className="w-full h-[364px] object-cover object-center px-[30px] rounded-[56px] mt-[24px] cursor-pointer" />
+            }} src={images['image_3'].url} className="w-full aspect-square object-cover p-[30px] rounded-[56px] mt-[0] cursor-pointer" />
             <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_8', 'text', texts['text_8'])
-            }} style={{ marginTop: '24px', marginBottom: '24px', padding: '0 30px', fontWeight: 400, textAlign: 'justify', textJustify: 'inter-word', letterSpacing: '0%', lineHeight: '100%', cursor: 'pointer', color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>{texts['text_8'].content}</div>
+            }} style={{ marginTop: '0', marginBottom: '24px', padding: '0 30px', fontWeight: 400, textAlign: 'justify', textJustify: 'inter-word', letterSpacing: '0%', lineHeight: '100%', cursor: 'pointer', color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>{texts['text_8'].content}</div>
         </div>
 
 

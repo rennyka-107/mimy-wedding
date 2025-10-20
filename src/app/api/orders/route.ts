@@ -12,12 +12,7 @@ export async function GET(req: Request) {
     const session = await getServerSession(authOptions);
     const user = session?.user;
     console.log(session, "session")
-    if (!user) {
-      return NextResponse.json({
-        status: "error",
-        message: "User not found"
-      }, { status: 404 });
-    }
+
     const { searchParams } = new URL(req.url);
     const publicUrl = searchParams.get('publicUrl');
     const id = searchParams.get('id');
@@ -64,6 +59,13 @@ export async function GET(req: Request) {
         status: "success",
         data: orderData
       });
+    }
+
+    if (!user) {
+      return NextResponse.json({
+        status: "error",
+        message: "User not found"
+      }, { status: 404 });
     }
 
     if (id) {
@@ -134,14 +136,14 @@ export async function GET(req: Request) {
 
     // Lấy wishes cho tất cả orders (optimized với inArray)
     const orderIds = orderList.map(order => order.id);
-    const allWishes = orderIds.length > 0 
+    const allWishes = orderIds.length > 0
       ? await db
-          .select()
-          .from(wishes)
-          .where(inArray(wishes.order_id, orderIds))
-          .orderBy(desc(wishes.createdAt))
+        .select()
+        .from(wishes)
+        .where(inArray(wishes.order_id, orderIds))
+        .orderBy(desc(wishes.createdAt))
       : [];
-    
+
     // Group wishes by order_id
     const wishesByOrderId: { [key: string]: typeof allWishes } = {};
     allWishes.forEach(wish => {
