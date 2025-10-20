@@ -98,7 +98,7 @@ export default function PaymentSuccessModal({
             <div className="px-6 py-6 text-left">
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Thanh toán dịch vụ thành công</h2>
               <p className="text-gray-600 mb-2">
-                - Cảm ơn bạn đã tin tưởng Mimy Wedding. Dịch vụ sẽ được kích hoạt trong vòng 24h tới.
+                - Cảm ơn bạn đã tin tưởng Mimy.vn. Dịch vụ sẽ được kích hoạt trong vòng 24h tới.
               </p>
               <p className="text-gray-600">
                 - Hãy kiểm tra email để nhận được thông tin sớm nhất bạn nhé.

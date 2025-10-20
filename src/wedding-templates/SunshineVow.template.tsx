@@ -437,7 +437,7 @@ const SunshineVowTemplate: React.FC = () => {
       <div className="w-full py-[1rem] text-center bg-[#484848] font-[600] text-[14px] text-[#FFFFFF]">
         Made by
         <span className="font-plus-jakarta-sans font-[800] ml-[0.2rem]">
-          Mimy Wedding
+          Mimy.vn
         </span>
       </div>
     </div>

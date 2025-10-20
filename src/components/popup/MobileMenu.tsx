@@ -54,7 +54,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <div className="relative w-[120px] h-[32px]">
             <Image
               src="/images/logo.png"
-              alt="Mimy Wedding Logo"
+              alt="Mimy.vn Logo"
               fill
               className="object-contain object-left"
             />

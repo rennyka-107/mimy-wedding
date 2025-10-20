@@ -38,8 +38,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mimy Wedding",
-  description: "Mimy Wedding",
+  title: "Mimy.vn",
+  description: "Mimy.vn",
   icons: {
     icon: "/images/logo-icon.png"
   }

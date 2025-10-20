@@ -266,7 +266,7 @@ export default function WeddingPage() {
         <Header />
         <div className="absolute inset-0 bg-[#F9F9F9] z-48"></div>
       </div>
-      <svg className="absolute top-0 z-49 w-full xs:h-[800px] sm:h-full" width="1440" height="825" viewBox="0 0 1440 825" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* <svg className="absolute top-0 z-49 w-full xs:h-[800px] sm:h-full" width="1440" height="825" viewBox="0 0 1440 825" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g opacity="1" filter="url(#filter0_f_642_1849)">
           <path d="M945 -0.49998C945 59.3063 921.242 116.663 878.953 158.953C836.663 201.242 779.306 225 719.5 225C659.694 225 602.337 201.242 560.047 158.953C517.758 116.663 494 59.3064 494 -0.499946L945 -0.49998Z" fill="#FFE6AD" />
           <path d="M1440.5 225C1410.89 225 1381.56 219.167 1354.2 207.835C1326.85 196.502 1301.99 179.892 1281.05 158.953C1260.11 138.013 1243.5 113.154 1232.17 85.7951C1220.83 58.4362 1215 29.1131 1215 -0.5L1440.5 -0.49998V225Z" fill="#FFE6AD" />
@@ -279,7 +279,7 @@ export default function WeddingPage() {
             <feGaussianBlur stdDeviation="300" result="effect1_foregroundBlur_642_1849" />
           </filter>
         </defs>
-      </svg>
+      </svg> */}
       <Banner />
       <div className="w-full px-4 sm:px-6 lg:px-[10%] mt-0">
         <label
@@ -287,7 +287,7 @@ export default function WeddingPage() {
           // whileInView={{ opacity: 1 }}
           // transition={{ duration: 0.5, delay: 0.3 }}
           // viewport={{ once: true }}
-          className="text-[#383637] flex w-full justify-center pt-0 sm:pt-24 font-montserrat-alter font-[700] text-[28px] mt-0  md:mt-40 lg:mt-35 xl:mt-10 sm:text-[44px] lg:text-[46px] leading-[100%]"
+          className="text-[#383637] flex w-full justify-center font-montserrat-alter font-[700] text-[28px] sm:text-[44px] lg:text-[46px] leading-[100%]"
         >
           mẫu thiệp.
         </label>
