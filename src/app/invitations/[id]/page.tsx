@@ -93,7 +93,7 @@ export default function ViewInvitationPage({
                 <div className="w-[448px] h-[calc(100vh-86px)] bg-white border border-none shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
                     {renderTemplate}
                     <Button
-                        className='fixed bottom-[2%] left-1/2 -translate-x-1/2'
+                        className='fixed bottom-[5%] left-1/2 -translate-x-1/2 shadow-xl'
                         variant="primary"
                         onClick={() => {
                             if (user) {
@@ -103,7 +103,8 @@ export default function ViewInvitationPage({
                             }
                         }}
                     >
-                        <span className="font-[600] text-[16px] pr-2 ">Tạo tấm thiệp của riêng bạn</span>
+                        <span className="md:block hidden font-[600] text-[14px] md:text-[16px] pr-2 ">Tạo tấm thiệp của riêng bạn</span>
+                        <span className="md:hidden block font-[600] text-[14px] md:text-[16px] pr-2 ">Tạo thiệp ngay</span>
                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.75 12.75L15.5 9L11.75 5.25" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M3.5 13.5V12C3.5 11.2044 3.81607 10.4413 4.37868 9.87868C4.94129 9.31607 5.70435 9 6.5 9H15.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
