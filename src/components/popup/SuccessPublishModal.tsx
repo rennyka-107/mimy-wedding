@@ -67,7 +67,7 @@ const SuccessPublishModal: React.FC<SuccessPublishModalProps> = ({
             exit="exit"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-2 border border-gray-100">
+            <div className="flex items-center justify-between px-6 py-2">
               <div className="flex items-center gap-3">
                 <div className="w-[142px]">
                     <img src="/images/logo.png" alt="" />
@@ -87,23 +87,23 @@ const SuccessPublishModal: React.FC<SuccessPublishModalProps> = ({
 
             {/* Content */}
             <div className="p-6">
-              <h1 className="text-[24px] font-[600] text-[#383637] mb-4">
+              <h1 className="text-[20px] md:text-[24px] font-[600] text-[#383637] mb-4">
                 Thiệp cưới của bạn đã được xuất bản
               </h1>
               
-              <div className="space-y-3 mb-6">
+              <div className="space-y-3 mb-6 text-[14px] md:text-[16px]">
                 <p className="text-[#383637]">
                   Bạn đã tạo thiệp thành công.
                 </p>
-                <p className="text-[#383637]">
+                <p className="text-[#383637] text-[14px] md:text-[16px]">
                   Thiệp của bạn có hiệu lực từ ngày <span className="font-[600] text-[#fd8c06]">{publicStart}</span> đến ngày <span className="font-[600] text-[#fd8c06]">{publicEnd}</span>.
                 </p>
-                <p className="text-[#383637]">
+                <p className="text-[#383637] text-[14px] md:text-[16px]">
                   Hãy truy cập
-                  <span className="font-[600] text-[#fd8c06]"> {publicUrl} </span>
+                  <span className="font-[600] text-[#fd8c06] text-[14px] md:text-[16px]"> {publicUrl} </span>
                   để xem ngay thiệp cưới của bạn nhé!
                 </p>
-                <p className="text-[#383637] font-medium">
+                <p className="text-[#383637] text-[14px] md:text-[16px]">
                   Chúc bạn có một đám cưới trọn vẹn, hạnh phúc và ngập tràn yêu thương!
                 </p>
               </div>

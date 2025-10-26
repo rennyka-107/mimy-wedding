@@ -70,7 +70,7 @@ export default function ProfileMenu({
     {
       id: 'wedding',
       icon: <Star />,
-      text: "Thiệp cưới của bạn",
+      text: "Thiệp cưới bạn",
       href: "/invitations"
     },
     // {
