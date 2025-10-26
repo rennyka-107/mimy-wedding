@@ -15,6 +15,7 @@ export interface Countdown {
   number_size: string;
   background: string;
   content: Date;
+  isDeleted: boolean;
 }
 
 export interface Timeline {
@@ -41,23 +42,27 @@ export interface TextItem {
   content: string;
   text_color: string;
   text_size: string;
+  isDeleted: boolean;
 }
 
 export interface ImageItem {
   id: string; // image_1, image_2, etc.
   url: string;
   style: Record<string, string>;
+  isDeleted: boolean;
 }
 
 export interface BackgroundColorItem {
   id: string; // bg_color_1, bg_color_2, etc.
   color: string;
   border_color: string;
+  isDeleted: boolean;
 }
 
 export interface UrlMapItem {
   id: string; // map_1, map_2, etc.
   url: string;
+  isDeleted: boolean;
 }
 
 export interface SendGiftItem {
@@ -72,6 +77,7 @@ export interface SendGiftItem {
   bank_name: string;
   bank_number: string;
   bank_holder: string;
+  isDeleted: boolean;
 }
 
 
@@ -113,6 +119,22 @@ export interface TemplateState {
       countdown?: Countdown;
     };
   }) => void;
+
+  deleteComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null) => void;
+
+  getDeleteComponents: () => {
+    texts: TextItem[];
+    images: ImageItem[];
+    background_colors: BackgroundColorItem[];
+    url_maps: UrlMapItem[];
+    send_gifts: SendGiftItem[];
+    timeline?: Timeline[];
+    countdown?: Countdown;
+  };
+
+  revertDeleteComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | Timeline[] | Countdown | null) => void;
+
+  revertDeleteAllComponents: () => void;
 
   setSelectedComponent: (id: string | null, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | Timeline[] | Countdown | null) => void;
 
@@ -163,7 +185,7 @@ function getOriginalState(template_id: TemplateId) {
 }
 
 // Create the store
-const useTemplateStore = create<TemplateState>((set) => ({
+const useTemplateStore = create<TemplateState>((set, get) => ({
   template: templateSunshineVow,
   // Initial state - template elements
   updateTemplate: (template: {
@@ -212,6 +234,369 @@ const useTemplateStore = create<TemplateState>((set) => ({
       data,
     },
   })),
+
+  getDeleteComponents: () => {
+    const template = get().template
+
+    // get all deleted components
+    const deletedComponents = {
+      texts: Object.keys(template.configs.texts).filter((key) => template.configs.texts[key].isDeleted).map((key) => template.configs.texts[key]),
+      images: Object.keys(template.configs.images).filter((key) => template.configs.images[key].isDeleted).map((key) => template.configs.images[key]),
+      background_colors: Object.keys(template.configs.background_colors).filter((key) => template.configs.background_colors[key].isDeleted).map((key) => template.configs.background_colors[key]),
+      url_maps: Object.keys(template.configs.url_maps).filter((key) => template.configs.url_maps[key].isDeleted).map((key) => template.configs.url_maps[key]),
+      send_gifts: Object.keys(template.configs.send_gifts).filter((key) => template.configs.send_gifts[key].isDeleted).map((key) => template.configs.send_gifts[key]),
+      timeline: template.configs.timeline ? template.configs.timeline : undefined,
+      countdown: template.configs.countdown ? template.configs.countdown : undefined,
+    }
+    return deletedComponents;
+  },
+
+  revertDeleteComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null, data: TextItem | ImageItem | BackgroundColorItem | UrlMapItem | SendGiftItem | Timeline[] | Countdown | null) => {
+    switch (type) {
+      case 'text':
+        return set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                texts: {
+                  ...state.template.configs.texts,
+                  [id]: {
+                    ...state.template.configs.texts[id],
+                    isDeleted: false,
+                  },
+                },
+              },
+            },
+          }
+        })
+      case 'image':
+        return set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                images: {
+                  ...state.template.configs.images,
+                  [id]: {
+                    ...state.template.configs.images[id],
+                    isDeleted: false,
+                  },
+                },
+              },
+            },
+          }
+        })
+      case 'background_color':
+        return set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                background_colors: {
+                  ...state.template.configs.background_colors,
+                  [id]: {
+                    ...state.template.configs.background_colors[id],
+                    isDeleted: false,
+                  },
+                },
+              },
+            },
+          }
+        })
+      case 'url_map':
+        return set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                url_maps: {
+                  ...state.template.configs.url_maps,
+                  [id]: {
+                    ...state.template.configs.url_maps[id],
+                    isDeleted: false,
+                  },
+                },
+              },
+            },
+          }
+        })
+      case 'send_gift':
+        return set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                send_gifts: {
+                  ...state.template.configs.send_gifts,
+                  [id]: {
+                    ...state.template.configs.send_gifts[id],
+                    isDeleted: false,
+                  },
+                },
+              },
+            },
+          }
+        })
+      case 'timeline':
+        return set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                timeline: data as Timeline[]
+              },
+            },
+          }
+        })
+      case 'countdown':
+        return set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                countdown: data as Countdown
+              },
+            },
+          }
+        })
+    }
+
+  },
+
+  revertDeleteAllComponents() {
+    const deletedComponents = get().getDeleteComponents()
+    set((state) => {
+      return {
+        ...state,
+        template: {
+          ...state.template,
+          configs: {
+            ...state.template.configs,
+            texts: Object.fromEntries(
+              Object.entries(state.template.configs.texts).map(([key, value]) => [
+                key,
+                { ...value, isDeleted: false },
+              ])
+            ),
+            images: Object.fromEntries(
+              Object.entries(state.template.configs.images).map(([key, value]) => [
+                key,
+                { ...value, isDeleted: false },
+              ])
+            ),
+            background_colors: Object.fromEntries(
+              Object.entries(state.template.configs.background_colors).map(([key, value]) => [
+                key,
+                { ...value, isDeleted: false },
+              ])
+            ),
+            url_maps: Object.fromEntries(
+              Object.entries(state.template.configs.url_maps).map(([key, value]) => [
+                key,
+                { ...value, isDeleted: false },
+              ])
+            ),
+            send_gifts: Object.fromEntries(
+              Object.entries(state.template.configs.send_gifts).map(([key, value]) => [
+                key,
+                { ...value, isDeleted: false },
+              ])
+            ),
+            timeline: deletedComponents.timeline ? deletedComponents.timeline : state.template.configs.timeline,
+            countdown: deletedComponents.countdown ? deletedComponents.countdown : state.template.configs.countdown,
+          },
+        },
+      }
+    })
+  },
+
+  deleteComponent: (id: string, type: 'text' | 'image' | 'background_color' | 'url_map' | 'send_gift' | 'timeline' | 'countdown' | null) => {
+    switch (type) {
+      case 'text':
+        set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                texts: {
+                  ...state.template.configs.texts,
+                  [id]: {
+                    ...state.template.configs.texts[id],
+                    isDeleted: true,
+                  },
+                },
+              },
+            },
+            selectedComponent: {
+              id: null,
+              type: null,
+              data: null,
+            }
+          }
+        })
+        return
+      case 'image':
+        set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                images: {
+                  ...state.template.configs.images,
+                  [id]: {
+                    ...state.template.configs.images[id],
+                    isDeleted: true,
+                  },
+                },
+              },
+            },
+            selectedComponent: {
+              id: null,
+              type: null,
+              data: null,
+            }
+          }
+        })
+        return
+      case 'background_color':
+        set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                background_colors: {
+                  ...state.template.configs.background_colors,
+                  [id]: {
+                    ...state.template.configs.background_colors[id],
+                    isDeleted: true,
+                  },
+                },
+              },
+            },
+            selectedComponent: {
+              id: null,
+              type: null,
+              data: null,
+            }
+          }
+        })
+        return
+      case 'url_map':
+        set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                url_maps: {
+                  ...state.template.configs.url_maps,
+                  [id]: {
+                    ...state.template.configs.url_maps[id],
+                    isDeleted: true,
+                  },
+                },
+              },
+            },
+            selectedComponent: {
+              id: null,
+              type: null,
+              data: null,
+            }
+          }
+        })
+        return
+      case 'send_gift':
+        set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                send_gifts: {
+                  ...state.template.configs.send_gifts,
+                  [id]: {
+                    ...state.template.configs.send_gifts[id],
+                    isDeleted: true,
+                  },
+                },
+              },
+            },
+            selectedComponent: {
+              id: null,
+              type: null,
+              data: null,
+            }
+          }
+        })
+        return
+      case 'timeline':
+        set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                timeline: state.template.configs.timeline ? [] : undefined,
+              },
+            },
+            selectedComponent: {
+              id: null,
+              type: null,
+              data: null,
+            }
+          }
+        })
+        return
+      case 'countdown':
+        set((state) => {
+          return {
+            ...state,
+            template: {
+              ...state.template,
+              configs: {
+                ...state.template.configs,
+                countdown: state.template.configs.countdown ? {
+                  ...state.template.configs.countdown,
+                  isDeleted: true,
+                } : undefined,
+              },
+            },
+            selectedComponent: {
+              id: null,
+              type: null,
+              data: null,
+            }
+          }
+        })
+        return
+      default:
+        return;
+    }
+  },
 
   resetAllComponent: (template?: {
     template_id: TemplateId;

@@ -12,7 +12,7 @@ import useTemplateStore from '@/states/templates/state';
 import { useParams, usePathname } from 'next/navigation';
 import toast from 'react-hot-toast';
 
-const SunshineVowTemplate: React.FC = () => {
+const SunshineVowTemplate = ({ isPublicPage = false }: { isPublicPage: boolean }) => {
   const params = useParams();
   const pathname = usePathname();
   // States for form
@@ -56,7 +56,7 @@ const SunshineVowTemplate: React.FC = () => {
   return (
     <div className="font-['Inter',sans-serif] relative">
       {/* Hero Section */}
-      <WeddingBackground
+      {images['image_1'] && !images['image_1'].isDeleted && <WeddingBackground
         background={heroBgUrl}
         className="min-h-[550px] flex items-end justify-center pb-20 relative border-none"
         additionalStyle={{
@@ -66,7 +66,7 @@ const SunshineVowTemplate: React.FC = () => {
           backgroundRepeat: 'no-repeat',
         }}
       >
-      </WeddingBackground>
+      </WeddingBackground>}
       <div className="w-full flex items-center justify-center absolute top-[20px] left-1/2 -translate-x-1/2 z-1">
         <WeddingBackground
           onClick={(e) => {
@@ -94,19 +94,19 @@ const SunshineVowTemplate: React.FC = () => {
             justifyContent: "center",
             cursor: "pointer",
           }} >
-          <WeddingText
+          {texts['text_1'] && !texts['text_1'].isDeleted && <WeddingText
             onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_1', 'text', texts['text_1'])
             }}
-            className="font-[400] mb-[30px] font-poisoned text-center" style={{ color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }} content={texts['text_1'].content} />
+            className="font-[400] mb-[30px] font-poisoned text-center" style={{ color: texts['text_1'].text_color, fontSize: texts['text_1'].text_size }} content={texts['text_1'].content} />}
         </WeddingBackground>
       </div>
 
       {/* Photo Gallery */}
       <div className="px-[20px]">
         <div className="grid grid-cols-3 gap-2">
-          <WeddingImage
+          {images['image_2'] && !images['image_2'].isDeleted && <WeddingImage
             onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('image_2', 'image', images['image_2'])
@@ -116,8 +116,8 @@ const SunshineVowTemplate: React.FC = () => {
             className="w-full object-cover rounded-lg cursor-pointer"
             width={120}
             height={120}
-          />
-          <WeddingImage
+          />}
+          {images['image_3'] && !images['image_3'].isDeleted && <WeddingImage
             onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('image_3', 'image', images['image_3'])
@@ -127,8 +127,8 @@ const SunshineVowTemplate: React.FC = () => {
             className="w-full object-cover rounded-lg cursor-pointer"
             width={120}
             height={120}
-          />
-          <WeddingImage
+          />}
+          {images['image_4'] && !images['image_4'].isDeleted && <WeddingImage
             onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('image_4', 'image', images['image_4'])
@@ -138,25 +138,25 @@ const SunshineVowTemplate: React.FC = () => {
             className="w-full object-cover rounded-lg cursor-pointer"
             width={120}
             height={120}
-          />
+          />}
         </div>
-        <WeddingText
+        {texts['text_2'] && !texts['text_2'].isDeleted && <WeddingText
           content={texts['text_2'].content}
           onClick={() => setSelectedComponent('text_2', 'text', texts['text_2'])}
           className="cursor-pointer mt-[4rem] font-post-no-bills-jaffna-extra-bold text-center mb-2" style={{ color: texts['text_2'].text_color, fontSize: texts['text_2'].text_size }}
-        />
-        <WeddingText
+        />}
+        {texts['text_3'] && !texts['text_3'].isDeleted && <WeddingText
           content={texts['text_3'].content}
           onClick={() => setSelectedComponent('text_3', 'text', texts['text_3'])}
           className="cursor-pointer font-[400] font-plus-jakarta-sans text-left" style={{ color: texts['text_3'].text_color, fontSize: texts['text_3'].text_size }}
-        />
+        />}
       </div>
 
       {/* Bride & Groom Profiles */}
       <div className="px-[20px] py-4">
         <div className="flex justify-center items-center gap-[20px]">
           <div className="text-center w-[50%]">
-            <WeddingImage
+            {images['image_5'] && !images['image_5'].isDeleted && <WeddingImage
               imageUrl={images['image_5'].url}
               onClick={(e) => {
                 e.stopPropagation();
@@ -166,15 +166,15 @@ const SunshineVowTemplate: React.FC = () => {
               className="cursor-pointer rounded-full w-full object-cover mx-auto mb-2"
               width={170}
               height={172}
-            />
-            <WeddingText
+            />}
+            {texts['text_4'] && !texts['text_4'].isDeleted && <WeddingText
               content={texts['text_4'].content}
               onClick={() => setSelectedComponent('text_4', 'text', texts['text_4'])}
               className="cursor-pointer font-post-no-bills-jaffna-semi-bold" style={{ color: texts['text_4'].text_color, fontSize: texts['text_4'].text_size }}
-            />
+            />}
           </div>
           <div className="text-center w-[50%]">
-            <WeddingImage
+            {images['image_5'] && !images['image_5'].isDeleted &&  <WeddingImage
               imageUrl={images['image_5'].url}
               onClick={(e) => {
                 e.stopPropagation();
@@ -184,75 +184,77 @@ const SunshineVowTemplate: React.FC = () => {
               className="cursor-pointer rounded-full w-full object-cover mx-auto mb-2"
               width={170}
               height={172}
-            />
-            <WeddingText
+            />}
+            {texts['text_5'] && !texts['text_5'].isDeleted && <WeddingText
               content={texts['text_5'].content}
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('text_5', 'text', texts['text_5'])
               }}
               className="cursor-pointer font-post-no-bills-jaffna-semi-bold" style={{ color: texts['text_5'].text_color, fontSize: texts['text_5'].text_size }}
-            />
+            />}
           </div>
         </div>
       </div>
 
       {/* Our Wedding Section */}
       <div className="px-6 pt-6">
-        <WeddingText
+        {texts['text_6'] && !texts['text_6'].isDeleted && <WeddingText
           content={texts['text_6'].content}
           onClick={(e) => {
             e.stopPropagation();
             setSelectedComponent('text_6', 'text', texts['text_6'])
           }}
           className="cursor-pointer font-post-no-bills-jaffna-extra-bold text-center" style={{ color: texts['text_6'].text_color, fontSize: texts['text_6'].text_size }}
-        />
-        <WeddingText
+        />}
+        {texts['text_7'] && !texts['text_7'].isDeleted && <WeddingText
           content={texts['text_7'].content}
           onClick={(e) => {
             e.stopPropagation();
             setSelectedComponent('text_7', 'text', texts['text_7'])
           }}
           className="cursor-pointer text-center mb-6 font-plus-jakarta-sans" style={{ color: texts['text_7'].text_color, fontSize: texts['text_7'].text_size }}
-        />
+        />}
 
         {/* Calendar */}
         <div className="bg-white mb-6">
           <div className="grid grid-cols-7 gap-1 text-center text-xs mb-2">
-            <div onClick={(e) => {
+            {texts['text_8'] && !texts['text_8'].isDeleted && <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_8', 'text', texts['text_8'])
-            }} className="cursor-pointer font-[700]" style={{ color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>{texts['text_8'].content}</div>
-            <div onClick={(e) => {
+            }} className="cursor-pointer font-[700]" style={{ color: texts['text_8'].text_color, fontSize: texts['text_8'].text_size }}>{texts['text_8'].content}</div>}
+            {texts['text_9'] && !texts['text_9'].isDeleted && <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_9', 'text', texts['text_9'])
-            }} className="cursor-pointer font-[700]" style={{ color: texts['text_9'].text_color, fontSize: texts['text_9'].text_size }}>{texts['text_9'].content}</div>
-            <div onClick={(e) => {
+            }} className="cursor-pointer font-[700]" style={{ color: texts['text_9'].text_color, fontSize: texts['text_9'].text_size }}>{texts['text_9'].content}</div>}
+            {texts['text_10'] && !texts['text_10'].isDeleted && <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_10', 'text', texts['text_10'])
-            }} className="cursor-pointer font-[700]" style={{ color: texts['text_10'].text_color, fontSize: texts['text_10'].text_size }}>{texts['text_10'].content}</div>
-            <div onClick={(e) => {
+            }} className="cursor-pointer font-[700]" style={{ color: texts['text_10'].text_color, fontSize: texts['text_10'].text_size }}>{texts['text_10'].content}</div>}
+            {texts['text_11'] && !texts['text_11'].isDeleted && <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_11', 'text', texts['text_11'])
-            }} className="cursor-pointer font-[700]" style={{ color: texts['text_11'].text_color, fontSize: texts['text_11'].text_size }}>{texts['text_11'].content}</div>
-            <div onClick={(e) => {
+            }} className="cursor-pointer font-[700]" style={{ color: texts['text_11'].text_color, fontSize: texts['text_11'].text_size }}>{texts['text_11'].content}</div>}
+            {texts['text_12'] && !texts['text_12'].isDeleted && <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_12', 'text', texts['text_12'])
-            }} className="cursor-pointer font-[700]" style={{ color: texts['text_12'].text_color, fontSize: texts['text_12'].text_size }}>{texts['text_12'].content}</div>
-            <div onClick={(e) => {
+            }} className="cursor-pointer font-[700]" style={{ color: texts['text_12'].text_color, fontSize: texts['text_12'].text_size }}>{texts['text_12'].content}</div>}
+            {texts['text_13'] && !texts['text_13'].isDeleted && <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_13', 'text', texts['text_13'])
-            }} className="cursor-pointer font-[700]" style={{ color: texts['text_13'].text_color, fontSize: texts['text_13'].text_size }}>{texts['text_13'].content}</div>
-            <div onClick={(e) => {
+            }} className="cursor-pointer font-[700]" style={{ color: texts['text_13'].text_color, fontSize: texts['text_13'].text_size }}>{texts['text_13'].content}</div>}
+            {texts['text_14'] && !texts['text_14'].isDeleted && <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_14', 'text', texts['text_14'])
-            }} className="cursor-pointer font-[700]" style={{ color: texts['text_14'].text_color, fontSize: texts['text_14'].text_size }}>{texts['text_14'].content}</div>
+            }} className="cursor-pointer font-[700]" style={{ color: texts['text_14'].text_color, fontSize: texts['text_14'].text_size }}>{texts['text_14'].content}</div>}
           </div>
           <div className="grid grid-cols-7 gap-1 text-center text-sm">
             <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_15', 'text', texts['text_15'])
-            }} className="cursor-pointer p-2 font-[400]" style={{ color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}><div className="p-[5px]">{texts['text_15'].content}</div></div>
+            }} className="cursor-pointer p-2 font-[400]" style={{ color: texts['text_15'].text_color, fontSize: texts['text_15'].text_size }}>
+              <div className="p-[5px]">{texts['text_15'].content}</div>
+            </div>
             <div onClick={(e) => {
               e.stopPropagation();
               setSelectedComponent('text_16', 'text', texts['text_16'])

@@ -1,5 +1,5 @@
 "use client";
-import { use, useEffect, useRef, useState } from 'react'
+import { use, useEffect, useMemo, useRef, useState } from 'react'
 import useTemplateStore from '@/states/templates/state';
 import SunshineVowTemplate from '@/wedding-templates/SunshineVow.template';
 import OliveHarmonyTemplate from '@/wedding-templates/OliveHarmony.template';
@@ -40,37 +40,46 @@ export default function PublicPage({
         return () => document.removeEventListener("mousedown", handleClick);
     }, []);
 
-    function renderTemplate() {
+    const renderTemplate = useMemo(() => {
         switch (template_id) {
             case "sunshine_vow":
-                if (loading) return <SunshineVowTemplate />;
-                return <SunshineVowTemplate />;
+                if (!loading) return <SunshineVowTemplate isPublicPage />;
+                else return <></>;
+                // return <SunshineVowTemplate />;
             case "olive_harmony":
-                if (loading) return <OliveHarmonyTemplate />;
-                return <OliveHarmonyTemplate />;
+                if (!loading) return <OliveHarmonyTemplate isPublicPage />;
+                else return <></>;
+                // return <OliveHarmonyTemplate />;
             case "cocoa_embrace":
-                if (loading) return <CocoaEmbraceTemplate />;
-                return <CocoaEmbraceTemplate />;
+                if (!loading) return <CocoaEmbraceTemplate isPublicPage />;
+                else return <></>;
+                // return <CocoaEmbraceTemplate />;
             case "golden_bond":
-                if (loading) return <GoldenBondTemplate />;
-                return <GoldenBondTemplate />;
+                if (!loading) return <GoldenBondTemplate isPublicPage />;
+                else return <></>;
+                // return <GoldenBondTemplate />;
             case "forest_charm":
-                if (loading) return <ForestCharmTemplate />;
-                return <ForestCharmTemplate />;
+                if (!loading) return <ForestCharmTemplate isPublicPage />;
+                else return <></>;
+                // return <ForestCharmTemplate />;
             case "jade_whisper":
-                if (loading) return <JadeWhisperTemplate />;
-                return <JadeWhisperTemplate />;
+                if (!loading) return <JadeWhisperTemplate isPublicPage />;
+                else return <></>;
+                // return <JadeWhisperTemplate />;
             case "2010_my_light":
-                if (loading) return <T2010MyLightTemplate />;
-                return <T2010MyLightTemplate />;
+                if (!loading) return <T2010MyLightTemplate isPublicPage />;
+                else return <></>;
+                // return <T2010MyLightTemplate />;
             case "2010_for_ya":
-                if (loading) return <T2010ForYaTemplate />;
-                return <T2010ForYaTemplate />;
+                if (!loading) return <T2010ForYaTemplate isPublicPage />;
+                else return <></>;
+                // return <T2010ForYaTemplate />;
             default:
-                if (loading) return <SunshineVowTemplate />;
-                return <SunshineVowTemplate />;
+                if (!loading) return <SunshineVowTemplate isPublicPage />;
+                else return <></>;
+                // return <SunshineVowTemplate />;
         }
-    }
+    }, [template_id, loading]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -149,7 +158,7 @@ export default function PublicPage({
     return (
         <div className="w-full h-full flex items-center justify-center bg-[#f9f9f9]">
             {!loading ? !isExpire ? <div className="w-[448px] h-full bg-white border shadow-sm rounded-sm overflow-y-auto">
-                {renderTemplate()}
+                {renderTemplate}
                 <div ref={ref} className={`fixed bottom-0 px-[24px] py-[20px] w-[inherit] rounded-t-[24px] ${openModal ? "bg-white" : "bg-transparent"}`}>
                     {/* Wishes List */}
                     {wishes.length > 0 && (

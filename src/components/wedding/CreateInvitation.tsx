@@ -4,7 +4,7 @@ import ColorDisplay from "./ColorDisplay";
 import NumberInput from "./NumberInput";
 import ImageUpload from "./ImageUpload";
 import SunshineVowTemplate from "@/wedding-templates/SunshineVow.template";
-import useSunshineVowStore, { BackgroundColorItem, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "@/states/templates/state";
+import useSunshineVowStore, { BackgroundColorItem, Countdown, ImageItem, SendGiftItem, TextItem, Timeline, UrlMapItem } from "@/states/templates/state";
 import PublishInvitationModal from "@/components/popup/PublishInvitationModal";
 import SuccessPublishModal from "@/components/popup/SuccessPublishModal";
 import SaveDraftModal from "@/components/popup/SaveDraftModal";
@@ -50,7 +50,7 @@ export default function CreateInvitation() {
   // State cho modal lưu nháp
   const [isSaveDraftModalOpen, setIsSaveDraftModalOpen] = useState(false);
 
-  const { selectedComponent, setSelectedComponent, updateText, updateImage, updateBackgroundColor, updateUrlMap, updateSendGift, resetAllComponent, resetComponent, template, updateTemplate, updateTimeline, updateCountdown } = useSunshineVowStore();
+  const { selectedComponent, setSelectedComponent, updateText, updateImage, updateBackgroundColor, updateUrlMap, updateSendGift, resetAllComponent, resetComponent, template, updateTemplate, updateTimeline, updateCountdown, deleteComponent } = useSunshineVowStore();
 
   // Hàm xử lý lưu nháp
   const handleSaveDraft = async () => {
@@ -129,28 +129,30 @@ export default function CreateInvitation() {
     } else {
       switch (templateId) {
         case "sunshine_vow":
-          return <SunshineVowTemplate />;
+          return <SunshineVowTemplate isPublicPage={false} />;
         case "olive_harmony":
-          return <OliveHarmonyTemplate />;
+          return <OliveHarmonyTemplate isPublicPage={false} />;
         case "cocoa_embrace":
-          return <CocoaEmbraceTemplate />;
+          return <CocoaEmbraceTemplate isPublicPage={false} />;
         case "golden_bond":
-          return <GoldenBondTemplate />;
+          return <GoldenBondTemplate isPublicPage={false} />;
         case "forest_charm":
-          return <ForestCharmTemplate />;
+          return <ForestCharmTemplate isPublicPage={false} />;
         case "jade_whisper":
-          return <JadeWhisperTemplate />;
+          return <JadeWhisperTemplate isPublicPage={false} />;
         case "2010_my_light":
-          return <T2010MyLightTemplate />;
+          return <T2010MyLightTemplate isPublicPage={false} />;
         case "2010_for_ya":
-          return <T2010ForYaTemplate />;
+          return <T2010ForYaTemplate isPublicPage={false} />;
         default:
-          return <SunshineVowTemplate />;
+          return <SunshineVowTemplate isPublicPage={false} />;
       }
     }
 
 
   }, [templateId, loading])
+
+  console.log(template, "123123123")
 
 
   return (
@@ -158,7 +160,7 @@ export default function CreateInvitation() {
       {loading && <div className="w-full h-[100vh] flex items-center justify-center">
         <LoadingRing />
       </div>}
-      {!loading &&<div ref={outerDivRef} className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
+      {!loading && <div ref={outerDivRef} className="w-full lg:w-3/4 bg-[#E9EAEB] h-full flex items-center justify-center">
         <div ref={innerDivRef} className="w-full xs:w-[448px] h-[calc(100vh-86px)] bg-white shadow-sm rounded-sm overflow-y-auto scrollbar-hidden">
           {renderTemplate}
         </div>
@@ -187,7 +189,11 @@ export default function CreateInvitation() {
           <div className={`lg:block flex flex-col justify-start items-start gap-2 border-b border-[#E9EAEB] px-[18px] py-[1rem]`}>
             <label className="text-[#4A3B36] text-[14px] font-[600]">Thao tác</label>
             <div className="flex gap-5 w-full">
-              <Button variant="ghost" disabled className="disabled:opacity-70 w-full">Xóa bỏ</Button>
+              <Button onClick={() => {
+                if (selectedComponent.id !== null) {
+                  deleteComponent(selectedComponent.id, selectedComponent.type)
+                }
+              }} variant="ghost" className="disabled:opacity-70 w-full outline-none focus:border-none">Xóa bỏ</Button>
               <Button onClick={() => {
                 if (selectedComponent.id !== null) {
                   console.log(selectedComponent.id, selectedComponent.type)
@@ -195,7 +201,7 @@ export default function CreateInvitation() {
                 } else {
                   resetAllComponent();
                 }
-              }} className="cursor-pointer w-full">Mặc định</Button>
+              }} className="cursor-pointer w-full outline-none">Mặc định</Button>
             </div>
           </div>
 
@@ -622,14 +628,14 @@ export default function CreateInvitation() {
                   onChange={(e) => {
                     const newDate = new Date(e.target.value);
                     updateCountdown({
-                      ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
-                      content: newDate
+                      ...(selectedComponent.data as Countdown),
+                      content: newDate,
                     });
                     setSelectedComponent(
                       selectedComponent.id ?? '',
                       'countdown',
                       {
-                        ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                        ...(selectedComponent.data as Countdown),
                         content: newDate
                       }
                     );
@@ -647,17 +653,17 @@ export default function CreateInvitation() {
                   <div className="flex-1">
                     <label className="text-[#4A3B36] text-[10px] font-[400] mb-1 block">Màu chữ</label>
                     <ColorDisplay
-                      colorValue={(selectedComponent.data as { text_color: string })?.text_color}
+                      colorValue={(selectedComponent.data as Countdown)?.text_color}
                       onChange={(color) => {
                         updateCountdown({
-                          ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                          ...(selectedComponent.data as Countdown),
                           text_color: color
                         });
                         setSelectedComponent(
                           selectedComponent.id ?? '',
                           'countdown',
                           {
-                            ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                            ...(selectedComponent.data as Countdown),
                             text_color: color
                           }
                         );
@@ -669,17 +675,17 @@ export default function CreateInvitation() {
                   <div className="flex-1">
                     <label className="text-[#4A3B36] text-[10px] font-[400] mb-1 block">Cỡ chữ</label>
                     <NumberInput
-                      value={Number((selectedComponent.data as { text_size: string })?.text_size?.replace('px', '') || 16)}
+                      value={Number((selectedComponent.data as Countdown)?.text_size?.replace('px', '') || 16)}
                       onChange={(size) => {
                         updateCountdown({
-                          ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                          ...(selectedComponent.data as Countdown),
                           text_size: `${size}px`
                         });
                         setSelectedComponent(
                           selectedComponent.id ?? '',
                           'countdown',
                           {
-                            ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                            ...(selectedComponent.data as Countdown),
                             text_size: `${size}px`
                           }
                         );
@@ -698,17 +704,17 @@ export default function CreateInvitation() {
                   <div className="flex-1">
                     <label className="text-[#4A3B36] text-[10px] font-[400] mb-1 block">Màu số</label>
                     <ColorDisplay
-                      colorValue={(selectedComponent.data as { number_color: string })?.number_color}
+                      colorValue={(selectedComponent.data as Countdown)?.number_color}
                       onChange={(color) => {
                         updateCountdown({
-                          ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                          ...(selectedComponent.data as Countdown),
                           number_color: color
                         });
                         setSelectedComponent(
                           selectedComponent.id ?? '',
                           'countdown',
                           {
-                            ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                            ...(selectedComponent.data as Countdown),
                             number_color: color
                           }
                         );
@@ -720,17 +726,17 @@ export default function CreateInvitation() {
                   <div className="flex-1">
                     <label className="text-[#4A3B36] text-[10px] font-[400] mb-1 block">Cỡ số</label>
                     <NumberInput
-                      value={Number((selectedComponent.data as { number_size: string })?.number_size?.replace('px', '') || 24)}
+                      value={Number((selectedComponent.data as Countdown)?.number_size?.replace('px', '') || 24)}
                       onChange={(size) => {
                         updateCountdown({
-                          ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                          ...(selectedComponent.data as Countdown),
                           number_size: `${size}px`
                         });
                         setSelectedComponent(
                           selectedComponent.id ?? '',
                           'countdown',
                           {
-                            ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                            ...(selectedComponent.data as Countdown),
                             number_size: `${size}px`
                           }
                         );
@@ -746,17 +752,17 @@ export default function CreateInvitation() {
               <div className="p-2 bg-white rounded-[4px] border border-orange-100">
                 <label className="text-[#4A3B36] text-[11px] font-[600] mb-2 block">Màu nền</label>
                 <ColorDisplay
-                  colorValue={(selectedComponent.data as { background: string })?.background}
+                  colorValue={(selectedComponent.data as Countdown)?.background}
                   onChange={(color) => {
                     updateCountdown({
-                      ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                      ...(selectedComponent.data as Countdown),
                       background: color
                     });
                     setSelectedComponent(
                       selectedComponent.id ?? '',
                       'countdown',
                       {
-                        ...(selectedComponent.data as { text_color: string; text_size: string; number_color: string; number_size: string; background: string; content: Date }),
+                        ...(selectedComponent.data as Countdown),
                         background: color
                       }
                     );

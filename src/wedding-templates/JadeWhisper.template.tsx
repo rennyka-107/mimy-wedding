@@ -9,7 +9,7 @@ import { originalJadeWhisperState } from "@/states/origin_state/jade_whisper";
 import { templateJadeWhisper } from "@/types/wedding.type";
 
 
-export default function JadeWhisperTemplate() {
+export default function JadeWhisperTemplate({isPublicPage = false}: {isPublicPage: boolean}) {
     const params = useParams();
     const pathname = usePathname();
     const { template: { configs: { texts, images, background_colors, url_maps, send_gifts, countdown: countdownConfig } }, setSelectedComponent, updateTemplate } = useTemplateStore();
@@ -17,7 +17,7 @@ export default function JadeWhisperTemplate() {
     const [countdown, setCountdown] = useState({ days: 18, hours: 1, minutes: 31, seconds: 3 });
 
     useEffect(() => {
-        updateTemplate(templateJadeWhisper)
+        if (!isPublicPage) updateTemplate(templateJadeWhisper)
     }, [])
 
     useEffect(() => {
@@ -54,13 +54,13 @@ export default function JadeWhisperTemplate() {
 
     return (
         <div className="relative pt-[36rem] font-plus-jakarta-sans bg-white">
-            <img src={'/templates/JadeWhisper/bgsvg.svg'} className="absolute top-[10px] z-0 left-1/2 -translate-x-1/2" />
-            <div className="absolute top-[30px] z-0 left-1/2 -translate-x-1/2">
+            {!images['image_1'].isDeleted && <img src={'/templates/JadeWhisper/bgsvg.svg'} className="absolute top-[10px] z-0 left-1/2 -translate-x-1/2" />}
+            {!images['image_2'].isDeleted && <div className="absolute top-[30px] z-0 left-1/2 -translate-x-1/2">
                 <svg width="409" height="521" viewBox="0 0 409 521" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M204.072 0C316.738 0 408.072 91.1101 408.072 203.5C408.072 210.089 407.758 216.604 407.145 223.032V513C407.145 517.418 403.563 521 399.145 521H8C3.58172 521 2.8805e-08 517.418 0 513V207.64H0.114258C0.0867221 206.263 0.0722656 204.883 0.0722656 203.5C0.0722656 91.1101 91.4062 0 204.072 0Z" fill="white" />
                 </svg>
-            </div>
-            <div onClick={(e) => {
+            </div>}
+            {!images['image_1'].isDeleted && <div onClick={(e) => {
                 e.stopPropagation();
                 setSelectedComponent('image_1', 'image', images['image_1'])
             }} className="cursor-pointer absolute top-[50px] left-1/2 -translate-x-1/2 z-1"
@@ -83,7 +83,7 @@ export default function JadeWhisperTemplate() {
                     alignItems: "end",
                     justifyContent: "center",
                 }}
-            />
+            />}
 
 
             {/* Header Section */}

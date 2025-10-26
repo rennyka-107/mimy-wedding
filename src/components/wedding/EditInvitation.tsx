@@ -140,19 +140,19 @@ export default function EditInvitation() {
   function renderTemplate() {
     switch (template.template_id) {
       case "sunshine_vow":
-        return <SunshineVowTemplate />;
+        return <SunshineVowTemplate isPublicPage />;
       case "olive_harmony":
-        return <OliveHarmonyTemplate />;
+        return <OliveHarmonyTemplate isPublicPage />;
       case "cocoa_embrace":
-        return <CocoaEmbraceTemplate />;
+        return <CocoaEmbraceTemplate isPublicPage />;
       case "golden_bond":
-        return <GoldenBondTemplate />;
+        return <GoldenBondTemplate isPublicPage />;
       case "forest_charm":
-        return <ForestCharmTemplate />;
+        return <ForestCharmTemplate isPublicPage />;
       case "jade_whisper":
-        return <JadeWhisperTemplate />;
+        return <JadeWhisperTemplate isPublicPage />;
       default:
-        return <SunshineVowTemplate />;
+        return <SunshineVowTemplate isPublicPage />;
     }
   }
 

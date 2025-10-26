@@ -66,21 +66,21 @@ export default function ViewInvitationPage({
     const renderTemplate = useMemo(() => {
         switch (template.template_id) {
             case "sunshine_vow":
-                if (id === "sunshine_vow") { return <SunshineVowTemplate /> } else return <ComingSoon />;
+                if (id === "sunshine_vow") { return <SunshineVowTemplate isPublicPage /> } else return <ComingSoon />;
             case "olive_harmony":
-                if (id === "olive_harmony") { return <OliveHarmonyTemplate /> } else return <ComingSoon />;
+                if (id === "olive_harmony") { return <OliveHarmonyTemplate isPublicPage /> } else return <ComingSoon />;
             case "cocoa_embrace":
-                if (id === "cocoa_embrace") { return <CocoaEmbraceTemplate /> } else return <ComingSoon />;
+                if (id === "cocoa_embrace") { return <CocoaEmbraceTemplate isPublicPage /> } else return <ComingSoon />;
             case "golden_bond":
-                if (id === "golden_bond") { return <GoldenBondTemplate /> } else return <ComingSoon />;
+                if (id === "golden_bond") { return <GoldenBondTemplate isPublicPage /> } else return <ComingSoon />;
             case "forest_charm":
-                if (id === "forest_charm") { return <ForestCharmTemplate /> } else return <ComingSoon />;
+                if (id === "forest_charm") { return <ForestCharmTemplate isPublicPage /> } else return <ComingSoon />;
             case "jade_whisper":
-                if (id === "jade_whisper") { return <JadeWhisperTemplate /> } else return <ComingSoon />;
+                if (id === "jade_whisper") { return <JadeWhisperTemplate isPublicPage /> } else return <ComingSoon />;
             case "2010_my_light":
-                if (id === "2010_my_light") { return <T2010MyLightTemplate /> } else return <ComingSoon />;
+                if (id === "2010_my_light") { return <T2010MyLightTemplate isPublicPage /> } else return <ComingSoon />;
             case "2010_for_ya":
-                if (id === "2010_for_ya") { return <T2010ForYaTemplate /> } else return <ComingSoon />;
+                if (id === "2010_for_ya") { return <T2010ForYaTemplate isPublicPage /> } else return <ComingSoon />;
             default:
                 // Else return coming soon page
                 return <ComingSoon />;
