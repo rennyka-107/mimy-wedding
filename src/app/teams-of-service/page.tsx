@@ -66,7 +66,7 @@ const contents = [
     {
         label: "8. Sự đồng ý của người dùng", 
         value: [
-            "Bằng cách đánh dấu vào ô \"Tôi đồng ý với Điều khoản dịch vụ và Chính sách bảo mật\" trong quá trình đăng ký, bạn xác nhận rằng bạn đã đọc, hiểu và đồng ý tuân thủ tất cả các điều khoản và điều kiện được nêu trong tài liệu này, cũng như trong Chính sách bảo mật của chúng tôi. Việc đồng ý này có hiệu lực pháp lý và ràng buộc bạn với các quy định của Mimy Wedding.",
+            "Bằng cách đánh dấu vào ô \"Tôi đồng ý với Điều khoản dịch vụ và Chính sách bảo mật\" trong quá trình đăng ký, bạn xác nhận rằng bạn đã đọc, hiểu và đồng ý tuân thủ tất cả các điều khoản và điều kiện được nêu trong tài liệu này, cũng như trong Chính sách bảo mật của chúng tôi. Việc đồng ý này có hiệu lực pháp lý và ràng buộc bạn với các quy định của Mimy.vn.",
             "Nếu bạn đăng ký thông qua tài khoản Google, bạn cũng đồng ý với các điều khoản này và cho phép chúng tôi thu thập thông tin từ các nền tảng đó theo Chính sách bảo mật của chúng tôi."
         ],
         id: "8"

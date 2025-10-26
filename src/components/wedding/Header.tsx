@@ -60,12 +60,13 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button (Hamburger) */}
-          <button
-            className="md:hidden text-gray-700 focus:outline-none"
-            onClick={handleToggleMobileMenu}
+          <Button
+            variant='ghost'
+            className="md:hidden text-gray-700 focus:outline-none !px-3"
+            onClick={() => signIn('google')}
             aria-label="Menu"
           >
-            <svg
+            {/* <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -79,8 +80,21 @@ export default function Header() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-            </svg>
-          </button>
+            </svg> */}
+            <div className="text-black flex items-center ">
+              <Image
+                unoptimized
+                src="/images/logo-google.png"
+                alt="Google Logo"
+                width={28}
+                height={28}
+                className="pl-1"
+              />
+              <span className="pl-2 text-[#] text-[14px] font-[600]">
+                Đăng nhập
+              </span>
+            </div>
+          </Button>
 
           {/* Right Navigation - Hidden on mobile */}
           <div className="hidden md:flex items-center w-full justify-between ">
@@ -121,7 +135,7 @@ export default function Header() {
                       <path d="M14.6668 4.66699L8.68683 8.46699C8.48101 8.59594 8.24304 8.66433 8.00016 8.66433C7.75729 8.66433 7.51932 8.59594 7.3135 8.46699L1.3335 4.66699" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     <span className="lg:hidden block ml-2 font-[600] md:text-[14px] lg:text-[16px]">Đăng nhập</span>
-                    <span className="hidden lg:block ml-2 font-[600] whitespace-nowrap">Đăng nhập bằng Email</span>
+                    <span className="hidden lg:block ml-2 font-[600] whitespace-nowrap">Đăng nhập bằng Gmail</span>
                   </Button>
                 </>
               )}

@@ -274,14 +274,14 @@ export default function PublishInvitationModal({
 
               {/* Header */}
               <div className="px-6 pt-6 pb-4">
-                <h2 className="text-2xl font-bold text-[#383637] mb-2">Xuất bản thiệp cưới của bạn</h2>
-                <p className="text-gray-500 text-[16px]">Nếu có bất kỳ vấn đề gì, vui lòng liên hệ với chúng tôi theo địa chỉ <span className="text-[#FD8C06] font-[600]">contact@mimy.vn</span>!</p>
+                <h2 className="text-[20px] md:text-[24px] font-bold text-[#383637] mb-2">Xuất bản thiệp cưới của bạn</h2>
+                <p className="text-gray-500 text-[14px] md:text-[16px]">Nếu có bất kỳ vấn đề gì, vui lòng liên hệ với chúng tôi theo địa chỉ <span className="text-[#FD8C06] font-[600]">contact@mimy.vn</span>!</p>
               </div>
 
               {/* Content - Template information */}
               <div className="px-6 py-3">
-                <div className="flex items-center justify-between bg-gray-100 rounded-lg p-4">
-                  <span className="block text-[#383637]">{template_name}</span>
+                <div className="flex items-center justify-between bg-gray-100 rounded-lg px-4 py-2">
+                  <span className="block text-[#383637] text-[14px] md:text-[16px]">{template_name}</span>
                   <span className="font-medium">{formatMoneyVND(template_price)}</span>
                 </div>
                 <div className="text-[#898A85] text-[14px] mt-2">
@@ -292,12 +292,12 @@ export default function PublishInvitationModal({
               {/* URL Preview */}
               <div className="px-6 py-3">
                 <div className="flex items-center space-x-2">
-                  <div className="bg-gray-100 rounded-lg py-3 px-4">
+                  <div className="bg-gray-100 rounded-lg py-[8px] px-4">
                     <div className="flex items-baseline">
-                      <span className="text-[#383637]">https://mimy.vn/</span>
+                      <span className="text-[#383637] text-[14px] md:text-[16px]">https://mimy.vn/</span>
                     </div>
                   </div>
-                  <input onChange={(e) => setSurfixUrl(e.target.value)} type="text" className="flex-1 border border-[#F0F2F3] rounded-[6px] px-[12px] py-[10px] text-[#383637] outline-none" value={surfixUrl} />
+                  <input onChange={(e) => setSurfixUrl(e.target.value)} type="text" className="flex-1 border border-[#F0F2F3] rounded-[6px] px-[12px] py-[8px] text-[#383637] outline-none text-[14px] md:text-[16px]" value={surfixUrl} />
                   {/* <div className="text-red-500">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
                       <path fillRule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 11c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1zm1 4h-2v-2h2v2z" />
@@ -311,8 +311,8 @@ export default function PublishInvitationModal({
               {/* Total Price */}
               <div className="px-6 py-4 border-t border-gray-100">
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold text-[#383637]">Tổng tiền</span>
-                  <span className="font-semibold text-[#383637]">
+                  <span className="font-semibold text-[#383637] text-[14px] md:text-[16px]">Tổng tiền</span>
+                  <span className="font-semibold text-[#383637] text-[14px] md:text-[16px]">
                     {formatMoneyVND(template_price)} (đ)
                   </span>
                 </div>
@@ -322,9 +322,9 @@ export default function PublishInvitationModal({
               <div className="px-6 pb-6">
                 <button
                   onClick={handleSubmit}
-                  className="cursor-pointer w-full py-3 rounded-lg focus:outline-none bg-[#fd8c06] text-white hover:bg-[#E07000] transition-colors"
+                  className="text-[14px] md:text-[16px] cursor-pointer w-full py-3 rounded-lg focus:outline-none bg-[#fd8c06] text-white hover:bg-[#E07000] transition-colors"
                 >
-                  Xác nhận và tiến hành thanh toán
+                  Xác nhận và thanh toán
                 </button>
               </div>
             </motion.div>

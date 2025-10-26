@@ -77,16 +77,16 @@ export async function POST(req: Request) {
 
     // Gửi email
     const mailOptions = {
-      from: `"${process.env.SMTP_FROM_NAME || 'Mimy Wedding'}" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+      from: `"${process.env.SMTP_FROM_NAME || 'Mimy.vn'}" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
       to: email,
       subject: 'Mã xác thực đăng ký tài khoản',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #fd8c06; text-align: center;">Mimy Wedding</h2>
+          <h2 style="color: #fd8c06; text-align: center;">Mimy.vn</h2>
           <div style="padding: 20px; border: 1px solid #f7d4d4; border-radius: 5px;">
             <h3>Xác thực email</h3>
             <p>Chào bạn,</p>
-            <p>Cảm ơn bạn đã đăng ký tài khoản Mimy Wedding. Vui lòng sử dụng mã xác thực bên dưới để hoàn tất quá trình đăng ký:</p>
+            <p>Cảm ơn bạn đã đăng ký tài khoản Mimy.vn. Vui lòng sử dụng mã xác thực bên dưới để hoàn tất quá trình đăng ký:</p>
             <div style="text-align: center; margin: 20px 0;">
               <div style="font-size: 24px; font-weight: bold; letter-spacing: 5px; padding: 10px; background-color: #f7f7f7; border-radius: 5px; display: inline-block;">
                 ${verificationCode}
@@ -94,7 +94,7 @@ export async function POST(req: Request) {
             </div>
             <p>Mã này có hiệu lực trong 10 phút.</p>
             <p>Nếu bạn không yêu cầu đăng ký tài khoản, vui lòng bỏ qua email này.</p>
-            <p>Trân trọng,<br>Đội ngũ Mimy Wedding</p>
+            <p>Trân trọng,<br>Đội ngũ Mimy.vn</p>
           </div>
         </div>
       `

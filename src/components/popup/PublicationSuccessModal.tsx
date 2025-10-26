@@ -111,7 +111,7 @@ export default function PublicationSuccessModal({
               <div className="w-16 h-16">
                 <Image 
                   src="/images/mimy-logo.png" 
-                  alt="Mimy Wedding Logo" 
+                  alt="Mimy.vn Logo" 
                   width={64} 
                   height={64}
                   onError={(e) => {
@@ -123,7 +123,7 @@ export default function PublicationSuccessModal({
                 />
                 {/* Fallback text if image fails to load */}
                 <div className="text-[#fd8c06] font-bold text-xl">
-                  Mimy wedding
+                  Mimy.vn
                 </div>
               </div>
             </div>
